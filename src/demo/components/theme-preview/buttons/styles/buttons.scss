@@ -1,0 +1,70 @@
+@use '~@chrisofnormandy/confetti/pack.scss' as *;
+@use '../../../../../lib/interfaces/buttons/styles/button.mixin' as buttons;
+
+.buttons {
+    @include flex-between;
+
+    padding: 10px;
+
+    .buttons-column {
+        @include flex(0, 1);
+
+        .btn-row {
+            @include flex(1);
+
+            .btn {
+                &:not(:first-child) {
+                    margin-left: 10px;
+                }
+            }
+
+            &:not(:first-child) {
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+.brands {
+    @include flex;
+
+    .brand-column {
+        @include flex(0, 1);
+
+        &:not(:first-child) {
+            margin-left: 10px;
+        }
+
+        .brand-row {
+            @include flex-between(1);
+
+            width: fit-content;
+
+            .social-link {
+                &:not(:first-child) {
+                    margin-left: 10px;
+                }
+            }
+
+            &:not(:first-child) {
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+@each $p, $palette_map in $palettes {
+    @include themed($p) {
+        @each $i, $_ in $palette_map {
+            @include interface-scheme-var('btn_default-#{$i}', palette($p, $i));
+            @include interface-scheme-var('btn_inverse-#{$i}', palette-inverse($p, $i));
+            @include interface-scheme-var('btn_compliment-#{$i}', palette-compliment($p, $i));
+
+            .btn {
+                @include button-type('default-#{$i}');
+                @include button-type('inverse-#{$i}');
+                @include button-type('compliment-#{$i}');
+            }
+        }
+    }
+}

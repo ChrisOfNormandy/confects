@@ -1,0 +1,1104 @@
+@use 'sass:map';
+@use 'sass:list';
+
+@mixin brand() {
+    &.alexa {
+        &.fill {
+            background-color: #0aa9e3;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #2dc1fa;
+        }
+    }
+
+    &.alipay {
+        &.fill {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    }
+
+    &.amazon {
+        &.fill {
+            background-color: #2a2a2a;
+
+            .icon {
+                color: transparent;
+                background-image: linear-gradient(#ffffff 71.3%, #ff9900 0);
+                background-clip: text;
+            }
+
+            .brand-name {
+                color: #ffffff;
+            }
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+
+            .icon {
+                color: transparent;
+                background-image: linear-gradient(#2a2a2a 71.3%, #ff9900 0);
+                background-clip: text;
+            }
+
+            .brand-name {
+                color: #2a2a2a;
+            }
+        }
+    }
+
+    &.amd {
+        &.fill {
+            background-color: #ed1c24;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #ed1c24;
+        }
+    }
+
+    &.android {
+        &.fill {
+            background-color: #afc639;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #afc639;
+        }
+
+        .brand-name {
+            color: #000000;
+        }
+    }
+
+    &.android2 {
+        &.fill {
+            background-color: #afc639;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #afc639;
+        }
+
+        .brand-name {
+            color: #000000;
+        }
+    }
+
+    &.apple {
+        &.fill {
+            background-color: #949494;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    }
+
+    &.behance {
+        &.fill {
+            background-color: #053eff;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #053eff;
+        }
+    }
+
+    &.bing {
+        &.fill {
+            background-color: #0c8484;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #0c8484;
+        }
+    }
+
+    &.bluetooth {
+        &.fill {
+            background-color: #0082fc;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #0082fc;
+        }
+    }
+
+    &.browser-chrome {
+        &.fill {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    }
+
+    &.browser-edge {
+        &.fill {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    }
+
+    &.browser-firefox {
+        &.fill {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    }
+
+    &.browser-safari {
+        &.fill {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    }
+
+    &.discord {
+        &.fill {
+            background-color: #404eed;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #5865f2;
+        }
+    }
+
+    &.dribbble {
+        &.fill {
+            background-color: #ea4c89;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #ea4c89;
+        }
+    }
+
+    &.dropbox {
+        &.fill {
+            background-color: #0061fe;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #0061fe;
+        }
+    }
+
+    &.facebook {
+        &.fill {
+            background-color: #1877f2;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #1877f2;
+        }
+    }
+
+    &.git {
+        &.fill {
+            background-color: #f1502f;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #f1502f;
+        }
+    }
+
+    &.github {
+        &.fill {
+            background-color: #1b1f22;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #1b1f22;
+        }
+    }
+
+    &.gitlab {
+        &.fill {
+            background-color: #fc6d26;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #fc6d26;
+        }
+    }
+
+    &.google {
+        &.fill {
+            background-color: #000000;
+
+            .icon {
+                color: transparent;
+                background:
+                    radial-gradient(#4285f4 20%, rgba(0, 0, 0, 0) 0),
+                    conic-gradient(#ea4335 12%, #4285f4 0 40%, #34a853 0 67%, #fbbc05 0 82%, #ea4335 0);
+                background-clip: text;
+            }
+
+            .brand-name {
+                color: #ffffff;
+            }
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+
+            .icon {
+                color: transparent;
+                background:
+                    radial-gradient(#4285f4 20%, rgba(0, 0, 0, 0) 0),
+                    conic-gradient(#ea4335 12%, #4285f4 0 40%, #34a853 0 67%, #fbbc05 0 82%, #ea4335 0);
+                background-clip: text;
+            }
+
+            .brand-name {
+                color: #000000;
+            }
+        }
+    }
+
+    &.google-play {
+        &.fill {
+            background-color: #2a2a2a;
+
+            .icon {
+                color: transparent;
+                background-image: conic-gradient(#34a853 10%, #fbbc04 0 40%, #ea4335 0 64%, #4285f4 0 85%, #34a853 0);
+                background-clip: text;
+            }
+
+            .brand-name {
+                color: #ffffff;
+            }
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+
+            .icon {
+                color: transparent;
+                background-image: conic-gradient(#34a853 10%, #fbbc04 0 40%, #ea4335 0 64%, #4285f4 0 85%, #34a853 0);
+                background-clip: text;
+            }
+
+            .brand-name {
+                color: #2a2a2a;
+            }
+        }
+    }
+
+    &.instagram {
+        &.fill {
+            background: linear-gradient(#405de6, #5851d8, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80);
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+
+            .icon {
+                color: transparent;
+                background-image: linear-gradient(#405de6, #5851d8, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80);
+                background-clip: text;
+            }
+
+            .brand-name {
+                color: #000000;
+            }
+        }
+    }
+
+    &.line {
+        &.fill {
+            background-color: #00b900;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #00b900;
+        }
+    }
+
+    &.linkedin {
+        &.fill {
+            background-color: #0077b5;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #0077b5;
+        }
+    }
+
+    &.mastodon {
+        &.fill {
+            background: linear-gradient(#6364ff, #563acc);
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+
+            .icon {
+                color: transparent;
+                background-image: linear-gradient(#6364ff, #563acc);
+                background-clip: text;
+            }
+        }
+    }
+
+    &.medium {
+        &.fill {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    }
+
+    &.messenger {
+        &.fill {
+            background: linear-gradient(#00b2ff, #006aff);
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            color: transparent;
+            background-image: linear-gradient(#00b2ff, #006aff);
+            background-clip: text;
+        }
+    }
+
+    &.meta {
+        &.fill {
+            background-color: #0081fb;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #0081fb;
+        }
+    }
+
+    &.microsoft {
+        .icon {
+            color: transparent;
+            background-image: conic-gradient(#7fba00 25%, #ffb900 0 50%, #00a4ef 0 75%, #f25022 0);
+            background-clip: text;
+        }
+
+        &.fill {
+            background-color: #373737;
+
+            .brand-name {
+                color: #ffffff;
+            }
+        }
+
+        &:not(.fill) {
+            background-color: #eeeeee;
+
+            .brand-name {
+                color: #2a2a2a;
+            }
+        }
+    }
+
+    &.microsoft-teams {
+        &.fill {
+            background-color: #4e5fbf;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #4e5fbf;
+        }
+    }
+
+    &.nintendo-switch {
+        &.fill {
+            background-color: #ff4554;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #ff4554;
+        }
+    }
+
+    &.nvidia {
+        &.fill {
+            background-color: #000000;
+            color: #76b900;
+        }
+
+        &:not(.fill) {
+            background-color: #76b900;
+            color: #ffffff;
+        }
+    }
+
+    &.opencollective {
+        &.fill {
+            background-color: #262262;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #262262;
+        }
+    }
+
+    &.paypal {
+        &.fill {
+            background-color: #27346a;
+            color: #2790c3;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #2790c3;
+        }
+    }
+
+    &.pinterest {
+        &.fill {
+            background-color: #e60023;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #e60023;
+        }
+    }
+
+    &.playstation {
+        // 'playstation': #0070d1 #00439c #de0029 #326db3 #00aa9e #f3c202
+
+        &.fill {
+            background-color: #0070d1;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #0070d1;
+        }
+    }
+
+    &.quora {
+        &.fill {
+            background-color: #b92b27;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #b92b27;
+        }
+    }
+
+    &.reddit {
+        &.fill {
+            background-color: #ff4500;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #ff4500;
+        }
+    }
+
+    &.signal {
+        &.fill {
+            background-color: #3a76f0;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #3a76f0;
+        }
+    }
+
+    &.sina-weibo {
+        &.fill {
+            background-color: #cd071e;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #cd071e;
+        }
+    }
+
+    &.skype {
+        &.fill {
+            background-color: #0078d7;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #0078d7;
+        }
+    }
+
+    &.slack {
+        &.fill {
+            background-color: #4a154b;
+
+            .icon {
+                color: transparent;
+                background-image: conic-gradient(#2eb67d 25%, #ecb22e 0 50%, #e01e5a 0 75%, #36c5f0 0);
+                background-clip: text;
+            }
+
+            .brand-name {
+                color: #ffffff;
+            }
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+
+            .icon {
+                color: transparent;
+                background-image: conic-gradient(#2eb67d 25%, #ecb22e 0 50%, #e01e5a 0 75%, #36c5f0 0);
+                background-clip: text;
+            }
+
+            .brand-name {
+                color: #000000;
+            }
+        }
+    }
+
+    &.snapchat {
+        &.fill {
+            background-color: #262626;
+
+            .icon {
+                color: #fffc00;
+            }
+
+            .brand-name {
+                color: #ffffff;
+            }
+        }
+
+        &:not(.fill) {
+            background-color: #fffc00;
+
+            .icon {
+                color: #2a2a2a;
+            }
+
+            .brand-name {
+                color: #2a2a2a;
+            }
+        }
+    }
+
+    &.sourceforge {
+        &.fill {
+            background-color: #ff4500;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #ff4500;
+        }
+    }
+
+    &.spotify {
+        &.fill {
+            background-color: #1db954;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #1db954;
+        }
+    }
+
+    &.stack-overflow {
+        &.fill {
+            background-color: #222426;
+
+            .icon {
+                color: transparent;
+                background-image: radial-gradient(ellipse farthest-side at 46% 13%, #f47f24 78%, #aaaaaa 0);
+                background-clip: text;
+            }
+
+            .brand-name {
+                color: #ffffff;
+            }
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+
+            .icon {
+                color: transparent;
+                background-image: radial-gradient(farthest-corner at 47% 12%, #f47f24 55%, #aaaaaa 0);
+                background-clip: text;
+            }
+
+            .brand-name {
+                color: #000000;
+            }
+        }
+    }
+
+    &.steam {
+        &.fill {
+            background: linear-gradient(#171a21, #66c0fa);
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+
+            .icon {
+                color: transparent;
+                background-image: linear-gradient(#171a21, #66c0fa);
+                background-clip: text;
+            }
+        }
+    }
+
+    &.strava {
+        &.fill {
+            background-color: #fc4022;
+
+            .icon {
+                color: transparent;
+                background-image: linear-gradient(#ffffff 56%, #eeac8e 50% 100%);
+                background-clip: text;
+            }
+
+            .brand-name {
+                color: #ffffff;
+            }
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+
+            .icon {
+                color: transparent;
+                background-image: linear-gradient(#fc4022 56%, #eeac8e 50% 100%);
+                background-clip: text;
+            }
+
+            .brand-name {
+                color: #000000;
+            }
+        }
+    }
+
+    &.stripe {
+        &.fill {
+            background-color: #5433ff;
+            color: #ffffff;
+
+            .brand-name {
+                color: #ffffff;
+            }
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #5433ff;
+
+            .brand-name {
+                color: #000000;
+            }
+        }
+    }
+
+    &.substack {
+        &.fill {
+            background-color: #696969;
+            color: #ee7835;
+
+            .brand-name {
+                color: #ffffff;
+            }
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #ee7835;
+
+            .brand-name {
+                color: #696969;
+            }
+        }
+    }
+
+    &.telegram {
+        &.fill {
+            background-color: #229ed9;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #2aabee;
+        }
+    }
+
+    &.tencent-qq {
+        &.fill {
+            background-color: #3458b0;
+
+            .icon {
+                color: #ffffff;
+            }
+
+            .brand-name {
+                color: #ffffff;
+            }
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+
+            .icon {
+                color: #3458b0;
+            }
+
+            .brand-name {
+                color: #000000;
+            }
+        }
+    }
+
+    &.threads {
+        &.fill {
+            background: linear-gradient(#405de6, #5851d8, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80);
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            color: transparent;
+            background-image: linear-gradient(#405de6, #5851d8, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80);
+            background-clip: text;
+        }
+    }
+
+    &.threads-fill {
+        &.fill {
+            background: linear-gradient(#405de6, #5851d8, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80);
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            color: transparent;
+            background-image: linear-gradient(#405de6, #5851d8, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80);
+            background-clip: text;
+        }
+    }
+
+    &.tiktok {
+        &.fill {
+            background-color: #000000;
+
+            .icon {
+                color: #ffffff;
+                text-shadow: #fe2c55 1px 1px 0, #25f4ee -1px -1px 0;
+            }
+
+            .brand-name {
+                color: #ffffff;
+            }
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+
+            .icon {
+                color: #000000;
+                text-shadow: #fe2c55 1px 1px 0, #25f4ee -1px -1px 0;
+            }
+
+            .brand-name {
+                color: #000000;
+            }
+        }
+    }
+
+    &.trello {
+        &.fill {
+            background-color: #0079bf;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #0079bf;
+        }
+    }
+
+    &.twitch {
+        &.fill {
+            background-color: #9146ff;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #9146ff;
+        }
+    }
+
+    &.twitter {
+        &.fill {
+            background-color: #1da1f2;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #1da1f2;
+        }
+    }
+
+    &.twitter-x {
+        &.fill {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    }
+
+    &.ubuntu {
+        &.fill {
+            background-color: #e95f20;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #e95f20;
+        }
+    }
+
+    &.unity {
+        &.fill {
+            background-color: #000000;
+
+            .icon {
+                color: transparent;
+                background-image: conic-gradient(#ffffff 17.5%, #e2e2e2 0 50%, #afafaf 0 82.5%, #ffffff 0);
+                background-clip: text;
+            }
+
+                        .brand-name {
+                            color: #ffffff;
+                        }
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+
+            .icon {
+                color: transparent;
+                background-image: conic-gradient(#696969 17.5%, #000000 0 50%, #4a4a4a 0 82.5%, #696969 0);
+                background-clip: text;
+            }
+
+            .brand-name {
+                color: #000000;
+            }
+        }
+    }
+
+    &.vimeo {
+        &.fill {
+            background-color: #19b7ea;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #19b7ea;
+        }
+    }
+
+    &.wechat {
+        &.fill {
+            background-color: #09b83e;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #09b83e;
+        }
+    }
+
+    &.whatsapp {
+        &.fill {
+            background: linear-gradient(#25d366, #2bb741);
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            color: transparent;
+            background-image: linear-gradient(#2bb741, #2bb741);
+            background-clip: text;
+        }
+    }
+
+    &.wikipedia {
+        &.fill {
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    }
+
+    &.windows {
+        &.fill {
+            background-color: #00a4ef;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #00a4ef;
+        }
+    }
+
+    &.wordpress {
+        &.fill {
+            background-color: #21759b;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #21759b;
+        }
+    }
+
+    &.xbox {
+        &.fill {
+            background: linear-gradient(#9bf00b, #107c10);
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            color: transparent;
+            background-image: linear-gradient(#9bf00b, #107c10);
+            background-clip: text;
+        }
+    }
+
+    &.yelp {
+        &.fill {
+            background-color: #c41200;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #c41200;
+        }
+    }
+
+    &.youtube {
+        &.fill {
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+
+        &:not(.fill) {
+            background-color: #ffffff;
+            color: #ff0000;
+        }
+    }
+}

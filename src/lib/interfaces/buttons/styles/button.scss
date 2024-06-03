@@ -1,0 +1,16 @@
+@use '~@chrisofnormandy/confetti/pack.scss' as *;
+@use 'button.mixin' as buttons;
+
+.btn {
+    @include flex-center(1);
+    @include rounded;
+    @include clickable;
+
+    padding: 4px 8px;
+
+    &.circle {
+        @include circular;
+
+        padding: 8px;
+    }
+}
