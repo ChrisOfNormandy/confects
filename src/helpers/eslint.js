@@ -1,8 +1,7 @@
-import react from 'eslint-plugin-react';
-import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
-import simpleImportSort from 'eslint-plugin-simple-import-sort';
-import imports from 'eslint-plugin-import';
-import globals from 'globals';
+// @ts-check
+
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
 
 const defaultRules = {
     'array-bracket-spacing': 'warn',
@@ -105,71 +104,7 @@ const defaultRules = {
     ]
 };
 
-const sortingPlugins = {
-    'simple-import-sort': simpleImportSort,
-    'import': imports
-}
-
-const sortingRules = {
-    // "simple-import-sort/imports": "warn",
-    // "simple-import-sort/exports": "warn",
-    "import/first": "warn",
-    "import/newline-after-import": "warn",
-    "import/no-duplicates": "warn",
-    "import/order": [
-        "warn",
-        {
-            groups: [
-                "builtin",
-                "external",
-                "internal",
-                "parent",
-                "sibling",
-                "index",
-                "object",
-                "type"
-            ]
-        }
-    ]
-}
-
-export default [
-    {
-        ignores: ['*.config.mjs', 'dist']
-    },
-    {
-        files: ['**/*.js'],
-        plugins: {
-            ...sortingPlugins
-        },
-        languageOptions: {
-            globals: {
-                ...globals.browser
-            }
-        },
-        rules: {
-            ...defaultRules,
-            ...sortingRules,
-        }
-    },
-    {
-        files: ['**/*.jsx'],
-        plugins: {
-            react,
-            ...sortingPlugins
-        },
-        languageOptions: {
-            ...reactRecommended.languageOptions,
-            globals: {
-                ...globals.browser
-            }
-        },
-        rules: {
-            ...defaultRules,
-            ...reactRecommended.rules,
-            ...sortingRules,
-            'react/react-in-jsx-scope': 0,
-            'react/prop-types': 0
-        }
-    }
-];
+export default tseslint.config(
+    eslint.configs.recommended,
+    ...tseslint.configs.recommended,
+);

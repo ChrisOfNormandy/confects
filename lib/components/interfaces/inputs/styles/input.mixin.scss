@@ -1,0 +1,19 @@
+@use '@chrisofnormandy/confetti/themes.scss' as *;
+
+@mixin input-type($style) {
+    &.#{$style} {
+        @include fill('input_#{$style}');
+
+        &:disabled {
+            @include fill('input_#{$style}:disabled');
+        }
+
+        &:hover {
+            @include fill('input_#{$style}:hover');
+
+            &:disabled {
+                @include fill('input_#{$style}:disabled:hover');
+            }
+        }
+    }
+}
