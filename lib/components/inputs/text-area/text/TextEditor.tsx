@@ -1,0 +1,112 @@
+import { useEffect, useRef, useState } from "react";
+import { Button, HTMLTextAreaProps, Icon, getClassName } from "../../../../main";
+import './styles/text-editor.scss';
+
+export type TextEditorProps = HTMLTextAreaProps;
+
+export default function TextEditor(
+    {
+        className,
+        ...props
+    }: TextEditorProps
+) {
+
+    const [status, setStatus] = useState('');
+    const [anim, setAnim] = useState(null as NodeJS.Timeout | null);
+
+    const ref = useRef(null as HTMLTextAreaElement | null);
+    const statusRef = useRef(null as HTMLDivElement | null);
+
+    useEffect(() => {
+        if (status) {
+            if (anim)
+                clearTimeout(anim);
+            if (statusRef.current)
+                statusRef.current.classList.remove('fading')
+
+            const a = setTimeout(() => {
+                if (!statusRef.current)
+                    return;
+
+                statusRef.current.classList.add('fading');
+
+                const a = setTimeout(() => {
+                    setStatus('');
+                }, 1000);
+
+                setAnim(a);
+            }, 500);
+
+            setAnim(a);
+        }
+    }, [status])
+
+    return <div
+        className={getClassName('input text-editor', className)}
+    >
+        <div
+            className='editor'
+        >
+            <textarea
+                className='f-main'
+                ref={ref}
+                placeholder='Begin typing...'
+                {...props}
+            />
+
+            {
+                status &&
+                <div
+                    className='status-overlay'
+                    ref={statusRef}
+                >
+                    {status}
+                </div>
+            }
+        </div>
+
+        <div
+            className='editor-controls f-body b-divider'
+        >
+            <Button
+                className='f-primary'
+                onClick={() => {
+                    if (!ref.current)
+                        return;
+
+                    navigator.clipboard.writeText(ref.current.value);
+
+                    setStatus('copied');
+                }}
+            >
+                <Icon
+                    icon='copy'
+                />
+
+                <span>
+                    Copy
+                </span>
+            </Button>
+
+            <Button
+                className='f-primary'
+                onClick={() => {
+                    if (!ref.current)
+                        return;
+
+                    ref.current.value = '';
+
+                    setStatus('cleared');
+                }}
+            >
+                <Icon
+                    icon='x-lg'
+                />
+
+                <span>
+                    Clear
+                </span>
+            </Button>
+        </div>
+    </div>
+}

@@ -1,0 +1,20 @@
+@use '~styles' as *;
+
+.theme-preview {
+    .theme-preview-block {
+        @include flex(false, true);
+        @include wide;
+
+        .block-row {
+            @include flex-even;
+            @include wide;
+
+            .block {
+                @include flex-center(true, true);
+                @include wide;
+
+                padding: 8px;
+            }
+        }
+    }
+}

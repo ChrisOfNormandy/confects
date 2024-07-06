@@ -1,0 +1,7 @@
+@use '~styles' as *;
+
+.dialog-body {
+    @include flex(false, true);
+
+    padding: 10px 20px;
+}

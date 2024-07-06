@@ -1,0 +1,95 @@
+@use '~styles' as *;
+
+.markdown-renderer {
+    @include flex(false, true);
+    @include rounded;
+    @include fullsize;
+
+    .md-header {
+        @include rounded-side(10px, top);
+        @include flex(true);
+
+        padding: 5px;
+
+        .raw-toggle {
+            @include flex(true);
+
+            .show-pretty {
+                @include rounded(0);
+                @include rounded-side(10px, left)
+            }
+
+            .show-raw {
+                @include rounded(0);
+                @include rounded-side(10px, right)
+            }
+        }
+    }
+
+    .md-body {
+        @include flex(false, true);
+        @include fullsize(40px);
+
+        padding: 10px 20px;
+
+        .md-content {
+            @include flex(false, true);
+            @include fullsize(20px);
+            @include rounded;
+
+            padding: 10px;
+
+            &.raw {}
+
+            &:not(.raw) {
+                .heading {
+                    margin: 10px 0;
+                }
+
+                ul {
+                    list-style-type: disc;
+                }
+
+                ul,
+                ol {
+
+                    ul,
+                    ol {
+                        margin-left: 20px;
+                    }
+                }
+
+                .thumbnail {
+                    img {
+                        max-width: 300px;
+                    }
+                }
+
+                img {
+                    width: fit-content;
+                }
+
+                blockquote {
+                    margin: 10px 0 10px 20px;
+                    padding: 10px 20px;
+                    border-left: 3px solid;
+                }
+
+                pre {
+                    code {
+                        @include wide;
+                    }
+                }
+            }
+        }
+    }
+
+    .md-footer {
+        @include rounded-side(10px, bottom);
+        @include flex(true);
+
+        padding: 5px;
+    }
+
+    @include flex(false, true);
+}

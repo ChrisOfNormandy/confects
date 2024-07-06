@@ -1,0 +1,19 @@
+@use '~styles' as *;
+
+.content-manager.dialogs {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    .content-wrapper {
+        @include flex;
+
+        .dialog {
+            @include rounded;
+            position: absolute;
+
+            user-select: none;
+            transform: translate(-50%, -50%);
+        }
+    }
+}

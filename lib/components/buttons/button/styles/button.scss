@@ -1,0 +1,13 @@
+@use '~styles' as *;
+
+@mixin btn {
+    @include flex-center(1);
+    @include rounded;
+    @include clickable;
+
+    padding: 3px 6px;
+}
+
+.btn {
+    @include btn;
+}

@@ -1,0 +1,35 @@
+@use '~styles' as *;
+
+.input.code-editor {
+    @include flex(false, true);
+    @include rounded;
+
+    max-width: 100%;
+
+    padding: 8px;
+    margin: 10px 0;
+
+    .header {
+        @include flex-between(true);
+
+        .heading {
+            padding: 5px 10px;
+            font-size: 18px;
+        }
+    }
+
+    .editor-wrapper {
+        @include rounded;
+        @include fullsize;
+
+        .monaco-editor {
+            @include rounded;
+
+            border: 2px solid;
+
+            .overflow-guard {
+                @include rounded;
+            }
+        }
+    }
+}

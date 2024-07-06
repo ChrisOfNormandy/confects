@@ -7,7 +7,7 @@
             "dom.iterable",
             "esnext"
         ],
-        "allowJs": false,
+        "allowJs": true,
         "skipLibCheck": false,
         "esModuleInterop": false,
         "strict": true,
@@ -23,10 +23,16 @@
         "isolatedModules": true,
         "declaration": true,
         "declarationDir": "./dist",
-        "emitDeclarationOnly": true
+        "emitDeclarationOnly": true,
+        "baseUrl": "./",
+        "paths": {
+            "@lib/*": [
+                "lib/*"
+            ]
+        }
     },
     "include": [
         "lib",
-        "src"
+        "src",
     ]
 }

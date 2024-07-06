@@ -1,0 +1,14 @@
+@use '~styles' as *;
+
+.dialog-footer {
+    @include flex-between(true);
+    @include rounded-side(10px, bottom);
+
+    padding: 10px;
+
+    .btn {
+        &:not(:last-child) {
+            margin-right: 5px;
+        }
+    }
+}

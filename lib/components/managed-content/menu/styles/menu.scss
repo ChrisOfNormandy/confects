@@ -1,0 +1,17 @@
+@use '~styles' as *;
+
+.content-manager.menus {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .content-wrapper {
+        @include flex;
+
+        .menu {
+            @include rounded;
+            position: absolute;
+            user-select: none;
+        }
+    }
+}

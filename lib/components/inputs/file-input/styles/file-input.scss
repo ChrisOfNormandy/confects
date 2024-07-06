@@ -1,0 +1,39 @@
+@use '~styles' as *;
+@use '../../../buttons/button/styles/button' as *;
+
+.file-input {
+    @include flex(false, true);
+    @include rounded;
+
+    .file-drop-zone-wrapper {
+        @include rounded-side(10px, 'top');
+        @include flex-center(true, true);
+        @include wide(10px);
+
+        padding: 5px;
+
+        .file-drop-zone {
+            @include flex-center(true, true);
+            @include rounded;
+            @include fullsize(40px);
+
+            padding: 20px;
+            border: 2px dashed;
+
+            &.dragged {
+                filter: brightness(1.1);
+            }
+
+            .label {}
+        }
+    }
+
+    .input.file {
+        &::file-selector-button {
+            @include btn;
+            display: inline;
+        }
+    }
+
+
+}

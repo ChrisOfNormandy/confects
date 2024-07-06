@@ -1,0 +1,15 @@
+@use '~styles' as *;
+
+.dialog-header {
+    @include rounded-side(10px, top);
+
+    &.no-heading {
+        @include flex-end(true);
+    }
+
+    &:not(.no-heading) {
+        @include flex-between(true);
+    }
+
+    padding: 10px;
+}
