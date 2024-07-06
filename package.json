@@ -21,8 +21,7 @@
         "./*.css": "./dist/style.css"
     },
     "dependencies": {
-        "@chrisofnormandy/confetti": "../confetti/",
-        "@monaco-editor/react": "^4.6.0",
+        "@chrisofnormandy/confetti": "https://github.com/ChrisOfNormandy/confetti.git",
         "@types/uuid": "^10.0.0",
         "bootstrap-icons": "^1.11.3",
         "monaco-editor": "^0.50.0",
