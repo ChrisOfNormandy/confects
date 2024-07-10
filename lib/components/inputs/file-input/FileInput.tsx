@@ -24,10 +24,10 @@ export default function FileInput(
     }: FileInputProps
 ) {
 
-    let fileLimit = typeof multiple === 'number'
+    const fileLimit = typeof multiple === 'number'
         ? multiple
         : 1;
-    let fileLimitMin = multipleMin || required && 1 || 0;
+    const fileLimitMin = multipleMin || required && 1 || 0;
 
     const [files, setFiles] = useState(new Map<string, File>());
     const [ready, isReady] = useState(true);

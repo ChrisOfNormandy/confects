@@ -14,12 +14,12 @@ interface Processor {
 */
 
 const HIGHLIGHT_SYNTAX = /\|\|(.*)\|\|/;
-const SUPERSCRIPT_SYNTAX = /[^\^]\^([^\^]*)\^/;
-const SUBSCRIPT_SYNTAX = /~([^\^]*)\^/;
+const SUPERSCRIPT_SYNTAX = /[^^]\^([^^]*)\^/;
+const SUBSCRIPT_SYNTAX = /~([^^]*)\^/;
 const STYLE_SYNTAX = /%\((.+)\)(.*)%/;
 const TOC_SYNTAX = /\[TOC\]/;
 
-export const HIGHLIGHT_PROCESS: Processor = {
+const HIGHLIGHT_PROCESS: Processor = {
     element: (m) => {
         return <span
             className='highlight f-primary'
@@ -30,7 +30,7 @@ export const HIGHLIGHT_PROCESS: Processor = {
     pattern: HIGHLIGHT_SYNTAX
 };
 
-export const SUPERSCRIPT_PROCESS: Processor = {
+const SUPERSCRIPT_PROCESS: Processor = {
     element: (m) => {
         return <sup>
             {m[1]}
@@ -39,7 +39,7 @@ export const SUPERSCRIPT_PROCESS: Processor = {
     pattern: SUPERSCRIPT_SYNTAX
 };
 
-export const SUBSCRIPT_PROCESS: Processor = {
+const SUBSCRIPT_PROCESS: Processor = {
     element: (m) => {
         return <sub>
             {m[1]}
@@ -48,7 +48,7 @@ export const SUBSCRIPT_PROCESS: Processor = {
     pattern: SUBSCRIPT_SYNTAX
 };
 
-export function getAppliedStyles(tag: string, value: ReactNode) {
+function getAppliedStyles(tag: string, value: ReactNode) {
     const tagArr = tag.split(/;/g);
     const tags: HTMLElementProps = {};
 
@@ -76,7 +76,7 @@ export function getAppliedStyles(tag: string, value: ReactNode) {
     </span>
 }
 
-export const STYLE_PROCESS: Processor = {
+const STYLE_PROCESS: Processor = {
     element: (m) => {
         if (!m[1])
             return m[2];
@@ -86,7 +86,7 @@ export const STYLE_PROCESS: Processor = {
     pattern: STYLE_SYNTAX
 }
 
-export const TOC_PROCESS: Processor = {
+const TOC_PROCESS: Processor = {
     element: () => {
         return <TableOfContents />
     },

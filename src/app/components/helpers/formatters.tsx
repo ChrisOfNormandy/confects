@@ -1,6 +1,6 @@
 import { HTMLDivProps, getClassName } from "@lib/main";
 
-export function Show({ children, ...props }: HTMLDivProps) {
+function Show({ children, ...props }: HTMLDivProps) {
     return <div
         className='show'
         {...props}

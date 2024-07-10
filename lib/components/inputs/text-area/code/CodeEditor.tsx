@@ -20,7 +20,6 @@ export default function CodeEditor(
         className,
         heading,
         defaultValue,
-        canDownload,
         ...props
     }: CodeEditorProps
 ) {
@@ -63,6 +62,7 @@ export default function CodeEditor(
     }, [editor])
 
     return <div
+        id={id}
         className={getClassName('input code-editor', className)}
     >
         <div

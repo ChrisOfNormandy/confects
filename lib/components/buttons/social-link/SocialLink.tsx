@@ -7,7 +7,7 @@ interface extBrandButtonProps {
     withLabel?: boolean
 }
 
-export type BrandButtonProps = ButtonProps & extBrandButtonProps
+type BrandButtonProps = ButtonProps & extBrandButtonProps
 
 function BrandButton(
     {

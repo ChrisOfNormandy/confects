@@ -21,7 +21,7 @@ export default function ThemePreview() {
     useEffect(() => {
         if (!ready)
             isReady(true);
-    }, [ready])
+    }, [ready]);
 
     const getStyle = (id: string) => {
         const elem = document.getElementById(id);

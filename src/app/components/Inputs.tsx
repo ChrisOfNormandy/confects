@@ -148,6 +148,7 @@ function ToggleDisplay() {
 function CodeEditorDisplay() {
     return <Display heading='code-editor'>
         <CodeEditor
+            id='example_editor'
             className='f-primary'
         />
     </Display>

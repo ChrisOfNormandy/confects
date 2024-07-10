@@ -1,5 +1,16 @@
-export default function DialogDivider() {
-    return <div>
+import { HTMLDivProps, getClassName } from "@lib/main"
+import './styles/dialog-divider.scss';
 
-    </div>
+export type DialogDividerProps = HTMLDivProps;
+
+export default function DialogDivider(
+    {
+        className,
+        ...props
+    }: DialogDividerProps
+) {
+    return <div
+        className={getClassName('dialog-divider f-divider', className)}
+        {...props}
+    />
 }

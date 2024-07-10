@@ -1,4 +1,5 @@
-import { getClassName, HTMLDivProps } from "../../../main";
+import { getClassName } from "@lib/helpers/components";
+import { HTMLDivProps } from "@lib/types/html";
 
 export type ContentListItemProps = HTMLDivProps;
 

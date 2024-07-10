@@ -30,7 +30,7 @@ export default function Menu(
         if (!menuRef.current)
             return;
 
-        let pos = {
+        const pos = {
             x: position.left,
             y: position.top
         };

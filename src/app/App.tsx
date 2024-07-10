@@ -1,9 +1,69 @@
 import './styles/app.scss';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
-import { Managers } from '@lib/main';
+import { Managers, Page, PageFooter, PageHeader, PageMain } from '@lib/main';
+import { Outlet } from 'react-router-dom';
 import Buttons from './components/Buttons';
-import EverythingElse from './components/EverythingElse';
+import Inputs from './components/Inputs';
+import ManagedContent from './components/ManagedContent';
+import MarkdownRouter from '@lib/components/router/MarkdownRouter';
+import Router, { IRouter } from '@lib/components/router/Router';
+import RouterNav from '@lib/components/router/RouterNav';
 import ThemePreview from './components/ThemePreview';
+
+const ROUTER_EXAMPLE: IRouter = {
+    routes: [
+        {
+            path: '/home'
+        },
+        {
+            path: '/markdown',
+            routes: [
+                {
+                    path: '/page-1',
+                    markdown: '/pages/page-1.md'
+                },
+                {
+                    path: '/page-2',
+                    markdown: '/pages/page-2.md'
+                }
+            ],
+        },
+        {
+            path: '/buttons',
+        },
+        {
+            path: '/inputs',
+        },
+        {
+            path: '/managers',
+        }
+    ],
+    path: '',
+    default: '/home'
+}
+
+const router = new Router(ROUTER_EXAMPLE);
+
+router.setElement(
+    <Page>
+        <PageHeader>
+            HEADER
+
+            <RouterNav />
+        </PageHeader>
+
+        <PageMain>
+            <Outlet />
+        </PageMain>
+
+        <PageFooter>
+            FOOTER
+        </PageFooter>
+    </Page>
+);
+
+router.setPathElement('/buttons', <Buttons />)
+router.setPathElement('/inputs', <Inputs />)
+router.setPathElement('/managers', <ManagedContent />)
 
 export default function App() {
     return <div
@@ -11,39 +71,9 @@ export default function App() {
     >
         <ThemePreview />
 
-        <BrowserRouter>
-            <div
-                className='navigation'
-            >
-                <NavLink to='/buttons'>Buttons</NavLink>
-                <NavLink to='/inputs'>Inputs</NavLink>
-                <NavLink to='/managed-content'>Managed Content</NavLink>
-                <NavLink to='/markdown'>Markdown</NavLink>
-            </div>
-
-            <Routes>
-                <Route
-                    path='/buttons'
-                    element={<Buttons />}
-                />
-
-                <Route
-                    path='/inputs'
-                    element={<Buttons />}
-                />
-
-                <Route
-                    path='/managed-content'
-                    element={<Buttons />}
-                />
-
-                <Route
-                    path='/markdown'
-                    element={<EverythingElse />
-                    }
-                />
-            </Routes>
-        </BrowserRouter>
+        <MarkdownRouter
+            router={router}
+        />
 
         <Managers />
     </div>

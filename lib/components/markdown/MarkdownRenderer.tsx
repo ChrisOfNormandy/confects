@@ -28,6 +28,8 @@ export default function MarkdownRenderer(
 
     useEffect(() => {
         if (ready) {
+            console.log('FETCH:', href);
+
             fetch(href)
                 .then((resp) => resp.text())
                 .then((text) => setContent(text))

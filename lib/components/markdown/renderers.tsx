@@ -4,10 +4,10 @@ import { Components, ExtraProps } from "react-markdown";
 import { processingOrder } from "./patterns";
 import { v4 } from "uuid";
 
-export type ElementProps<T extends HTMLElement> = ClassAttributes<T> & HTMLAttributes<T> & ExtraProps;
+type ElementProps<T extends HTMLElement> = ClassAttributes<T> & HTMLAttributes<T> & ExtraProps;
 
 function repl(str: string, pattern: RegExp, element: (m: RegExpMatchArray) => ReactNode) {
-    let m = str.match(pattern);
+    const m = str.match(pattern);
     if (!m)
         return [str];
 
@@ -64,7 +64,7 @@ function application<T extends HTMLElement>({ children, node }: ElementProps<T>)
             }
 
             if (typeof v === 'string') {
-                let ret: ReactNode[] = [v];
+                const ret: ReactNode[] = [v];
 
                 const loop = () => {
                     let doLoop = false;
@@ -134,6 +134,7 @@ function application<T extends HTMLElement>({ children, node }: ElementProps<T>)
 
 export const renderers: Partial<Components> = {
     p: (props) => application<HTMLParagraphElement>(props),
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     code: ({ children, node, className, ...props }) => {
         const spl = children?.toString().split(/\n/g);
         if (!spl)
@@ -148,7 +149,7 @@ export const renderers: Partial<Components> = {
                 return null;
 
             if (flags.includes('editor')) {
-                let props: CodeEditorProps = {
+                const props: CodeEditorProps = {
                     id: `editor:${v4()}`
                 };
 
@@ -171,11 +172,18 @@ export const renderers: Partial<Components> = {
 
         return <code className={getClassName('f-body', className)} {...props}>{children}</code>
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     blockquote: ({ children, node, ...props }) => <blockquote className='f-body' {...props}>{children}</blockquote>,
-    h1: ({ children, node, ...props }) => <h1 {...props} id={(children || '').toString().toLowerCase().replace(/\s/g, '-')} className='heading'>{children}</h1 >,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    h1: ({ children, node, ...props }) => <h1 {...props} id={(children || '').toString().toLowerCase().replace(/\s/g, '-')} className='heading'>{children}</h1>,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     h2: ({ children, node, ...props }) => <h2 {...props} id={(children || '').toString().toLowerCase().replace(/\s/g, '-')} className='heading'>{children}</h2>,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     h3: ({ children, node, ...props }) => <h3 {...props} id={(children || '').toString().toLowerCase().replace(/\s/g, '-')} className='heading'>{children}</h3>,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     h4: ({ children, node, ...props }) => <h4 {...props} id={(children || '').toString().toLowerCase().replace(/\s/g, '-')} className='heading'>{children}</h4>,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     h5: ({ children, node, ...props }) => <h5 {...props} id={(children || '').toString().toLowerCase().replace(/\s/g, '-')} className='heading'>{children}</h5>,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     h6: ({ children, node, ...props }) => <h6 {...props} id={(children || '').toString().toLowerCase().replace(/\s/g, '-')} className='heading'>{children}</h6>
 }

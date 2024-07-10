@@ -8,5 +8,5 @@ interface extCodeExitorProps {
     canDownload?: boolean;
 }
 export type CodeEditorProps = HTMLDivProps & extCodeExitorProps;
-export default function CodeEditor({ id, className, heading, defaultValue, canDownload, ...props }: CodeEditorProps): import("react/jsx-runtime").JSX.Element;
+export default function CodeEditor({ id, className, heading, defaultValue, ...props }: CodeEditorProps): import("react/jsx-runtime").JSX.Element;
 export {};

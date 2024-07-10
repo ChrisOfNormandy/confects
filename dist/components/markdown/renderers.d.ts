@@ -1,4 +1,2 @@
-import { ClassAttributes, HTMLAttributes } from "react";
-import { Components, ExtraProps } from "react-markdown";
-export type ElementProps<T extends HTMLElement> = ClassAttributes<T> & HTMLAttributes<T> & ExtraProps;
+import { Components } from "react-markdown";
 export declare const renderers: Partial<Components>;

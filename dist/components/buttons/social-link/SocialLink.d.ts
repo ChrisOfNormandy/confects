@@ -5,7 +5,7 @@ interface extBrandButtonProps {
     fill?: boolean;
     withLabel?: boolean;
 }
-export type BrandButtonProps = ButtonProps & extBrandButtonProps;
+type BrandButtonProps = ButtonProps & extBrandButtonProps;
 interface extSocialLinkProps {
     profileHref?: string;
     pageHref?: string;
