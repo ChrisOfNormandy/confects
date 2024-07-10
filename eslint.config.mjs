@@ -1,4 +1,4 @@
-import { reactViteConfig, typescriptConfig } from './lib/helpers/linter.mjs';
+import { reactViteConfig, typescriptConfig } from './lib/linter.mjs';
 
 export default [
     ...typescriptConfig(),

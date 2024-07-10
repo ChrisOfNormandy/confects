@@ -5,9 +5,10 @@
     "license": "MIT",
     "name": "@chrisofnormandy/confects",
     "type": "module",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "files": [
-        "dist"
+        "dist",
+        "lib/linter.mjs"
     ],
     "types": "./dist/main.d.ts",
     "main": "./dist/confects.umd.js",
@@ -38,7 +39,10 @@
         "dev": "vite",
         "build": "rm -r ./dist; tsc -p tsconfig.build.json && vite build",
         "lint": "eslint --fix",
-        "sanity": "tsc -p tsconfig.json --noEmit && yarn lint && yarn knip"
+        "sanity": "tsc -p tsconfig.json --noEmit && yarn lint && yarn knip",
+        "bump": "npm version --commit-hooks false --git-tag-version false patch",
+        "release": "yarn sanity && yarn build",
+        "release:final": "yarn release && yarn bump"
     },
     "devDependencies": {
         "@eslint/js": "^9.6.0",
