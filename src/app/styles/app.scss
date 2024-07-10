@@ -8,13 +8,24 @@
     overflow: auto;
     height: 100%;
 
-    .navigation {
-        @include flex-even(true);
-        @include wide;
+    .page-header {
+        @include flex-between(true);
 
-        a {
-            color: inherit;
+        .router-nav-list {
+            @include flex(true);
+
+            .router-nav-list {
+                @include flex(false, true);
+            }
+
+            .router-nav-list-item {
+                @include flex(false, true);
+            }
         }
+    }
+
+    .page-body {
+        padding: 50px;
     }
 
     .display {

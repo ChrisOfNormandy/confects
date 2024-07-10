@@ -160,8 +160,8 @@ export const renderers: Partial<Components> = {
                         props.heading = fileName;
                         props.id = `editor:${fileName}`
                     }
-                    else if (flag === 'download')
-                        props.canDownload = true;
+                    // else if (flag === 'download')
+                    //     props.canDownload = true;
                 })
 
                 return <CodeEditor defaultValue={content} className='f-primary' {...props} />

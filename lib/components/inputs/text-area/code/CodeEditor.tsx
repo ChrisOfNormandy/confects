@@ -7,7 +7,6 @@ import * as monaco from 'monaco-editor'
 interface extCodeExitorProps {
     id: string
     heading?: ReactNode
-    canDownload?: boolean
 }
 
 const BORDER_SIZE = 2;

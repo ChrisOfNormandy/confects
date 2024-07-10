@@ -2,31 +2,31 @@ import { MarkdownRenderer } from "@lib/main";
 import { Outlet } from "react-router";
 import { NavLink } from "react-router-dom";
 
-export interface IRouter {
+interface IRouter {
     path: string
     routes?: IRouter[]
     markdown?: string
     default?: string
-    useOutlet?: boolean
+    noOutlet?: boolean
 }
 
 export default class Router {
-    private element?: JSX.Element;
-    private readonly useOutlet: boolean;
+    private element?: () => JSX.Element;
     readonly default?: string;
     readonly markdown?: string;
     readonly parent?: Router;
     readonly path: string;
+    private readonly noOutlet: boolean;
 
     private routes = new Map<string, Router>();
 
-    setElement(element: JSX.Element) {
+    setElement(element: () => JSX.Element) {
         this.element = element;
 
         return this;
     }
 
-    setPathElement(path: string, element: JSX.Element) {
+    setPathElement(path: string, element: () => JSX.Element) {
         const p = this.getPath();
 
         if (p === path)
@@ -38,7 +38,7 @@ export default class Router {
         }
     }
 
-    getMarkdown() {
+    private getMarkdown() {
         if (!this.markdown)
             return null;
 
@@ -47,39 +47,63 @@ export default class Router {
         />
     }
 
-    getElement() {
-        if (!this.element && !this.markdown) {
-            return <>
-                <ul
-                    className='no-content router-nav-list'
-                >
-                    {
-                        this.getRoutes().map(([path, route]) => {
-                            return <li
-                                key={path}
-                                className='no-content router-nav-item'
-                            >
-                                <NavLink
-                                    to={route.getPath()}
-                                >
-                                    {path}
-                                </NavLink>
-                            </li>
-                        })
-                    }
-                </ul>
+    private getContent() {
+        console.log(this.getPath(), this.markdown, this.element);
 
-                {this.useOutlet && <Outlet />}
-            </>
+        if (!this.markdown && !this.element) {
+            console.warn('NO CONTENT');
+
+            return this.getNoContent();
         }
 
-        return <>
-            {this.element}
+        return <div
+            className='router-content'
+        >
+            {this.element && this.element()}
 
             {this.getMarkdown()}
 
-            {this.useOutlet && <Outlet />}
-        </>
+            {
+                (this.routes.size > 0 && !this.noOutlet) &&
+                <Outlet />
+            }
+        </div>
+    }
+
+    private getNoContent() {
+        if (!this.routes.size) {
+            return <div>
+                No content.
+            </div>
+        }
+
+        return <ul
+            className='no-content router-nav-list'
+        >
+            {
+                this.getRoutes().map(([path, route]) => {
+                    return <li
+                        key={path}
+                        className='no-content router-nav-item'
+                    >
+                        <NavLink
+                            to={route.getPath()}
+                        >
+                            {path}
+                        </NavLink>
+                    </li>
+                })
+            }
+
+            {
+                !this.noOutlet &&
+                <Outlet />
+            }
+        </ul>
+    }
+
+    getElement() {
+        return this.getContent() || this.getNoContent();
     }
 
     getRoutes() {
@@ -101,7 +125,7 @@ export default class Router {
         this.path = router.path;
         this.markdown = router.markdown;
         this.default = router.default;
-        this.useOutlet = !!router.useOutlet;
+        this.noOutlet = !!router.noOutlet;
 
         if (router.routes)
             router.routes.forEach((route) => this.addRoute(route))
