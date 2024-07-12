@@ -5,7 +5,7 @@
     "license": "MIT",
     "name": "@chrisofnormandy/confects",
     "type": "module",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "files": [
         "dist",
         "lib/linter.mjs"
@@ -22,6 +22,7 @@
         "./*.css": "./dist/style.css"
     },
     "dependencies": {
+        "@auth0/auth0-react": "^2.2.4",
         "@chrisofnormandy/confetti": "https://github.com/ChrisOfNormandy/confetti.git",
         "@types/uuid": "^10.0.0",
         "bootstrap-icons": "^1.11.3",
@@ -36,14 +37,15 @@
         "uuid": "^10.0.0"
     },
     "scripts": {
-        "dev": "vite",
-        "build": "rm -r ./dist; tsc -p tsconfig.build.json && vite build",
-        "lint": "eslint --fix",
-        "sanity": "tsc -p tsconfig.json --noEmit && yarn lint && yarn knip",
+        "build": "yarn clean; tsc -p tsconfig.build.json && vite build",
         "bump": "npm version --commit-hooks false --git-tag-version false patch",
-        "release": "yarn sanity && yarn build",
+        "clean": "rm -r ./dist",
+        "dev": "vite",
+        "docs": "cd ./docs && go run .",
+        "lint": "eslint --fix",
         "release:final": "yarn release && yarn bump",
-        "docs": "cd ./docs && go run ."
+        "release": "yarn sanity && yarn build",
+        "sanity": "tsc -p tsconfig.json --noEmit && yarn lint && yarn knip"
     },
     "devDependencies": {
         "@eslint/js": "^9.6.0",

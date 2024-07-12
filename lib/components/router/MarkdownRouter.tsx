@@ -1,4 +1,4 @@
-import { HTMLDivProps } from "@lib/main"
+import { AuthWrapper, AuthWrapperProps, HTMLDivProps } from "@lib/main"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import Router from "./Router";
 
@@ -10,16 +10,30 @@ export function useRouter() {
 
 interface extMarkdownRouterProps {
     router: Router
+    useAuth?: AuthWrapperProps
 }
 
 export type MarkdownRouterProps = HTMLDivProps & extMarkdownRouterProps;
 
 export default function MarkdownRouter(
     {
-        router
+        router,
+        useAuth
     }: MarkdownRouterProps
 ) {
     root = router;
+
+    if (useAuth) {
+        return <BrowserRouter>
+            <AuthWrapper
+                {...useAuth}
+            >
+                <Routes>
+                    {xRoute(router)}
+                </Routes>
+            </AuthWrapper>
+        </BrowserRouter>
+    }
 
     return <BrowserRouter>
         <Routes>

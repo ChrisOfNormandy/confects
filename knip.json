@@ -8,6 +8,9 @@
     "ignore": [
         "dist/**/*"
     ],
+    "ignoreBinaries": [
+        "go"
+    ],
     "ignoreDependencies": [
         "@chrisofnormandy/confetti",
         "bootstrap-icons",

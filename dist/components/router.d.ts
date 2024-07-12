@@ -1,5 +1,7 @@
 import MarkdownRouter, { MarkdownRouterProps } from "./router/MarkdownRouter";
 import Router from "./router/Router";
 import RouterNav, { RouterNavProps } from "./router/RouterNav";
-export { MarkdownRouter, Router, RouterNav };
-export type { MarkdownRouterProps, RouterNavProps };
+import AuthWrapper, { AuthWrapperProps } from "./router/AuthWrapper";
+import ProtectedRoute, { ProtectedRouteProps } from "./router/ProtectedRoute";
+export { MarkdownRouter, Router, RouterNav, AuthWrapper, ProtectedRoute };
+export type { MarkdownRouterProps, RouterNavProps, AuthWrapperProps, ProtectedRouteProps };
