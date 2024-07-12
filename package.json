@@ -5,7 +5,7 @@
     "license": "MIT",
     "name": "@chrisofnormandy/confects",
     "type": "module",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "files": [
         "dist",
         "lib/linter.mjs"
@@ -43,8 +43,7 @@
         "dev": "vite",
         "docs": "cd ./docs && go run .",
         "lint": "eslint --fix",
-        "release:final": "yarn release && yarn bump",
-        "release": "yarn sanity && yarn build",
+        "release": "yarn sanity && yarn build && yarn bump && git add --a",
         "sanity": "tsc -p tsconfig.json --noEmit && yarn lint && yarn knip"
     },
     "devDependencies": {

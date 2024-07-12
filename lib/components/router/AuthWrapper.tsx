@@ -1,12 +1,6 @@
 import { Auth0Provider, Auth0ProviderOptions } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 
-const {
-    VITE__AUTH_DOMAIN,
-    VITE__AUTH_CLIENT_ID,
-    VITE__AUTH_AUDIENCE
-} = import.meta.env;
-
 const SCOPES = 'openid profile email';
 
 export type AuthWrapperProps = {
@@ -28,11 +22,7 @@ export default function AuthWrapper(
 ) {
     const navigate = useNavigate();
 
-    const authDomain = domain || VITE__AUTH_DOMAIN;
-    const authClientId = clientId || VITE__AUTH_CLIENT_ID;
-    const authAudience = audience || VITE__AUTH_AUDIENCE;
-
-    if (!(authDomain && authClientId)) {
+    if (!(domain && clientId && audience)) {
         return <div>
             MISSING AUTH SETTINGS
         </div>;
@@ -44,12 +34,12 @@ export default function AuthWrapper(
             authorizationParams={
                 {
                     redirect_uri: redirectUri || window.location.origin,
-                    audience: authAudience,
+                    audience,
                     scope: scope
                 }
             }
-            domain={authDomain}
-            clientId={authClientId}
+            domain={domain}
+            clientId={clientId}
             {...props}
         >
             {children}
