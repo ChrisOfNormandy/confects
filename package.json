@@ -42,7 +42,8 @@
         "sanity": "tsc -p tsconfig.json --noEmit && yarn lint && yarn knip",
         "bump": "npm version --commit-hooks false --git-tag-version false patch",
         "release": "yarn sanity && yarn build",
-        "release:final": "yarn release && yarn bump"
+        "release:final": "yarn release && yarn bump",
+        "docs": "cd ./docs && go run ."
     },
     "devDependencies": {
         "@eslint/js": "^9.6.0",
