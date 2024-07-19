@@ -1,6 +1,6 @@
 import './styles/code-editor.scss';
 import './userWorkers';
-import { Button, getClassName, HTMLDivProps } from '@lib/main';
+import { Button, getClassName, HTML_DivProps } from '@';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import * as monaco from 'monaco-editor'
 
@@ -11,9 +11,9 @@ interface extCodeExitorProps {
 
 const BORDER_SIZE = 2;
 
-export type CodeEditorProps = HTMLDivProps & extCodeExitorProps;
+export type CodeEditorProps = HTML_DivProps & extCodeExitorProps;
 
-export default function CodeEditor(
+export function CodeEditor(
     {
         id,
         className,

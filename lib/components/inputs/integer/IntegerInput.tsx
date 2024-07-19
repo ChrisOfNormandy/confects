@@ -1,8 +1,8 @@
-import { HTMLDivProps } from "../../../main";
+import { HTML_DivProps } from "@";
 
-export type IntegerInputProps = HTMLDivProps;
+export type IntegerInputProps = HTML_DivProps;
 
-export default function IntegerInput() {
+export function IntegerInput() {
     return <div>
         INTEGER INPUT
     </div>

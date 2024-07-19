@@ -25,8 +25,38 @@
             "esnext"
         ],
         "paths": {
-            "@lib/*": [
-                "lib/*"
+            "#types/*": [
+                "lib/types/*"
+            ],
+            "@helpers/*": [
+                "lib/helpers/*"
+            ],
+            "@buttons/*": [
+                "lib/components/buttons/*"
+            ],
+            "@containers/*": [
+                "lib/components/containers/*"
+            ],
+            "@decorations/*": [
+                "lib/components/decorations/*"
+            ],
+            "@inputs/*": [
+                "lib/components/inputs/*"
+            ],
+            "@managed/*": [
+                "lib/components/managed-content/*"
+            ],
+            "@markdown/*": [
+                "lib/components/markdown/*"
+            ],
+            "@router/*": [
+                "lib/components/router/*"
+            ],
+            "@table/*": [
+                "lib/components/table/*"
+            ],
+            "@": [
+                "lib/main"
             ]
         }
     },

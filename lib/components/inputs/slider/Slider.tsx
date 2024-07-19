@@ -3,7 +3,7 @@ import './styles/slider.scss';
 
 export type SliderProps = InputProps;
 
-export default function Slider(
+export function Slider(
     {
         className,
         ...props

@@ -5,5 +5,5 @@ interface extGlyphProps {
     iconOnly?: boolean;
 }
 export type GlyphProps = ButtonProps & IconProps & extGlyphProps;
-export default function Glyph({ icon, className, iconOnly, size, ...props }: GlyphProps): import("react/jsx-runtime").JSX.Element;
+export declare function Glyph({ icon, className, iconOnly, size, ...props }: GlyphProps): import("react/jsx-runtime").JSX.Element;
 export {};

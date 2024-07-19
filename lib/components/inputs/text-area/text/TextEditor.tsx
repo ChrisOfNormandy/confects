@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react";
-import { Button, HTMLTextAreaProps, Icon, getClassName } from "../../../../main";
 import './styles/text-editor.scss';
+import { Button, HTML_TextAreaProps, Icon, getClassName } from "@";
+import { useEffect, useRef, useState } from "react";
 
-export type TextEditorProps = HTMLTextAreaProps;
+export type TextEditorProps = HTML_TextAreaProps;
 
-export default function TextEditor(
+export function TextEditor(
     {
         className,
         ...props

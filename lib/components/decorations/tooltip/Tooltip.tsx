@@ -1,8 +1,8 @@
-import { HTMLDivProps } from "@lib/types/html";
+import { HTML_DivProps } from "@";
 
-export type TooltipProps = HTMLDivProps;
+export type TooltipProps = HTML_DivProps;
 
-export default function Tooltip() {
+export function Tooltip() {
     return <div>
         TOOLTIP
     </div>

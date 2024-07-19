@@ -1,6 +1,6 @@
-import { HTMLElementProps } from "@lib/main";
+import { HTMLElementProps } from "@";
 import { ReactNode } from "react";
-import TableOfContents from "./fragments/TableOfContents";
+import { TableOfContents } from "./fragments/TableOfContents";
 
 interface Processor {
     element: (m: RegExpMatchArray) => ReactNode,

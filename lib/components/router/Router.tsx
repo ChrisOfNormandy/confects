@@ -1,4 +1,4 @@
-import { MarkdownRenderer } from "@lib/main";
+import { MarkdownRenderer } from "@";
 import { Outlet } from "react-router";
 import { NavLink } from "react-router-dom";
 
@@ -10,7 +10,7 @@ interface IRouter {
     noOutlet?: boolean
 }
 
-export default class Router {
+export class Router {
     private element?: () => JSX.Element;
     readonly default?: string;
     readonly markdown?: string;

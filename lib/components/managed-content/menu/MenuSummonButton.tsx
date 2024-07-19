@@ -1,7 +1,5 @@
-import { Button, ButtonProps, menus } from "@lib/main";
-import MenuBuilder from "./MenuBuilder";
+import { Button, ButtonProps, Menu, MenuBuilder, menus } from "@";
 import { useRef } from "react";
-import Menu from "./Menu";
 
 interface extMenuSummonButtonProps {
     id: string
@@ -11,7 +9,7 @@ interface extMenuSummonButtonProps {
 
 export type MenuSummonButtonProps = ButtonProps & extMenuSummonButtonProps
 
-export default function MenuSummonButton(
+export function MenuSummonButton(
     {
         id,
         builder,

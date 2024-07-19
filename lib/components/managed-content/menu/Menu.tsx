@@ -1,8 +1,7 @@
-import { ReactNode, useEffect, useRef } from "react";
-import { HTMLDivProps, getClassName } from "../../../main";
-import MenuContent from "./MenuContent";
 import './styles/menu.scss';
-import MenuItem from "./fragments/MenuItem";
+import { getClassName, HTML_DivProps, MenuContent } from "@";
+import { MenuItem } from "./fragments/MenuItem";
+import { ReactNode, useEffect, useRef } from "react";
 
 interface extMenuProps {
     heading?: ReactNode
@@ -11,9 +10,9 @@ interface extMenuProps {
     position: DOMRect
 }
 
-export type MenuProps = HTMLDivProps & extMenuProps;
+export type MenuProps = HTML_DivProps & extMenuProps;
 
-export default function Menu(
+export function Menu(
     {
         className,
         heading,

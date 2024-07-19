@@ -1,9 +1,9 @@
-import { HTMLDivProps, getClassName } from "@lib/main"
 import './styles/dialog-body.scss';
+import { HTML_DivProps, getClassName } from "@"
 
-export type DialogBodyProps = HTMLDivProps;
+export type DialogBodyProps = HTML_DivProps;
 
-export default function DialogBody(
+export function DialogBody(
     {
         children,
         className,

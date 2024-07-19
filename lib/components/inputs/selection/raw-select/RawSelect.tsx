@@ -1,8 +1,8 @@
-import { HTMLDivProps } from "../../../../main";
+import { HTML_DivProps } from "@";
 
-export type RawSelectProps = HTMLDivProps;
+export type RawSelectProps = HTML_DivProps;
 
-export default function RawSelect() {
+export function RawSelect() {
     return <div>
         RAW SELECT
     </div>

@@ -1,4 +1,4 @@
-import { Badge, BrandName, brands, Button, getClassName, Glyph, SocialLink } from '@lib/main';
+import { Badge, BrandName, brands, Button, getClassName, Glyph, SocialLink } from 'lib/main';
 import { categoryList } from './helpers/test-content';
 import { Display } from './helpers/formatters';
 
@@ -258,7 +258,7 @@ function SocialLinkDisplay() {
     </Display>
 }
 
-export default function Buttons() {
+export function Buttons() {
     return <div
         className='buttons-wrapper'
     >

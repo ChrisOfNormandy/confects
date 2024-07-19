@@ -1,9 +1,9 @@
-import { HTMLDivProps, getClassName } from "@lib/main"
 import './styles/dialog-header.scss';
+import { HTML_DivProps, getClassName } from "@"
 
-export type DialogHeaderProps = HTMLDivProps;
+export type DialogHeaderProps = HTML_DivProps;
 
-export default function DialogHeader(
+export function DialogHeader(
     {
         children,
         className,

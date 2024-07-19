@@ -1,9 +1,18 @@
-import { HTMLDivProps } from "@lib/types/html";
+import { getClassName, HTML_DivProps } from "@";
 
-export type ContentProps = HTMLDivProps;
+export type ContentProps = HTML_DivProps;
 
-export default function Content() {
-    return <div>
-        CONTENT
+export function Content(
+    {
+        children,
+        className,
+        ...props
+    }: ContentProps
+) {
+    return <div
+        className={getClassName('content', className)}
+        {...props}
+    >
+        {children}
     </div>
 }

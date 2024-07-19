@@ -1,3 +1,3 @@
-import { HTMLDivProps } from "@lib/types/html";
-export type ContentBlockProps = HTMLDivProps;
-export default function ContentBlock(): import("react/jsx-runtime").JSX.Element;
+import { HTML_DivProps } from "../../../main";
+export type ContentBlockProps = HTML_DivProps;
+export declare function ContentBlock({ children, className, ...props }: ContentBlockProps): import("react/jsx-runtime").JSX.Element;

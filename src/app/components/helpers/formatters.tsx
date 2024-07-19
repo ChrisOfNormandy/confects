@@ -1,6 +1,6 @@
-import { HTMLDivProps, getClassName } from "@lib/main";
+import { HTML_DivProps, getClassName } from "lib/main";
 
-function Show({ children, ...props }: HTMLDivProps) {
+function Show({ children, ...props }: HTML_DivProps) {
     return <div
         className='show'
         {...props}
@@ -9,7 +9,7 @@ function Show({ children, ...props }: HTMLDivProps) {
     </div>
 }
 
-export function Display({ heading, children, ...props }: HTMLDivProps & { heading: string }) {
+export function Display({ heading, children, ...props }: HTML_DivProps & { heading: string }) {
     return <div
         className={getClassName('display', heading.toLowerCase())}
         {...props}

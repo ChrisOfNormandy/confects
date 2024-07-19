@@ -1,14 +1,14 @@
 import { ReactNode, useEffect, useState } from "react";
-import { ContentManager, HTMLDivProps, getClassName } from "../../main";
+import { ContentManager, HTML_DivProps, getClassName } from "@";
 import './styles/content-manager.scss';
 
 interface extContentManagerElementProps<T extends ContentManager> {
     manager: T
 }
 
-export type ContentManagerElementProps<T extends ContentManager> = HTMLDivProps & extContentManagerElementProps<T>;
+export type ContentManagerElementProps<T extends ContentManager> = HTML_DivProps & extContentManagerElementProps<T>;
 
-export default function ContentManagerElement<T extends ContentManager>(
+export function ContentManagerElement<T extends ContentManager>(
     {
         manager,
         className,

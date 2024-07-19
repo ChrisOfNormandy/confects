@@ -1,9 +1,8 @@
-import { getClassName } from "@lib/helpers/components";
-import { HTMLDivProps } from "@lib/types/html";
+import { getClassName, HTML_DivProps } from "@";
 
-export type NavButtonProps = HTMLDivProps;
+export type NavButtonProps = HTML_DivProps;
 
-export default function NavButton(
+export function NavButton(
     {
         className,
         children,

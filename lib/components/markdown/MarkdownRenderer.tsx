@@ -1,19 +1,16 @@
 import './styles/markdown-renderer.scss';
-import { Button, getClassName, Glyph, HTMLDivProps } from "../../main";
+import { Button, downloadContent, getClassName, Glyph, HTML_DivProps, openInNewTab } from "../../main";
 import { renderers } from "./renderers";
 import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { downloadContent, openInNewTab } from '@lib/helpers/files';
 
-interface extMarkdownRendererProps {
+export type MarkdownRendererProps = {
     defaultContent?: string
     href: string
-}
+} & HTML_DivProps;
 
-export type MarkdownRendererProps = HTMLDivProps & extMarkdownRendererProps;
-
-export default function MarkdownRenderer(
+export function MarkdownRenderer(
     {
         className,
         defaultContent,

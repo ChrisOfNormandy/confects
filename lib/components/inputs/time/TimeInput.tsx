@@ -1,8 +1,8 @@
-import { HTMLDivProps } from "../../../main";
+import { HTML_DivProps } from "@";
 
-export type TimeInputProps = HTMLDivProps;
+export type TimeInputProps = HTML_DivProps;
 
-export default function TimeInput() {
+export function TimeInput() {
     return <div>
         TIME INPUT
     </div>

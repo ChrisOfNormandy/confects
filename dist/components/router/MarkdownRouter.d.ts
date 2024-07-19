@@ -1,10 +1,7 @@
-import { AuthWrapperProps, HTMLDivProps } from "@lib/main";
-import Router from "./Router";
+import { AuthWrapperProps, HTML_DivProps, Router } from "../../main";
 export declare function useRouter(): Router;
-interface extMarkdownRouterProps {
+export type MarkdownRouterProps = {
     router: Router;
     useAuth?: AuthWrapperProps;
-}
-export type MarkdownRouterProps = HTMLDivProps & extMarkdownRouterProps;
-export default function MarkdownRouter({ router, useAuth }: MarkdownRouterProps): import("react/jsx-runtime").JSX.Element;
-export {};
+} & HTML_DivProps;
+export declare function MarkdownRouter({ router, useAuth }: MarkdownRouterProps): import("react/jsx-runtime").JSX.Element;

@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
-import { HTMLDivProps } from "../../../main";
 import './styles/dialog.scss';
+import { HTML_DivProps } from "../../../main";
+import { ReactNode } from "react";
 interface extDialogProps {
     cancelText?: ReactNode;
     closeIcon?: string;
@@ -14,6 +14,6 @@ interface extDialogProps {
     stayOpenOnCancel?: boolean;
     stayOpenOnOk?: boolean;
 }
-export type DialogProps = HTMLDivProps & extDialogProps;
-export default function Dialog({ cancelText, children, className, closeIcon, heading, id, mobile, okText, onCancel, onClose, onOk, stayOpenOnCancel, stayOpenOnOk, ...props }: DialogProps): import("react/jsx-runtime").JSX.Element;
+export type DialogProps = HTML_DivProps & extDialogProps;
+export declare function Dialog({ cancelText, children, className, closeIcon, heading, id, mobile, okText, onCancel, onClose, onOk, stayOpenOnCancel, stayOpenOnOk, ...props }: DialogProps): import("react/jsx-runtime").JSX.Element;
 export {};

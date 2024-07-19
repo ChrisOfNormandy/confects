@@ -1,7 +1,7 @@
-import { ToggleIconType } from '@lib/components/inputs/toggle/Toggle';
-import { Display } from './helpers/formatters';
 import { categoryList } from './helpers/test-content';
-import { CodeEditor, FileInput, Input, Slider, TextEditor, Toggle, getClassName } from '@lib/main';
+import { CodeEditor, FileInput, Input, Slider, TextEditor, Toggle, getClassName } from 'lib/main';
+import { Display } from './helpers/formatters';
+import { ToggleIconType } from 'lib/components/inputs/toggle/Toggle';
 
 function InputDisplay() {
     return <Display heading='inputs' >
@@ -285,7 +285,7 @@ function FileInputDisplay() {
     </Display >
 }
 
-export default function Inputs() {
+export function Inputs() {
     return <div>
         <InputDisplay />
         <ToggleDisplay />

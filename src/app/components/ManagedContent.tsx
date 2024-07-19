@@ -1,10 +1,10 @@
-import { Button, Dialog, dialogs } from "@lib/main";
+import { Button, Dialog, dialogs } from "lib/main";
 import { Display } from "./helpers/formatters";
-import MenuSummonButton from "@lib/components/managed-content/menu/MenuSummonButton";
 import { v4 } from "uuid";
-import MenuBuilder from "@lib/components/managed-content/menu/MenuBuilder";
+import MenuBuilder from "lib/components/managed-content/menu/MenuBuilder";
+import MenuSummonButton from "lib/components/managed-content/menu/MenuSummonButton";
 
-export default function ManagedContent() {
+export function ManagedContent() {
     return <Display heading='managed-content'>
         <Button
             onClick={() => {

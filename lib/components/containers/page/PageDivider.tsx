@@ -1,8 +1,8 @@
-import { getClassName, HTMLDivProps } from "../../../main";
+import { getClassName, HTML_DivProps } from "../../../main";
 
-export type PageDividerProps = HTMLDivProps;
+export type PageDividerProps = HTML_DivProps;
 
-export default function PageDivider(
+export function PageDivider(
     {
         className,
         ...props

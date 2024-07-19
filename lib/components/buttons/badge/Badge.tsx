@@ -1,5 +1,4 @@
-import { getClassName } from "../../../main";
-import Button, { ButtonProps } from "../button/Button";
+import { Button, ButtonProps, getClassName } from '@';
 import './styles/badge.scss';
 
 interface extBadgeProps {
@@ -8,7 +7,7 @@ interface extBadgeProps {
 
 export type BadgeProps = ButtonProps & extBadgeProps;
 
-export default function Badge(
+export function Badge(
     {
         children,
         className,

@@ -1,8 +1,8 @@
-import { getClassName, HTMLDivProps } from "../../../main";
+import { getClassName, HTML_DivProps } from "@";
 
-export type PageProps = HTMLDivProps;
+export type PageProps = HTML_DivProps;
 
-export default function Page(
+export function Page(
     {
         className,
         children,

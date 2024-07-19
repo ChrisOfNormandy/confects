@@ -1,11 +1,11 @@
 import { withAuthenticationRequired } from "@auth0/auth0-react";
-import { Loading } from '@lib/main';
+import { Loading } from '@';
 
 export type ProtectedRouteProps = {
     element: React.ComponentType<object>
 }
 
-export default function ProtectedRoute({ element }: ProtectedRouteProps) {
+export function ProtectedRoute({ element }: ProtectedRouteProps) {
     const Element = withAuthenticationRequired(element, {
         onRedirecting: () => (
             <Loading />

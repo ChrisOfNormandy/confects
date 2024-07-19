@@ -8,7 +8,7 @@ interface extGlyphProps {
 
 export type GlyphProps = ButtonProps & IconProps & extGlyphProps;
 
-export default function Glyph(
+export function Glyph(
     {
         icon,
         className,

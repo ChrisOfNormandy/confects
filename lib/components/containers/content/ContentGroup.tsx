@@ -1,9 +1,8 @@
-import { getClassName } from "@lib/helpers/components";
-import { HTMLDivProps } from "@lib/types/html";
+import { getClassName, HTML_DivProps } from "@";
 
-export type ContentGroupProps = HTMLDivProps;
+export type ContentGroupProps = HTML_DivProps;
 
-export default function ContentGroup(
+export function ContentGroup(
     {
         className,
         children,

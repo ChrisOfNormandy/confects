@@ -51,7 +51,7 @@ class HeadingNode {
     }
 }
 
-export default function TableOfContents() {
+export function TableOfContents() {
 
     const ref = useRef(null as HTMLSpanElement | null);
     const [root] = useState(new HeadingNode('', 0));

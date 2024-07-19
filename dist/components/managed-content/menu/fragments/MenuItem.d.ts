@@ -1,9 +1,8 @@
-import { HTMLDivProps } from "@lib/main";
-import MenuContent from "../MenuContent";
 import './styles/menu-item.scss';
+import { HTML_DivProps, MenuContent } from '../../../../main';
 interface extMenuItemProps {
     menuContent: MenuContent;
 }
-export type MenuItemProps = HTMLDivProps & extMenuItemProps;
-export default function MenuItem({ menuContent, className, ...props }: MenuItemProps): import("react/jsx-runtime").JSX.Element;
+type MenuItemProps = HTML_DivProps & extMenuItemProps;
+export declare function MenuItem({ menuContent, className, ...props }: MenuItemProps): import("react/jsx-runtime").JSX.Element;
 export {};

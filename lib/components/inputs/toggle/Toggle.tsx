@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, HTMLDivProps, Icon, getClassName } from "../../../main";
+import { Button, HTML_DivProps, Icon, getClassName } from "@";
 import './styles/toggle.scss'
 
 export type ToggleIconType =
@@ -45,9 +45,9 @@ interface extToggleProps {
     iconType?: ToggleIconType
 }
 
-export type ToggleProps = HTMLDivProps & extToggleProps;
+export type ToggleProps = HTML_DivProps & extToggleProps;
 
-export default function Toggle(
+export function Toggle(
     {
         className,
         defaultChecked,

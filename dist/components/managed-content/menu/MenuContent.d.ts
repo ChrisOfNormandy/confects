@@ -1,6 +1,6 @@
-import { ButtonProps } from '@lib/components/buttons/button/Button';
+import { ButtonProps } from '../../../main';
 import { MouseEventHandler, ReactNode } from "react";
-export default class MenuContent {
+export declare class MenuContent {
     private id;
     private menuId;
     private text?;

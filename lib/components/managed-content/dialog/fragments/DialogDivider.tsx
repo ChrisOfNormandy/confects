@@ -1,9 +1,9 @@
-import { HTMLDivProps, getClassName } from "@lib/main"
 import './styles/dialog-divider.scss';
+import { HTML_DivProps, getClassName } from "@"
 
-export type DialogDividerProps = HTMLDivProps;
+export type DialogDividerProps = HTML_DivProps;
 
-export default function DialogDivider(
+export function DialogDivider(
     {
         className,
         ...props

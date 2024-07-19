@@ -3,9 +3,11 @@
     "compilerOptions": {
         "declaration": true,
         "declarationDir": "./dist",
+        "outDir": "./dist",
         "emitDeclarationOnly": true,
     },
     "exclude": [
-        "src"
+        "src",
+        "public"
     ]
 }

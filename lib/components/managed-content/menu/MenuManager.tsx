@@ -1,8 +1,7 @@
-import ContentManager from "../ContentManager";
-import ContentManagerElement from "../ContentManagerElement";
+import { ContentManager, ContentManagerElement } from "@";
 
 export const menus = new ContentManager('menus');
 
-export default function MenuManager() {
+export function MenuManager() {
     return <ContentManagerElement manager={menus} />
 }

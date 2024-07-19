@@ -1,9 +1,8 @@
-import { getClassName } from "@lib/helpers/components";
-import { HTMLDivProps } from "@lib/types/html";
+import { getClassName, HTML_DivProps } from "@";
 
-export type ContentListProps = HTMLDivProps;
+export type ContentListProps = HTML_DivProps;
 
-export default function ContentList(
+export function ContentList(
     {
         className,
         children,

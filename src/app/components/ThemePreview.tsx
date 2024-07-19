@@ -1,9 +1,9 @@
 import './theme-preview.scss';
 import { categoryList, paletteList } from './helpers/test-content';
-import { getClassName } from '@lib/main';
+import { getClassName } from 'lib/main';
 import { useEffect, useState } from 'react';
 
-export default function ThemePreview() {
+export function ThemePreview() {
 
     const [t, setT] = useState(0);
     const [ready, isReady] = useState(false);

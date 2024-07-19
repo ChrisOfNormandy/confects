@@ -1,9 +1,7 @@
 import './styles/markdown-renderer.scss';
-import { HTMLDivProps } from "../../main";
-interface extMarkdownRendererProps {
+import { HTML_DivProps } from "../../main";
+export type MarkdownRendererProps = {
     defaultContent?: string;
     href: string;
-}
-export type MarkdownRendererProps = HTMLDivProps & extMarkdownRendererProps;
-export default function MarkdownRenderer({ className, defaultContent, href, ...props }: MarkdownRendererProps): import("react/jsx-runtime").JSX.Element;
-export {};
+} & HTML_DivProps;
+export declare function MarkdownRenderer({ className, defaultContent, href, ...props }: MarkdownRendererProps): import("react/jsx-runtime").JSX.Element;

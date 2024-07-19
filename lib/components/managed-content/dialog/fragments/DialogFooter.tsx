@@ -1,9 +1,9 @@
-import { HTMLDivProps, getClassName } from "@lib/main"
 import './styles/dialog-footer.scss';
+import { HTML_DivProps, getClassName } from "@"
 
-export type DialogFooterProps = HTMLDivProps;
+export type DialogFooterProps = HTML_DivProps;
 
-export default function DialogFooter(
+export function DialogFooter(
     {
         children,
         className,

@@ -1,3 +1,3 @@
-import { HTMLDivProps } from "../../../main";
-export type DecimalInputProps = HTMLDivProps;
-export default function DecimalInput(): import("react/jsx-runtime").JSX.Element;
+import { HTML_DivProps } from "../../../main";
+export type DecimalInputProps = HTML_DivProps;
+export declare function DecimalInput(): import("react/jsx-runtime").JSX.Element;

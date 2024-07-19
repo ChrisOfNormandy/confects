@@ -1,8 +1,7 @@
-import ContentManager from "../ContentManager";
-import ContentManagerElement from "../ContentManagerElement";
+import { ContentManager, ContentManagerElement } from "@";
 
 export const dialogs = new ContentManager('dialogs');
 
-export default function DialogManager() {
+export function DialogManager() {
     return <ContentManagerElement manager={dialogs} />
 }

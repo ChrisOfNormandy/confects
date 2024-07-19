@@ -1,8 +1,8 @@
-import { HTMLDivProps } from "../../../main";
+import { HTML_DivProps } from "../../../main";
 
-export type ToastProps = HTMLDivProps;
+export type ToastProps = HTML_DivProps;
 
-export default function Toast() {
+export function Toast() {
     return <div>
         TOAST
     </div>

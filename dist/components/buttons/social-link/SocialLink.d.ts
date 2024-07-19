@@ -1,5 +1,5 @@
-import { BrandName, ButtonProps } from '../../../main';
 import './styles/social-link.scss';
+import { BrandName, ButtonProps } from '../../../main';
 interface extBrandButtonProps {
     brand: BrandName;
     fill?: boolean;
@@ -11,5 +11,5 @@ interface extSocialLinkProps {
     pageHref?: string;
 }
 export type SocialLinkProps = BrandButtonProps & extSocialLinkProps;
-export default function SocialLink({ profileHref, pageHref, ...props }: SocialLinkProps): import("react/jsx-runtime").JSX.Element;
+export declare function SocialLink({ profileHref, pageHref, ...props }: SocialLinkProps): import("react/jsx-runtime").JSX.Element;
 export {};

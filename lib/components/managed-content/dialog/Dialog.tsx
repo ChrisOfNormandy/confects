@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
-import { Button, Glyph, HTMLDivProps, dialogs, getClassName, makeDraggable } from "../../../main";
-import DialogHeader from "./fragments/DialogHeader";
-import DialogBody from "./fragments/DialogBody";
-import DialogFooter from "./fragments/DialogFooter";
 import './styles/dialog.scss';
+import { Button, Glyph, HTML_DivProps, dialogs, getClassName, makeDraggable } from "../../../main";
+import { DialogBody } from "./fragments/DialogBody";
+import { DialogFooter } from "./fragments/DialogFooter";
+import { DialogHeader } from "./fragments/DialogHeader";
+import { ReactNode } from "react";
 
 interface extDialogProps {
     cancelText?: ReactNode
@@ -19,9 +19,9 @@ interface extDialogProps {
     stayOpenOnOk?: boolean
 }
 
-export type DialogProps = HTMLDivProps & extDialogProps;
+export type DialogProps = HTML_DivProps & extDialogProps;
 
-export default function Dialog(
+export function Dialog(
     {
         cancelText = 'cancel',
         children,

@@ -1,14 +1,13 @@
-import { Button, getClassName, HTMLDivProps, Icon } from "@lib/main"
-import MenuContent from "../MenuContent";
 import './styles/menu-item.scss';
+import { Button, getClassName, HTML_DivProps, Icon, MenuContent } from '@';
 
 interface extMenuItemProps {
     menuContent: MenuContent
 }
 
-export type MenuItemProps = HTMLDivProps & extMenuItemProps;
+type MenuItemProps = HTML_DivProps & extMenuItemProps;
 
-export default function MenuItem(
+export function MenuItem(
     {
         menuContent,
         className,

@@ -1,5 +1,5 @@
-import { BrandName, Button, ButtonProps, Icon, brands, getClassName } from '../../../main';
 import './styles/social-link.scss';
+import { BrandName, Button, ButtonProps, Icon, brands, getClassName } from '@';
 
 interface extBrandButtonProps {
     brand: BrandName
@@ -47,7 +47,7 @@ interface extSocialLinkProps {
 
 export type SocialLinkProps = BrandButtonProps & extSocialLinkProps;
 
-export default function SocialLink(
+export function SocialLink(
     {
         profileHref,
         pageHref,

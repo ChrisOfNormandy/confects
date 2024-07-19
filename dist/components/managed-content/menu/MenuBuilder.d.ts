@@ -1,5 +1,5 @@
-import MenuContent from "./MenuContent";
-export default class MenuBuilder {
+import { MenuContent } from "../../../main";
+export declare class MenuBuilder {
     readonly id: string;
     private content;
     addItem(): MenuContent;

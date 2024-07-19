@@ -1,9 +1,8 @@
-import { getClassName } from "@lib/helpers/components";
-import { HTMLDivProps } from "@lib/types/html";
+import { getClassName, HTML_DivProps } from "@";
 
-export type RibbonProps = HTMLDivProps;
+export type RibbonProps = HTML_DivProps;
 
-export default function Ribbon(
+export function Ribbon(
     {
         className,
         children,

@@ -1,8 +1,8 @@
-import { HTMLDivProps } from "../../../main";
+import { HTML_DivProps } from "@";
 
-export type DecimalInputProps = HTMLDivProps;
+export type DecimalInputProps = HTML_DivProps;
 
-export default function DecimalInput() {
+export function DecimalInput() {
     return <div>
         DECIMAL INPUT
     </div>

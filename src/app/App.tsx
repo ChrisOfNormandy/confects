@@ -1,19 +1,20 @@
 import './styles/app.scss';
-import { Managers, Page, PageBody, PageFooter, PageHeader } from '@lib/main';
+import { Managers, MarkdownRouter, Page, PageBody, PageFooter, PageHeader, Router, RouterNav } from 'lib/main';
 import { Outlet } from 'react-router-dom';
-import Buttons from './components/Buttons';
-import Inputs from './components/Inputs';
-import ManagedContent from './components/ManagedContent';
-import MarkdownRouter from '@lib/components/router/MarkdownRouter';
-import Router from '@lib/components/router/Router';
-import RouterNav from '@lib/components/router/RouterNav';
-import ThemePreview from './components/ThemePreview';
+import { Buttons } from './components/Buttons';
+import { Inputs } from './components/Inputs';
+import { ManagedContent } from './components/ManagedContent';
+import { ThemePreview } from './components/ThemePreview';
 
 const router = new Router(
     {
         routes: [
             {
-                path: '/home'
+                path: '/home',
+                markdown: '/pages/home.md'
+            },
+            {
+                path: '/no-content'
             },
             {
                 path: '/markdown',

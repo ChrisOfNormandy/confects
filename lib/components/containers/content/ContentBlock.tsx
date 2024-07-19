@@ -1,9 +1,18 @@
-import { HTMLDivProps } from "@lib/types/html";
+import { getClassName, HTML_DivProps } from "@";
 
-export type ContentBlockProps = HTMLDivProps;
+export type ContentBlockProps = HTML_DivProps;
 
-export default function ContentBlock() {
-    return <div>
-        CONTENT BLOCK
+export function ContentBlock(
+    {
+        children,
+        className,
+        ...props
+    }: ContentBlockProps
+) {
+    return <div
+        className={getClassName('content-block', className)}
+        {...props}
+    >
+        {children}
     </div>
 }

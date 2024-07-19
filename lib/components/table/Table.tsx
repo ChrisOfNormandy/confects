@@ -1,8 +1,8 @@
-import { HTMLDivProps } from "../../main";
+import { HTML_DivProps } from "@";
 
-export type TableProps = HTMLDivProps;
+export type TableProps = HTML_DivProps;
 
-export default function Table() {
+export function Table() {
     return <div>
         TABLE
     </div>

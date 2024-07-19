@@ -1,7 +1,6 @@
-import { Ref } from 'react';
-import { getClassName } from '../../../helpers/components';
-import { HTMLButtonProps } from '../../../types/html';
 import './styles/button.scss';
+import { getClassName, HTML_ButtonProps } from '@';
+import { Ref } from 'react';
 
 interface extButtonProps {
     reset?: string | boolean
@@ -10,9 +9,9 @@ interface extButtonProps {
     innerRef?: Ref<HTMLButtonElement>
 }
 
-export type ButtonProps = HTMLButtonProps & extButtonProps;
+export type ButtonProps = HTML_ButtonProps & extButtonProps;
 
-export default function Button(
+export function Button(
     {
         children,
         className,
@@ -23,7 +22,8 @@ export default function Button(
         ...props
     }: ButtonProps
 ) {
-    const extraProps: HTMLButtonProps = {};
+    const extraProps: HTML_ButtonProps = {};
+
     if (submit) {
         extraProps.type = 'submit';
 

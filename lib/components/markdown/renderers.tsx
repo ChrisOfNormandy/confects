@@ -1,5 +1,5 @@
 import { ClassAttributes, HTMLAttributes, ReactNode } from "react";
-import { CodeEditor, CodeEditorProps, getClassName, isInterfaceTypeIterable } from "@lib/main";
+import { CodeEditor, CodeEditorProps, getClassName, isInterfaceTypeIterable } from "@";
 import { Components, ExtraProps } from "react-markdown";
 import { processingOrder } from "./patterns";
 import { v4 } from "uuid";

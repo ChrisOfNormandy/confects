@@ -1,9 +1,9 @@
-import DialogManager from "./dialog/DialogManager";
-import MenuManager from "./menu/MenuManager";
+import { DialogManager, MenuManager } from "@";
 
-export default function Managers() {
+export function Managers() {
     return <>
         <DialogManager />
+
         <MenuManager />
     </>
 }

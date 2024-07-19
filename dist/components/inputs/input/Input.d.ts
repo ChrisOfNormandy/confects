@@ -1,7 +1,7 @@
-import { HTMLInputProps } from '../../../types/html';
+import { HTML_InputProps } from '../../../main';
 import './styles/input.scss';
 interface extInputProps {
 }
-export type InputProps = HTMLInputProps & extInputProps;
-export default function Input({ className, ...props }: InputProps): import("react/jsx-runtime").JSX.Element;
+export type InputProps = HTML_InputProps & extInputProps;
+export declare function Input({ className, ...props }: InputProps): import("react/jsx-runtime").JSX.Element;
 export {};

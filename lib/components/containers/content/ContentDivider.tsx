@@ -1,9 +1,18 @@
-import { HTMLDivProps } from "@lib/types/html";
+import { getClassName, HTML_DivProps } from "@";
 
-export type ContentDividerProps = HTMLDivProps;
+export type ContentDividerProps = HTML_DivProps;
 
-export default function ContentDivider() {
-    return <div>
-        CONTENT DIVIDER
+export function ContentDivider(
+    {
+        children,
+        className,
+        ...props
+    }: ContentDividerProps
+) {
+    return <div
+        className={getClassName('content-divider', className)}
+        {...props}
+    >
+        {children}
     </div>
 }

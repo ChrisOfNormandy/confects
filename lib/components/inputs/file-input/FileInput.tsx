@@ -1,7 +1,6 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
-import { Input, InputProps, getClassName } from "../../../main";
 import './styles/file-input.scss';
-import { dragEvent } from "@lib/helpers/events";
+import { Input, InputProps, getClassName, dragEvent } from "@";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 interface extFileInputProps {
     dropZoneText?: ReactNode
@@ -12,7 +11,7 @@ interface extFileInputProps {
 
 export type FileInputProps = InputProps & extFileInputProps;
 
-export default function FileInput(
+export function FileInput(
     {
         className,
         dropZoneText = 'Drop Files Here',

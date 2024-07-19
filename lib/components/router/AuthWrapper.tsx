@@ -9,7 +9,7 @@ export type AuthWrapperProps = {
     redirectUri?: string
 } & Auth0ProviderOptions;
 
-export default function AuthWrapper(
+export function AuthWrapper(
     {
         children,
         scope = SCOPES,

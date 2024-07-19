@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export default class ContentManager {
+export class ContentManager {
 
     readonly id: string;
     private _refresh?: (content: [string, ReactNode][]) => void

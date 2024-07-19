@@ -1,6 +1,5 @@
-import { getClassName } from '@lib/helpers/components';
-import { HTMLElementProps } from '@lib/types/html';
 import './styles/icon.scss';
+import { getClassName, HTMLElementProps } from '@';
 
 interface extIconProps {
     icon: string
@@ -8,7 +7,7 @@ interface extIconProps {
 
 export type IconProps = HTMLElementProps & extIconProps;
 
-export default function Icon(
+export function Icon(
     {
         icon,
         className,

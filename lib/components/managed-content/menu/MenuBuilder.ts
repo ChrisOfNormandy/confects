@@ -1,6 +1,6 @@
-import MenuContent from "./MenuContent";
+import { MenuContent } from "@";
 
-export default class MenuBuilder {
+export class MenuBuilder {
     readonly id: string
 
     private content: MenuContent[] = [];

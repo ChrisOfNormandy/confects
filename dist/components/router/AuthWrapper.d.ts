@@ -4,4 +4,4 @@ export type AuthWrapperProps = {
     audience?: string;
     redirectUri?: string;
 } & Auth0ProviderOptions;
-export default function AuthWrapper({ children, scope, domain, clientId, audience, redirectUri, ...props }: AuthWrapperProps): import("react/jsx-runtime").JSX.Element;
+export declare function AuthWrapper({ children, scope, domain, clientId, audience, redirectUri, ...props }: AuthWrapperProps): import("react/jsx-runtime").JSX.Element;

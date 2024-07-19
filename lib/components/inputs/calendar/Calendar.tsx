@@ -1,8 +1,8 @@
-import { HTMLDivProps } from "../../../main";
+import { HTML_DivProps } from "@";
 
-export type CalendarProps = HTMLDivProps;
+export type CalendarProps = HTML_DivProps;
 
-export default function Calendar() {
+export function Calendar() {
     return <div>
         CALENDAR
     </div>

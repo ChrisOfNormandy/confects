@@ -1,8 +1,8 @@
-import { HTMLDivProps } from "../../../main";
+import { HTML_DivProps } from "@";
 
-export type OverlayProps = HTMLDivProps;
+export type OverlayProps = HTML_DivProps;
 
-export default function Overlay() {
+export function Overlay() {
     return <div>
         OVERLAY
     </div>

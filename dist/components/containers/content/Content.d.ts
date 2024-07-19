@@ -1,3 +1,3 @@
-import { HTMLDivProps } from "@lib/types/html";
-export type ContentProps = HTMLDivProps;
-export default function Content(): import("react/jsx-runtime").JSX.Element;
+import { HTML_DivProps } from "../../../main";
+export type ContentProps = HTML_DivProps;
+export declare function Content({ children, className, ...props }: ContentProps): import("react/jsx-runtime").JSX.Element;

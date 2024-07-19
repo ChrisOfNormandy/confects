@@ -1,4 +1,4 @@
-import { HTMLDivProps } from "@lib/main";
 import './styles/dialog-divider.scss';
-export type DialogDividerProps = HTMLDivProps;
-export default function DialogDivider({ className, ...props }: DialogDividerProps): import("react/jsx-runtime").JSX.Element;
+import { HTML_DivProps } from "../../../../main";
+export type DialogDividerProps = HTML_DivProps;
+export declare function DialogDivider({ className, ...props }: DialogDividerProps): import("react/jsx-runtime").JSX.Element;

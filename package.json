@@ -5,7 +5,7 @@
     "license": "MIT",
     "name": "@chrisofnormandy/confects",
     "type": "module",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "files": [
         "dist",
         "lib/linter.mjs"
@@ -37,14 +37,15 @@
         "uuid": "^10.0.0"
     },
     "scripts": {
-        "build": "yarn clean; tsc -p tsconfig.build.json && vite build",
+        "build": "yarn clean; tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json && vite build",
         "bump": "npm version --commit-hooks false --git-tag-version false patch",
         "clean": "rm -r ./dist",
         "dev": "vite",
         "docs": "cd ./docs && go run .",
         "lint": "eslint --fix",
-        "release": "yarn sanity && yarn build && yarn bump && git add --a",
-        "sanity": "tsc -p tsconfig.json --noEmit && yarn lint && yarn knip"
+        "release": "yarn lint && yarn knip && yarn build && yarn bump && git add --a",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "sanity": "yarn typecheck && yarn lint && yarn knip"
     },
     "devDependencies": {
         "@eslint/js": "^9.6.0",
@@ -59,6 +60,7 @@
         "eslint-plugin-react-refresh": "^0.4.6",
         "globals": "^15.8.0",
         "knip": "^5.25.1",
+        "tsc-alias": "^1.8.10",
         "tsconfig-paths": "^4.2.0",
         "typescript": "^5.5.3",
         "typescript-eslint": "^7.16.0",

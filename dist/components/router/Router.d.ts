@@ -5,7 +5,7 @@ interface IRouter {
     default?: string;
     noOutlet?: boolean;
 }
-export default class Router {
+export declare class Router {
     private element?;
     readonly default?: string;
     readonly markdown?: string;

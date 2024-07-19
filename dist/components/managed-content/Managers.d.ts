@@ -1,1 +1,1 @@
-export default function Managers(): import("react/jsx-runtime").JSX.Element;
+export declare function Managers(): import("react/jsx-runtime").JSX.Element;

@@ -1,3 +1,3 @@
-import ContentManager from "../ContentManager";
+import { ContentManager } from "../../../main";
 export declare const dialogs: ContentManager;
-export default function DialogManager(): import("react/jsx-runtime").JSX.Element;
+export declare function DialogManager(): import("react/jsx-runtime").JSX.Element;

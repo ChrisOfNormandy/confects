@@ -1,15 +1,11 @@
-import { HTMLDivProps } from "@lib/main"
-import Router from "./Router"
-import { useRouter } from "./MarkdownRouter";
+import { Router, useRouter } from "@";
 import { NavLink } from "react-router-dom";
 
-interface extRouteProps {
+interface IRouteProps {
     router: Router
 }
 
-export type RouterNavProps = HTMLDivProps;
-
-export default function RouterNav() {
+export function RouterNav() {
     const router = useRouter();
 
     return <Route router={router} />
@@ -18,7 +14,7 @@ export default function RouterNav() {
 function Route(
     {
         router
-    }: extRouteProps
+    }: IRouteProps
 ) {
     if (!router.path) {
         return <RouteList
@@ -44,7 +40,7 @@ function Route(
 function RouteList(
     {
         router
-    }: extRouteProps
+    }: IRouteProps
 ) {
     return <ul
         className='router-nav-list'
