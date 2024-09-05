@@ -1,5 +1,5 @@
 import './styles/file-input.scss';
-import { InputProps } from "../../../main";
+import { InputProps } from '../../../inputs';
 import { ReactNode } from "react";
 interface extFileInputProps {
     dropZoneText?: ReactNode;

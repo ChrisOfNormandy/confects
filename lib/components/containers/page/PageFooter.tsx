@@ -1,4 +1,6 @@
-import { getClassName, HTML_DivProps } from "../../../main";
+import './styles/page-footer.scss';
+import { getClassName } from '$/helpers';
+import { HTML_DivProps } from '#types/html';
 
 export type PageFooterProps = HTML_DivProps;
 

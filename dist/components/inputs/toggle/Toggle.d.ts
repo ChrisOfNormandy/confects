@@ -1,5 +1,5 @@
-import { HTML_DivProps } from "../../../main";
 import './styles/toggle.scss';
+import { HTML_DivProps } from "../../../types/html";
 export type ToggleIconType = 'check-dot' | 'check-square' | 'check-x' | 'check' | 'dot' | 'eye' | 'power' | 'square' | 'sun-moon' | 'thumb-down' | 'thumb-up' | 'toggle' | 'x-dot' | 'x-square' | 'x';
 interface extToggleProps {
     name?: string;

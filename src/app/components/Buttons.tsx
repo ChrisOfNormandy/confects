@@ -1,6 +1,8 @@
-import { Badge, BrandName, brands, Button, getClassName, Glyph, SocialLink } from 'lib/main';
-import { categoryList } from './helpers/test-content';
+import { Badge, Button, Glyph, SocialLink } from '$/buttons';
+import { BrandName, brands } from '#types/brands';
 import { Display } from './helpers/formatters';
+import { getClassName } from '$/helpers';
+import { themeCategories } from '#types/themes';
 
 function ButtonDisplay() {
     return <Display heading='buttons' >
@@ -11,7 +13,7 @@ function ButtonDisplay() {
                     className='col'
                 >
                     {
-                        categoryList.map((n) => {
+                        themeCategories.map((n) => {
                             let styleType = `f-${n}`;
                             if (mode)
                                 styleType += `-${mode}`;
@@ -50,7 +52,7 @@ function BadgeDisplay() {
                     className='col'
                 >
                     {
-                        categoryList.map((n) => {
+                        themeCategories.map((n) => {
                             let styleType = `f-${n}`;
                             if (mode)
                                 styleType += `-${mode}`;
@@ -107,7 +109,7 @@ function GlyphDisplay() {
                     className='col'
                 >
                     {
-                        categoryList.map((n) => {
+                        themeCategories.map((n) => {
                             let styleType = `f-${n}`;
                             if (mode)
                                 styleType += `-${mode}`;
@@ -151,7 +153,7 @@ function GlyphDisplay() {
                     className='col'
                 >
                     {
-                        categoryList.map((n) => {
+                        themeCategories.map((n) => {
                             let styleType = `c-${n}`;
                             if (mode)
                                 styleType += `-${mode}`;

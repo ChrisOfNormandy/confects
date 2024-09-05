@@ -1,1 +1,3 @@
-# HOME
+# Home
+
+Home content goes here.

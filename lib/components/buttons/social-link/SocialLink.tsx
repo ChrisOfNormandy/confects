@@ -1,5 +1,8 @@
 import './styles/social-link.scss';
-import { BrandName, Button, ButtonProps, Icon, brands, getClassName } from '@';
+import { BrandName, brands } from '#types/brands';
+import { Button, ButtonProps } from '$/buttons';
+import { getClassName } from '$/helpers';
+import { Icon } from '$/decorations';
 
 interface extBrandButtonProps {
     brand: BrandName

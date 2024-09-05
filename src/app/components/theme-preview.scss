@@ -1,17 +1,17 @@
-@use '~styles' as *;
+@use '~layout' as layout;
 
 .theme-preview {
     .theme-preview-block {
-        @include flex(false, true);
-        @include wide;
+        @include layout.flex(false, true);
+        @include layout.wide;
 
         .block-row {
-            @include flex-even;
-            @include wide;
+            @include layout.flex-even;
+            @include layout.wide;
 
             .block {
-                @include flex-center(true, true);
-                @include wide;
+                @include layout.flex-center(true, true);
+                @include layout.wide;
 
                 padding: 8px;
             }

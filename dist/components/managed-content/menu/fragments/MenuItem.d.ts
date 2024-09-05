@@ -1,5 +1,6 @@
 import './styles/menu-item.scss';
-import { HTML_DivProps, MenuContent } from '../../../../main';
+import { HTML_DivProps } from '../../../../types/html';
+import { MenuContent } from '../MenuContent';
 interface extMenuItemProps {
     menuContent: MenuContent;
 }

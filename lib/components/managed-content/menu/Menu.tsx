@@ -1,6 +1,8 @@
 import './styles/menu.scss';
-import { getClassName, HTML_DivProps, MenuContent } from "@";
-import { MenuItem } from "./fragments/MenuItem";
+import { getClassName } from '$/helpers';
+import { HTML_DivProps } from '#types/html';
+import { MenuContent } from './MenuContent';
+import { MenuItem } from './fragments/MenuItem';
 import { ReactNode, useEffect, useRef } from "react";
 
 interface extMenuProps {

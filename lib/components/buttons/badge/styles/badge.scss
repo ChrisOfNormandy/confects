@@ -1,7 +1,7 @@
-@use '~styles' as *;
+@use '~styling' as styling;
 
 .badge {
-    @include rounded(15px);
+    @include styling.rounded(15px);
 
     border: none;
     padding: 4px 2px;

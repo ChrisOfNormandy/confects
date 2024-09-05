@@ -1,7 +1,8 @@
-import { categoryList } from './helpers/test-content';
-import { CodeEditor, FileInput, Input, Slider, TextEditor, Toggle, getClassName } from 'lib/main';
+import { CodeEditor, TextEditor } from '$/editors';
 import { Display } from './helpers/formatters';
-import { ToggleIconType } from 'lib/components/inputs/toggle/Toggle';
+import { FileInput, Input, Slider, Toggle, ToggleIconType } from '$/inputs';
+import { getClassName } from '$/helpers';
+import { themeCategories } from '#types/themes';
 
 function InputDisplay() {
     return <Display heading='inputs' >
@@ -12,7 +13,7 @@ function InputDisplay() {
                     className='col'
                 >
                     {
-                        categoryList.map((n) => {
+                        themeCategories.map((n) => {
                             let styleType = `f-${n}`;
                             if (mode)
                                 styleType += `-${mode}`;
@@ -104,7 +105,7 @@ function ToggleDisplay() {
                     className='col'
                 >
                     {
-                        categoryList.map((n) => {
+                        themeCategories.map((n) => {
                             let styleType = `f-${n}`;
                             if (mode)
                                 styleType += `-${mode}`;
@@ -163,7 +164,7 @@ function TextAreaDisplay() {
                     className='col'
                 >
                     {
-                        categoryList.map((n) => {
+                        themeCategories.map((n) => {
                             let styleType = `f-${n}`;
                             if (mode)
                                 styleType += `-${mode}`;
@@ -189,7 +190,7 @@ function SliderDisplay() {
                     className='col'
                 >
                     {
-                        categoryList.map((n) => {
+                        themeCategories.map((n) => {
                             let styleType = `f-${n}`;
                             if (mode)
                                 styleType += `-${mode}`;
@@ -256,7 +257,7 @@ function FileInputDisplay() {
                     className='col'
                 >
                     {
-                        categoryList.map((n) => {
+                        themeCategories.map((n) => {
                             let styleType = `f-${n}`;
                             if (mode)
                                 styleType += `-${mode}`;

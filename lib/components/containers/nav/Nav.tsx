@@ -1,4 +1,5 @@
-import { getClassName, HTML_DivProps } from "@";
+import { HTML_DivProps } from "#types/html";
+import { getClassName } from "$/helpers";
 
 export type NavProps = HTML_DivProps;
 

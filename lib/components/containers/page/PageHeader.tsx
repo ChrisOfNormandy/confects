@@ -1,4 +1,6 @@
-import { getClassName, HTML_DivProps } from "../../../main";
+import './styles/page-header.scss';
+import { getClassName } from '$/helpers';
+import { HTML_DivProps } from '#types/html';
 
 export type PageHeaderProps = HTML_DivProps;
 

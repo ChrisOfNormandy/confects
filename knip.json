@@ -1,9 +1,20 @@
 {
     "$schema": "https://unpkg.com/knip@5/schema.json",
     "entry": [
-        "lib/main.ts",
-        "src/main.tsx",
-        "lib/linter.mjs"
+        "lib/buttons.ts",
+        "lib/contents.ts",
+        "lib/decorations.ts",
+        "lib/helpers.ts",
+        "lib/inputs.ts",
+        "lib/linter.mjs",
+        "lib/managed.ts",
+        "lib/markdown.ts",
+        "lib/navs.ts",
+        "lib/pages.ts",
+        "lib/routers.ts",
+        "lib/tables.ts",
+        "lib/types.ts",
+        "src/main.tsx"
     ],
     "ignore": [
         "dist/**/*"
@@ -12,7 +23,6 @@
         "go"
     ],
     "ignoreDependencies": [
-        "@chrisofnormandy/confetti",
         "bootstrap-icons",
         "eslint-plugin-react-hooks",
         "eslint-plugin-react-refresh",

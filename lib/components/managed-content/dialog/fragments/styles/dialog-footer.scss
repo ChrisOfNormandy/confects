@@ -1,8 +1,9 @@
-@use '~styles' as *;
+@use '~styling' as styling;
+@use '~layout' as layout;
 
 .dialog-footer {
-    @include flex-between(true);
-    @include rounded-side(10px, bottom);
+    @include layout.flex-between(true);
+    @include styling.rounded(10px, bottom);
 
     padding: 10px;
 

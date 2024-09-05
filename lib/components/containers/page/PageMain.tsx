@@ -1,4 +1,5 @@
-import { getClassName, HTML_DivProps } from "../../../main";
+import { getClassName } from "$/helpers";
+import { HTML_DivProps } from "#types/html";
 
 export type PageMainProps = HTML_DivProps;
 

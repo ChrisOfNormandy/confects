@@ -1,4 +1,4 @@
-import { HTML_SelectProps } from "../../../../main";
+import { HTML_SelectProps } from "../../../../types/html";
 export interface SelectOption {
     label: string;
     value: string;

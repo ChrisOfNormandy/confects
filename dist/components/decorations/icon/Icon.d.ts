@@ -1,5 +1,5 @@
 import './styles/icon.scss';
-import { HTMLElementProps } from '../../../main';
+import { HTMLElementProps } from '../../../types/html';
 interface extIconProps {
     icon: string;
 }

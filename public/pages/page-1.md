@@ -82,6 +82,8 @@ function example() {
 >
 > With whitespace above this line.
 > But not above this.
+>
+>> Nested block quote
 
 %(class=thumbnail)![Image](/images/sample.jpg)%
 

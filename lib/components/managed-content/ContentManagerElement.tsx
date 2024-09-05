@@ -1,6 +1,8 @@
-import { ReactNode, useEffect, useState } from "react";
-import { ContentManager, HTML_DivProps, getClassName } from "@";
 import './styles/content-manager.scss';
+import { ContentManager } from "./ContentManager";
+import { getClassName } from "$/helpers";
+import { HTML_DivProps } from "#types/html";
+import { ReactNode, useEffect, useState } from "react";
 
 interface extContentManagerElementProps<T extends ContentManager> {
     manager: T

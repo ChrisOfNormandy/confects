@@ -1,4 +1,4 @@
-import { ButtonProps } from '../../../main';
+import { ButtonProps } from "../../../buttons";
 import { MouseEventHandler, ReactNode } from "react";
 export declare class MenuContent {
     private id;

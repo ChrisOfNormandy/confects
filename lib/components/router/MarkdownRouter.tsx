@@ -1,72 +1,61 @@
-import { AuthWrapper, AuthWrapperProps, HTML_DivProps, Router } from "@";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import { Navigate, Route, RouteProps } from "react-router-dom"
+import { HTML_DivProps } from "#types/html";
+import { CRouterElement } from "./CRouterElement";
+import { CRouter } from "./CRouter";
+import React from "react";
 
-let root: Router;
+let root: CRouter;
 
 export function useRouter() {
     return root;
 }
 
+const nestedRoutes = ([path, subroute]: [string, CRouter], Route: React.ComponentType<RouteProps>) => {
+    const nested = subroute.getRoutes()
+
+    console.debug(subroute.getPath());
+
+    if (nested.length === 0) {
+        return <Route
+            key={path}
+            path={subroute.getPath()}
+            element={<CRouterElement router={subroute} />}
+        />
+    }
+
+    return <Route
+        key={path}
+        path={subroute.getPath()}
+        element={<CRouterElement router={subroute} />}
+    >
+        {nested.map((r) => nestedRoutes(r, Route))}
+
+        {
+            subroute.default &&
+            <Route
+                path={subroute.getPath('/*')}
+                element={<Navigate to={subroute.getPath() + subroute.default} />}
+            />
+        }
+    </Route>
+}
+
 export type MarkdownRouterProps = {
-    router: Router
-    useAuth?: AuthWrapperProps
+    router: CRouter
 } & HTML_DivProps;
 
 export function MarkdownRouter(
     {
-        router,
-        useAuth
+        router
     }: MarkdownRouterProps
 ) {
     root = router;
 
-    if (useAuth) {
-        return <BrowserRouter>
-            <AuthWrapper
-                {...useAuth}
-            >
-                <Routes>
-                    {xRoute(router)}
-                </Routes>
-            </AuthWrapper>
-        </BrowserRouter>
-    }
-
-    return <BrowserRouter>
-        <Routes>
-            {xRoute(router)}
-        </Routes>
-    </BrowserRouter>
+    return router.root().map((r) => nestedRoutes(r, Route))
 }
 
-function xRoute(router: Router) {
-    const subroutes = router.getRoutes();
+export function markdownRouter(router: CRouter, Route: React.ComponentType<RouteProps>) {
+    root = router;
 
-    if (subroutes.length) {
-        return <Route
-            key={router.path}
-            path={router.getPath()}
-            element={router.getElement()}
-        >
-            {
-                subroutes.map(([, route]) => {
-                    return xRoute(route);
-                })
-            }
-
-            {
-                router.default &&
-                <Route
-                    path={router.getPath() + '/*'}
-                    element={<Navigate to={router.getPath() + router.default} />}
-                />
-            }
-        </Route>
-    }
-
-    return <Route
-        key={router.path}
-        path={router.getPath()}
-        element={router.getElement()}
-    />
+    return router.root().map((r) => nestedRoutes(r, Route))
 }

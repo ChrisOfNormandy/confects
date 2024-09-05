@@ -1,5 +1,5 @@
 import { Auth0Provider, Auth0ProviderOptions } from '@auth0/auth0-react';
-import { useNavigate } from 'react-router-dom';
+import * as ReactRouterDOM from 'react-router-dom';
 
 const SCOPES = 'openid profile email';
 
@@ -20,7 +20,7 @@ export function AuthWrapper(
         ...props
     }: AuthWrapperProps
 ) {
-    const navigate = useNavigate();
+    const navigate = ReactRouterDOM.useNavigate();
 
     if (!(domain && clientId && audience)) {
         return <div>

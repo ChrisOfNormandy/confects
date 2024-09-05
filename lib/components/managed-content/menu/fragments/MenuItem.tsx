@@ -1,5 +1,9 @@
 import './styles/menu-item.scss';
-import { Button, getClassName, HTML_DivProps, Icon, MenuContent } from '@';
+import { Button } from '$/buttons';
+import { getClassName } from '$/helpers';
+import { HTML_DivProps } from '#types/html';
+import { Icon } from '$/decorations';
+import { MenuContent } from '../MenuContent';
 
 interface extMenuItemProps {
     menuContent: MenuContent

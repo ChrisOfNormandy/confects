@@ -1,5 +1,6 @@
-import { Button, ButtonProps, getClassName } from '@';
 import './styles/badge.scss';
+import { Button, ButtonProps } from '$/buttons';
+import { getClassName } from '$/helpers';
 
 interface extBadgeProps {
     group?: string

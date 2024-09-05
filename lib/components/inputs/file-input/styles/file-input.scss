@@ -1,21 +1,22 @@
-@use '~styles' as *;
+@use '~styling' as styling;
+@use '~layout' as layout;
 @use '../../../buttons/button/styles/button' as *;
 
 .file-input {
-    @include flex(false, true);
-    @include rounded;
+    @include layout.flex(false, true);
+    @include styling.rounded;
 
     .file-drop-zone-wrapper {
-        @include rounded-side(10px, 'top');
-        @include flex-center(true, true);
-        @include wide(10px);
+        @include styling.rounded(10px, top);
+        @include layout.flex-center(true, true);
+        @include layout.wide(10px);
 
         padding: 5px;
 
         .file-drop-zone {
-            @include flex-center(true, true);
-            @include rounded;
-            @include fullsize(40px);
+            @include layout.flex-center(true, true);
+            @include styling.rounded;
+            @include layout.fullsize(40px);
 
             padding: 20px;
             border: 2px dashed;
@@ -23,8 +24,6 @@
             &.dragged {
                 filter: brightness(1.1);
             }
-
-            .label {}
         }
     }
 
@@ -34,6 +33,4 @@
             display: inline;
         }
     }
-
-
 }

@@ -1,16 +1,16 @@
-@use '~styles' as *;
+@use '~styling' as styling;
+@use '~layout' as layout;
 
 .input.code-editor {
-    @include flex(false, true);
-    @include rounded;
-
-    max-width: 100%;
+    @include layout.flex(false, true);
+    @include layout.wide(16px);
+    @include styling.rounded;
 
     padding: 8px;
     margin: 10px 0;
 
     .header {
-        @include flex-between(true);
+        @include layout.flex-between(true);
 
         .heading {
             padding: 5px 10px;
@@ -19,16 +19,16 @@
     }
 
     .editor-wrapper {
-        @include rounded;
-        @include fullsize;
+        @include styling.rounded;
+        @include layout.fullsize;
 
         .monaco-editor {
-            @include rounded;
+            @include styling.rounded;
 
             border: 2px solid;
 
             .overflow-guard {
-                @include rounded;
+                @include styling.rounded;
             }
         }
     }

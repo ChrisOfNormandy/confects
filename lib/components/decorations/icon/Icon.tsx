@@ -1,5 +1,6 @@
 import './styles/icon.scss';
-import { getClassName, HTMLElementProps } from '@';
+import { getClassName } from '$/helpers';
+import { HTMLElementProps } from '#types/html';
 
 interface extIconProps {
     icon: string

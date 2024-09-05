@@ -1,6 +1,8 @@
 import './styles/code-editor.scss';
 import './userWorkers';
-import { Button, getClassName, HTML_DivProps } from '@';
+import { Button } from '$/buttons';
+import { getClassName } from '$/helpers';
+import { HTML_DivProps } from '#types/html';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import * as monaco from 'monaco-editor'
 

@@ -60,12 +60,19 @@ Content to include:
     - [ ] Content
         - Containerized content layout consisting of:
             - [ ] ContentBlock
+                - A container for general content
             - [ ] ContentDivider
+                - A page divider or spacer between pieces of content
             - [ ] ContentGroup
+                - A "column" of content, intended to go inside a block
             - [ ] ContentList
+                - A container for content in "row" layout
             - [ ] ContentListItem
+                - A "row" of content, intended to go inside a content list
             - [ ] ContentTile
+                - A singular square / "tile" of content, like a thumbnail and caption for an article
             - [ ] ContentTileGroup
+                - A collection of content tiles displayed in a grid
     - [ ] Nav
         - A wrapper for navigation / ribbons / taskbars:
             - [ ] NavButton

@@ -1,5 +1,5 @@
 import './styles/button.scss';
-import { HTML_ButtonProps } from '../../../main';
+import { HTML_ButtonProps } from '../../../types/html';
 import { Ref } from 'react';
 interface extButtonProps {
     reset?: string | boolean;

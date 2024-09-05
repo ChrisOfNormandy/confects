@@ -1,81 +1,161 @@
 import './styles/app.scss';
-import { Managers, MarkdownRouter, Page, PageBody, PageFooter, PageHeader, Router, RouterNav } from 'lib/main';
-import { Outlet } from 'react-router-dom';
 import { Buttons } from './components/Buttons';
+import { CRouter } from '@router/CRouter';
 import { Inputs } from './components/Inputs';
 import { ManagedContent } from './components/ManagedContent';
+import { Managers } from '@managed/Managers';
+import { markdownRouter } from '@router/MarkdownRouter';
+import { Outlet, Route, Routes } from 'react-router';
+import { Page, PageBody, PageFooter, PageHeader } from '$/pages';
+import { RouterNav } from '@router/RouterNav';
 import { ThemePreview } from './components/ThemePreview';
+import { themes } from '#types/themes';
+import { useEffect } from 'react';
+import ContentPreview from './components/ContentPreview';
+import { BrowserRouter } from 'react-router-dom';
 
-const router = new Router(
+const router = new CRouter(
     {
         routes: [
             {
                 path: '/home',
-                markdown: '/pages/home.md'
+                markdown: {
+                    href: '/pages/home.md',
+                    features: {
+                        bodyOnly: true
+                    }
+                }
             },
             {
-                path: '/no-content'
+                path: '/samples',
+                routes: [
+                    {
+                        path: '/theme-preview'
+                    },
+                    {
+                        path: '/no-content'
+                    },
+                    {
+                        path: '/content',
+                        content: {
+                            href: "/pages/content/index.json"
+                        }
+                    },
+                    {
+                        path: '/content/preview'
+                    },
+                    {
+                        path: '/previews',
+                        routes: [
+                            {
+                                path: '/buttons',
+                            },
+                            {
+                                path: '/inputs',
+                            },
+                            {
+                                path: '/managers',
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 path: '/markdown',
                 routes: [
                     {
                         path: '/page-1',
-                        markdown: '/pages/page-1.md'
+                        markdown: {
+                            href: '/pages/page-1.md',
+                            features: {
+                                download: true,
+                                renderToggle: true,
+                                reload: true,
+                                print: true
+                            }
+                        },
                     },
                     {
                         path: '/page-2',
-                        markdown: '/pages/page-2.md'
+                        markdown: {
+                            href: '/pages/page-2.md'
+                        },
+                        routes: [
+                            {
+                                path: '/nested'
+                            }
+                        ]
                     }
                 ],
             },
-            {
-                path: '/buttons',
-            },
-            {
-                path: '/inputs',
-            },
-            {
-                path: '/managers',
-            }
         ],
         path: '',
-        noOutlet: true,
-        default: '/home',
+        noNav: true,
+        default: '/home'
     }
 );
 
 router.setElement(
     () => <Page>
-        <PageHeader>
-            HEADER
+        <PageHeader
+            className='f-content'
+        >
+            <span
+                className='header-sect'
+            >
+                <div
+                    className='brand'
+                >
+                    CoNfects
+                </div>
+            </span>
 
-            <RouterNav />
+            <span
+                className='header-sect'
+            >
+                <RouterNav />
+            </span>
         </PageHeader>
 
         <PageBody>
             <Outlet />
         </PageBody>
 
-        <PageFooter>
-            FOOTER
+        <PageFooter
+            className='f-content'
+        >
+            Made by Chris :)
         </PageFooter>
     </Page>
 );
 
-router.setPathElement('/buttons', () => <Buttons />)
-router.setPathElement('/inputs', () => <Inputs />)
-router.setPathElement('/managers', () => <ManagedContent />)
+router.setPathElement('/markdown', () => <Outlet />)
+router.setPathElement('/samples', () => <Outlet />)
+router.setPathElement('/samples/previews/buttons', () => <Buttons />)
+router.setPathElement('/samples/previews/inputs', () => <Inputs />)
+router.setPathElement('/samples/previews/managers', () => <ManagedContent />)
+router.setPathElement('/samples/theme-preview', () => <ThemePreview />)
+router.setPathElement('/samples/content/preview', () => <ContentPreview />)
 
 export default function App() {
+
+    useEffect(() => {
+        const theme = themes[0];
+        if (!theme)
+            throw new Error('Undefined theme')
+
+        document.body.classList.remove(...themes);
+        document.body.classList.add(theme);
+    }, []);
+
     return <div
         className='app f-main'
     >
-        <ThemePreview />
-
-        <MarkdownRouter
-            router={router}
-        />
+        <BrowserRouter>
+            <Routes>
+                {markdownRouter(router, Route)}
+            </Routes>
+        </BrowserRouter>
 
         <Managers />
     </div>

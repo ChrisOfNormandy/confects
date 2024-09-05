@@ -1,4 +1,5 @@
-import { getClassName, HTML_DivProps } from "../../../main";
+import { HTML_DivProps } from "#types/html";
+import { getClassName } from "$/helpers";
 
 export type PageDividerProps = HTML_DivProps;
 

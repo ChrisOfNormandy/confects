@@ -1,45 +1,58 @@
-@use '~styles' as *;
+@use '~styling' as styling;
+@use '~layout' as layout;
 
 .markdown-renderer {
-    @include flex(false, true);
-    @include rounded;
-    @include fullsize;
+    @include layout.flex(false, true);
+    @include styling.rounded;
+    @include layout.fullsize;
+
+    overflow: hidden;
 
     .md-header {
-        @include rounded-side(10px, top);
-        @include flex(true);
+        @include styling.rounded(10px, top);
+        @include layout.flex-between(true);
 
         padding: 5px;
 
-        .raw-toggle {
-            @include flex(true);
+        .render-controls {
+            @include layout.flex(true);
 
             .show-pretty {
-                @include rounded(0);
-                @include rounded-side(10px, left)
+                @include styling.rounded(0);
+                @include styling.rounded(10px, left)
             }
 
             .show-raw {
-                @include rounded(0);
-                @include rounded-side(10px, right)
+                @include styling.rounded(0);
+                @include styling.rounded(10px, right)
+            }
+        }
+
+        .file-controls {
+            @include layout.flex(true);
+
+            .glyph {
+                &:not(:first-child) {
+                    margin-left: 10px;
+                }
             }
         }
     }
 
     .md-body {
-        @include flex(false, true);
-        @include fullsize(40px);
+        @include layout.flex(false, true);
+        @include layout.fullsize(40px);
 
         padding: 10px 20px;
+        overflow: hidden;
 
         .md-content {
-            @include flex(false, true);
-            @include fullsize(20px);
-            @include rounded;
+            @include layout.flex(false, true);
+            @include layout.fullsize(20px);
+            @include styling.rounded;
 
             padding: 10px;
-
-            &.raw {}
+            overflow: auto;
 
             &:not(.raw) {
                 .heading {
@@ -52,6 +65,7 @@
 
                 ul,
                 ol {
+                    padding-left: 10px;
 
                     ul,
                     ol {
@@ -73,11 +87,15 @@
                     margin: 10px 0 10px 20px;
                     padding: 10px 20px;
                     border-left: 3px solid;
+
+                    blockquote {
+                        filter: brightness(0.95);
+                    }
                 }
 
                 pre {
                     code {
-                        @include wide;
+                        @include layout.wide;
                     }
                 }
             }
@@ -85,11 +103,11 @@
     }
 
     .md-footer {
-        @include rounded-side(10px, bottom);
-        @include flex(true);
+        @include styling.rounded(10px, bottom);
+        @include layout.flex(true);
 
         padding: 5px;
     }
 
-    @include flex(false, true);
+    @include layout.flex(false, true);
 }

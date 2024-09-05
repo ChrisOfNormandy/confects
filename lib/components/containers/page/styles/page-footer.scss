@@ -1,0 +1,8 @@
+@use '~layout' as layout;
+
+.page-footer {
+    @include layout.flex-center(true);
+    @include layout.wide(20px);
+
+    padding: 5px 10px;
+}

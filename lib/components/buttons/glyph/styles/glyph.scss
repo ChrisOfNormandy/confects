@@ -1,9 +1,9 @@
-@use '~styles' as *;
+@use '~styling' as styling;
 @use '../../button/styles/button' as *;
 
 .glyph {
     @include btn;
-    @include circular;
+    @include styling.circular;
 
     &.icon-only {
         background: none;

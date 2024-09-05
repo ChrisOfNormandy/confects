@@ -1,0 +1,19 @@
+@use '~layout' as layout;
+
+.content-tile-group {
+    @include layout.flex-even(true, true);
+    @include layout.wide;
+
+    .content-tile-grouping {
+        @include layout.flex-even;
+        @include layout.wide;
+
+        padding: 10px;
+
+        >.content-tile {
+            &:not(:first-child) {
+                margin-left: 20px;
+            }
+        }
+    }
+}

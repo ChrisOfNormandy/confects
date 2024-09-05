@@ -1,6 +1,6 @@
 import './theme-preview.scss';
-import { categoryList, paletteList } from './helpers/test-content';
-import { getClassName } from 'lib/main';
+import { getClassName } from '$/helpers';
+import { themeCategories, themes } from '#types/themes';
 import { useEffect, useState } from 'react';
 
 export function ThemePreview() {
@@ -9,11 +9,11 @@ export function ThemePreview() {
     const [ready, isReady] = useState(false);
 
     useEffect(() => {
-        const theme = paletteList[t];
+        const theme = themes[t];
         if (!theme)
             throw new Error('Undefined theme')
 
-        document.body.classList.remove(...paletteList);
+        document.body.classList.remove(...themes);
         document.body.classList.add(theme);
         isReady(false);
     }, [t]);
@@ -40,7 +40,7 @@ export function ThemePreview() {
 
         <button
             onClick={() => {
-                if (t >= paletteList.length - 1)
+                if (t >= themes.length - 1)
                     setT(0);
                 else
                     setT(t + 1)
@@ -49,12 +49,12 @@ export function ThemePreview() {
                 e.preventDefault();
 
                 if (t <= 0)
-                    setT(paletteList.length - 1);
+                    setT(themes.length - 1);
                 else
                     setT(t - 1)
             }}
         >
-            THEME: {paletteList[t]}
+            THEME: {themes[t]}
         </button>
 
         <div
@@ -64,7 +64,7 @@ export function ThemePreview() {
                 className='block-row'
             >
                 {
-                    categoryList.map((n) => {
+                    themeCategories.map((n) => {
                         const className = `f-${n}`;
 
                         return <div
@@ -88,7 +88,7 @@ export function ThemePreview() {
                 className='block-row'
             >
                 {
-                    categoryList.map((n) => {
+                    themeCategories.map((n) => {
                         const className = `f-${n}-i`;
 
                         return <div
@@ -112,7 +112,7 @@ export function ThemePreview() {
                 className='block-row'
             >
                 {
-                    categoryList.map((n) => {
+                    themeCategories.map((n) => {
                         const className = `f-${n}-c`;
 
                         return <div

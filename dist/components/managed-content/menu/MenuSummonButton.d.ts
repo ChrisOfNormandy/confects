@@ -1,4 +1,5 @@
-import { ButtonProps, MenuBuilder } from "../../../main";
+import { ButtonProps } from "../../../buttons";
+import { MenuBuilder } from "./MenuBuilder";
 interface extMenuSummonButtonProps {
     id: string;
     builder: MenuBuilder;

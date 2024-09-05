@@ -1,4 +1,7 @@
-import { Button, ButtonProps, Menu, MenuBuilder, menus } from "@";
+import { Button, ButtonProps } from "$/buttons";
+import { Menu } from "./Menu";
+import { MenuBuilder } from "./MenuBuilder";
+import { menus } from "./MenuManager";
 import { useRef } from "react";
 
 interface extMenuSummonButtonProps {

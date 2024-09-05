@@ -1,9 +1,10 @@
-@use '~styles' as *;
+@use '~styling' as styling;
+@use '~layout' as layout;
 @use 'brands.mixin' as *;
 
 .social-link {
-    @include flex-center(true);
-    @include rounded;
+    @include layout.flex-center(true);
+    @include styling.rounded;
     @include brand;
 
     .brand-name {
@@ -22,7 +23,8 @@
     }
 
     &:not(.with-label) {
-        @include circular;
+        @include styling.circular;
+
         padding: 6px;
 
         .icon {

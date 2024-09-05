@@ -1,4 +1,4 @@
-import { MenuContent } from "../../../main";
+import { MenuContent } from "./MenuContent";
 export declare class MenuBuilder {
     readonly id: string;
     private content;

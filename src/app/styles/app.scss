@@ -1,58 +1,39 @@
-@use '~themes' as *;
-@use '~styles' as *;
+@use '~layout' as layout;
+@use '~styling' as styling;
+@use '~themes' as themes;
 @use '@chrisofnormandy/confetti/main.scss';
 
-@include themeify();
+@include themes.themeify();
 
 .app {
     overflow: auto;
     height: 100%;
 
-    .page-header {
-        @include flex-between(true);
-
-        .router-nav-list {
-            @include flex(true);
-
-            .router-nav-list {
-                @include flex(false, true);
-            }
-
-            .router-nav-list-item {
-                @include flex(false, true);
-            }
-        }
-    }
-
-    .page-body {
-        padding: 50px;
-    }
-
     .display {
-        @include flex(false, true);
-        @include wide(40px);
+        @include layout.flex(false, true);
+        @include layout.wide(40px);
 
         padding: 20px;
 
         .show {
-            @include flex-between(true);
-            @include wide(40px);
-            @include rounded(50px);
+            @include layout.flex-between(true);
+            @include layout.wide(40px);
+            @include styling.rounded(50px);
 
-            margin-top: 20px;
             border: 1px dashed grey;
+            margin-top: 20px;
             padding: 20px;
 
             .col {
-                @include flex(false, true);
-                @include fullsize(4px);
+                @include layout.flex(false, true);
+                @include layout.fullsize(4px);
 
                 padding: 2px;
             }
 
             .row {
-                @include flex-even(true);
-                @include fullsize(4px);
+                @include layout.flex-even(true);
+                @include layout.fullsize(4px);
 
                 padding: 2px;
             }

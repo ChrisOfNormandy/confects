@@ -1,5 +1,6 @@
-import { ButtonProps, IconProps } from "../../../main";
 import './styles/glyph.scss';
+import { ButtonProps } from '../../../buttons';
+import { IconProps } from '../../../decorations';
 interface extGlyphProps {
     size?: 1 | 2 | 3 | 4 | 5;
     iconOnly?: boolean;

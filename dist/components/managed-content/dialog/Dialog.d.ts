@@ -1,5 +1,5 @@
 import './styles/dialog.scss';
-import { HTML_DivProps } from "../../../main";
+import { HTML_DivProps } from '../../../types/html';
 import { ReactNode } from "react";
 interface extDialogProps {
     cancelText?: ReactNode;

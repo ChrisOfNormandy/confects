@@ -1,6 +1,6 @@
 import './styles/code-editor.scss';
 import './userWorkers';
-import { HTML_DivProps } from '../../../../main';
+import { HTML_DivProps } from '../../../../types/html';
 import { ReactNode } from 'react';
 interface extCodeExitorProps {
     id: string;

@@ -1,5 +1,8 @@
 import './styles/text-editor.scss';
-import { Button, HTML_TextAreaProps, Icon, getClassName } from "@";
+import { Button } from '$/buttons';
+import { getClassName } from '$/helpers';
+import { HTML_TextAreaProps } from '#types/html';
+import { Icon } from '$/decorations';
 import { useEffect, useRef, useState } from "react";
 
 export type TextEditorProps = HTML_TextAreaProps;

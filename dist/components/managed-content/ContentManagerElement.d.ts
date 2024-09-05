@@ -1,5 +1,6 @@
-import { ContentManager, HTML_DivProps } from "../../main";
 import './styles/content-manager.scss';
+import { ContentManager } from "./ContentManager";
+import { HTML_DivProps } from "../../types/html";
 interface extContentManagerElementProps<T extends ContentManager> {
     manager: T;
 }

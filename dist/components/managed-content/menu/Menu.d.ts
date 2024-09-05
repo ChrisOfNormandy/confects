@@ -1,5 +1,6 @@
 import './styles/menu.scss';
-import { HTML_DivProps, MenuContent } from "../../../main";
+import { HTML_DivProps } from '../../../types/html';
+import { MenuContent } from './MenuContent';
 import { ReactNode } from "react";
 interface extMenuProps {
     heading?: ReactNode;

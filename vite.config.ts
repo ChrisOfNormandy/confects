@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path';
+import { viteConfigAliases } from '@chrisofnormandy/confetti';
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
@@ -13,21 +14,38 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            '~styles': '@chrisofnormandy/confetti/_pack.scss',
-            '~themes': '@chrisofnormandy/confetti/_themes.scss'
+            ...viteConfigAliases()
         }
     },
     build: {
+        copyPublicDir: false,
         emptyOutDir: false,
         lib: {
-            entry: resolve('./lib/main.ts'),
+            entry: [
+                'buttons',
+                'contents',
+                'decorations',
+                'editors',
+                'helpers',
+                'inputs',
+                'managed',
+                'markdown',
+                'navs',
+                'pages',
+                'routers',
+                'tables',
+                'types'
+            ].map((exp) => resolve(`./lib/${exp}.ts`)),
             name: 'confects',
+            formats: ['es']
         },
         rollupOptions: {
-            external: ['react', 'react-dom', 'sass'],
+            external: ['react', 'react-dom', 'sass', 'react-router', 'react-router-dom'],
             output: {
                 globals: {
-                    react: 'React'
+                    react: 'React',
+                    'react-router': 'ReactRouter',
+                    'react-router-dom': 'ReactRouterDOM'
                 }
             }
         }

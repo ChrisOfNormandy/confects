@@ -1,5 +1,6 @@
 import './styles/button.scss';
-import { getClassName, HTML_ButtonProps } from '@';
+import { getClassName } from '$/helpers';
+import { HTML_ButtonProps } from '#types/html';
 import { Ref } from 'react';
 
 interface extButtonProps {

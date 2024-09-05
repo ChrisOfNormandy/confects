@@ -1,7 +1,7 @@
-@use '~styles' as *;
+@use '~styling' as styling;
 
 .input {
-    @include rounded;
+    @include styling.rounded;
 
     padding: 4px 8px;
 }

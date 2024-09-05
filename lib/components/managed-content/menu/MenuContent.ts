@@ -1,4 +1,5 @@
-import { ButtonProps, menus } from '@';
+import { ButtonProps } from "$/buttons";
+import { menus } from "./MenuManager";
 import { MouseEventHandler, ReactNode } from "react";
 import { v4 } from 'uuid';
 

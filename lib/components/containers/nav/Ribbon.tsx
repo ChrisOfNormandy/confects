@@ -1,4 +1,5 @@
-import { getClassName, HTML_DivProps } from "@";
+import { getClassName } from "$/helpers";
+import { HTML_DivProps } from "#types/html";
 
 export type RibbonProps = HTML_DivProps;
 

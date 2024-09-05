@@ -1,8 +1,11 @@
 import './styles/dialog.scss';
-import { Button, Glyph, HTML_DivProps, dialogs, getClassName, makeDraggable } from "../../../main";
+import { Button, Glyph } from '$/buttons';
 import { DialogBody } from "./fragments/DialogBody";
 import { DialogFooter } from "./fragments/DialogFooter";
 import { DialogHeader } from "./fragments/DialogHeader";
+import { dialogs } from './DialogManager';
+import { getClassName, makeDraggable } from '$/helpers';
+import { HTML_DivProps } from '#types/html';
 import { ReactNode } from "react";
 
 interface extDialogProps {

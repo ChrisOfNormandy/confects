@@ -1,0 +1,7 @@
+@use '~layout' as layout;
+
+.content-list-item {
+    @include layout.flex-center(true);
+
+    padding: 10px 5px;
+}

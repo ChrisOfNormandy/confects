@@ -195,6 +195,9 @@ export function electronViteConfig(): ({
             AbstractRange: false;
             Accelerometer: false;
             addEventListener: false;
+            ai: false;
+            AI: false;
+            AITextSession: false;
             alert: false;
             AnalyserNode: false;
             Animation: false;
@@ -264,6 +267,7 @@ export function electronViteConfig(): ({
             CDATASection: false;
             ChannelMergerNode: false;
             ChannelSplitterNode: false;
+            ChapterInformation: false;
             CharacterBoundsUpdateEvent: false;
             CharacterData: false;
             clearInterval: false;
@@ -328,6 +332,7 @@ export function electronViteConfig(): ({
             CSSNamespaceRule: false;
             CSSNumericArray: false;
             CSSNumericValue: false;
+            CSSPageDescriptors: false;
             CSSPageRule: false;
             CSSPerspective: false;
             CSSPositionTryDescriptors: false;

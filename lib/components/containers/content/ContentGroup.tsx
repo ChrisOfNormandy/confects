@@ -1,4 +1,6 @@
-import { getClassName, HTML_DivProps } from "@";
+import './styles/content-group.scss';
+import { getClassName } from '$/helpers';
+import { HTML_DivProps } from '#types/html';
 
 export type ContentGroupProps = HTML_DivProps;
 

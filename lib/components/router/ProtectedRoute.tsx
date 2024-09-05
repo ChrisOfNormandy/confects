@@ -1,5 +1,5 @@
+import { Loading } from "$/decorations";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
-import { Loading } from '@';
 
 export type ProtectedRouteProps = {
     element: React.ComponentType<object>

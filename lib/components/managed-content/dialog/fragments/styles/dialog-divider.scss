@@ -1,5 +1,5 @@
-@use '~styles' as *;
+@use '~layout' as layout;
 
 .dialog-divider {
-    @include wide;
+    @include layout.wide;
 }

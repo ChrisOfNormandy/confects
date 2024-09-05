@@ -1,4 +1,4 @@
-import { MenuContent } from "@";
+import { MenuContent } from "./MenuContent";
 
 export class MenuBuilder {
     readonly id: string

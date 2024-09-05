@@ -1,4 +1,4 @@
-import { HTML_DivProps } from "@";
+import { HTML_DivProps } from "#types/html";
 
 export type InterfaceWrapperProps = HTML_DivProps;
 

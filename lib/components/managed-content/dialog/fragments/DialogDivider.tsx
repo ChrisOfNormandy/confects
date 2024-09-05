@@ -1,5 +1,6 @@
 import './styles/dialog-divider.scss';
-import { HTML_DivProps, getClassName } from "@"
+import { getClassName } from '$/helpers';
+import { HTML_DivProps } from '#types/html';
 
 export type DialogDividerProps = HTML_DivProps;
 

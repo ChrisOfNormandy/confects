@@ -1,5 +1,5 @@
-import { ButtonProps } from '../../../main';
 import './styles/badge.scss';
+import { ButtonProps } from '../../../buttons';
 interface extBadgeProps {
     group?: string;
 }

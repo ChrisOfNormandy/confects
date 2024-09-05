@@ -1,5 +1,6 @@
 import './styles/social-link.scss';
-import { BrandName, ButtonProps } from '../../../main';
+import { BrandName } from '../../../types/brands';
+import { ButtonProps } from '../../../buttons';
 interface extBrandButtonProps {
     brand: BrandName;
     fill?: boolean;

@@ -1,5 +1,6 @@
-import { Input, InputProps, getClassName } from "../../../main";
 import './styles/slider.scss';
+import { getClassName } from '$/helpers';
+import { Input, InputProps } from '$/inputs';
 
 export type SliderProps = InputProps;
 

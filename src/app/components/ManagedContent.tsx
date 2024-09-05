@@ -1,8 +1,7 @@
-import { Button, Dialog, dialogs } from "lib/main";
+import { Button } from "$/buttons";
+import { Dialog, dialogs, MenuBuilder, MenuSummonButton } from "$/managed";
 import { Display } from "./helpers/formatters";
 import { v4 } from "uuid";
-import MenuBuilder from "lib/components/managed-content/menu/MenuBuilder";
-import MenuSummonButton from "lib/components/managed-content/menu/MenuSummonButton";
 
 export function ManagedContent() {
     return <Display heading='managed-content'>

@@ -1,58 +1,98 @@
-import { Router, useRouter } from "@";
-import { NavLink } from "react-router-dom";
+import './styles/router-nav.scss';
+import { CRouter } from './CRouter';
+import { getClassName } from '$/helpers';
+import { useRouter } from './MarkdownRouter';
 
 interface IRouteProps {
-    router: Router
+    router: CRouter
+    maxDepth?: number
+    __depth?: number
 }
 
-export function RouterNav() {
-    const router = useRouter();
+interface RouterNavProps {
+    router?: CRouter
+    maxDepth?: number
+}
 
-    return <Route router={router} />
+export function RouterNav(
+    {
+        router,
+        maxDepth,
+    }: RouterNavProps
+) {
+    return <div
+        className='router-nav'
+    >
+        <RouteList
+            router={router || useRouter()}
+            maxDepth={maxDepth}
+        />
+    </div>
 }
 
 function Route(
     {
-        router
+        router,
+        maxDepth,
+        __depth = 0
     }: IRouteProps
 ) {
+    if (__depth === maxDepth)
+        return null;
+
     if (!router.path) {
         return <RouteList
             router={router}
+            maxDepth={maxDepth}
+            __depth={__depth + 1}
         />
     }
 
     return <div
-        className='router-nav'
+        className='router-nav-link'
     >
-        <NavLink
-            to={router.getPath()}
+        <a
+            href={router.getPath()}
         >
-            {router.path}
-        </NavLink>
+            {router.path.slice(1).split(/[-_]/g).map((s) => s[0]?.toUpperCase() + s.slice(1)).join(' ')}
+        </a>
 
         <RouteList
             router={router}
+            maxDepth={maxDepth}
+            __depth={__depth + 1}
         />
     </div>
 }
 
 function RouteList(
     {
-        router
+        router,
+        maxDepth,
+        __depth = 0,
     }: IRouteProps
 ) {
+    if (!router)
+        return null;
+
+    const routes = router.getRoutes();
+
+    if (!routes.length || __depth === maxDepth)
+        return null;
+
     return <ul
-        className='router-nav-list'
+        className={getClassName('router-nav-list', !!__depth && 'f-content')}
     >
         {
-            router.getRoutes().map(([path, route]) => {
+            routes.map(([path, route]) => {
                 return <li
                     key={path}
                     className='router-nav-item'
                 >
                     <Route
                         router={route}
+                        maxDepth={maxDepth}
+                        __depth={__depth}
                     />
                 </li>
             })

@@ -1,4 +1,4 @@
-import { HTML_DivProps } from "../../../main";
+import { HTML_DivProps } from "#types/html";
 
 export type ToastProps = HTML_DivProps;
 

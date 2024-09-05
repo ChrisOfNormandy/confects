@@ -1,5 +1,6 @@
 import './styles/file-input.scss';
-import { Input, InputProps, getClassName, dragEvent } from "@";
+import { dragEvent, getClassName } from '$/helpers';
+import { Input, InputProps } from '$/inputs';
 import { ReactNode, useEffect, useRef, useState } from "react";
 
 interface extFileInputProps {

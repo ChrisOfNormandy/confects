@@ -1,9 +1,8 @@
-import { getClassName, HTML_InputProps } from '@';
 import './styles/input.scss';
+import { getClassName } from '$/helpers';
+import { HTML_InputProps } from '#types/html';
 
-interface extInputProps { }
-
-export type InputProps = HTML_InputProps & extInputProps;
+export type InputProps = HTML_InputProps;
 
 export function Input(
     {

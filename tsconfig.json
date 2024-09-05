@@ -25,12 +25,6 @@
             "esnext"
         ],
         "paths": {
-            "#types/*": [
-                "lib/types/*"
-            ],
-            "@helpers/*": [
-                "lib/helpers/*"
-            ],
             "@buttons/*": [
                 "lib/components/buttons/*"
             ],
@@ -55,8 +49,11 @@
             "@table/*": [
                 "lib/components/table/*"
             ],
-            "@": [
-                "lib/main"
+            "#types/*": [
+                "lib/types/*"
+            ],
+            "$/*": [
+                "lib/*"
             ]
         }
     },

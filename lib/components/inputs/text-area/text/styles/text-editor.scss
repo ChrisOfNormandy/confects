@@ -1,17 +1,18 @@
-@use '~styles' as *;
+@use '~styling' as styling;
+@use '~layout' as layout;
 
 .input.text-editor {
-    @include flex(true, true);
+    @include layout.flex(true, true);
 
     .editor {
-        @include flex;
-        @include fullsize;
+        @include layout.flex;
+        @include layout.fullsize;
 
         position: relative;
 
         textarea {
-            @include rounded-side(10px, 'top');
-            @include fullsize;
+            @include styling.rounded(10px, top);
+            @include layout.fullsize;
 
             resize: none;
             border: none;
@@ -20,8 +21,8 @@
         }
 
         .status-overlay {
-            @include flex-center(true, true);
-            @include fullsize;
+            @include layout.flex-center(true, true);
+            @include layout.fullsize;
 
             position: absolute;
             background-color: hsla(0, 100%, 100%, 0.2);
@@ -38,9 +39,9 @@
     }
 
     .editor-controls {
-        @include flex-between(true);
-        @include wide(8px);
-        @include rounded-side(10px, 'bottom');
+        @include layout.flex-between(true);
+        @include layout.wide(8px);
+        @include styling.rounded(10px, bottom);
 
         border-top: 2px solid;
         padding: 4px;
