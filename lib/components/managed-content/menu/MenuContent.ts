@@ -5,7 +5,7 @@ import { v4 } from 'uuid';
 
 export class MenuContent {
     private id: string;
-    private menuId: string;
+    private readonly menuId: string;
 
     private text?: ReactNode;
     private textGetter?: () => ReactNode;
@@ -23,58 +23,41 @@ export class MenuContent {
     private onClick?: MouseEventHandler;
     private onContextMenu?: MouseEventHandler;
 
-    readonly spacer: boolean;
-
     getText() {
-        if (this.spacer)
-            return null;
-
         return this.textGetter && this.textGetter() || this.text;
     }
 
-    setText(text: ReactNode, getter?: () => ReactNode) {
-        if (this.spacer)
-            return this;
-
-        if (getter)
-            this.textGetter = getter;
-        this.text = text;
+    setText(text: ReactNode | (() => ReactNode)) {
+        if (typeof text === 'function')
+            this.textGetter = text;
+        else
+            this.text = text;
 
         return this;
     }
 
     getIcon() {
-        if (this.spacer)
-            return '';
-
         return this.iconGetter && this.iconGetter() || this.icon;
     }
 
-    setIcon(icon: string, getter?: () => string) {
-        if (this.spacer)
-            return this;
-
-        if (getter)
-            this.iconGetter = getter;
-        this.icon = icon;
+    setIcon(icon: string | (() => string)) {
+        if (typeof icon === 'function')
+            this.iconGetter = icon;
+        else
+            this.icon = icon;
 
         return this;
     }
 
     getHoverIcon() {
-        if (this.spacer)
-            return '';
-
         return this.hoverIconGetter && this.hoverIconGetter() || this.hoverIcon;
     }
 
-    setHoverIcon(icon: string, getter?: () => string) {
-        if (this.spacer)
-            return this;
-
-        if (getter)
-            this.hoverIconGetter = getter;
-        this.hoverIcon = icon;
+    setHoverIcon(icon: string | (() => string)) {
+        if (typeof icon === 'function')
+            this.hoverIconGetter = icon;
+        else
+            this.hoverIcon = icon;
 
         return this;
     }
@@ -82,11 +65,15 @@ export class MenuContent {
     setOnClick(fn: MouseEventHandler, closeOnClick = true) {
         this.onClick = fn;
         this.closeOnClick = closeOnClick;
+
+        return this;
     }
 
     setOnContextMenu(fn: MouseEventHandler, closeOnContextMenu = true) {
         this.onContextMenu = fn;
         this.closeOnContextMenu = closeOnContextMenu;
+
+        return this;
     }
 
     addProps(props: ButtonProps) {
@@ -96,12 +83,6 @@ export class MenuContent {
     }
 
     getProps(): ButtonProps {
-        if (this.spacer) {
-            return {
-                id: this.id
-            }
-        }
-
         return {
             id: this.id,
             onClick: (e) => {
@@ -127,13 +108,8 @@ export class MenuContent {
         }
     }
 
-    /**
-     * 
-     * @param spacer Render as a divider line or whitespace instead of an option button.
-     */
-    constructor(menuId: string, spacer = false) {
+    constructor(menuId: string) {
         this.id = v4();
         this.menuId = menuId;
-        this.spacer = spacer;
     }
 }

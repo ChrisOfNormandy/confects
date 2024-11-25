@@ -9,7 +9,6 @@ export * from '@managed/dialog/fragments/DialogDivider';
 export * from '@managed/dialog/fragments/DialogFooter';
 export * from '@managed/dialog/fragments/DialogHeader';
 export * from '@managed/menu/Menu';
-export * from '@managed/menu/MenuBuilder';
 export * from '@managed/menu/MenuContent';
 export * from '@managed/menu/MenuManager';
 export * from '@managed/menu/MenuSummonButton';

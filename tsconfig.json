@@ -8,7 +8,7 @@
         "isolatedModules": true,
         "jsx": "react-jsx",
         "module": "esnext",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "noFallthroughCasesInSwitch": true,
         "noImplicitAny": true,
         "noImplicitReturns": true,

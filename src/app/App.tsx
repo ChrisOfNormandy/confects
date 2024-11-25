@@ -1,4 +1,5 @@
 import './styles/app.scss';
+import { BrowserRouter } from 'react-router-dom';
 import { Buttons } from './components/Buttons';
 import { CRouter } from '@router/CRouter';
 import { Inputs } from './components/Inputs';
@@ -9,10 +10,10 @@ import { Outlet, Route, Routes } from 'react-router';
 import { Page, PageBody, PageFooter, PageHeader } from '$/pages';
 import { RouterNav } from '@router/RouterNav';
 import { ThemePreview } from './components/ThemePreview';
-import { themes } from '#types/themes';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ContentPreview from './components/ContentPreview';
-import { BrowserRouter } from 'react-router-dom';
+import { themes } from '@chrisofnormandy/confetti/themes';
+import { ThemeSelector } from '@buttons/theme-selector/ThemeSelector';
 
 const router = new CRouter(
     {
@@ -108,6 +109,8 @@ router.setElement(
                 >
                     CoNfects
                 </div>
+
+                <ThemeSelector />
             </span>
 
             <span
@@ -131,6 +134,7 @@ router.setElement(
 
 router.setPathElement('/markdown', () => <Outlet />)
 router.setPathElement('/samples', () => <Outlet />)
+router.setPathElement('/samples/previews', () => <Outlet />)
 router.setPathElement('/samples/previews/buttons', () => <Buttons />)
 router.setPathElement('/samples/previews/inputs', () => <Inputs />)
 router.setPathElement('/samples/previews/managers', () => <ManagedContent />)
@@ -139,24 +143,26 @@ router.setPathElement('/samples/content/preview', () => <ContentPreview />)
 
 export default function App() {
 
-    useEffect(() => {
-        const theme = themes[0];
-        if (!theme)
-            throw new Error('Undefined theme')
+    const [ready, isReady] = useState(false);
 
-        document.body.classList.remove(...themes);
-        document.body.classList.add(theme);
+    useEffect(() => {
+        themes.init();
+
+        isReady(true);
     }, []);
 
     return <div
         className='app f-main'
     >
         <BrowserRouter>
-            <Routes>
-                {markdownRouter(router, Route)}
-            </Routes>
+            {
+                ready &&
+                <Routes>
+                    {markdownRouter(router, Route)}
+                </Routes>
+            }
         </BrowserRouter>
 
-        <Managers />
+        {ready && <Managers />}
     </div>
 }

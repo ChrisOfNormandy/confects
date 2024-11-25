@@ -1,10 +1,10 @@
-import { ReactNode } from "react";
+import { JSX } from "react";
 
 export class ContentManager {
 
     readonly id: string;
-    private _refresh?: (content: [string, ReactNode][]) => void
-    private content = new Map<string, ReactNode>();
+    private _refresh?: (content: [string, JSX.Element][]) => void
+    private content = new Map<string, JSX.Element>();
     private openIds = new Set<string>();
 
     /**
@@ -34,7 +34,7 @@ export class ContentManager {
      *  }
      * ```
      */
-    setRefreshFn(fn?: (content: [string, ReactNode][]) => void) {
+    setRefreshFn(fn?: (content: [string, JSX.Element][]) => void) {
         this._refresh = fn;
 
         return this;
@@ -44,21 +44,21 @@ export class ContentManager {
      * Intended to be called by local methods only.
      * @param content 
      */
-    private refresh(content: [string, ReactNode][]) {
+    private refresh(content: [string, JSX.Element][]) {
         if (!this._refresh)
             throw new Error('Cannot refresh (undefined function); define with setRefreshFn() first.');
 
         this._refresh(content);
     }
 
-    store(id: string, content: ReactNode) {
+    store(id: string, content: JSX.Element) {
         this.content.set(id, content);
 
         return this;
     }
 
     private _open() {
-        this.refresh(Array.from(this.openIds).map((id) => [id, this.content.get(id)]))
+        this.refresh(Array.from(this.content).filter(([id]) => this.openIds.has(id)))
     }
 
     open(...ids: string[]) {

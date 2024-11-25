@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path';
-import { viteConfigAliases } from '@chrisofnormandy/confetti';
+import { viteConfigAliases, viteConfigScss } from '@chrisofnormandy/confetti/config';
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
@@ -50,4 +50,5 @@ export default defineConfig({
             }
         }
     },
+    ...viteConfigScss()
 })

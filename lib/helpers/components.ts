@@ -41,3 +41,13 @@ export function makeDraggable(id: string) {
 
     return { onMouseDown };
 }
+
+let _uniqueId = 0;
+export function uniqueId(prefix?: string) {
+    _uniqueId++;
+
+    if (prefix)
+        return prefix + _uniqueId
+
+    return _uniqueId.toString();
+}

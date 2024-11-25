@@ -5,14 +5,13 @@ import { MenuContent } from './MenuContent';
 import { MenuItem } from './fragments/MenuItem';
 import { ReactNode, useEffect, useRef } from "react";
 
-interface extMenuProps {
+export type MenuProps = {
     heading?: ReactNode
+    id: string
     menuContent: MenuContent[]
     place?: 'left' | 'top' | 'right' | 'bottom'
     position: DOMRect
-}
-
-export type MenuProps = HTML_DivProps & extMenuProps;
+} & HTML_DivProps
 
 export function Menu(
     {
@@ -86,4 +85,40 @@ export function Menu(
             })
         }
     </div>
+}
+
+export class MenuBuilder {
+    private readonly id: string;
+    private readonly content: MenuContent[] = [];
+    private position: DOMRect;
+
+    addContent() {
+        const content = new MenuContent(this.id);
+        this.content.push(content);
+
+        return content;
+    }
+
+    attach<T extends HTMLElement>(ref: T) {
+        this.position = ref.getBoundingClientRect();
+    }
+
+    setPosition(x: number, y: number) {
+        this.position.x = x;
+        this.position.y = y;
+    }
+
+    getProps(): MenuProps {
+        return {
+            id: this.id,
+            menuContent: this.content,
+            position: this.position
+        }
+    }
+
+    constructor(id: string) {
+        this.id = id;
+
+        this.position = new DOMRect(0, 0);
+    }
 }

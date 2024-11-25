@@ -1,7 +1,7 @@
 import './theme-preview.scss';
 import { getClassName } from '$/helpers';
-import { themeCategories, themes } from '#types/themes';
 import { useEffect, useState } from 'react';
+import { themes } from '@chrisofnormandy/confetti/themes';
 
 export function ThemePreview() {
 
@@ -9,12 +9,6 @@ export function ThemePreview() {
     const [ready, isReady] = useState(false);
 
     useEffect(() => {
-        const theme = themes[t];
-        if (!theme)
-            throw new Error('Undefined theme')
-
-        document.body.classList.remove(...themes);
-        document.body.classList.add(theme);
         isReady(false);
     }, [t]);
 
@@ -38,23 +32,8 @@ export function ThemePreview() {
             Theme Preview
         </h3>
 
-        <button
-            onClick={() => {
-                if (t >= themes.length - 1)
-                    setT(0);
-                else
-                    setT(t + 1)
-            }}
-            onContextMenu={(e) => {
-                e.preventDefault();
-
-                if (t <= 0)
-                    setT(themes.length - 1);
-                else
-                    setT(t - 1)
-            }}
-        >
-            THEME: {themes[t]}
+        <button>
+            THEME: {themes.getTheme()}
         </button>
 
         <div

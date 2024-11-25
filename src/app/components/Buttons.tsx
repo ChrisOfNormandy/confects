@@ -2,37 +2,37 @@ import { Badge, Button, Glyph, SocialLink } from '$/buttons';
 import { BrandName, brands } from '#types/brands';
 import { Display } from './helpers/formatters';
 import { getClassName } from '$/helpers';
-import { themeCategories } from '#types/themes';
+import { StyleMode, STYLES, themes } from '@chrisofnormandy/confetti/themes';
+
+const MODES: (StyleMode | undefined)[] = [undefined, 'i', 'c']
 
 function ButtonDisplay() {
     return <Display heading='buttons' >
         {
-            ['', 'i', 'c'].map((mode) => {
+            MODES.map((mode) => {
                 return <div
                     key={mode || 'n'}
                     className='col'
                 >
                     {
-                        themeCategories.map((n) => {
-                            let styleType = `f-${n}`;
-                            if (mode)
-                                styleType += `-${mode}`;
+                        Array.from(STYLES).map((n) => {
+                            const theme = themes.getBasicStyling(n, { background: { mode }, border: { mode } })
 
                             return <div
                                 key={n}
                                 className='row'
                             >
                                 <Button
-                                    className={getClassName(styleType, 'hvr dis')}
+                                    className={getClassName(theme, 'hvr dis')}
                                 >
-                                    Click Me!
+                                    {n} {mode}
                                 </Button>
 
                                 <Button
-                                    className={getClassName(styleType, 'hvr dis ')}
+                                    className={getClassName(theme, 'hvr dis')}
                                     disabled
                                 >
-                                    {"Don't Click Me!"}
+                                    X {n} {mode} X
                                 </Button>
                             </div>
                         })
@@ -52,37 +52,35 @@ function BadgeDisplay() {
                     className='col'
                 >
                     {
-                        themeCategories.map((n) => {
-                            let styleType = `f-${n}`;
-                            if (mode)
-                                styleType += `-${mode}`;
+                        Array.from(STYLES).map((n) => {
+                            const theme = themes.getBasicStyling(n)
 
                             return <div
                                 key={n}
                                 className='row'
                             >
                                 <Badge
-                                    className={styleType}
+                                    className={theme}
                                 >
                                     Awesome
                                 </Badge>
 
                                 <Badge
-                                    className={styleType}
+                                    className={theme}
                                     disabled
                                 >
                                     Not Awesome
                                 </Badge>
 
                                 <Badge
-                                    className={styleType}
+                                    className={theme}
                                     group='Noice'
                                 >
                                     Awesome
                                 </Badge>
 
                                 <Badge
-                                    className={styleType}
+                                    className={theme}
                                     group='Noice'
                                     disabled
                                 >
@@ -109,10 +107,8 @@ function GlyphDisplay() {
                     className='col'
                 >
                     {
-                        themeCategories.map((n) => {
-                            let styleType = `f-${n}`;
-                            if (mode)
-                                styleType += `-${mode}`;
+                        Array.from(STYLES).map((n) => {
+                            const theme = themes.getBasicStyling(n)
 
                             return <div
                                 key={n}
@@ -124,13 +120,13 @@ function GlyphDisplay() {
                                             key={size}
                                         >
                                             <Glyph
-                                                className={styleType}
+                                                className={theme}
                                                 icon='emoji-smile'
                                                 size={size}
                                             />
 
                                             <Glyph
-                                                className={styleType}
+                                                className={theme}
                                                 icon='emoji-smile'
                                                 size={size}
                                                 disabled
@@ -153,10 +149,8 @@ function GlyphDisplay() {
                     className='col'
                 >
                     {
-                        themeCategories.map((n) => {
-                            let styleType = `c-${n}`;
-                            if (mode)
-                                styleType += `-${mode}`;
+                        Array.from(STYLES).map((n) => {
+                            const theme = themes.getBasicStyling(n)
 
                             return <div
                                 key={n}
@@ -168,14 +162,14 @@ function GlyphDisplay() {
                                             key={size}
                                         >
                                             <Glyph
-                                                className={styleType}
+                                                className={theme}
                                                 icon='emoji-smile'
                                                 iconOnly
                                                 size={size}
                                             />
 
                                             <Glyph
-                                                className={styleType}
+                                                className={theme}
                                                 icon='emoji-smile'
                                                 size={size}
                                                 iconOnly

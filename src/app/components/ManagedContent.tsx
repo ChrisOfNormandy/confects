@@ -26,13 +26,11 @@ export function ManagedContent() {
             ([undefined, 'top', 'bottom', 'left', 'right'] as ('top' | 'bottom' | 'left' | 'right')[]).map((place) => {
                 const builder = new MenuBuilder(v4());
 
-                builder.addItem()
+                builder.addContent()
                     .setText('Hello World!')
                     .addProps({ className: 'f-primary' });
 
                 return <MenuSummonButton
-                    key={builder.id}
-                    id={builder.id}
                     builder={builder}
                     place={place}
                 >

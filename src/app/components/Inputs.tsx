@@ -2,7 +2,7 @@ import { CodeEditor, TextEditor } from '$/editors';
 import { Display } from './helpers/formatters';
 import { FileInput, Input, Slider, Toggle, ToggleIconType } from '$/inputs';
 import { getClassName } from '$/helpers';
-import { themeCategories } from '#types/themes';
+import { STYLES, themes } from '@chrisofnormandy/confetti/themes';
 
 function InputDisplay() {
     return <Display heading='inputs' >
@@ -13,10 +13,8 @@ function InputDisplay() {
                     className='col'
                 >
                     {
-                        themeCategories.map((n) => {
-                            let styleType = `f-${n}`;
-                            if (mode)
-                                styleType += `-${mode}`;
+                        Array.from(STYLES).map((n) => {
+                            const theme = themes.getBasicStyling(n)
 
                             return <div
                                 key={n}
@@ -26,12 +24,12 @@ function InputDisplay() {
                                     className='col'
                                 >
                                     <Input
-                                        className={getClassName(styleType, 'hvr dis')}
+                                        className={getClassName(theme, 'hvr dis')}
                                         defaultValue='Edit Me!'
                                     />
 
                                     <Input
-                                        className={getClassName(styleType, 'hvr dis')}
+                                        className={getClassName(theme, 'hvr dis')}
                                         placeholder='Add to Me!'
                                     />
                                 </div>
@@ -40,13 +38,13 @@ function InputDisplay() {
                                     className='col'
                                 >
                                     <Input
-                                        className={getClassName(styleType, 'hvr dis')}
+                                        className={getClassName(theme, 'hvr dis')}
                                         defaultValue="Don't Edit Me!"
                                         disabled
                                     />
 
                                     <Input
-                                        className={getClassName(styleType, 'hvr dis')}
+                                        className={getClassName(theme, 'hvr dis')}
                                         placeholder="Don't Add to Me!"
                                         disabled
                                     />
@@ -56,13 +54,13 @@ function InputDisplay() {
                                     className='col'
                                 >
                                     <Input
-                                        className={getClassName(styleType, 'hvr dis')}
+                                        className={getClassName(theme, 'hvr dis')}
                                         defaultValue='Read Me!'
                                         readOnly
                                     />
 
                                     <Input
-                                        className={getClassName(styleType, 'hvr dis')}
+                                        className={getClassName(theme, 'hvr dis')}
                                         placeholder="Don't Read Me!"
                                         readOnly
                                         disabled
@@ -105,10 +103,8 @@ function ToggleDisplay() {
                     className='col'
                 >
                     {
-                        themeCategories.map((n) => {
-                            let styleType = `f-${n}`;
-                            if (mode)
-                                styleType += `-${mode}`;
+                        Array.from(STYLES).map((n) => {
+                            const theme = themes.getBasicStyling(n)
 
                             return <div
                                 key={n}
@@ -124,14 +120,14 @@ function ToggleDisplay() {
                                                 className='row'
                                             >
                                                 <Toggle
-                                                    className={styleType}
+                                                    className={theme}
                                                     iconType={iconType}
                                                     defaultChecked
                                                 />
 
                                                 <Toggle
                                                     iconType={iconType}
-                                                    className={styleType}
+                                                    className={theme}
                                                 />
                                             </div>
                                         })
@@ -164,14 +160,12 @@ function TextAreaDisplay() {
                     className='col'
                 >
                     {
-                        themeCategories.map((n) => {
-                            let styleType = `f-${n}`;
-                            if (mode)
-                                styleType += `-${mode}`;
+                        Array.from(STYLES).map((n) => {
+                            const theme = themes.getBasicStyling(n)
 
                             return <TextEditor
                                 key={n}
-                                className={styleType}
+                                className={theme}
                             />
                         })
                     }
@@ -190,10 +184,8 @@ function SliderDisplay() {
                     className='col'
                 >
                     {
-                        themeCategories.map((n) => {
-                            let styleType = `f-${n}`;
-                            if (mode)
-                                styleType += `-${mode}`;
+                        Array.from(STYLES).map((n) => {
+                            const theme = themes.getBasicStyling(n)
 
                             return <div
                                 key={n}
@@ -203,25 +195,11 @@ function SliderDisplay() {
                                     className='col'
                                 >
                                     <Slider
-                                        className={getClassName(styleType, 'hvr dis')}
+                                        className={getClassName(theme, 'hvr dis')}
                                     />
 
                                     <Slider
-                                        className={getClassName(styleType, 'hvr dis')}
-                                    />
-                                </div>
-
-                                <div
-                                    className='col'
-                                >
-                                    <Slider
-                                        className={getClassName(styleType, 'hvr dis')}
-                                        disabled
-                                    />
-
-                                    <Slider
-                                        className={getClassName(styleType, 'hvr dis')}
-                                        disabled
+                                        className={getClassName(theme, 'hvr dis')}
                                     />
                                 </div>
 
@@ -229,12 +207,26 @@ function SliderDisplay() {
                                     className='col'
                                 >
                                     <Slider
-                                        className={getClassName(styleType, 'hvr dis')}
+                                        className={getClassName(theme, 'hvr dis')}
+                                        disabled
+                                    />
+
+                                    <Slider
+                                        className={getClassName(theme, 'hvr dis')}
+                                        disabled
+                                    />
+                                </div>
+
+                                <div
+                                    className='col'
+                                >
+                                    <Slider
+                                        className={getClassName(theme, 'hvr dis')}
                                         readOnly
                                     />
 
                                     <Slider
-                                        className={getClassName(styleType, 'hvr dis')}
+                                        className={getClassName(theme, 'hvr dis')}
                                         readOnly
                                         disabled
                                     />
@@ -257,10 +249,8 @@ function FileInputDisplay() {
                     className='col'
                 >
                     {
-                        themeCategories.map((n) => {
-                            let styleType = `f-${n}`;
-                            if (mode)
-                                styleType += `-${mode}`;
+                        Array.from(STYLES).map((n) => {
+                            const theme = themes.getBasicStyling(n)
 
                             return <div
                                 key={n}
@@ -270,11 +260,11 @@ function FileInputDisplay() {
                                     className='col'
                                 >
                                     <FileInput
-                                        className={styleType}
+                                        className={theme}
                                     />
 
                                     <FileInput
-                                        className={styleType}
+                                        className={theme}
                                     />
                                 </div>
                             </div>

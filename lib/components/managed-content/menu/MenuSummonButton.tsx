@@ -1,11 +1,8 @@
 import { Button, ButtonProps } from "$/buttons";
-import { Menu } from "./Menu";
-import { MenuBuilder } from "./MenuBuilder";
+import { Menu, MenuBuilder } from "./Menu";
 import { menus } from "./MenuManager";
-import { useRef } from "react";
 
 interface extMenuSummonButtonProps {
-    id: string
     builder: MenuBuilder
     place?: 'top' | 'bottom' | 'left' | 'right'
 }
@@ -14,29 +11,24 @@ export type MenuSummonButtonProps = ButtonProps & extMenuSummonButtonProps
 
 export function MenuSummonButton(
     {
-        id,
         builder,
         place,
         ...props
     }: MenuSummonButtonProps
 ) {
-    const ref = useRef(null as HTMLButtonElement | null);
-
     return <Button
         onClick={(e) => {
-            if (!ref.current)
-                return;
+            builder.attach(e.currentTarget);
+
+            const menuProps = builder.getProps();
 
             const menu = <Menu
-                id={id}
-                menuContent={builder.getContent()}
                 place={place}
-                position={place && ref.current.getBoundingClientRect() || new DOMRect(e.clientX, e.clientY)}
+                {...menuProps}
             />
 
-            menus.store(id, menu).open();
+            menus.store(menuProps.id, menu).open(menuProps.id);
         }}
         {...props}
-        innerRef={ref}
     />
 }
