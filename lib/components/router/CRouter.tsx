@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { MarkdownFeatureFlags } from "@markdown/MarkdownRenderer";
 
 interface MarkdownDefinition {

@@ -7,10 +7,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 export default defineConfig({
     plugins: [react(), tsconfigPaths()],
     server: {
-        port: 3000,
-        fs: {
-            cachedChecks: false
-        }
+        port: 3000
     },
     resolve: {
         alias: {
@@ -40,7 +37,7 @@ export default defineConfig({
             formats: ['es']
         },
         rollupOptions: {
-            external: ['react', 'react-dom', 'sass', 'react-router', 'react-router-dom'],
+            external: ['react', 'react-dom', 'react-router', 'react-router-dom'],
             output: {
                 globals: {
                     react: 'React',
@@ -49,6 +46,5 @@ export default defineConfig({
                 }
             }
         }
-    },
-    ...viteConfigScss()
+    }
 })

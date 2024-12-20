@@ -1,8 +1,8 @@
-import { ClassAttributes, HTMLAttributes, ReactNode } from "react";
+import { ClassAttributes, HTMLAttributes, JSX, ReactNode } from "react";
 import { CodeEditor, CodeEditorProps } from "$/editors";
 import { Components, ExtraProps } from "react-markdown";
 import { getClassName } from "$/helpers";
-import { isInterfaceTypeIterable } from "#types/html";
+import { HTML_CodeProps, isInterfaceTypeIterable } from "#types/html";
 import { processingOrder } from "./patterns";
 import { v4 } from "uuid";
 
@@ -134,10 +134,10 @@ function application<T extends HTMLElement>({ children, node }: ElementProps<T>)
     return <p>{processed}</p>
 }
 
-export const renderers: Partial<Components> = {
+export const renderers: Components = {
     p: (props) => application<HTMLParagraphElement>(props),
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    code: ({ children, node, className, ...props }) => {
+    code: ({ children, node, className, ...props }: HTML_CodeProps & { node: unknown }) => {
         const spl = children?.toString().split(/\n/g);
         if (!spl)
             return <code className={getClassName('f-body', className)} />;

@@ -244,7 +244,7 @@ __metadata:
   dependencies:
     "@auth0/auth0-react": "npm:^2.2.4"
     "@chrisofnormandy/concauses": "https://github.com/chrisofnormandy/concauses.git"
-    "@chrisofnormandy/confetti": "npm:0.0.0"
+    "@chrisofnormandy/confetti": "npm:^0.0.0"
     "@eslint/js": "npm:^9.17.0"
     "@types/eslint__js": "npm:^8.42.3"
     "@types/node": "npm:^22.10.2"
@@ -282,12 +282,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@chrisofnormandy/confetti@npm:0.0.0":
+"@chrisofnormandy/confetti@npm:^0.0.0":
   version: 0.0.0
-  resolution: "@chrisofnormandy/confetti@npm:0.0.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40chrisofnormandy%2Fconfetti%2F0.0.0%2Ff82224184328b28e1e834ce7a6b6c6232d2fb51e"
+  resolution: "@chrisofnormandy/confetti@npm:0.0.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40chrisofnormandy%2Fconfetti%2F0.0.0%2F51086584676e727bab94095640126671c56e3991"
   peerDependencies:
     sass: ">=1.83"
-  checksum: 10c0/be097aac02e464ae618819e7eeebc69a60fbfbb69ed61e04c8425a03b8c75fe52db1990223c163363d6c03c6d3cde43a55f354b1148623e84b51a7645efe82f1
+  checksum: 10c0/159aaa4837a2811ed05d0ffb1bf0e995fbcd6c37812831d55d51c0f531d865ea9baba9c912f09f9a9c1dad754dab17ed37e52c4da3f3ccc1359e9d6493636bad
   languageName: node
   linkType: hard
 
