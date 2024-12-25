@@ -1,21 +1,8 @@
 import './theme-preview.scss';
 import { getClassName } from '$/helpers';
-import { useEffect, useState } from 'react';
-import { themes } from '@chrisofnormandy/confetti/themes';
+import { THEMES, themes } from '@chrisofnormandy/confetti/themes';
 
 export function ThemePreview() {
-
-    const [t, setT] = useState(0);
-    const [ready, isReady] = useState(false);
-
-    useEffect(() => {
-        isReady(false);
-    }, [t]);
-
-    useEffect(() => {
-        if (!ready)
-            isReady(true);
-    }, [ready]);
 
     const getStyle = (id: string) => {
         const elem = document.getElementById(id);
@@ -24,6 +11,8 @@ export function ThemePreview() {
 
         return id;
     }
+
+    const themeCategories = Array.from(THEMES);
 
     return <div
         className='theme-preview'

@@ -26,34 +26,49 @@
         ],
         "paths": {
             "@buttons/*": [
-                "lib/components/buttons/*"
+                "lib/buttons/*"
             ],
             "@containers/*": [
-                "lib/components/containers/*"
+                "lib/containers/*"
             ],
             "@decorations/*": [
-                "lib/components/decorations/*"
+                "lib/decorations/*"
+            ],
+            "@dialogs/*": [
+                "lib/dialogs/*"
+            ],
+            "@editors/*": [
+                "lib/editors/*"
+            ],
+            "#helpers/*": [
+                "lib/helpers/*"
             ],
             "@inputs/*": [
-                "lib/components/inputs/*"
+                "lib/inputs/*"
             ],
             "@managed/*": [
-                "lib/components/managed-content/*"
+                "lib/managed/*"
             ],
             "@markdown/*": [
-                "lib/components/markdown/*"
+                "lib/markdown/*"
+            ],
+            "@menu/*": [
+                "lib/menu/*"
+            ],
+            "@overlay/*": [
+                "lib/overlay/*"
             ],
             "@router/*": [
-                "lib/components/router/*"
+                "lib/router/*"
+            ],
+            "@selectors/*": [
+                "lib/selectors/*"
             ],
             "@table/*": [
-                "lib/components/table/*"
+                "lib/table/*"
             ],
             "#types/*": [
                 "lib/types/*"
-            ],
-            "$/*": [
-                "lib/*"
             ]
         }
     },

@@ -12,15 +12,15 @@
         "lib/linter.mjs"
     ],
     "exports": {
-        "./style.css": "./dist/style.css",
+        "./confects.css": "./dist/style.css",
         "./buttons": {
             "types": "./dist/buttons.d.ts",
             "import": "./dist/buttons.js",
             "require": null
         },
-        "./contents": {
-            "types": "./dist/contents.d.ts",
-            "import": "./dist/contents.js",
+        "./containers": {
+            "types": "./dist/containers.d.ts",
+            "import": "./dist/containers.js",
             "require": null
         },
         "./decorations": {

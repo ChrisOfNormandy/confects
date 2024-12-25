@@ -1,2 +1,2 @@
-export * from '@inputs/text-area/code/CodeEditor';
-export * from '@inputs/text-area/text/TextEditor';
+export * from '@editors/code/CodeEditor';
+export * from '@editors/text/TextEditor';

@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path';
-import { viteConfigAliases, viteConfigScss } from '@chrisofnormandy/confetti/config';
+import { viteConfigAliases } from '@chrisofnormandy/confetti/config';
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
@@ -20,16 +20,18 @@ export default defineConfig({
         lib: {
             entry: [
                 'buttons',
-                'contents',
+                'containers',
                 'decorations',
+                'dialogs',
                 'editors',
                 'helpers',
                 'inputs',
                 'managed',
                 'markdown',
-                'navs',
-                'pages',
-                'routers',
+                'menu',
+                'overlay',
+                'router',
+                'selectors',
                 'tables',
                 'types'
             ].map((exp) => resolve(`./lib/${exp}.ts`)),
