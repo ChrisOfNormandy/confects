@@ -1,6 +1,6 @@
 import './styles/badge.scss';
-import { Button, ButtonProps } from '$/buttons';
-import { getClassName } from '$/helpers';
+import { Button, ButtonProps } from 'lib/buttons';
+import { getClassName } from 'lib/helpers';
 import { ReactNode } from 'react';
 
 export type BadgeProps = {

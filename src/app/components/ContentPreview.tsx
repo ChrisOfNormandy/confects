@@ -1,4 +1,4 @@
-import { Content, ContentBlock, ContentDivider, ContentGroup, ContentList, ContentListItem, ContentTileGroup } from "$/contents";
+import { Content, ContentBlock, ContentDivider, ContentGroup, ContentList, ContentListItem, ContentTileGroup } from "lib/containers";
 
 export default function ContentPreview() {
     return <div>

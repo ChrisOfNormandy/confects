@@ -2,9 +2,9 @@ export * from '@dialogs/alert/Alert';
 export * from '@dialogs/confirmation/Confirmation';
 export * from '@dialogs/dialog/Dialog';
 export * from '@dialogs/dialog/fragments/DialogBody';
-export * from '@dialogs/dialog/fragments/DialogDivider';
 export * from '@dialogs/dialog/fragments/DialogFooter';
 export * from '@dialogs/dialog/fragments/DialogHeader';
 export * from '@dialogs/modal/Modal';
 export * from '@dialogs/prompt/Prompt';
 export * from '@dialogs/toast/Toast';
+export * from '@dialogs/DialogProvider'

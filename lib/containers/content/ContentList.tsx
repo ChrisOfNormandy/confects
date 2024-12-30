@@ -1,6 +1,6 @@
 import './styles/content-list.scss';
-import { getClassName } from '$/helpers';
-import { HTML_DivProps } from '#types/html';
+import { getClassName } from 'lib/helpers';
+import { HTML_DivProps } from 'lib/types';
 
 export type ContentListProps = HTML_DivProps;
 

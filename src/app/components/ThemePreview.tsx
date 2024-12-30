@@ -1,5 +1,5 @@
 import './theme-preview.scss';
-import { getClassName } from '$/helpers';
+import { getClassName } from 'lib/helpers';
 import { THEMES, themes } from '@chrisofnormandy/confetti/themes';
 
 export function ThemePreview() {

@@ -1,10 +1,5 @@
-import './styles/social-link.scss';
-import { BrandName, brands } from '#types/brands';
-import { Button, ButtonProps } from '$/buttons';
-import { getClassName } from '$/helpers';
-import { HTML_AnchorProps } from '#types/html';
-import { Icon } from '$/decorations';
-import { BrandButtonProps } from '../brand/BrandButton';
+import { HTML_AnchorProps } from 'lib/types';
+import { BrandButton, BrandButtonProps } from 'lib/buttons';
 
 export type SocialLinkProps = {
     anchor?: HTML_AnchorProps

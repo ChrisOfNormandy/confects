@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { MarkdownFeatureFlags } from "@markdown/MarkdownRenderer";
+import { MarkdownFeatureFlags } from "@markdown/markdown-renderer/MarkdownRenderer";
 
 interface MarkdownDefinition {
     href: string

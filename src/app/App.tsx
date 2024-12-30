@@ -1,19 +1,18 @@
 import './styles/app.scss';
 import { BrowserRouter } from 'react-router-dom';
 import { Buttons } from './components/Buttons';
-import { CRouter } from '@router/CRouter';
 import { Inputs } from './components/Inputs';
 import { ManagedContent } from './components/ManagedContent';
-import { Managers } from '@managed/Managers';
-import { markdownRouter } from '@router/MarkdownRouter';
 import { Outlet, Route, Routes } from 'react-router';
-import { Page, PageBody, PageFooter, PageHeader } from '$/pages';
-import { RouterNav } from '@router/RouterNav';
+import { Page, PageBody, PageFooter, PageHeader } from 'lib/containers';
+import { RouterNav, CRouter, markdownRouter } from 'lib/router';
 import { ThemePreview } from './components/ThemePreview';
+import { themes } from '@chrisofnormandy/confetti/themes';
+import { ThemeSelector } from 'lib/buttons';
 import { useEffect, useState } from 'react';
 import ContentPreview from './components/ContentPreview';
-import { themes } from '@chrisofnormandy/confetti/themes';
-import { ThemeSelector } from '@buttons/theme-selector/ThemeSelector';
+import { MenuProvider } from '@menu/MenuProvider';
+import { DialogProvider } from '@dialogs/DialogProvider';
 
 const router = new CRouter(
     {
@@ -154,15 +153,17 @@ export default function App() {
     return <div
         className='app f-main'
     >
-        <BrowserRouter>
-            {
-                ready &&
-                <Routes>
-                    {markdownRouter(router, Route)}
-                </Routes>
-            }
-        </BrowserRouter>
-
-        {ready && <Managers />}
+        <MenuProvider>
+            <DialogProvider>
+                <BrowserRouter>
+                    {
+                        ready &&
+                        <Routes>
+                            {markdownRouter(router, Route)}
+                        </Routes>
+                    }
+                </BrowserRouter>
+            </DialogProvider>
+        </MenuProvider>
     </div>
 }

@@ -1,19 +1,17 @@
 import './styles/code-editor.scss';
 import './userWorkers';
-import { Button } from '$/buttons';
-import { getClassName } from '$/helpers';
-import { HTML_DivProps } from '#types/html';
+import { Button } from 'lib/buttons';
+import { getClassName } from 'lib/helpers';
+import { HTML_DivProps } from 'lib/types';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import * as monaco from 'monaco-editor'
 
-interface extCodeExitorProps {
-    id: string
-    heading?: ReactNode
-}
-
 const BORDER_SIZE = 2;
 
-export type CodeEditorProps = HTML_DivProps & extCodeExitorProps;
+export type CodeEditorProps = {
+    id: string
+    heading?: ReactNode
+} & HTML_DivProps;
 
 export function CodeEditor(
     {
@@ -29,12 +27,15 @@ export function CodeEditor(
     const monacoRef = useRef(null as HTMLDivElement | null);
 
     useEffect(() => {
-        if (monacoRef) {
+        if (monacoRef.current) {
             setEditor((editor) => {
                 if (editor)
                     return editor;
 
-                return monaco.editor.create(monacoRef.current!, {
+                if (!monacoRef.current)
+                    return null;
+
+                return monaco.editor.create(monacoRef.current, {
                     value: defaultValue?.toString()
                 });
             });

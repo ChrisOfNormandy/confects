@@ -1,5 +1,5 @@
 import { themes } from '@chrisofnormandy/confetti/themes';
-import { getClassName, uniqueId } from "$/helpers";
+import { getClassName, uniqueId } from "lib/helpers";
 import { useEffect, useState } from "react";
 import { ITooltip, Tooltip } from 'react-tooltip';
 

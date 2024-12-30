@@ -1,4 +1,4 @@
-export * from '@markdown/MarkdownRenderer';
-export * from '@markdown/ContentRenderer';
+export * from '@markdown/markdown-renderer/MarkdownRenderer';
+export * from '@markdown/content-renderer/ContentRenderer';
 
 export * from '@markdown/fragments/TableOfContents';

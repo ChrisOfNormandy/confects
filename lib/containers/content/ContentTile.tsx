@@ -1,9 +1,9 @@
 import './styles/content-tile.scss';
-import { getClassName } from '$/helpers';
-import { HTML_DivProps, HTML_ImageProps } from '#types/html';
+import { getClassName } from 'lib/helpers';
+import { HTML_DivProps, HTML_ImageProps } from 'lib/types';
 import { ReactNode } from "react";
 
-export type FigureOptions = {
+export interface FigureOptions {
     image: string
     imageOptions?: HTML_ImageProps
     caption?: ReactNode

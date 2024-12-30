@@ -1,9 +1,9 @@
-import { Button } from "$/buttons";
-import { Content, ContentBlock, ContentDivider, ContentGroup, ContentList, ContentListItem, ContentTileGroup, ContentTileGroupProps, ContentTileProps } from "$/contents";
+import { Button } from "lib/buttons";
+import { Content, ContentBlock, ContentDivider, ContentGroup, ContentList, ContentListItem, ContentTileGroup, ContentTileGroupProps, ContentTileProps } from "lib/containers";
 import { ContentLayoutSchema, ContentSchema, isContentGroupSchema, isContentImageSchema, isContentListSchema, isContentMarkdownSchema, isContentTileGroupSchema } from "./content/types"
-import { getClassName } from "$/helpers";
-import { HTML_DivProps } from "#types/html";
-import { MarkdownRenderer } from "./MarkdownRenderer";
+import { getClassName } from "lib/helpers";
+import { HTML_DivProps } from "lib/types";
+import { MarkdownRenderer } from "lib/markdown";
 import { useEffect, useRef, useState } from "react"
 
 export type ContentRendererProps = {
@@ -22,7 +22,7 @@ export default function ContentRenderer(
     const [content, setContent] = useState(defaultContent);
     const [ready, isReady] = useState(true);
 
-    const ref = useRef(null as null | HTMLDivElement);
+    const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (ready) {

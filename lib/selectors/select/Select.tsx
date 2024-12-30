@@ -1,5 +1,5 @@
-import { getClassName } from "$/helpers";
-import { HTML_SelectProps } from "#types/html";
+import { getClassName } from "lib/helpers";
+import { HTML_SelectProps } from "lib/types";
 
 export interface SelectOption {
     label: string,

@@ -1,7 +1,7 @@
 import './styles/content-tile-group.scss';
 import { ContentTile, ContentTileProps } from './ContentTile';
-import { getClassName } from '$/helpers';
-import { HTML_DivProps } from '#types/html';
+import { getClassName } from 'lib/helpers';
+import { HTML_DivProps } from 'lib/types';
 
 export type ContentTileGroupProps = HTML_DivProps & {
     tiles?: ContentTileProps[]

@@ -1,5 +1,5 @@
-import { HTML_DivProps } from "#types/html"
-import { getClassName } from "$/helpers"
+import { HTML_DivProps } from "lib/types"
+import { getClassName } from "lib/helpers"
 
 function Show({ children, ...props }: HTML_DivProps) {
     return <div

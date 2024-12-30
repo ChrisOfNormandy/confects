@@ -1,6 +1,6 @@
 import './styles/input.scss';
-import { getClassName } from '$/helpers';
-import { HTML_InputProps } from '#types/html';
+import { getClassName } from 'lib/helpers';
+import { HTML_InputProps } from 'lib/types';
 
 export type InputProps = HTML_InputProps;
 

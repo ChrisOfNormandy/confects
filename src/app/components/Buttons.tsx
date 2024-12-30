@@ -1,7 +1,7 @@
-import { Badge, Button, Glyph, SocialLink } from '$/buttons';
-import { BrandName, brands } from '#types/brands';
+import { Badge, Button, Glyph, SocialLink } from 'lib/buttons';
+import { BrandName, brands } from 'lib/types';
 import { Display } from './helpers/formatters';
-import { getClassName } from '$/helpers';
+import { getClassName } from 'lib/helpers';
 import { StyleMode, STYLES, themes } from '@chrisofnormandy/confetti/themes';
 
 const MODES: (StyleMode | undefined)[] = [undefined, 'i', 'c']

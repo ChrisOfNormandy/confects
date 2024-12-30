@@ -1,11 +1,14 @@
-import { Button } from "$/buttons";
-import { Icon } from "$/decorations";
-import { Menu, MenuBuilder, menus } from "$/managed";
+import { Button } from "lib/buttons";
+import { Icon } from "lib/decorations";
+import { MenuBuilder, MenuSummonButton } from "lib/menu";
 import { themes } from "@chrisofnormandy/confetti/themes";
-import { uniqueId } from "$/helpers";
+import { uniqueId } from "lib/helpers";
 import { useEffect, useState } from "react";
+import { useMenus } from "@menu/MenuProvider";
 
 export function ThemeSelector() {
+
+    const menus = useMenus();
 
     const [id] = useState(uniqueId('theme_selector_'))
     const [theme, setTheme] = useState(themes.getTheme());
@@ -22,29 +25,21 @@ export function ThemeSelector() {
         }
     }, [])
 
+    const options = themes.getThemeList();
+
+    const menuBuilder = new MenuBuilder(menus, 'theme_selector');
+    options.forEach((option) => {
+        const opt = menuBuilder.addContent();
+        opt.setText(option)
+            .setOnClick(() => themes.setTheme(option))
+    });;
+
     return <>
-        <Button
-            onClick={
-                (e) => {
-                    const options = themes.getThemeList();
-
-                    const menuBuilder = new MenuBuilder('theme_selector');
-                    menuBuilder.attach(e.currentTarget);
-                    options.forEach((option) => {
-                        const opt = menuBuilder.addContent();
-                        opt.setText(option)
-                            .setOnClick(() => themes.setTheme(option))
-                    });
-
-                    const props = menuBuilder.getProps();
-                    const menu = <Menu {...props} />;
-
-                    menus.store(props.id, menu).open(props.id);
-                }
-            }
+        <MenuSummonButton
+            builder={menuBuilder}
         >
             {theme}
-        </Button>
+        </MenuSummonButton>
 
         <Button
             onClick={() => themes.setColorScheme(colorScheme === 'dark' && 'light' || 'dark')}

@@ -1,5 +1,8 @@
 import { mouseEvent } from "./events";
 
+export const USE_HOVER_STYLING = 'hvr';
+export const USE_DISABLED_STYLING = 'dis';
+
 export function getClassName(...classes: (string | undefined | boolean)[]) {
     return classes.filter(Boolean).join(' ');
 }

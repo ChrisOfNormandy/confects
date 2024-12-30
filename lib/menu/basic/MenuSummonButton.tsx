@@ -1,6 +1,8 @@
-import { Button, ButtonProps } from "$/buttons";
-import { Menu, MenuBuilder } from "./Menu";
-import { menus } from "./MenuManager";
+import { useMenus } from "@menu/MenuProvider";
+import { Button, ButtonProps } from "lib/buttons";
+import { memo } from "react";
+import { Menu } from "./Menu";
+import { MenuBuilder } from "./MenuBuilder";
 
 interface extMenuSummonButtonProps {
     builder: MenuBuilder
@@ -16,19 +18,22 @@ export function MenuSummonButton(
         ...props
     }: MenuSummonButtonProps
 ) {
+    const menus = useMenus();
+
     return <Button
+        {...props}
         onClick={(e) => {
             builder.attach(e.currentTarget);
 
             const menuProps = builder.getProps();
 
-            const menu = <Menu
+            const menu = memo((p) => <Menu
                 place={place}
                 {...menuProps}
-            />
+                {...p}
+            />);
 
-            menus.store(menuProps.id, menu).open(menuProps.id);
+            menus.add(menuProps.id, menu).open();
         }}
-        {...props}
     />
 }

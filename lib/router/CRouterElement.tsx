@@ -1,5 +1,5 @@
-import ContentRenderer from "@markdown/ContentRenderer";
-import { MarkdownRenderer } from "@markdown/MarkdownRenderer";
+import ContentRenderer from "@markdown/content-renderer/ContentRenderer";
+import { MarkdownRenderer } from "@markdown/markdown-renderer/MarkdownRenderer";
 import { RouterNav } from "./RouterNav";
 import { CRouter } from "./CRouter";
 

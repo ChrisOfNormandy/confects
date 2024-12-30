@@ -1,7 +1,6 @@
 import './styles/router-nav.scss';
-import { CRouter } from './CRouter';
-import { getClassName } from '$/helpers';
-import { useRouter } from './MarkdownRouter';
+import { CRouter, useRouter } from 'lib/router';
+import { getClassName } from 'lib/helpers';
 
 interface IRouteProps {
     router: CRouter

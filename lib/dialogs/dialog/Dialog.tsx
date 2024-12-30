@@ -1,71 +1,58 @@
 import './styles/dialog.scss';
-import { Button, Glyph } from '$/buttons';
-import { DialogBody } from "./fragments/DialogBody";
-import { DialogFooter } from "./fragments/DialogFooter";
-import { DialogHeader } from "./fragments/DialogHeader";
-import { dialogs } from './DialogManager';
-import { getClassName, makeDraggable } from '$/helpers';
-import { HTML_DivProps } from '#types/html';
-import { ReactNode } from "react";
+import { Glyph } from 'lib/buttons';
+import { DialogBody, DialogFooter, DialogHeader } from "lib/dialogs";
+import { getClassName, makeDraggable } from 'lib/helpers';
+import { HTML_DivProps } from 'lib/types';
+import { MouseEvent, ReactNode } from "react";
+import { useDialogs } from '@dialogs/DialogProvider';
+import { DialogControl, DialogControlProps } from './fragments/DialogControl';
+import { Heading } from '@decorations/heading/Heading';
+import { IManagedContentProps } from '@managed/ManagedContent';
 
 export type DialogProps = {
-    cancelText?: ReactNode
-    closeIcon?: string
+    cancelButton?: DialogControlProps
+    closeButton?: DialogControlProps
     heading?: ReactNode
-    id: string
     mobile?: boolean | 'header'
-    okText?: ReactNode
-    onCancel?: () => void
-    onClose?: () => void
-    onOk?: () => void
-    stayOpenOnCancel?: boolean
-    stayOpenOnOk?: boolean
-} & HTML_DivProps;
+    okButton?: DialogControlProps
+} & HTML_DivProps
+    & IManagedContentProps;
 
 export function Dialog(
     {
-        cancelText = 'cancel',
+        cancelButton,
         children,
         className,
-        closeIcon = 'x-lg',
+        closeButton,
         heading,
-        id,
         mobile,
-        okText = 'ok',
-        onCancel,
-        onClose,
-        onOk,
-        stayOpenOnCancel = false,
-        stayOpenOnOk = false,
+        okButton,
         ...props
     }: DialogProps
 ) {
+    const dialogs = useDialogs();
+    const draggableProps = mobile && makeDraggable(props.id)
+
     return <div
-        id={id}
         className={getClassName('dialog f-body', className)}
         {...props}
-        {...((mobile !== 'header' && mobile) && makeDraggable(id) || {})}
+        {...((mobile !== 'header' && mobile) && draggableProps || {})}
     >
         <DialogHeader
             className={getClassName(!heading && 'no-heading')}
-            {...(mobile === 'header' && makeDraggable(id) || {})}
+            {...(mobile === 'header' && draggableProps || {})}
         >
-            {
-                heading &&
-                <span>
-                    {heading}
-                </span>
-            }
+            <Heading>
+                {heading}
+            </Heading>
 
             <span>
                 <Glyph
-                    icon={closeIcon}
-                    className='f-exit b-compliment'
-                    onClick={() => {
-                        dialogs.close(id);
-
-                        if (onClose)
-                            onClose();
+                    icon={closeButton?.icon || 'x-lg'}
+                    onClick={(e) => {
+                        dialogs.close(props.id);
+                        if (closeButton?.onClick)
+                            closeButton.onClick(e as MouseEvent<HTMLButtonElement>);
                     }}
                 />
             </span>
@@ -76,31 +63,15 @@ export function Dialog(
         </DialogBody>
 
         <DialogFooter>
-            <Button
-                onClick={() => {
-                    if (onCancel)
-                        onCancel();
+            <DialogControl
+                text='Cancel'
+                {...cancelButton}
+            />
 
-                    if (!stayOpenOnCancel)
-                        dialogs.close(id);
-                }}
-                className='f-trinary hvr dis'
-            >
-                {cancelText}
-            </Button>
-
-            <Button
-                onClick={() => {
-                    if (onOk)
-                        onOk();
-
-                    if (!stayOpenOnOk)
-                        dialogs.close(id);
-                }}
-                className='f-primary hvr dis'
-            >
-                {okText}
-            </Button>
+            <DialogControl
+                text='OK'
+                {...okButton}
+            />
         </DialogFooter>
     </div>
 }

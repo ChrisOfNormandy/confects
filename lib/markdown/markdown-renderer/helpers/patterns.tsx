@@ -1,5 +1,5 @@
-import { HTMLElementProps } from "#types/html";
-import { TableOfContents } from "$/markdown";
+import { HTMLElementProps } from "lib/types";
+import { TableOfContents } from "lib/markdown";
 import { ReactNode } from "react";
 
 interface Processor {

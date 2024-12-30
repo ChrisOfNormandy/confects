@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
 import './styles/toc.scss';
+import { useEffect, useRef, useState } from "react";
 
 const MAX_CLIMB_ATTEMPTS = 20;
 

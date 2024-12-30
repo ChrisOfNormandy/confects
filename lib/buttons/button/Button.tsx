@@ -1,10 +1,10 @@
 import './styles/button.scss';
-import { getClassName, uniqueId } from '$/helpers';
-import { HTML_ButtonProps } from '#types/html';
+import { getClassName, uniqueId } from 'lib/helpers';
+import { getTooltipProps, TooltipProps } from 'lib/decorations/tooltip/tooltip-handlers';
+import { HTML_ButtonProps } from 'lib/types';
 import { Ref, useState } from 'react';
-import { Tooltip } from '$/decorations';
 import { themes, ThemeProps } from '@chrisofnormandy/confetti/themes';
-import { getTooltipProps, TooltipProps } from '@decorations/tooltip/tooltip-handlers';
+import { Tooltip } from 'lib/decorations';
 
 export type ButtonProps = {
     reset?: string | boolean

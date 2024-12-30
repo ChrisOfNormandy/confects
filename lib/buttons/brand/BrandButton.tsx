@@ -1,8 +1,8 @@
 import './styles/brand-button.scss';
 import { BrandName, brands } from '#types/brands';
-import { Button, ButtonProps } from '$/buttons';
-import { getClassName } from '$/helpers';
-import { Icon } from '$/decorations';
+import { Button, ButtonProps } from 'lib/buttons';
+import { getClassName } from '#helpers/components';
+import { Icon } from 'lib/decorations';
 
 export type BrandButtonProps = {
     brand: BrandName

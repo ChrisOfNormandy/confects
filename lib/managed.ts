@@ -1,3 +1,2 @@
-export * from '@managed/ContentManager'
-export * from '@managed/ContentManagerElement'
-export * from '@managed/Managers'
+export * from '@managed/ContentManager';
+export * from '@managed/ManagedContent';

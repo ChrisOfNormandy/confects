@@ -1,8 +1,8 @@
 import './styles/toggle.scss'
-import { Button } from "$/buttons";
-import { getClassName } from "$/helpers";
-import { HTML_DivProps } from "#types/html";
-import { Icon } from "$/decorations";
+import { Button } from "lib/buttons";
+import { getClassName } from "lib/helpers";
+import { HTML_DivProps } from "lib/types";
+import { Icon } from "lib/decorations";
 import { useState } from "react";
 
 export type ToggleIconType =

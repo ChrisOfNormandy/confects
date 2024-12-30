@@ -1,7 +1,7 @@
-import { CodeEditor, TextEditor } from '$/editors';
+import { CodeEditor, TextEditor } from 'lib/editors';
 import { Display } from './helpers/formatters';
-import { FileInput, Input, Slider, Toggle, ToggleIconType } from '$/inputs';
-import { getClassName } from '$/helpers';
+import { FileInput, Input, Slider, Toggle, ToggleIconType } from 'lib/inputs';
+import { getClassName } from 'lib/helpers';
 import { STYLES, themes } from '@chrisofnormandy/confetti/themes';
 
 function InputDisplay() {

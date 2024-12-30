@@ -1,7 +1,7 @@
-import { Loading } from "$/decorations";
+import { Loading } from "lib/decorations";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 
-export type ProtectedRouteProps = {
+export interface ProtectedRouteProps {
     element: React.ComponentType<object>
 }
 
