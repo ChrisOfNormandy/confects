@@ -19,10 +19,10 @@ export function SocialLink(
             <BrandButton
                 {...props}
             />
-        </a>
+        </a>;
     }
 
     return <BrandButton
         {...props}
-    />
+    />;
 }

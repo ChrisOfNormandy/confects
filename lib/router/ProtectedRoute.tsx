@@ -1,5 +1,5 @@
-import { Loading } from "lib/decorations";
-import { withAuthenticationRequired } from "@auth0/auth0-react";
+import { Loading } from 'lib/decorations';
+import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 export interface ProtectedRouteProps {
     element: React.ComponentType<object>
@@ -7,10 +7,10 @@ export interface ProtectedRouteProps {
 
 export function ProtectedRoute({ element }: ProtectedRouteProps) {
     const Element = withAuthenticationRequired(element, {
-        onRedirecting: () => (
+        onRedirecting: () =>
             <Loading />
-        ),
+
     });
 
     return <Element />;
-};
+}

@@ -16,5 +16,5 @@ export function PageBody(
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }

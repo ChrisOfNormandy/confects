@@ -1,7 +1,6 @@
-import ContentRenderer from "@markdown/content-renderer/ContentRenderer";
-import { MarkdownRenderer } from "@markdown/markdown-renderer/MarkdownRenderer";
-import { RouterNav } from "./RouterNav";
-import { CRouter } from "./CRouter";
+import { ContentRenderer, MarkdownRenderer } from '@markdown';
+import { RouterNav } from './RouterNav';
+import { CRouter } from './CRouter';
 
 interface CRouterElementProps {
     router: CRouter
@@ -15,7 +14,7 @@ export function CRouterElement(
     console.debug(router);
 
     if (router.markdown) {
-        console.debug('RENDER MARKDOWN', router.markdown)
+        console.debug('RENDER MARKDOWN', router.markdown);
 
         return <>
             {router.element && router.element()}
@@ -24,11 +23,11 @@ export function CRouterElement(
                 href={router.markdown.href}
                 features={router.markdown.features}
             />
-        </>
+        </>;
     }
 
     if (router.content) {
-        console.debug('RENDER CONTENT', router.content)
+        console.debug('RENDER CONTENT', router.content);
 
         return <>
             {router.element && router.element()}
@@ -36,11 +35,11 @@ export function CRouterElement(
             <ContentRenderer
                 href={router.content.href}
             />
-        </>
+        </>;
     }
 
     if (router.doRenderNav()) {
-        console.debug('RENDER NAVIGATION', ...router.getRoutes())
+        console.debug('RENDER NAVIGATION', ...router.getRoutes());
 
         return <>
             <RouterNav
@@ -49,10 +48,10 @@ export function CRouterElement(
             />
 
             {router.element && router.element()}
-        </>
+        </>;
     }
 
-    console.debug('RENDER DEFAULT')
+    console.debug('RENDER DEFAULT');
 
     return router.element && router.element();
 }

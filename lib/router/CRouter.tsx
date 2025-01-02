@@ -1,5 +1,5 @@
+import { MarkdownFeatureFlags } from '@markdown';
 import { JSX } from 'react';
-import { MarkdownFeatureFlags } from "@markdown/markdown-renderer/MarkdownRenderer";
 
 interface MarkdownDefinition {
     href: string
@@ -22,11 +22,15 @@ interface IRouter {
 
 export class CRouter {
     readonly default?: string;
+
     readonly parent?: CRouter;
+
     readonly path: string;
+
     readonly noNav: boolean;
 
     readonly markdown?: MarkdownDefinition;
+
     readonly content?: ContentDefinition;
 
     private readonly routes = new Map<string, CRouter>();
@@ -72,7 +76,7 @@ export class CRouter {
     }
 
     doRenderNav() {
-        return !this.noNav && this.routes.size > 0
+        return !this.noNav && this.routes.size > 0;
     }
 
     private addRoute(router: IRouter) {
@@ -81,7 +85,7 @@ export class CRouter {
 
     root() {
         if (this.parent)
-            throw new Error('Cannot use root routing for routers with parents.')
+            throw new Error('Cannot use root routing for routers with parents.');
 
         const list: [string, CRouter][] = [[this.path, this]];
 
@@ -96,10 +100,10 @@ export class CRouter {
         this.noNav = !!router.noNav;
 
         if (router.routes)
-            router.routes.forEach((route) => this.addRoute(route))
+            router.routes.forEach((route) => this.addRoute(route));
 
         this.parent = parent;
 
-        console.debug('new router', parent && 'with parent' || '')
+        console.debug('new router', parent && 'with parent' || '');
     }
 }

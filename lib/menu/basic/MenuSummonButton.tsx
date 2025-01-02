@@ -1,8 +1,6 @@
-import { useMenus } from "@menu/MenuProvider";
-import { Button, ButtonProps } from "lib/buttons";
-import { memo } from "react";
-import { Menu } from "./Menu";
-import { MenuBuilder } from "./MenuBuilder";
+import { Button, ButtonProps } from '@buttons';
+import { memo } from 'react';
+import { Menu, MenuBuilder, useMenus } from '@menu';
 
 interface extMenuSummonButtonProps {
     builder: MenuBuilder
@@ -35,5 +33,5 @@ export function MenuSummonButton(
 
             menus.add(menuProps.id, menu).open();
         }}
-    />
+    />;
 }

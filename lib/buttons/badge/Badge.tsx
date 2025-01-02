@@ -34,5 +34,5 @@ export function Badge(
         >
             {children}
         </span>
-    </Button>
+    </Button>;
 }

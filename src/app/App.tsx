@@ -1,18 +1,19 @@
 import './styles/app.scss';
 import { BrowserRouter } from 'react-router-dom';
 import { Buttons } from './components/Buttons';
+import { DialogProvider } from '@dialogs';
 import { Inputs } from './components/Inputs';
 import { ManagedContent } from './components/ManagedContent';
+import { MenuProvider } from '@menu';
 import { Outlet, Route, Routes } from 'react-router';
-import { Page, PageBody, PageFooter, PageHeader } from 'lib/containers';
-import { RouterNav, CRouter, markdownRouter } from 'lib/router';
+import { Page, PageBody, PageFooter, PageHeader } from '@containers';
+import { RouterNav, CRouter, markdownRouter } from '@router';
 import { ThemePreview } from './components/ThemePreview';
 import { themes } from '@chrisofnormandy/confetti/themes';
-import { ThemeSelector } from 'lib/buttons';
+import { ThemeSelector } from '@buttons';
 import { useEffect, useState } from 'react';
 import ContentPreview from './components/ContentPreview';
-import { MenuProvider } from '@menu/MenuProvider';
-import { DialogProvider } from '@dialogs/DialogProvider';
+import { Heading } from '@decorations';
 
 const router = new CRouter(
     {
@@ -38,7 +39,7 @@ const router = new CRouter(
                     {
                         path: '/content',
                         content: {
-                            href: "/pages/content/index.json"
+                            href: '/pages/content/index.json'
                         }
                     },
                     {
@@ -48,13 +49,13 @@ const router = new CRouter(
                         path: '/previews',
                         routes: [
                             {
-                                path: '/buttons',
+                                path: '/buttons'
                             },
                             {
-                                path: '/inputs',
+                                path: '/inputs'
                             },
                             {
-                                path: '/managers',
+                                path: '/managers'
                             }
                         ]
                     }
@@ -73,7 +74,7 @@ const router = new CRouter(
                                 reload: true,
                                 print: true
                             }
-                        },
+                        }
                     },
                     {
                         path: '/page-2',
@@ -86,8 +87,8 @@ const router = new CRouter(
                             }
                         ]
                     }
-                ],
-            },
+                ]
+            }
         ],
         path: '',
         noNav: true,
@@ -103,13 +104,38 @@ router.setElement(
             <span
                 className='header-sect'
             >
-                <div
+                <Heading
                     className='brand'
                 >
                     CoNfects
-                </div>
+                </Heading>
 
-                <ThemeSelector />
+                <ThemeSelector
+                    themeSelectButton={
+                        {
+                            theme: {
+                                background: {
+                                    style: 'primary'
+                                },
+                                border: {
+                                    style: 'primary'
+                                }
+                            }
+                        }
+                    }
+                    schemeSelectButton={
+                        {
+                            theme: {
+                                background: {
+                                    style: 'secondary'
+                                },
+                                border: {
+                                    style: 'secondary'
+                                }
+                            }
+                        }
+                    }
+                />
             </span>
 
             <span
@@ -131,14 +157,14 @@ router.setElement(
     </Page>
 );
 
-router.setPathElement('/markdown', () => <Outlet />)
-router.setPathElement('/samples', () => <Outlet />)
-router.setPathElement('/samples/previews', () => <Outlet />)
-router.setPathElement('/samples/previews/buttons', () => <Buttons />)
-router.setPathElement('/samples/previews/inputs', () => <Inputs />)
-router.setPathElement('/samples/previews/managers', () => <ManagedContent />)
-router.setPathElement('/samples/theme-preview', () => <ThemePreview />)
-router.setPathElement('/samples/content/preview', () => <ContentPreview />)
+router.setPathElement('/markdown', () => <Outlet />);
+router.setPathElement('/samples', () => <Outlet />);
+router.setPathElement('/samples/previews', () => <Outlet />);
+router.setPathElement('/samples/previews/buttons', () => <Buttons />);
+router.setPathElement('/samples/previews/inputs', () => <Inputs />);
+router.setPathElement('/samples/previews/managers', () => <ManagedContent />);
+router.setPathElement('/samples/theme-preview', () => <ThemePreview />);
+router.setPathElement('/samples/content/preview', () => <ContentPreview />);
 
 export default function App() {
 
@@ -165,5 +191,5 @@ export default function App() {
                 </BrowserRouter>
             </DialogProvider>
         </MenuProvider>
-    </div>
+    </div>;
 }

@@ -1,4 +1,4 @@
-import { mouseEvent } from "./events";
+import { mouseEvent } from './events';
 
 export const USE_HOVER_STYLING = 'hvr';
 export const USE_DISABLED_STYLING = 'dis';
@@ -8,8 +8,10 @@ export function getClassName(...classes: (string | undefined | boolean)[]) {
 }
 
 export function makeDraggable(id: string) {
-    const origin = { x: 0, y: 0 };
-    const target = { x: 0, y: 0 };
+    const origin = { x: 0,
+y: 0 };
+    const target = { x: 0,
+y: 0 };
 
     const onMouseMove = (e: MouseEvent) => {
         e.preventDefault();
@@ -50,7 +52,7 @@ export function uniqueId(prefix?: string) {
     _uniqueId++;
 
     if (prefix)
-        return prefix + _uniqueId
+        return prefix + _uniqueId;
 
     return _uniqueId.toString();
 }

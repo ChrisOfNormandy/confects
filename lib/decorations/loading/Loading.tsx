@@ -1,5 +1,5 @@
-import { getClassName } from "#helpers/components";
-import { HTML_DivProps } from "#types/html";
+import { getClassName } from '#helpers';
+import { HTML_DivProps } from '#types';
 
 export function Loading(
     {
@@ -12,5 +12,5 @@ export function Loading(
         {...props}
     >
         {children || 'Loading...'}
-    </div>
+    </div>;
 }

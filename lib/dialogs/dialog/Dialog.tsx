@@ -1,22 +1,21 @@
 import './styles/dialog.scss';
-import { Glyph } from 'lib/buttons';
-import { DialogBody, DialogFooter, DialogHeader } from "lib/dialogs";
-import { getClassName, makeDraggable } from 'lib/helpers';
-import { HTML_DivProps } from 'lib/types';
-import { MouseEvent, ReactNode } from "react";
-import { useDialogs } from '@dialogs/DialogProvider';
-import { DialogControl, DialogControlProps } from './fragments/DialogControl';
-import { Heading } from '@decorations/heading/Heading';
-import { IManagedContentProps } from '@managed/ManagedContent';
+import { Glyph } from '@buttons';
+import { DialogBody, DialogControl, DialogControlProps, DialogFooter, DialogHeader, useDialogs } from '@dialogs';
+import { getClassName, makeDraggable } from '#helpers';
+import { HTML_DivProps } from '#types';
+import { MouseEvent, ReactNode } from 'react';
+import { Heading } from '@decorations';
+import { IManagedContentProps } from '@managed';
 
-export type DialogProps = {
+export type IDialogProps = {
     cancelButton?: DialogControlProps
     closeButton?: DialogControlProps
     heading?: ReactNode
     mobile?: boolean | 'header'
     okButton?: DialogControlProps
-} & HTML_DivProps
-    & IManagedContentProps;
+} & HTML_DivProps;
+
+export type DialogProps = IDialogProps & IManagedContentProps;
 
 export function Dialog(
     {
@@ -31,12 +30,12 @@ export function Dialog(
     }: DialogProps
 ) {
     const dialogs = useDialogs();
-    const draggableProps = mobile && makeDraggable(props.id)
+    const draggableProps = mobile && makeDraggable(props.id);
 
     return <div
         className={getClassName('dialog f-body', className)}
         {...props}
-        {...((mobile !== 'header' && mobile) && draggableProps || {})}
+        {...(mobile !== 'header' && mobile && draggableProps || {})}
     >
         <DialogHeader
             className={getClassName(!heading && 'no-heading')}
@@ -73,5 +72,5 @@ export function Dialog(
                 {...okButton}
             />
         </DialogFooter>
-    </div>
+    </div>;
 }

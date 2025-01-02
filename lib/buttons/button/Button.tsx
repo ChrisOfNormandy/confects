@@ -62,7 +62,7 @@ export function Button(
             onClick={
                 (e) => {
                     if (!onClick)
-                        return
+                        return;
 
                     e.stopPropagation();
                     onClick(e);
@@ -71,7 +71,7 @@ export function Button(
             onAuxClick={
                 (e) => {
                     if (!onAuxClick)
-                        return
+                        return;
 
                     e.stopPropagation();
                     onAuxClick(e);
@@ -80,7 +80,7 @@ export function Button(
             onContextMenu={
                 (e) => {
                     if (!onContextMenu)
-                        return
+                        return;
 
                     e.stopPropagation();
                     onContextMenu(e);
@@ -97,5 +97,5 @@ export function Button(
                 {...tooltipProps}
             />
         }
-    </>
+    </>;
 }

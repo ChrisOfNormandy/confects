@@ -16,5 +16,5 @@ export function ContentDivider(
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }

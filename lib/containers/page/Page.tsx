@@ -16,5 +16,5 @@ export function Page(
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }

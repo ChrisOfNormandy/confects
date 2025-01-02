@@ -47,8 +47,14 @@ import {
     ThHTMLAttributes,
     TimeHTMLAttributes,
     TrackHTMLAttributes,
-    VideoHTMLAttributes,
-} from "react";
+    VideoHTMLAttributes
+} from 'react';
+
+export type HTMLElementProps = HTMLAttributes<HTMLElement>
+
+export function isInterfaceTypeIterable<T = unknown>(i: T | Iterable<T>): i is Iterable<T> {
+    return Symbol.iterator in (i as Iterable<T>);
+}
 
 /** html */ export type HTML_HtmlProps = HtmlHTMLAttributes<HTMLHtmlElement>;
 
@@ -174,9 +180,3 @@ import {
 
 /** slot */ export type HTML_SlotProps = SlotHTMLAttributes<HTMLSlotElement>;
 /** template */ export type HTML_TemplateProps = HTMLAttributes<HTMLTemplateElement>;
-
-export type HTMLElementProps = HTMLAttributes<HTMLElement>
-
-export function isInterfaceTypeIterable<T = unknown>(i: T | Iterable<T>): i is Iterable<T> {
-    return Symbol.iterator in (i as Iterable<T>);
-};

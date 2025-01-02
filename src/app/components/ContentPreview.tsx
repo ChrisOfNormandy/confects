@@ -1,4 +1,4 @@
-import { Content, ContentBlock, ContentDivider, ContentGroup, ContentList, ContentListItem, ContentTileGroup } from "lib/containers";
+import { Content, ContentBlock, ContentDivider, ContentGroup, ContentList, ContentListItem, ContentTileGroup } from 'lib/containers';
 
 export default function ContentPreview() {
     return <div>
@@ -77,5 +77,5 @@ export default function ContentPreview() {
 
             </ContentTileGroup>
         </ContentBlock>
-    </div>
+    </div>;
 }

@@ -1,7 +1,7 @@
-import { HTMLElementProps } from "#types/html";
-import { ContentManager } from "@managed/ContentManager";
-import { MenuProps } from "lib/menu";
-import { Context, createContext, useContext, useEffect, useState } from "react";
+import { HTMLElementProps } from '#types';
+import { ContentManager } from '@managed';
+import { MenuProps } from '@menu';
+import { Context, createContext, useContext, useEffect, useState } from 'react';
 
 let MENU_MANAGER_CONTEXT: Context<ContentManager<MenuProps>> | undefined;
 
@@ -15,12 +15,12 @@ export function MenuProvider(
 
     useEffect(() => {
         MENU_MANAGER_CONTEXT = createContext(contentManager);
-    }, [])
+    }, []);
 
     useEffect(() => {
         if (!ready) {
             isReady(true);
-            console.debug('Menu provider update!')
+            console.debug('Menu provider update!');
         }
     }, [ready]);
 
@@ -41,7 +41,7 @@ export function MenuProvider(
                 {...{} as MenuProps}
             />
         }
-    </>
+    </>;
 }
 
 export function useMenus() {

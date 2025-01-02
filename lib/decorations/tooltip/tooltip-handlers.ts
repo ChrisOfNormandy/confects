@@ -1,4 +1,4 @@
-import { ITooltip, PlacesType, PositionStrategy, VariantType, WrapperType } from "react-tooltip";
+import { ITooltip, PlacesType, PositionStrategy, VariantType, WrapperType } from 'react-tooltip';
 import { capitalize } from '@chrisofnormandy/concauses/strings';
 
 export type TooltipType = string | string[];
@@ -55,7 +55,7 @@ function getProps(tooltipId: string, prop: ITooltipWrapper): TooltipContent {
         tooltipId,
         tooltipDataProps,
         tooltipProps: props as TooltipProps
-    }
+    };
 }
 
 export function getTooltipProps(id: string, tooltip?: TooltipOption) {
@@ -68,7 +68,7 @@ export function getTooltipProps(id: string, tooltip?: TooltipOption) {
     tooltipDataProps['data-tooltip-id'] = tooltipId;
 
     if (Array.isArray(tooltip) || typeof tooltip === 'string')
-        return getProps(tooltipId, { tooltip })
+        return getProps(tooltipId, { tooltip });
 
     return getProps(tooltipId, tooltip);
 }

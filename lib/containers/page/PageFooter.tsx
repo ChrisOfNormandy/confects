@@ -16,5 +16,5 @@ export function PageFooter(
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }

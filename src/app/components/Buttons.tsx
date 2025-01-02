@@ -4,7 +4,7 @@ import { Display } from './helpers/formatters';
 import { getClassName } from 'lib/helpers';
 import { StyleMode, STYLES, themes } from '@chrisofnormandy/confetti/themes';
 
-const MODES: (StyleMode | undefined)[] = [undefined, 'i', 'c']
+const MODES: (StyleMode | undefined)[] = [undefined, 'i', 'c'];
 
 function ButtonDisplay() {
     return <Display heading='buttons' >
@@ -16,7 +16,8 @@ function ButtonDisplay() {
                 >
                     {
                         Array.from(STYLES).map((n) => {
-                            const theme = themes.getBasicStyling(n, { background: { mode }, border: { mode } })
+                            const theme = themes.getBasicStyling(n, { background: { mode },
+border: { mode } });
 
                             return <div
                                 key={n}
@@ -34,13 +35,13 @@ function ButtonDisplay() {
                                 >
                                     X {n} {mode} X
                                 </Button>
-                            </div>
+                            </div>;
                         })
                     }
-                </div>
+                </div>;
             })
         }
-    </Display>
+    </Display>;
 }
 
 function BadgeDisplay() {
@@ -53,7 +54,7 @@ function BadgeDisplay() {
                 >
                     {
                         Array.from(STYLES).map((n) => {
-                            const theme = themes.getBasicStyling(n)
+                            const theme = themes.getBasicStyling(n);
 
                             return <div
                                 key={n}
@@ -86,13 +87,13 @@ function BadgeDisplay() {
                                 >
                                     Not Awesome
                                 </Badge>
-                            </div>
+                            </div>;
                         })
                     }
-                </div>
+                </div>;
             })
         }
-    </Display>
+    </Display>;
 }
 
 function GlyphDisplay() {
@@ -108,7 +109,7 @@ function GlyphDisplay() {
                 >
                     {
                         Array.from(STYLES).map((n) => {
-                            const theme = themes.getBasicStyling(n)
+                            const theme = themes.getBasicStyling(n);
 
                             return <div
                                 key={n}
@@ -131,14 +132,14 @@ function GlyphDisplay() {
                                                 size={size}
                                                 disabled
                                             />
-                                        </div>
+                                        </div>;
                                     })
                                 }
 
-                            </div>
+                            </div>;
                         })
                     }
-                </div>
+                </div>;
             })
         }
 
@@ -150,7 +151,7 @@ function GlyphDisplay() {
                 >
                     {
                         Array.from(STYLES).map((n) => {
-                            const theme = themes.getBasicStyling(n)
+                            const theme = themes.getBasicStyling(n);
 
                             return <div
                                 key={n}
@@ -164,7 +165,6 @@ function GlyphDisplay() {
                                             <Glyph
                                                 className={theme}
                                                 icon='emoji-smile'
-                                                iconOnly
                                                 size={size}
                                             />
 
@@ -172,20 +172,19 @@ function GlyphDisplay() {
                                                 className={theme}
                                                 icon='emoji-smile'
                                                 size={size}
-                                                iconOnly
                                                 disabled
                                             />
-                                        </div>
+                                        </div>;
                                     })
                                 }
 
-                            </div>
+                            </div>;
                         })
                     }
-                </div>
+                </div>;
             })
         }
-    </Display>
+    </Display>;
 }
 
 function SocialLinkDisplay() {
@@ -203,9 +202,9 @@ function SocialLinkDisplay() {
 
             const item = brandNames[i];
             if (!item)
-                throw new Error('Undefined brand item')
+                throw new Error('Undefined brand item');
 
-            list.push(item)
+            list.push(item);
         }
 
         brandLists[c] = list;
@@ -245,13 +244,13 @@ function SocialLinkDisplay() {
                                     fill
                                     withLabel
                                 />
-                            </div>
+                            </div>;
                         })
                     }
-                </div>
+                </div>;
             })
         }
-    </Display>
+    </Display>;
 }
 
 export function Buttons() {
@@ -262,5 +261,5 @@ export function Buttons() {
         <BadgeDisplay />
         <GlyphDisplay />
         <SocialLinkDisplay />
-    </div>
+    </div>;
 }

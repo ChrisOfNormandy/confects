@@ -29,7 +29,7 @@ export function ContentTileGroup(
 
             i++;
 
-            grouping = tiles.slice(i * perRow, perRow * (i + 1))
+            grouping = tiles.slice(i * perRow, perRow * (i + 1));
         }
     }
 
@@ -54,5 +54,5 @@ export function ContentTileGroup(
         }
 
         {children}
-    </div>
+    </div>;
 }

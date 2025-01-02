@@ -1,8 +1,7 @@
-import { Button, Glyph } from "lib/buttons"
-import { Dispatch } from "react"
-import { downloadContent, openInNewTab } from "#helpers/files"
-import { getClassName } from "#helpers/components"
-import { HTML_DivProps } from "#types/html"
+import { Button, Glyph } from '@buttons';
+import { Dispatch } from 'react';
+import { downloadContent, openInNewTab, getClassName } from '#helpers';
+import { HTML_DivProps } from '#types';
 
 export interface MarkdownFeatureFlags {
     bodyOnly?: boolean
@@ -100,5 +99,5 @@ export function MarkdownHeader(
                 }
             </div>
         }
-    </div>
+    </div>;
 }

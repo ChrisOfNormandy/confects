@@ -1,5 +1,5 @@
-import { ComponentType } from "react";
-import { ContentManager } from "./ContentManager";
+import { ComponentType } from 'react';
+import { ContentManager } from './ContentManager';
 
 export type IManagedContentProps = {
     id: string
@@ -10,7 +10,8 @@ export class ManagedContent<P extends IManagedContentProps> {
     readonly id: string;
 
     private readonly manager: ContentManager<P>;
-    private readonly Content: ComponentType<P>
+
+    private readonly Content: ComponentType<P>;
 
     hidden = false;
 
@@ -43,7 +44,7 @@ export class ManagedContent<P extends IManagedContentProps> {
     }
 
     Render(props: P) {
-        return <this.Content {...props} />
+        return <this.Content {...props} />;
     }
 
     constructor(manager: ContentManager<P>, id: string, content: ComponentType<P>) {

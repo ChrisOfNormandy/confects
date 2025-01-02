@@ -1,8 +1,8 @@
 import './styles/brand-button.scss';
-import { BrandName, brands } from '#types/brands';
-import { Button, ButtonProps } from 'lib/buttons';
-import { getClassName } from '#helpers/components';
-import { Icon } from 'lib/decorations';
+import { BrandName, brands } from '#types';
+import { Button, ButtonProps } from '@buttons';
+import { getClassName } from '#helpers';
+import { Icon } from '@decorations';
 
 export type BrandButtonProps = {
     brand: BrandName
@@ -39,5 +39,5 @@ export function BrandButton(
         }
 
         {children}
-    </Button>
+    </Button>;
 }

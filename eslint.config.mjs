@@ -1,6 +1,8 @@
-import { reactViteConfig, typescriptConfig } from './lib/linter.mjs';
+// @ts-check
+
+import { reactViteConfig, typescriptConfig } from '@chrisofnormandy/concauses/linter';
 
 export default [
     ...typescriptConfig(),
     ...reactViteConfig()
-]
+];

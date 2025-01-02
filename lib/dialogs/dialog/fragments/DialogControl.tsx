@@ -1,6 +1,6 @@
-import { Button, ButtonProps } from "lib/buttons";
-import { Icon } from "lib/decorations";
-import { ReactNode } from "react";
+import { Button, ButtonProps } from 'lib/buttons';
+import { Icon } from 'lib/decorations';
+import { ReactNode } from 'react';
 
 export type DialogControlProps = {
     text?: ReactNode
@@ -27,5 +27,5 @@ export function DialogControl(
                 {text}
             </span>
         }
-    </Button>
+    </Button>;
 }

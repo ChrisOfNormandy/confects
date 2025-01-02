@@ -21,5 +21,5 @@ export function Icon(
     return <i
         {...props}
         className={getClassName('icon bi', `bi-${icon}`, className)}
-    />
+    />;
 }

@@ -16,5 +16,5 @@ export function DialogFooter(
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }

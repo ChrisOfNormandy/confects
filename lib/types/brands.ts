@@ -71,6 +71,6 @@ export const brands = {
     'xbox': 'Xbox',
     'yelp': 'Yelp',
     'youtube': 'YouTube'
-}
+};
 
 export type BrandName = keyof typeof brands;

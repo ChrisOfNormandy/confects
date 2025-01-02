@@ -1,5 +1,5 @@
-import { getClassName } from "lib/helpers";
-import { HTML_DivProps } from "lib/types";
+import { getClassName } from 'lib/helpers';
+import { HTML_DivProps } from 'lib/types';
 
 export type PageMainProps = HTML_DivProps;
 
@@ -15,5 +15,5 @@ export function PageMain(
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }

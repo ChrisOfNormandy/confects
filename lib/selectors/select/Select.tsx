@@ -1,5 +1,5 @@
-import { getClassName } from "lib/helpers";
-import { HTML_SelectProps } from "lib/types";
+import { getClassName } from 'lib/helpers';
+import { HTML_SelectProps } from 'lib/types';
 
 export interface SelectOption {
     label: string,
@@ -27,8 +27,8 @@ export function Select(
                     value={option.value}
                 >
                     {option.label}
-                </option>
+                </option>;
             })
         }
-    </select>
+    </select>;
 }

@@ -1,5 +1,5 @@
-import { HTML_DivProps } from "#types/html"
-import { MarkdownFeatureFlags } from "./MarkdownHeader"
+import { HTML_DivProps } from '#types';
+import { MarkdownFeatureFlags } from '@markdown';
 
 export type MarkdownFooterProps = {
     features?: MarkdownFeatureFlags
@@ -19,5 +19,5 @@ export function MarkdownFooter(
         {...props}
     >
 
-    </div>
+    </div>;
 }

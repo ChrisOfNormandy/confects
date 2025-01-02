@@ -13,5 +13,5 @@ export function Slider(
         className={getClassName('slider', className)}
         {...props}
         type='range'
-    />
+    />;
 }

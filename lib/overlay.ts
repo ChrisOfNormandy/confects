@@ -1,1 +1,1 @@
-export * from '@overlay/Overlay'
+export * from './overlay/Overlay';

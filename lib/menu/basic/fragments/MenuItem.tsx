@@ -25,28 +25,33 @@ export function MenuItem(
     const menuProps = menuContent.getProps();
 
     return <div
-        key={menuProps.id}
         className={getClassName('menu-item', className)}
         {...props}
     >
         <Button
             {...menuProps}
             className={getClassName('menu-item-btn hvr dis', menuProps.className)}
+            theme={{ background: { style: 'body' } }}
         >
             {
-                icon &&
-                <Icon
-                    className={getClassName('menu-icon', hoverIcon && 'std-icon')}
-                    icon={icon}
-                />
-            }
+                icon || hoverIcon &&
+                <span>
+                    {
+                        icon &&
+                        <Icon
+                            className={getClassName('menu-icon', hoverIcon && 'std-icon')}
+                            icon={icon}
+                        />
+                    }
 
-            {
-                hoverIcon &&
-                <Icon
-                    className={getClassName('menu-icon', hoverIcon && 'hvr-icon')}
-                    icon={hoverIcon}
-                />
+                    {
+                        hoverIcon &&
+                        <Icon
+                            className={getClassName('menu-icon', hoverIcon && 'hvr-icon')}
+                            icon={hoverIcon}
+                        />
+                    }
+                </span>
             }
 
             {
@@ -58,5 +63,5 @@ export function MenuItem(
                 </span>
             }
         </Button>
-    </div>
+    </div>;
 }

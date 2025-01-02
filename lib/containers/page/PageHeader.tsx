@@ -16,5 +16,5 @@ export function PageHeader(
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }

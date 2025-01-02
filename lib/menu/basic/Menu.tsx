@@ -1,15 +1,17 @@
 import './styles/menu.scss';
 import { getClassName } from 'lib/helpers';
+import { Heading } from '@decorations';
 import { HTML_DivProps } from 'lib/types';
-import { IManagedContentProps } from '@managed/ManagedContent';
+import { IManagedContentProps } from '@managed';
 import { MenuContent, MenuItem } from 'lib/menu';
-import { ReactNode, useEffect, useRef } from "react";
-import { Heading } from '@decorations/heading/Heading';
+import { ReactNode, useEffect, useRef } from 'react';
+import { themes } from '@chrisofnormandy/confetti/themes';
 
 export type IMenuProps = {
     heading?: ReactNode
     place?: 'left' | 'top' | 'right' | 'bottom'
     position?: DOMRect
+    wrapper?: HTML_DivProps
 } & IManagedContentProps
     & HTML_DivProps
 
@@ -24,14 +26,16 @@ export function Menu(
         menuContent,
         place,
         position,
+        wrapper,
         ...props
     }: MenuProps
 ) {
 
+    const wrapperRef = useRef<HTMLDivElement>(null);
     const menuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (!menuRef.current)
+        if (!menuRef.current || !wrapperRef.current)
             return;
 
         const pos = {
@@ -59,29 +63,36 @@ export function Menu(
                     pos.x = position?.right || 0;
                     break;
                 }
+                default: throw new Error('Unknown place: ' + place);
             }
         }
 
-        menuRef.current.style.left = `${pos.x}px`;
-        menuRef.current.style.top = `${pos.y}px`;
-    }, [position, menuRef.current]);
+        wrapperRef.current.style.left = `${pos.x - 10}px`;
+        wrapperRef.current.style.top = `${pos.y - 10}px`;
+    }, [position, menuRef, wrapperRef]);
 
     return <div
-        className={getClassName('menu', className)}
-        {...props}
-        ref={menuRef}
+        {...wrapper}
+        className={getClassName('menu-wrapper', wrapper?.className)}
+        ref={wrapperRef}
     >
-        <Heading>
-            {heading}
-        </Heading>
+        <div
+            className={getClassName('menu', className, themes.getBasicStyling('body'))}
+            {...props}
+            ref={menuRef}
+        >
+            <Heading>
+                {heading}
+            </Heading>
 
-        {
-            menuContent.map((content, c) => {
-                return <MenuItem
-                    key={c}
-                    menuContent={content}
-                />
-            })
-        }
-    </div>
+            {
+                menuContent.map((content, c) => {
+                    return <MenuItem
+                        key={c}
+                        menuContent={content}
+                    />;
+                })
+            }
+        </div>
+    </div>;
 }

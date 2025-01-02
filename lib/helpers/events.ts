@@ -1,4 +1,4 @@
-import { DragEventHandler, MouseEventHandler } from "react";
+import { DragEventHandler, MouseEventHandler } from 'react';
 
 export function dragEvent<T extends HTMLElement>(fn: DragEventHandler<T>): DragEventHandler<T> {
     return fn;

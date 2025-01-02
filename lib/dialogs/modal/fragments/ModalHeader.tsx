@@ -1,6 +1,6 @@
-import { getClassName } from "#helpers/components";
-import { HTML_DivProps } from "#types/html";
-import { ThemeProps, themes } from "@chrisofnormandy/confetti/themes";
+import { getClassName } from '#helpers';
+import { HTML_DivProps } from '#types';
+import { ThemeProps, themes } from '@chrisofnormandy/confetti/themes';
 
 export type ModalHeaderProps = HTML_DivProps & ThemeProps;
 
@@ -17,5 +17,5 @@ export function ModalHeader(
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }

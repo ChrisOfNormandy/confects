@@ -1,16 +1,15 @@
 import './styles/file-input.scss';
 import { dragEvent, getClassName } from 'lib/helpers';
+import { fileSizeDisplay } from './helpers/file-size-display';
 import { Input, InputProps } from 'lib/inputs';
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
-interface extFileInputProps {
+export type FileInputProps = {
     dropZoneText?: ReactNode
     multiple?: boolean | number
     multipleMin?: number
     onFileChange?: (files: File[]) => void
-}
-
-export type FileInputProps = InputProps & extFileInputProps;
+} & InputProps;
 
 export function FileInput(
     {
@@ -37,7 +36,7 @@ export function FileInput(
     useEffect(() => {
         if (!ready)
             isReady(true);
-    }, [ready])
+    }, [ready]);
 
     const onDrop = dragEvent<HTMLDivElement>((e) => {
         e.preventDefault();
@@ -54,7 +53,7 @@ export function FileInput(
                         didUpdate = true;
                     }
                 }
-            })
+            });
         }
         else {
             [...e.dataTransfer.files].forEach((file) => {
@@ -62,7 +61,7 @@ export function FileInput(
                     cache.set(file.name, file);
                     didUpdate = true;
                 }
-            })
+            });
         }
 
         if (didUpdate) {
@@ -152,24 +151,11 @@ export function FileInput(
                                 <span>
                                     {fileSizeDisplay(file.size)}
                                 </span>
-                            </li>
+                            </li>;
                         })
                     }
                 </ul>
             </div>
         }
-    </div >
-}
-
-const SIZES = ['b', 'kb', 'mb', 'gb'];
-const KILO = 1024;
-
-function fileSizeDisplay(n: number) {
-    let i = 0;
-    let k = n;
-    while (i < SIZES.length && k > KILO) {
-        i++;
-        k /= KILO;
-    }
-    return `${k.toFixed(2)} ${SIZES[i]}`;
+    </div >;
 }

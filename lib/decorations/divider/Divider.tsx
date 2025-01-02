@@ -1,6 +1,6 @@
 import './styles/divider.scss';
-import { getClassName } from "#helpers/components";
-import { HTML_DivProps } from "#types/html";
+import { getClassName } from '#helpers';
+import { HTML_DivProps } from '#types';
 
 export type DividerType = 'horizontal' | 'vertical' | 'whitespace';
 
@@ -18,5 +18,5 @@ export function Divider(
     return <div
         className={getClassName('divider', type, className)}
         {...props}
-    />
+    />;
 }

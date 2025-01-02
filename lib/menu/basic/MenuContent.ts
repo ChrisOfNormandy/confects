@@ -1,26 +1,37 @@
-import { ButtonProps } from "lib/buttons";
-import { MenuBuilder } from "./MenuBuilder";
-import { MouseEventHandler, ReactNode } from "react";
+import { ButtonProps } from 'lib/buttons';
+import { MenuBuilder } from './MenuBuilder';
+import { MouseEventHandler, ReactNode } from 'react';
 import { v4 } from 'uuid';
 
 export class MenuContent {
     private readonly id: string;
+
     private readonly builder: MenuBuilder;
 
     private text?: ReactNode;
+
     private textGetter?: () => ReactNode;
+
     private icon?: string;
+
     private iconGetter?: () => string;
+
     private hoverIcon?: string;
+
     private hoverIconGetter?: () => string;
+
     private disabled?: boolean;
+
     private disabledGetter?: () => boolean;
 
     private closeOnClick = true;
+
     private closeOnContextMenu = true;
+
     private props: ButtonProps = {};
 
     private onClick?: MouseEventHandler;
+
     private onContextMenu?: MouseEventHandler;
 
     getText() {
@@ -77,7 +88,8 @@ export class MenuContent {
     }
 
     addProps(props: ButtonProps) {
-        this.props = { ...this.props, ...props };
+        this.props = { ...this.props,
+...props };
 
         return this;
     }
@@ -92,20 +104,20 @@ export class MenuContent {
                 this.onClick(e);
 
                 if (this.closeOnClick)
-                    this.builder.manager.close(this.builder.id)
+                    this.builder.manager.close(this.builder.id);
             },
             onContextMenu: (e) => {
                 if (!this.onContextMenu)
-                    return
+                    return;
 
                 this.onContextMenu(e);
 
                 if (this.closeOnContextMenu)
-                    this.builder.manager.close(this.builder.id)
+                    this.builder.manager.close(this.builder.id);
             },
             disabled: this.disabledGetter && this.disabledGetter() || this.disabled,
             ...this.props
-        }
+        };
     }
 
     constructor(builder: MenuBuilder) {

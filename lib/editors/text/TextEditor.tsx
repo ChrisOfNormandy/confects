@@ -3,7 +3,7 @@ import { Button } from 'lib/buttons';
 import { getClassName } from 'lib/helpers';
 import { HTML_TextAreaProps } from 'lib/types';
 import { Icon } from 'lib/decorations';
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 export type TextEditorProps = HTML_TextAreaProps;
 
@@ -25,7 +25,7 @@ export function TextEditor(
             if (anim)
                 clearTimeout(anim);
             if (statusRef.current)
-                statusRef.current.classList.remove('fading')
+                statusRef.current.classList.remove('fading');
 
             const a = setTimeout(() => {
                 if (!statusRef.current)
@@ -42,7 +42,7 @@ export function TextEditor(
 
             setAnim(a);
         }
-    }, [status])
+    }, [status]);
 
     return <div
         className={getClassName('input text-editor', className)}
@@ -111,5 +111,5 @@ export function TextEditor(
                 </span>
             </Button>
         </div>
-    </div>
+    </div>;
 }

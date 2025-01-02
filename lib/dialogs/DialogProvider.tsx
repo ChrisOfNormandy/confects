@@ -1,7 +1,7 @@
-import { HTMLElementProps } from "#types/html";
-import { ContentManager } from "@managed/ContentManager";
-import { DialogProps } from "lib/dialogs";
-import { Context, createContext, useContext, useEffect, useState } from "react";
+import { HTMLElementProps } from '#types';
+import { ContentManager } from '@managed';
+import { DialogProps } from '@dialogs';
+import { Context, createContext, useContext, useEffect, useState } from 'react';
 
 type DialogType = DialogProps;
 
@@ -17,7 +17,7 @@ export function DialogProvider(
 
     useEffect(() => {
         DIALOG_MANAGER_CONTEXT = createContext(contentManager);
-    }, [])
+    }, []);
 
     return <>
         {
@@ -36,7 +36,7 @@ export function DialogProvider(
                 {...{} as DialogType}
             />
         }
-    </>
+    </>;
 }
 
 export function useDialogs() {

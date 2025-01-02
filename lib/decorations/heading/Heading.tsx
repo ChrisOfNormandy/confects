@@ -1,5 +1,5 @@
-import { getClassName } from "#helpers/components";
-import { HTML_HeadingProps } from "#types/html";
+import { getClassName } from '#helpers';
+import { HTML_HeadingProps } from '#types';
 
 export type HeadingProps = {
     level?: number

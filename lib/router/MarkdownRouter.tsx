@@ -1,8 +1,8 @@
-import { Navigate, Route, RouteProps } from "react-router-dom"
-import { HTML_DivProps } from "#types/html";
-import { CRouterElement } from "./CRouterElement";
-import { CRouter } from "./CRouter";
-import React from "react";
+import { Navigate, Route, RouteProps } from 'react-router-dom';
+import { HTML_DivProps } from '#types';
+import { CRouterElement } from './CRouterElement';
+import { CRouter } from './CRouter';
+import React from 'react';
 
 let root: CRouter;
 
@@ -11,7 +11,7 @@ export function useRouter() {
 }
 
 const nestedRoutes = ([path, subroute]: [string, CRouter], Route: React.ComponentType<RouteProps>) => {
-    const nested = subroute.getRoutes()
+    const nested = subroute.getRoutes();
 
     console.debug(subroute.getPath());
 
@@ -20,7 +20,7 @@ const nestedRoutes = ([path, subroute]: [string, CRouter], Route: React.Componen
             key={path}
             path={subroute.getPath()}
             element={<CRouterElement router={subroute} />}
-        />
+        />;
     }
 
     return <Route
@@ -37,8 +37,8 @@ const nestedRoutes = ([path, subroute]: [string, CRouter], Route: React.Componen
                 element={<Navigate to={subroute.getPath() + subroute.default} />}
             />
         }
-    </Route>
-}
+    </Route>;
+};
 
 export type MarkdownRouterProps = {
     router: CRouter
@@ -51,11 +51,11 @@ export function MarkdownRouter(
 ) {
     root = router;
 
-    return router.root().map((r) => nestedRoutes(r, Route))
+    return router.root().map((r) => nestedRoutes(r, Route));
 }
 
 export function markdownRouter(router: CRouter, Route: React.ComponentType<RouteProps>) {
     root = router;
 
-    return router.root().map((r) => nestedRoutes(r, Route))
+    return router.root().map((r) => nestedRoutes(r, Route));
 }

@@ -1,5 +1,5 @@
-import { HTML_DivProps } from "lib/types"
-import { getClassName } from "lib/helpers"
+import { HTML_DivProps } from 'lib/types';
+import { getClassName } from 'lib/helpers';
 
 function Show({ children, ...props }: HTML_DivProps) {
     return <div
@@ -7,7 +7,7 @@ function Show({ children, ...props }: HTML_DivProps) {
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }
 
 export function Display({ heading, children, ...props }: HTML_DivProps & { heading: string }) {
@@ -22,5 +22,5 @@ export function Display({ heading, children, ...props }: HTML_DivProps & { headi
         <Show>
             {children}
         </Show>
-    </div>
+    </div>;
 }

@@ -1,80 +1,88 @@
 {
     "compilerOptions": {
-        "allowJs": true,
-        "allowSyntheticDefaultImports": true,
         "baseUrl": "./",
         "esModuleInterop": false,
-        "forceConsistentCasingInFileNames": true,
-        "isolatedModules": true,
-        "jsx": "react-jsx",
-        "module": "esnext",
-        "moduleResolution": "bundler",
-        "noFallthroughCasesInSwitch": true,
-        "noImplicitAny": true,
-        "noImplicitReturns": true,
-        "noUncheckedIndexedAccess": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "resolveJsonModule": true,
+        "module": "ESNext",
+        "outDir": "./dist",
+        "rootDir": ".",
         "skipLibCheck": true,
-        "strict": true,
-        "target": "esnext",
+        "target": "ESNext",
+        "useDefineForClassFields": true,
         "lib": [
-            "dom",
-            "dom.iterable",
-            "esnext"
+            "DOM",
+            "DOM.Iterable",
+            "ESNext"
         ],
         "paths": {
-            "@buttons/*": [
-                "lib/buttons/*"
+            "@buttons": [
+                "lib/buttons"
             ],
-            "@containers/*": [
-                "lib/containers/*"
+            "@containers": [
+                "lib/containers"
             ],
-            "@decorations/*": [
-                "lib/decorations/*"
+            "@decorations": [
+                "lib/decorations"
             ],
-            "@dialogs/*": [
-                "lib/dialogs/*"
+            "@dialogs": [
+                "lib/dialogs"
             ],
-            "@editors/*": [
-                "lib/editors/*"
+            "@editors": [
+                "lib/editors"
             ],
-            "#helpers/*": [
-                "lib/helpers/*"
+            "#helpers": [
+                "lib/helpers"
             ],
-            "@inputs/*": [
-                "lib/inputs/*"
+            "@inputs": [
+                "lib/inputs"
             ],
-            "@managed/*": [
-                "lib/managed/*"
+            "@managed": [
+                "lib/managed"
             ],
-            "@markdown/*": [
-                "lib/markdown/*"
+            "@markdown": [
+                "lib/markdown"
             ],
-            "@menu/*": [
-                "lib/menu/*"
+            "@menu": [
+                "lib/menu"
             ],
-            "@overlay/*": [
-                "lib/overlay/*"
+            "@overlay": [
+                "lib/overlay"
             ],
-            "@router/*": [
-                "lib/router/*"
+            "@router": [
+                "lib/router"
             ],
-            "@selectors/*": [
-                "lib/selectors/*"
+            "@selectors": [
+                "lib/selectors"
             ],
-            "@table/*": [
-                "lib/table/*"
+            "@table": [
+                "lib/table"
             ],
-            "#types/*": [
-                "lib/types/*"
+            "#types": [
+                "lib/types"
             ]
-        }
+        },
+        // Bundler stuff
+        "allowJs": true,
+        "checkJs": true,
+        "isolatedModules": true,
+        "jsx": "react-jsx",
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true,
+        // Linting
+        "allowSyntheticDefaultImports": true,
+        "composite": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noImplicitOverride": true,
+        "strict": true,
     },
     "include": [
         "lib",
-        "src",
+        "src"
     ],
     "exclude": [
         "./**/*.mjs",

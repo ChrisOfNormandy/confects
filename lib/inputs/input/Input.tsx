@@ -13,5 +13,5 @@ export function Input(
     return <input
         {...props}
         className={getClassName('input', className)}
-    />
+    />;
 }

@@ -1,5 +1,5 @@
-import { HTML_DivProps } from "lib/types";
-import { getClassName } from "lib/helpers";
+import { HTML_DivProps } from 'lib/types';
+import { getClassName } from 'lib/helpers';
 
 export type NavProps = HTML_DivProps;
 
@@ -15,5 +15,5 @@ export function Nav(
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }

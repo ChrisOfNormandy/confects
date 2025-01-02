@@ -1,6 +1,6 @@
 import { themes } from '@chrisofnormandy/confetti/themes';
-import { getClassName, uniqueId } from "lib/helpers";
-import { useEffect, useState } from "react";
+import { getClassName, uniqueId } from 'lib/helpers';
+import { useEffect, useState } from 'react';
 import { ITooltip, Tooltip } from 'react-tooltip';
 
 function CustomTooltip(
@@ -20,7 +20,7 @@ function CustomTooltip(
 
         return () => {
             themes.removeListener(id);
-        }
+        };
     }, []);
 
     return <Tooltip
@@ -30,7 +30,7 @@ function CustomTooltip(
         delayHide={100}
         variant={mediaScheme}
         {...props}
-    />
+    />;
 }
 
 export { CustomTooltip as Tooltip };

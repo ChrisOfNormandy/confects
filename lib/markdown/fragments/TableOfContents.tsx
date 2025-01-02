@@ -1,5 +1,7 @@
 import './styles/toc.scss';
-import { useEffect, useRef, useState } from "react";
+import { HeadingNode } from './HeadingNode';
+import { TOCItem } from './TOCItem';
+import { useEffect, useRef, useState } from 'react';
 
 const MAX_CLIMB_ATTEMPTS = 20;
 
@@ -13,43 +15,6 @@ const HEADING_MAP = new Map<string, number>(
         ['H6', 6]
     ]
 );
-
-class HeadingNode {
-    id: string
-    tier: number
-    prev?: HeadingNode
-    next: HeadingNode[] = [];
-
-    clear() {
-        this.prev = undefined;
-        this.next = [];
-    }
-
-    addNext(next: HeadingNode) {
-        this.next.push(next.addParent(this));
-
-        return next;
-    }
-
-    parent() {
-        if (!this.prev)
-            throw new Error('Undefined parent');
-
-        return this.prev;
-    }
-
-    addParent(parent: HeadingNode) {
-        this.prev = parent;
-
-        return this;
-    }
-
-    constructor(id: string, tier: number, prev?: HeadingNode) {
-        this.id = id;
-        this.tier = tier;
-        this.prev = prev;
-    }
-}
 
 export function TableOfContents() {
 
@@ -69,7 +34,7 @@ export function TableOfContents() {
         }
 
         if (!mdParent || !mdParent.classList.contains('markdown-renderer'))
-            return
+            return;
 
         root.clear();
 
@@ -110,7 +75,7 @@ export function TableOfContents() {
         });
 
         isReady(true);
-    }, [ref])
+    }, [ref]);
 
     return <span
         ref={ref}
@@ -120,52 +85,5 @@ export function TableOfContents() {
             ready &&
             <TOCItem heading={root} />
         }
-    </span>
-}
-
-function TOCItem(
-    {
-        heading
-    }: { heading: HeadingNode }
-) {
-    if (!heading.id) {
-        return <ul
-            className='toc-list root'
-        >
-            {
-                heading.next.map((next) => {
-                    return <TOCItem
-                        key={next.id}
-                        heading={next}
-                    />
-                })
-            }
-        </ul>
-    }
-
-    return <li
-        className='toc-item'
-    >
-        <a
-            href={`#${heading.id}`}
-        >
-            {heading.id.replace(/-/g, ' ')}
-        </a>
-
-        {
-            heading.next.length > 0 &&
-            <ul
-                className='toc-list'
-            >
-                {
-                    heading.next.map((next) => {
-                        return <TOCItem
-                            key={next.id}
-                            heading={next}
-                        />
-                    })
-                }
-            </ul>
-        }
-    </li>
+    </span>;
 }

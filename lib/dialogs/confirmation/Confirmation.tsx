@@ -1,16 +1,16 @@
 import './styles/confirmation.scss';
-import { Button } from "lib/buttons"
-import { getClassName } from "lib/helpers"
-import { HTML_DivProps } from "lib/types"
-import { IManagedContentProps } from "@managed/ManagedContent"
-import { ReactNode } from "react"
-import { ThemeProps, themes } from "@chrisofnormandy/confetti/themes"
-import { useDialogs } from "@dialogs/DialogProvider"
+import { Button } from '@buttons';
+import { getClassName } from '#helpers';
+import { HTML_DivProps } from '#types';
+import { IManagedContentProps } from '@managed';
+import { ReactNode } from 'react';
+import { ThemeProp, themes } from '@chrisofnormandy/confetti/themes';
+import { useDialogs } from '@dialogs';
 
 interface ConfirmationThemeScheme {
-    cancelButton?: ThemeProps
-    container?: ThemeProps
-    okButton?: ThemeProps
+    cancelButton?: ThemeProp
+    container?: ThemeProp
+    okButton?: ThemeProp
 }
 
 export type ConfirmationProps = {
@@ -35,7 +35,7 @@ export default function Confirmation(
     const dialogs = useDialogs();
 
     return <div
-        className={getClassName('dialog confirmation', className, themes.getStyles(scheme?.container?.theme))}
+        className={getClassName('dialog confirmation', className, themes.getStyles(scheme?.container))}
         {...props}
     >
         <div
@@ -58,7 +58,7 @@ export default function Confirmation(
                     onCancel();
                     dialogs.close(props.id);
                 }}
-                theme={scheme?.cancelButton?.theme}
+                theme={scheme?.cancelButton}
             >
                 Cancel
             </Button>
@@ -68,10 +68,10 @@ export default function Confirmation(
                     onConfirm();
                     dialogs.close(props.id);
                 }}
-                theme={scheme?.okButton?.theme}
+                theme={scheme?.okButton}
             >
                 OK
             </Button>
         </div>
-    </div>
+    </div>;
 }

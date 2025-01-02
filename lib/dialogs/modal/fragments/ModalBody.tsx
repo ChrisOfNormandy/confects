@@ -18,5 +18,5 @@ export function ModalBody(
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }

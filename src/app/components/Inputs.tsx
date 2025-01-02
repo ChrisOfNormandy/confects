@@ -14,7 +14,7 @@ function InputDisplay() {
                 >
                     {
                         Array.from(STYLES).map((n) => {
-                            const theme = themes.getBasicStyling(n)
+                            const theme = themes.getBasicStyling(n);
 
                             return <div
                                 key={n}
@@ -66,13 +66,13 @@ function InputDisplay() {
                                         disabled
                                     />
                                 </div>
-                            </div>
+                            </div>;
                         })
                     }
-                </div>
+                </div>;
             })
         }
-    </Display >
+    </Display >;
 }
 
 function ToggleDisplay() {
@@ -93,7 +93,7 @@ function ToggleDisplay() {
         'x',
         'x-dot',
         'x-square'
-    ]
+    ];
 
     return <Display heading='toggles' >
         {
@@ -104,7 +104,7 @@ function ToggleDisplay() {
                 >
                     {
                         Array.from(STYLES).map((n) => {
-                            const theme = themes.getBasicStyling(n)
+                            const theme = themes.getBasicStyling(n);
 
                             return <div
                                 key={n}
@@ -129,17 +129,17 @@ function ToggleDisplay() {
                                                     iconType={iconType}
                                                     className={theme}
                                                 />
-                                            </div>
+                                            </div>;
                                         })
                                     }
                                 </div>
-                            </div>
+                            </div>;
                         })
                     }
-                </div>
+                </div>;
             })
         }
-    </Display >
+    </Display >;
 }
 
 function CodeEditorDisplay() {
@@ -148,7 +148,7 @@ function CodeEditorDisplay() {
             id='example_editor'
             className='f-primary'
         />
-    </Display>
+    </Display>;
 }
 
 function TextAreaDisplay() {
@@ -161,18 +161,18 @@ function TextAreaDisplay() {
                 >
                     {
                         Array.from(STYLES).map((n) => {
-                            const theme = themes.getBasicStyling(n)
+                            const theme = themes.getBasicStyling(n);
 
                             return <TextEditor
                                 key={n}
                                 className={theme}
-                            />
+                            />;
                         })
                     }
-                </div>
+                </div>;
             })
         }
-    </Display>
+    </Display>;
 }
 
 function SliderDisplay() {
@@ -185,7 +185,7 @@ function SliderDisplay() {
                 >
                     {
                         Array.from(STYLES).map((n) => {
-                            const theme = themes.getBasicStyling(n)
+                            const theme = themes.getBasicStyling(n);
 
                             return <div
                                 key={n}
@@ -231,13 +231,13 @@ function SliderDisplay() {
                                         disabled
                                     />
                                 </div>
-                            </div>
+                            </div>;
                         })
                     }
-                </div>
+                </div>;
             })
         }
-    </Display >
+    </Display >;
 }
 
 function FileInputDisplay() {
@@ -250,7 +250,7 @@ function FileInputDisplay() {
                 >
                     {
                         Array.from(STYLES).map((n) => {
-                            const theme = themes.getBasicStyling(n)
+                            const theme = themes.getBasicStyling(n);
 
                             return <div
                                 key={n}
@@ -267,13 +267,13 @@ function FileInputDisplay() {
                                         className={theme}
                                     />
                                 </div>
-                            </div>
+                            </div>;
                         })
                     }
-                </div>
+                </div>;
             })
         }
-    </Display >
+    </Display >;
 }
 
 export function Inputs() {
@@ -284,5 +284,5 @@ export function Inputs() {
         <TextAreaDisplay />
         <SliderDisplay />
         <FileInputDisplay />
-    </div>
+    </div>;
 }

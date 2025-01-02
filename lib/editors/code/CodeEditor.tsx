@@ -4,7 +4,7 @@ import { Button } from 'lib/buttons';
 import { getClassName } from 'lib/helpers';
 import { HTML_DivProps } from 'lib/types';
 import { ReactNode, useEffect, useRef, useState } from 'react';
-import * as monaco from 'monaco-editor'
+import * as monaco from 'monaco-editor';
 
 const BORDER_SIZE = 2;
 
@@ -51,17 +51,18 @@ export function CodeEditor(
 
             const rect = monacoRef.current.getBoundingClientRect();
 
-            editor.layout({ width: rect.width - BORDER_SIZE * 2, height: 200 });
-        }
+            editor.layout({ width: rect.width - BORDER_SIZE * 2,
+height: 200 });
+        };
 
         window.requestAnimationFrame(() => resize());
 
-        window.addEventListener('resize', resize)
+        window.addEventListener('resize', resize);
 
         return () => {
             window.removeEventListener('resize', resize);
-        }
-    }, [editor])
+        };
+    }, [editor]);
 
     return <div
         id={id}
@@ -86,7 +87,7 @@ export function CodeEditor(
                     if (!content)
                         return;
 
-                    const file = new File([content], (heading || 'download.md').toString())
+                    const file = new File([content], (heading || 'download.md').toString());
                     const url = window.URL.createObjectURL(file);
                     const a = document.createElement('a');
 
@@ -107,5 +108,5 @@ export function CodeEditor(
             ref={monacoRef}
             {...props}
         />
-    </div>
+    </div>;
 }

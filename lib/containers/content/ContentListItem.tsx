@@ -16,5 +16,5 @@ export function ContentListItem(
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }

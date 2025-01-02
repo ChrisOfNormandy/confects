@@ -1,14 +1,13 @@
-import { DialogControl, DialogControlProps } from "@dialogs/dialog/fragments/DialogControl";
-import { getClassName, makeDraggable } from "#helpers/components";
-import { Glyph } from "lib/buttons";
-import { Heading } from "@decorations/heading/Heading";
-import { HTML_FormProps } from "#types/html";
-import { IManagedContentProps } from "@managed/ManagedContent";
-import { ModalBody } from "./fragments/ModalBody";
-import { ModalFooter } from "./fragments/ModalFooter";
-import { ModalHeader } from "./fragments/ModalHeader";
-import { MouseEvent, ReactNode } from "react";
-import { useDialogs } from "@dialogs/DialogProvider";
+import { DialogControl, DialogControlProps, useDialogs } from '@dialogs';
+import { getClassName, makeDraggable } from '#helpers';
+import { Glyph } from '@buttons';
+import { Heading } from '@decorations';
+import { HTML_FormProps } from '#types';
+import { IManagedContentProps } from '@managed';
+import { ModalBody } from './fragments/ModalBody';
+import { ModalFooter } from './fragments/ModalFooter';
+import { ModalHeader } from './fragments/ModalHeader';
+import { MouseEvent, ReactNode } from 'react';
 
 export type ModalProps = {
     cancelButton?: DialogControlProps
@@ -33,12 +32,12 @@ export default function Modal(
 ) {
 
     const dialogs = useDialogs();
-    const draggableProps = mobile && makeDraggable(props.id)
+    const draggableProps = mobile && makeDraggable(props.id);
 
     return <form
         className={getClassName('modal', className)}
         {...props}
-        {...((mobile !== 'header' && mobile) && draggableProps || {})}
+        {...(mobile !== 'header' && mobile && draggableProps || {})}
     >
         <ModalHeader>
             <Heading>
@@ -72,5 +71,5 @@ export default function Modal(
                 {...okButton}
             />
         </ModalFooter>
-    </form>
+    </form>;
 }

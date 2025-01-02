@@ -1,10 +1,10 @@
-import { ClassAttributes, HTMLAttributes, JSX, ReactNode } from "react";
-import { CodeEditor, CodeEditorProps } from "lib/editors";
-import { Components, ExtraProps } from "react-markdown";
-import { getClassName } from "lib/helpers";
-import { HTML_CodeProps, isInterfaceTypeIterable } from "lib/types";
-import { processingOrder } from "./patterns";
-import { v4 } from "uuid";
+import { ClassAttributes, HTMLAttributes, JSX, ReactNode } from 'react';
+import { CodeEditor, CodeEditorProps } from 'lib/editors';
+import { Components, ExtraProps } from 'react-markdown';
+import { getClassName } from 'lib/helpers';
+import { HTML_CodeProps, isInterfaceTypeIterable } from 'lib/types';
+import { processingOrder } from './patterns';
+import { v4 } from 'uuid';
 
 type ElementProps<T extends HTMLElement> = ClassAttributes<T> & HTMLAttributes<T> & ExtraProps;
 
@@ -23,14 +23,14 @@ function repl(str: string, pattern: RegExp, element: (m: RegExpMatchArray) => Re
         str.slice(0, i),
         element(m),
         str.slice(i + l)
-    ]
+    ];
 }
 
 function process(arr: (string | ReactNode)[]) {
     processingOrder.forEach(({ element, pattern }) => {
         arr.forEach((str, s) => {
             if (typeof str === 'string')
-                arr.splice(s, 1, ...repl(str, pattern, element))
+                arr.splice(s, 1, ...repl(str, pattern, element));
         });
     });
 
@@ -46,10 +46,10 @@ function application<T extends HTMLElement>({ children, node }: ElementProps<T>)
             if (typeof c === 'object') {
                 cache.set(i, c);
 
-                return `OBJECT:${i}`
+                return `OBJECT:${i}`;
             }
 
-            return c
+            return c;
         }).join('');
 
         const val = process([temp]);
@@ -62,7 +62,7 @@ function application<T extends HTMLElement>({ children, node }: ElementProps<T>)
                 typeof v === 'object' &&
                 isInterfaceTypeIterable(v)
             ) {
-                return <p>{v}</p>
+                return <p>{v}</p>;
             }
 
             if (typeof v === 'string') {
@@ -97,15 +97,17 @@ function application<T extends HTMLElement>({ children, node }: ElementProps<T>)
 
                     if (doLoop)
                         loop();
-                }
+                };
 
                 loop();
 
-                return ret.map((r, i) => typeof r !== 'object' ? <span key={i}>{r}</span> : r);
+                return ret.map((r, i) => typeof r !== 'object'
+? <span key={i}>{r}</span>
+: r);
             }
 
             return v;
-        })
+        });
 
         return <p>{repl}</p>;
     }
@@ -124,14 +126,14 @@ function application<T extends HTMLElement>({ children, node }: ElementProps<T>)
         if (typeof content !== 'object')
             return <p>
                 {content}
-            </p>
+            </p>;
 
         return <>{content}</>;
     }
 
     // console.debug('PROCESSED:', processed);
 
-    return <p>{processed}</p>
+    return <p>{processed}</p>;
 }
 
 export const renderers: Components = {
@@ -160,19 +162,19 @@ export const renderers: Components = {
                         const fileName = flag.split('=')[1];
 
                         props.heading = fileName;
-                        props.id = `editor:${fileName}`
+                        props.id = `editor:${fileName}`;
                     }
                     // else if (flag === 'download')
                     //     props.canDownload = true;
-                })
+                });
 
-                return <CodeEditor defaultValue={content} className='f-primary' {...props} />
+                return <CodeEditor defaultValue={content} className='f-primary' {...props} />;
             }
 
-            return <code className={getClassName('f-body', className)} {...props}>{content}</code>
+            return <code className={getClassName('f-body', className)} {...props}>{content}</code>;
         }
 
-        return <code className={getClassName('f-body', className)} {...props}>{children}</code>
+        return <code className={getClassName('f-body', className)} {...props}>{children}</code>;
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     blockquote: ({ children, node, ...props }) => <blockquote className='f-body' {...props}>{children}</blockquote>,
@@ -188,4 +190,4 @@ export const renderers: Components = {
     h5: ({ children, node, ...props }) => <h5 {...props} id={(children || '').toString().toLowerCase().replace(/\s/g, '-')} className='heading'>{children}</h5>,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     h6: ({ children, node, ...props }) => <h6 {...props} id={(children || '').toString().toLowerCase().replace(/\s/g, '-')} className='heading'>{children}</h6>
-}
+};

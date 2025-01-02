@@ -1,7 +1,7 @@
 import './styles/content-tile.scss';
 import { getClassName } from 'lib/helpers';
 import { HTML_DivProps, HTML_ImageProps } from 'lib/types';
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export interface FigureOptions {
     image: string
@@ -52,5 +52,5 @@ export function ContentTile(
         }
 
         {children}
-    </div>
+    </div>;
 }

@@ -1,10 +1,11 @@
-import { ContentManager } from "@managed/ContentManager";
-import { MenuProps } from "./Menu";
-import { MenuContent } from "./MenuContent";
+import { ContentManager } from '@managed';
+import { MenuProps, MenuContent } from '@menu';
 
 export class MenuBuilder {
     readonly id: string;
+
     private readonly content: MenuContent[] = [];
+
     private position: DOMRect;
 
     readonly manager: ContentManager<MenuProps>;
@@ -32,7 +33,7 @@ export class MenuBuilder {
             id: this.id,
             menuContent: this.content,
             position: this.position
-        }
+        };
     }
 
     constructor(manager: ContentManager<MenuProps>, id: string) {

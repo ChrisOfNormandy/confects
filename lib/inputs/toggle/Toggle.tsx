@@ -1,9 +1,9 @@
-import './styles/toggle.scss'
-import { Button } from "lib/buttons";
-import { getClassName } from "lib/helpers";
-import { HTML_DivProps } from "lib/types";
-import { Icon } from "lib/decorations";
-import { useState } from "react";
+import './styles/toggle.scss';
+import { Button } from 'lib/buttons';
+import { getClassName } from 'lib/helpers';
+import { HTML_DivProps } from 'lib/types';
+import { Icon } from 'lib/decorations';
+import { useState } from 'react';
 
 export type ToggleIconType =
     'check-dot' |
@@ -40,7 +40,7 @@ const mapping = new Map<ToggleIconType, [string, string]>(
         ['x-square', ['square', 'x-square']],
         ['x', ['', 'x']]
     ]
-)
+);
 
 interface extToggleProps {
     name?: string
@@ -86,5 +86,5 @@ export function Toggle(
                 icon={value && iconSet[1] || iconSet[0]}
             />
         </Button>
-    </div>
+    </div>;
 }

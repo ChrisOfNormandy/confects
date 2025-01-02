@@ -7,10 +7,10 @@ export function ThemePreview() {
     const getStyle = (id: string) => {
         const elem = document.getElementById(id);
         if (elem)
-            return window.getComputedStyle(elem, null).getPropertyValue('background-color')
+            return window.getComputedStyle(elem, null).getPropertyValue('background-color');
 
         return id;
-    }
+    };
 
     const themeCategories = Array.from(THEMES);
 
@@ -47,7 +47,7 @@ export function ThemePreview() {
                             <span>
                                 {getStyle(className)}
                             </span>
-                        </div>
+                        </div>;
                     })
                 }
             </div>
@@ -71,7 +71,7 @@ export function ThemePreview() {
                             <span>
                                 {getStyle(className)}
                             </span>
-                        </div>
+                        </div>;
                     })
                 }
             </div>
@@ -95,10 +95,10 @@ export function ThemePreview() {
                             <span>
                                 {getStyle(className)}
                             </span>
-                        </div>
+                        </div>;
                     })
                 }
             </div>
         </div>
-    </div>
+    </div>;
 }

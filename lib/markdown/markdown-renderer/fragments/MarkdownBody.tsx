@@ -1,8 +1,8 @@
-import { getClassName } from "#helpers/components";
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { renderers } from "../helpers/renderers";
-import { HTML_DivProps } from "#types/html";
+import { getClassName } from '#helpers';
+import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { renderers } from '../helpers/renderers';
+import { HTML_DivProps } from '#types';
 
 type MarkdownBodyProps = HTML_DivProps & {
     raw: boolean
@@ -13,7 +13,7 @@ export function MarkdownBody(
     {
         raw,
         markdownContent,
-        className,
+        className
     }: MarkdownBodyProps
 ) {
     return <div
@@ -33,7 +33,7 @@ export function MarkdownBody(
                                 key={i}
                             >
                                 {line}
-                            </p>
+                            </p>;
                         })}
                     </div>
                     : <Markdown
@@ -44,5 +44,5 @@ export function MarkdownBody(
                     </Markdown>
             }
         </div>
-    </div>
+    </div>;
 }

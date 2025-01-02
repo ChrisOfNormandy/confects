@@ -1,6 +1,6 @@
-import { HTMLElementProps } from "lib/types";
-import { TableOfContents } from "lib/markdown";
-import { ReactNode } from "react";
+import { HTMLElementProps } from 'lib/types';
+import { TableOfContents } from 'lib/markdown';
+import { ReactNode } from 'react';
 
 interface Processor {
     element: (m: RegExpMatchArray) => ReactNode,
@@ -25,7 +25,7 @@ const HIGHLIGHT_PROCESS: Processor = {
             className='highlight f-primary'
         >
             {m[1]}
-        </span>
+        </span>;
     },
     pattern: HIGHLIGHT_SYNTAX
 };
@@ -34,7 +34,7 @@ const SUPERSCRIPT_PROCESS: Processor = {
     element: (m) => {
         return <sup>
             {m[1]}
-        </sup>
+        </sup>;
     },
     pattern: SUPERSCRIPT_SYNTAX
 };
@@ -43,7 +43,7 @@ const SUBSCRIPT_PROCESS: Processor = {
     element: (m) => {
         return <sub>
             {m[1]}
-        </sub>
+        </sub>;
     },
     pattern: SUBSCRIPT_SYNTAX
 };
@@ -66,6 +66,7 @@ function getAppliedStyles(tag: string, value: ReactNode) {
                 tags.style = JSON.parse(value);
                 break;
             }
+            default: throw new Error('Unsupported key: ' + key);
         }
     });
 
@@ -73,7 +74,7 @@ function getAppliedStyles(tag: string, value: ReactNode) {
         {...tags}
     >
         {value}
-    </span>
+    </span>;
 }
 
 const STYLE_PROCESS: Processor = {
@@ -81,17 +82,17 @@ const STYLE_PROCESS: Processor = {
         if (!m[1])
             return m[2];
 
-        return getAppliedStyles(m[1], m[2])
+        return getAppliedStyles(m[1], m[2]);
     },
     pattern: STYLE_SYNTAX
-}
+};
 
 const TOC_PROCESS: Processor = {
     element: () => {
-        return <TableOfContents />
+        return <TableOfContents />;
     },
     pattern: TOC_SYNTAX
-}
+};
 
 export const processingOrder: Processor[] = [
     HIGHLIGHT_PROCESS,

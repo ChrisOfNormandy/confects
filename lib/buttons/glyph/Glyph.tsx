@@ -24,5 +24,5 @@ export function Glyph(
         <Icon
             icon={icon}
         />
-    </Button>
+    </Button>;
 }

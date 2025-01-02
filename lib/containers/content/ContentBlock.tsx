@@ -16,5 +16,5 @@ export function ContentBlock(
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }

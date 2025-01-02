@@ -6,10 +6,14 @@
     top: 0;
     left: 0;
 
-    .menu {
-        @include styling.rounded;
-
+    .menu-wrapper {
         position: absolute;
-        user-select: none;
+        padding: 10px;
+
+        .menu {
+            @include styling.rounded;
+
+            user-select: none;
+        }
     }
 }

@@ -18,5 +18,5 @@ export function DialogBody(
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }

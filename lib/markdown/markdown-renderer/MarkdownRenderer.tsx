@@ -4,7 +4,7 @@ import { HTML_DivProps } from 'lib/types';
 import { Loading } from 'lib/decorations';
 import { MarkdownBody } from './fragments/MarkdownBody';
 import { MarkdownFeatureFlags, MarkdownHeader } from './fragments/MarkdownHeader';
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import { MarkdownFooter } from './fragments/MarkdownFooter';
 
 export type MarkdownRendererProps = {
@@ -39,7 +39,7 @@ export function MarkdownRenderer(
         catch (err) {
             console.error(err);
         }
-    }
+    };
 
     useEffect(() => {
         if (ready)
@@ -51,7 +51,7 @@ export function MarkdownRenderer(
     if (!content) {
         return <Loading>
             Fetching content...
-        </Loading>
+        </Loading>;
     }
 
     return <div
@@ -75,5 +75,5 @@ export function MarkdownRenderer(
         <MarkdownFooter
             features={features}
         />
-    </div>
+    </div>;
 }

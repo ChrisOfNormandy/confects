@@ -16,5 +16,5 @@ export function ContentGroup(
         {...props}
     >
         {children}
-    </div>
+    </div>;
 }
