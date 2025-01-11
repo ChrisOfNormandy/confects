@@ -102,8 +102,8 @@ function application<T extends HTMLElement>({ children, node }: ElementProps<T>)
                 loop();
 
                 return ret.map((r, i) => typeof r !== 'object'
-? <span key={i}>{r}</span>
-: r);
+                    ? <span key={i}>{r}</span>
+                    : r);
             }
 
             return v;
@@ -139,7 +139,7 @@ function application<T extends HTMLElement>({ children, node }: ElementProps<T>)
 export const renderers: Components = {
     p: (props) => application<HTMLParagraphElement>(props),
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    code: ({ children, node, className, ...props }: HTML_CodeProps & { node: unknown }) => {
+    code: ({ children, node, className, ...props }: HTML_CodeProps & { node?: unknown }) => {
         const spl = children?.toString().split(/\n/g);
         if (!spl)
             return <code className={getClassName('f-body', className)} />;
