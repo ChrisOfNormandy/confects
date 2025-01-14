@@ -6,10 +6,9 @@
     "name": "@chrisofnormandy/confects",
     "packageManager": "yarn@4.6.0",
     "type": "module",
-    "version": "1.0.0",
+    "version": "0.0.0",
     "files": [
-        "dist",
-        "lib/linter.mjs"
+        "dist"
     ],
     "exports": {
         "./style.css": "./dist/confects.css",
