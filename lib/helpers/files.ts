@@ -1,5 +1,4 @@
-export function downloadContent(content: string, fileName?: string, options?: FilePropertyBag) {
-    const file = new File([content], fileName || 'download.txt', options);
+export function downloadFile(file: File) {
     const url = window.URL.createObjectURL(file);
     const a = document.createElement('a');
 
@@ -11,8 +10,12 @@ export function downloadContent(content: string, fileName?: string, options?: Fi
     a.remove();
 }
 
-export function openInNewTab(content: string, fileName?: string, options?: FilePropertyBag) {
+export function downloadContent(content: string, fileName?: string, options?: FilePropertyBag) {
     const file = new File([content], fileName || 'download.txt', options);
+    downloadFile(file);
+}
+
+export function openFileInTab(file: File) {
     const url = window.URL.createObjectURL(file);
     const a = document.createElement('a');
 
@@ -22,4 +25,9 @@ export function openInNewTab(content: string, fileName?: string, options?: FileP
     document.body.append(a);
     a.click();
     a.remove();
+}
+
+export function openInNewTab(content: string, fileName?: string, options?: FilePropertyBag) {
+    const file = new File([content], fileName || 'download.txt', options);
+    openFileInTab(file);
 }

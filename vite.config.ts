@@ -53,27 +53,6 @@ export default ({ mode }: UserConfig) => {
                         react: 'React',
                         'react-router': 'ReactRouter',
                         'react-router-dom': 'ReactRouterDOM'
-                    },
-                    manualChunks: (id) => {
-                        if (id.includes('node_modules')) {
-                            if (id.includes('monaco-editor'))
-                                return 'code-editor';
-
-                            if (
-                                id.includes('micromark')
-                                || id.includes('remark')
-                                || id.includes('rehype')
-                                || id.includes('unified')
-                                || id.includes('mdast')
-                            )
-                                return 'markdown';
-
-                            console.log(id);
-
-                            return 'vendor';
-                        }
-
-                        return 'index';
                     }
                 }
             }

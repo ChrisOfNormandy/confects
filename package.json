@@ -12,34 +12,34 @@
         "lib/linter.mjs"
     ],
     "exports": {
-        "./confects.css": "./dist/style.css",
+        "./style.css": "./dist/confects.css",
         "./buttons": {
-            "types": "./dist/buttons.d.ts",
+            "types": "./dist/lib/buttons.d.ts",
             "import": "./dist/buttons.js",
             "require": null
         },
         "./containers": {
-            "types": "./dist/containers.d.ts",
+            "types": "./dist/lib/containers.d.ts",
             "import": "./dist/containers.js",
             "require": null
         },
         "./decorations": {
-            "types": "./dist/decorations.d.ts",
+            "types": "./dist/lib/decorations.d.ts",
             "import": "./dist/decorations.js",
             "require": null
         },
         "./editors": {
-            "types": "./dist/editors.d.ts",
+            "types": "./dist/lib/editors.d.ts",
             "import": "./dist/editors.js",
             "require": null
         },
         "./helpers": {
-            "types": "./dist/helpers.d.ts",
+            "types": "./dist/lib/helpers.d.ts",
             "import": "./dist/helpers.js",
             "require": null
         },
         "./inputs": {
-            "types": "./dist/inputs.d.ts",
+            "types": "./dist/lib/inputs.d.ts",
             "import": "./dist/inputs.js",
             "require": null
         },
@@ -49,32 +49,32 @@
             "require": null
         },
         "./markdown": {
-            "types": "./dist/markdown.d.ts",
+            "types": "./dist/lib/markdown.d.ts",
             "import": "./dist/markdown.js",
             "require": null
         },
         "./navs": {
-            "types": "./dist/navs.d.ts",
+            "types": "./dist/lib/navs.d.ts",
             "import": "./dist/navs.js",
             "require": null
         },
         "./pages": {
-            "types": "./dist/pages.d.ts",
+            "types": "./dist/lib/pages.d.ts",
             "import": "./dist/pages.js",
             "require": null
         },
         "./routers": {
-            "types": "./dist/routers.d.ts",
+            "types": "./dist/lib/routers.d.ts",
             "import": "./dist/routers.js",
             "require": null
         },
         "./tables": {
-            "types": "./dist/tables.d.ts",
+            "types": "./dist/lib/tables.d.ts",
             "import": "./dist/tables.js",
             "require": null
         },
         "./types": {
-            "types": "./dist/types.d.ts",
+            "types": "./dist/lib/types.d.ts",
             "import": "./dist/types.js",
             "require": null
         }
