@@ -1,0 +1,6 @@
+@use '~layout' as layout;
+
+.page {
+    @include layout.flex(false, true);
+    @include layout.fullsize;
+}

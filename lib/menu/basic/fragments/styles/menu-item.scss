@@ -1,0 +1,14 @@
+@use '~layout' as layout;
+@use '~styling' as styling;
+
+.menu {
+    .menu-item {
+        .menu-item-btn {
+            @include layout.wide;
+            @include styling.rounded(0);
+
+            white-space: nowrap;
+            border: none;
+        }
+    }
+}

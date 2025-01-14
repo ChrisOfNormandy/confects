@@ -1,7 +1,0 @@
-@use '~@chrisofnormandy/confetti/pack.scss' as *;
-
-.input {
-    @include rounded;
-
-    padding: 4px 8px;
-}

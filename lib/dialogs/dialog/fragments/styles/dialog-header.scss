@@ -1,0 +1,16 @@
+@use '~styling' as styling;
+@use '~layout' as layout;
+
+.dialog-header {
+    @include styling.rounded(10px, top);
+
+    &.no-heading {
+        @include layout.flex-end(true);
+    }
+
+    &:not(.no-heading) {
+        @include layout.flex-between(true);
+    }
+
+    padding: 10px;
+}

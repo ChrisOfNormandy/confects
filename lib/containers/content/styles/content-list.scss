@@ -1,0 +1,5 @@
+@use '~layout' as layout;
+
+.content-list {
+    @include layout.flex-even(false, true);
+}

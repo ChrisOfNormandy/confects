@@ -1,0 +1,7 @@
+@use '~layout' as layout;
+
+.content {
+    @include layout.flex(true);
+
+    padding: 10px;
+}

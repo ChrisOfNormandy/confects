@@ -1,0 +1,15 @@
+@use '~styling' as styling;
+@use '~layout' as layout;
+
+.dialog-footer {
+    @include layout.flex-between(true);
+    @include styling.rounded(10px, bottom);
+
+    padding: 10px;
+
+    .btn {
+        &:not(:last-child) {
+            margin-right: 5px;
+        }
+    }
+}

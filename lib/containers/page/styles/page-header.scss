@@ -1,0 +1,14 @@
+@use '~layout' as layout;
+
+.page-header {
+    @include layout.flex-between(true);
+    @include layout.wide(20px);
+
+    padding: 5px 10px;
+
+    .header-sect {
+        .brand {
+            font-size: 24px;
+        }
+    }
+}

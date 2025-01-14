@@ -1,0 +1,9 @@
+@use '~layout' as layout;
+
+.page-body {
+    @include layout.flex(false, true);
+    @include layout.fullsize(40px, 20px);
+
+    overflow: auto;
+    padding: 10px 20px;
+}

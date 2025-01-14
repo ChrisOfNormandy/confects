@@ -1,45 +1,137 @@
 {
-    "author": "",
+    "author": "chrisofnormandy",
     "description": "A collection of React / JSX components.",
     "keywords": [],
     "license": "MIT",
     "name": "@chrisofnormandy/confects",
+    "packageManager": "yarn@4.6.0",
     "type": "module",
     "version": "1.0.0",
     "files": [
-        "./dist"
+        "dist",
+        "lib/linter.mjs"
     ],
-    "main": "./dist/confects.umd.js",
-    "module": "./dist/confects.es.js",
     "exports": {
-        ".": {
-            "import": "./dist/confects.es.js",
-            "require": "./dist/confects.umd.js"
+        "./style.css": "./dist/confects.css",
+        "./buttons": {
+            "types": "./dist/lib/buttons.d.ts",
+            "import": "./dist/buttons.js",
+            "require": null
         },
-        "./*.css": {
-            "import": "./dist/style.css",
-            "require": "./dist/style.css"
+        "./containers": {
+            "types": "./dist/lib/containers.d.ts",
+            "import": "./dist/containers.js",
+            "require": null
+        },
+        "./decorations": {
+            "types": "./dist/lib/decorations.d.ts",
+            "import": "./dist/decorations.js",
+            "require": null
+        },
+        "./editors": {
+            "types": "./dist/lib/editors.d.ts",
+            "import": "./dist/editors.js",
+            "require": null
+        },
+        "./helpers": {
+            "types": "./dist/lib/helpers.d.ts",
+            "import": "./dist/helpers.js",
+            "require": null
+        },
+        "./inputs": {
+            "types": "./dist/lib/inputs.d.ts",
+            "import": "./dist/inputs.js",
+            "require": null
+        },
+        "./managed": {
+            "types": "./dist/managed.d.ts",
+            "import": "./dist/managed.js",
+            "require": null
+        },
+        "./markdown": {
+            "types": "./dist/lib/markdown.d.ts",
+            "import": "./dist/markdown.js",
+            "require": null
+        },
+        "./navs": {
+            "types": "./dist/lib/navs.d.ts",
+            "import": "./dist/navs.js",
+            "require": null
+        },
+        "./pages": {
+            "types": "./dist/lib/pages.d.ts",
+            "import": "./dist/pages.js",
+            "require": null
+        },
+        "./routers": {
+            "types": "./dist/lib/routers.d.ts",
+            "import": "./dist/routers.js",
+            "require": null
+        },
+        "./tables": {
+            "types": "./dist/lib/tables.d.ts",
+            "import": "./dist/tables.js",
+            "require": null
+        },
+        "./types": {
+            "types": "./dist/lib/types.d.ts",
+            "import": "./dist/types.js",
+            "require": null
         }
     },
     "dependencies": {
-        "@chrisofnormandy/confetti": "../confetti",
+        "@auth0/auth0-react": "^2.2.4",
+        "@chrisofnormandy/concauses": "^0.0.0",
+        "@chrisofnormandy/confetti": "^0.0.1",
         "bootstrap-icons": "^1.11.3",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "sass": "^1.72.0"
-    },
-    "scripts": {
-        "dev": "yarn upgrade @chrisofnormandy/confetti; vite",
-        "build": "vite build"
+        "monaco-editor": "^0.52.2",
+        "react-markdown": "^9.0.1",
+        "react-tooltip": "^5.28.0",
+        "remark-gfm": "^4.0.0",
+        "sass": "^1.83.0",
+        "uuid": "^11.0.3"
     },
     "devDependencies": {
-        "@types/react": "^18.2.69",
-        "@types/react-dom": "^18.2.22",
-        "@vitejs/plugin-react": "^4.2.1",
-        "eslint": "^8.57.0",
-        "eslint-plugin-react": "^7.34.1",
-        "eslint-plugin-react-hooks": "^4.6.0",
-        "eslint-plugin-react-refresh": "^0.4.6",
-        "vite": "^5.2.3"
+        "@eslint/js": "^9.17.0",
+        "@types/eslint__js": "^8.42.3",
+        "@types/node": "^22.10.2",
+        "@types/react": "^19.0.2",
+        "@types/react-dom": "^19.0.2",
+        "@types/uuid": "^10.0.0",
+        "@vitejs/plugin-react": "^4.3.4",
+        "eslint": "^9.17.0",
+        "eslint-plugin-react": "^7.37.2",
+        "eslint-plugin-react-hooks": "^5.1.0",
+        "eslint-plugin-react-refresh": "^0.4.16",
+        "globals": "^15.14.0",
+        "knip": "^5.41.1",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "react-router": "^7.0.2",
+        "react-router-dom": "^7.0.2",
+        "tsc-alias": "^1.8.10",
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.7.2",
+        "typescript-eslint": "^8.19.0",
+        "vite": "^6.0.4",
+        "vite-tsconfig-paths": "^5.1.4"
+    },
+    "peerDependencies": {
+        "react": ">=19",
+        "react-dom": ">=19",
+        "react-router-dom": ">=6"
+    },
+    "scripts": {
+        "build": "yarn clean; tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json && vite build",
+        "bump:pre": "npm version --commit-hooks false --git-tag-version false prerelease",
+        "bump": "npm version --commit-hooks false --git-tag-version false patch",
+        "clean": "rm -r ./dist",
+        "dev": "DEV=1 vite",
+        "docs": "cd ./docs && go run .",
+        "lint": "eslint --fix",
+        "prerelease": "yarn lint && yarn knip && yarn build && yarn bump:pre && git add --a",
+        "release": "yarn lint && yarn knip && yarn build && yarn bump && git add --a",
+        "sanity": "yarn typecheck && yarn lint && yarn knip",
+        "typecheck": "tsc -p tsconfig.json --noEmit"
     }
 }

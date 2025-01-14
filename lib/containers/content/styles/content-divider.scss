@@ -1,0 +1,11 @@
+@use '~layout' as layout;
+@use '~styling' as styling;
+
+.content-divider {
+    @include layout.flex(true);
+    @include layout.wide(40px);
+    @include styling.rounded(25%);
+
+    height: 3px;
+    margin: 30px 20px;
+}

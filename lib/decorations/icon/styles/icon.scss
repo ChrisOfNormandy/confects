@@ -1,0 +1,11 @@
+@use 'bootstrap-icons/font/bootstrap-icons.css';
+
+@mixin icon($size: 16px) {
+    font-size: $size;
+    min-width: $size;
+    min-height: $size;
+}
+
+.icon {
+    @include icon;
+}

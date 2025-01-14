@@ -1,0 +1,10 @@
+@use '~layout' as layout;
+
+.content-block {
+    @include layout.flex(true, true);
+    @include layout.wide;
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}

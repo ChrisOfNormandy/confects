@@ -1,0 +1,15 @@
+.input.slider {
+    appearance: none;
+
+    &::-webkit-slider-thumb {
+        appearance: none;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &::-ms-track {
+        cursor: pointer;
+    }
+}

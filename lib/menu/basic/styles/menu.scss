@@ -1,0 +1,19 @@
+@use '~styling' as styling;
+@use '~layout' as layout;
+
+.content-manager#menus {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .menu-wrapper {
+        position: absolute;
+        padding: 10px;
+
+        .menu {
+            @include styling.rounded;
+
+            user-select: none;
+        }
+    }
+}

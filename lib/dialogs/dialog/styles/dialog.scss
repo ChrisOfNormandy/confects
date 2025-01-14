@@ -1,0 +1,21 @@
+@use '~layout' as layout;
+@use '~styling' as styling;
+
+.content-manager.dialogs {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    .content-wrapper {
+        @include layout.flex;
+
+        .dialog {
+            @include styling.rounded;
+
+            position: absolute;
+
+            user-select: none;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
