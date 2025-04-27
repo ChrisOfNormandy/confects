@@ -10,7 +10,7 @@ export function Slider(
         ...props
     }: SliderProps) {
     return <Input
-        className={getClassName('slider', className)}
+        className={getClassName('number slider', className)}
         {...props}
         type='range'
     />;

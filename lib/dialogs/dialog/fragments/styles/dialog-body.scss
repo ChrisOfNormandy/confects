@@ -1,7 +1,0 @@
-@use '~layout' as layout;
-
-.dialog-body {
-    @include layout.flex(false, true);
-
-    padding: 10px 20px;
-}

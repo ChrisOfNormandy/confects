@@ -1,6 +1,6 @@
 @use '~styling' as styling;
 @use '~layout' as layout;
-@use '../../../buttons/button/styles/button' as *;
+@use '../../../buttons/button/styles/button.mixin' as btn;
 
 .file-input {
     @include layout.flex(false, true);
@@ -29,7 +29,7 @@
 
     .input.file {
         &::file-selector-button {
-            @include btn;
+            @include btn.btn;
             display: inline;
         }
     }

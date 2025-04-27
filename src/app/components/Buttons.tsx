@@ -4,7 +4,11 @@ import { Display } from './helpers/formatters';
 import { getClassName } from 'lib/helpers';
 import { StyleMode, STYLES, themes } from '@chrisofnormandy/confetti/themes';
 
-const MODES: (StyleMode | undefined)[] = [undefined, 'i', 'c'];
+const MODES: (StyleMode | undefined)[] = [
+undefined,
+'i',
+'c'
+];
 
 function ButtonDisplay() {
     return <Display heading='buttons' >
@@ -47,7 +51,11 @@ border: { mode } });
 function BadgeDisplay() {
     return <Display heading='badges'>
         {
-            ['', 'i', 'c'].map((mode) => {
+            [
+'',
+'i',
+'c'
+].map((mode) => {
                 return <div
                     key={mode || 'n'}
                     className='col'
@@ -98,11 +106,21 @@ function BadgeDisplay() {
 
 function GlyphDisplay() {
 
-    const SIZES = [1, 2, 3, 4, 5] as (1 | 2 | 3 | 4 | 5)[];
+    const SIZES = [
+1,
+2,
+3,
+4,
+5
+] as (1 | 2 | 3 | 4 | 5)[];
 
     return <Display heading='glyphs'>
         {
-            ['', 'i', 'c'].map((mode) => {
+            [
+'',
+'i',
+'c'
+].map((mode) => {
                 return <div
                     key={mode || 'n'}
                     className='col'
@@ -144,7 +162,11 @@ function GlyphDisplay() {
         }
 
         {
-            ['', 'i', 'c'].map((mode) => {
+            [
+'',
+'i',
+'c'
+].map((mode) => {
                 return <div
                     key={mode || 'n'}
                     className='col'

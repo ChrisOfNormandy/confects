@@ -2,7 +2,7 @@ import './styles/button.scss';
 import { getClassName, uniqueId } from 'lib/helpers';
 import { getTooltipProps, TooltipProps } from 'lib/decorations/tooltip/tooltip-handlers';
 import { HTML_ButtonProps } from 'lib/types';
-import { Ref, useState } from 'react';
+import { Ref, useRef } from 'react';
 import { themes, ThemeProps } from '@chrisofnormandy/confetti/themes';
 import { Tooltip } from 'lib/decorations';
 
@@ -14,6 +14,45 @@ export type ButtonProps = {
 } & HTML_ButtonProps &
     ThemeProps &
     TooltipProps;
+
+function getFormProps(submit: boolean | string, reset: boolean | string) {
+    const extraProps: HTML_ButtonProps = {};
+
+    if (submit) {
+        extraProps.type = 'submit';
+
+        if (typeof submit === 'string')
+            extraProps.form = submit;
+    }
+    else if (reset) {
+        extraProps.type = 'reset';
+
+        if (typeof reset === 'string')
+            extraProps.form = reset;
+    }
+
+    return extraProps;
+}
+
+function getMouseEventHandlers(props: HTML_ButtonProps): HTML_ButtonProps {
+    return {
+        onAuxClick: (e) => {
+            e.stopPropagation();
+            if (props.onAuxClick)
+                props.onAuxClick(e);
+        },
+        onClick: (e) => {
+            e.stopPropagation();
+            if (props.onClick)
+                props.onClick(e);
+        },
+        onContextMenu: (e) => {
+            e.stopPropagation();
+            if (props.onContextMenu)
+                props.onContextMenu(e);
+        }
+    };
+}
 
 export function Button(
     {
@@ -31,61 +70,24 @@ export function Button(
         ...props
     }: ButtonProps
 ) {
-    const [id] = useState(props.id || uniqueId('btn_'));
+    const id = useRef<string>(props.id || uniqueId('btn_'));
 
-    const extraProps: HTML_ButtonProps = {};
-
-    if (submit) {
-        extraProps.type = 'submit';
-
-        if (typeof submit === 'string')
-            extraProps.form = submit;
-    }
-    else if (reset) {
-        extraProps.type = 'reset';
-
-        if (typeof reset === 'string')
-            extraProps.form = reset;
-    }
-
-    const { tooltipId, tooltipDataProps, tooltipProps } = getTooltipProps(id, tooltip);
+    const { tooltipId, tooltipDataProps, tooltipProps } = getTooltipProps(id.current, tooltip);
 
     return <>
         <button
             className={getClassName(!noDefaultClassName && 'btn', themes.getStyles(theme), className)}
             type='button'
             {...props}
-            {...extraProps}
+            {...getFormProps(submit, reset)}
             {...tooltipDataProps}
-            id={id}
+            id={id.current}
             ref={innerRef}
-            onClick={
-                (e) => {
-                    if (!onClick)
-                        return;
-
-                    e.stopPropagation();
-                    onClick(e);
-                }
-            }
-            onAuxClick={
-                (e) => {
-                    if (!onAuxClick)
-                        return;
-
-                    e.stopPropagation();
-                    onAuxClick(e);
-                }
-            }
-            onContextMenu={
-                (e) => {
-                    if (!onContextMenu)
-                        return;
-
-                    e.stopPropagation();
-                    onContextMenu(e);
-                }
-            }
+            {...getMouseEventHandlers({
+                onAuxClick,
+                onClick,
+                onContextMenu
+            })}
         >
             {children}
         </button>
@@ -93,8 +95,8 @@ export function Button(
         {
             tooltipId &&
             <Tooltip
-                id={tooltipId}
                 {...tooltipProps}
+                id={tooltipId}
             />
         }
     </>;

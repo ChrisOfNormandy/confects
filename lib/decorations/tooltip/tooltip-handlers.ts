@@ -33,8 +33,7 @@ export interface TooltipContent {
     tooltipProps?: TooltipProps
 }
 
-function getProps(tooltipId: string, prop: ITooltipWrapper): TooltipContent {
-    const tooltipDataProps: TooltipDataProps = {};
+function getProps(tooltipId: string, prop: ITooltipWrapper, tooltipDataProps: TooltipDataProps): TooltipContent {
     const { tooltip, ...props } = prop;
 
     if (Array.isArray(tooltip)) {
@@ -52,8 +51,8 @@ function getProps(tooltipId: string, prop: ITooltipWrapper): TooltipContent {
     }
 
     return {
-        tooltipId,
         tooltipDataProps,
+        tooltipId,
         tooltipProps: props as TooltipProps
     };
 }
@@ -61,14 +60,14 @@ function getProps(tooltipId: string, prop: ITooltipWrapper): TooltipContent {
 export function getTooltipProps(id: string, tooltip?: TooltipOption) {
     const tooltipDataProps: TooltipDataProps = {};
 
-    if (!tooltip)
+    if (!id || !tooltip)
         return {} as TooltipContent;
 
     const tooltipId = `${id}__tooltip`;
     tooltipDataProps['data-tooltip-id'] = tooltipId;
 
     if (Array.isArray(tooltip) || typeof tooltip === 'string')
-        return getProps(tooltipId, { tooltip });
+        return getProps(tooltipId, { tooltip }, tooltipDataProps);
 
-    return getProps(tooltipId, tooltip);
+    return getProps(tooltipId, tooltip, tooltipDataProps);
 }

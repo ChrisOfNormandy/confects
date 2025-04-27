@@ -13,15 +13,6 @@ export default ({ mode }: UserConfig) => {
     const { DEV } = process.env;
 
     return defineConfig({
-        plugins: [react(), tsconfigPaths()],
-        server: {
-            port: 3000
-        },
-        resolve: {
-            alias: {
-                ...viteConfigAliases()
-            }
-        },
         build: {
             copyPublicDir: false,
             emptyOutDir: false,
@@ -30,36 +21,36 @@ export default ({ mode }: UserConfig) => {
                     'buttons',
                     'containers',
                     'decorations',
-                    'dialogs',
-                    'editors',
                     'helpers',
                     'inputs',
-                    'managed',
-                    'markdown',
-                    'menu',
-                    'overlay',
-                    'router',
                     'selectors',
                     'tables',
                     'types'
                 ].map((exp) => resolve(`./lib/${exp}.ts`)),
-                name: 'confects',
-                formats: ['es']
+                formats: ['es'],
+                name: 'confects'
             },
             rollupOptions: {
-                external: ['react', 'react-dom', 'react-router', 'react-router-dom'],
+                external: ['react', 'react-dom'],
                 output: {
                     globals: {
-                        react: 'React',
-                        'react-router': 'ReactRouter',
-                        'react-router-dom': 'ReactRouterDOM'
+                        react: 'React'
                     }
                 }
             }
         },
         esbuild: {
-            legalComments: 'none',
-            drop: !DEV && ['console', 'debugger'] || undefined
+            drop: !DEV && ['console', 'debugger'] || undefined,
+            legalComments: 'none'
+        },
+        plugins: [react(), tsconfigPaths()],
+        resolve: {
+            alias: {
+                ...viteConfigAliases()
+            }
+        },
+        server: {
+            port: 3000
         }
     });
 };

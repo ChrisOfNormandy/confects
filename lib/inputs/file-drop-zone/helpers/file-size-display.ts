@@ -1,4 +1,9 @@
-const SIZES = ['b', 'kb', 'mb', 'gb'];
+const SIZES = [
+'b',
+'kb',
+'mb',
+'gb'
+];
 const KILO = 1024;
 
 export function fileSizeDisplay(n: number) {

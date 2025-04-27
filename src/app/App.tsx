@@ -4,7 +4,7 @@ import { Buttons } from './components/Buttons';
 import { DialogProvider } from '@dialogs';
 import { Inputs } from './components/Inputs';
 import { ManagedContent } from './components/ManagedContent';
-import { MenuProvider } from '@menu';
+import { MenuProvider } from 'lib/menus';
 import { Outlet, Route, Routes } from 'react-router';
 import { Page, PageBody, PageFooter, PageHeader } from '@containers';
 import { RouterNav, CRouter, markdownRouter } from '@router';
@@ -14,6 +14,8 @@ import { ThemeSelector } from '@buttons';
 import { useEffect, useState } from 'react';
 import ContentPreview from './components/ContentPreview';
 import { Heading } from '@decorations';
+import { Toggles } from './components/Toggles';
+import { ToastProvider } from '@toasts';
 
 const router = new CRouter(
     {
@@ -48,46 +50,37 @@ const router = new CRouter(
                     {
                         path: '/previews',
                         routes: [
-                            {
-                                path: '/buttons'
-                            },
-                            {
-                                path: '/inputs'
-                            },
-                            {
-                                path: '/managers'
-                            }
+                            { path: '/buttons' },
+                            { path: '/editors' },
+                            { path: '/inputs' },
+                            { path: '/managers' },
+                            { path: '/toggles' },
                         ]
                     }
                 ]
             },
             {
                 path: '/markdown',
-                routes: [
-                    {
-                        path: '/page-1',
-                        markdown: {
-                            href: '/pages/page-1.md',
-                            features: {
-                                download: true,
-                                renderToggle: true,
-                                reload: true,
-                                print: true
-                            }
+                routes: [{
+                    path: '/page-1',
+                    markdown: {
+                        href: '/pages/page-1.md',
+                        features: {
+                            download: true,
+                            renderToggle: true,
+                            reload: true,
+                            print: true
                         }
-                    },
-                    {
-                        path: '/page-2',
-                        markdown: {
-                            href: '/pages/page-2.md'
-                        },
-                        routes: [
-                            {
-                                path: '/nested'
-                            }
-                        ]
                     }
-                ]
+                }, {
+                    path: '/page-2',
+                    markdown: {
+                        href: '/pages/page-2.md'
+                    },
+                    routes: [{
+                        path: '/nested'
+                    }]
+                }]
             }
         ],
         path: '',
@@ -163,6 +156,7 @@ router.setPathElement('/samples/previews', () => <Outlet />);
 router.setPathElement('/samples/previews/buttons', () => <Buttons />);
 router.setPathElement('/samples/previews/inputs', () => <Inputs />);
 router.setPathElement('/samples/previews/managers', () => <ManagedContent />);
+router.setPathElement('/samples/previews/toggles', () => <Toggles />);
 router.setPathElement('/samples/theme-preview', () => <ThemePreview />);
 router.setPathElement('/samples/content/preview', () => <ContentPreview />);
 
@@ -181,14 +175,16 @@ export default function App() {
     >
         <MenuProvider>
             <DialogProvider>
-                <BrowserRouter>
-                    {
-                        ready &&
-                        <Routes>
-                            {markdownRouter(router, Route)}
-                        </Routes>
-                    }
-                </BrowserRouter>
+                <ToastProvider>
+                    <BrowserRouter>
+                        {
+                            ready &&
+                            <Routes>
+                                {markdownRouter(router, Route)}
+                            </Routes>
+                        }
+                    </BrowserRouter>
+                </ToastProvider>
             </DialogProvider>
         </MenuProvider>
     </div>;

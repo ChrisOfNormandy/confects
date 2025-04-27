@@ -1,24 +1,23 @@
 import { getClassName } from 'lib/helpers';
 import { HTML_SelectProps } from 'lib/types';
+import { OptionType, SelectOption } from '../select-option';
+import { ThemeProps, themes } from '@chrisofnormandy/confetti/themes';
 
-export interface SelectOption {
-    label: string,
-    value: string
-}
+export type SelectProps<T extends OptionType> = {
+    options: SelectOption<T>[]
+} & ThemeProps
+    & HTML_SelectProps;
 
-export type SelectProps = {
-    options: SelectOption[]
-} & HTML_SelectProps;
-
-export function Select(
+export function Select<T extends OptionType>(
     {
         options,
         className,
+        theme,
         ...props
-    }: SelectProps
+    }: SelectProps<T>
 ) {
     return <select
-        className={getClassName('input select', className)}
+        className={getClassName('input select', themes.getStyles(theme), className)}
         {...props}
     >
         {

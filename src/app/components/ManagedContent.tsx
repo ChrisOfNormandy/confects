@@ -1,10 +1,13 @@
 import { Button } from 'lib/buttons';
-import { Display } from './helpers/formatters';
-import { v4 } from 'uuid';
 import { Dialog, DialogProps, useDialogs } from 'lib/dialogs';
-import { MenuBuilder, MenuSummonButton, useMenus } from 'lib/menu';
+import { Display } from './helpers/formatters';
+import { Input } from '@inputs';
 import { memo } from 'react';
+import { MenuBuilder, MenuSummonButton, useMenus } from 'lib/menus';
+import { v4 } from 'uuid';
 import ExpandingMenu from 'lib/menu/expanding/ExpandingMenu';
+import Modal from 'lib/dialogs/modal/Modal';
+import { useToasts } from '@toasts';
 
 function Dialogs() {
     const dialogs = useDialogs();
@@ -28,6 +31,19 @@ function Dialogs() {
         >
             Dialog
         </Button>
+
+        <Modal
+            id='example_modal'
+            header={
+                {
+                    theme: { background: { style: 'primary' } }
+                }
+            }
+        >
+            <Input
+                name='example_input'
+            />
+        </Modal>
     </Display>;
 }
 
@@ -37,7 +53,13 @@ function Menus() {
     return <>
         <Display heading='basic menu'>
             {
-                ([undefined, 'top', 'bottom', 'left', 'right'] as ('top' | 'bottom' | 'left' | 'right')[]).map((place) => {
+                ([
+                    undefined,
+                    'top',
+                    'bottom',
+                    'left',
+                    'right'
+                ] as ('top' | 'bottom' | 'left' | 'right')[]).map((place) => {
                     const builder = new MenuBuilder(menus, v4());
 
                     builder.addContent()
@@ -66,9 +88,24 @@ function Menus() {
     </>;
 }
 
+function Toasts() {
+    const toasts = useToasts();
+
+    return <>
+        <Display heading='toasts'>
+            <Button
+                onClick={() => toasts.info('Hello World!')}
+            >
+                Info
+            </Button>
+        </Display>
+    </>;
+}
+
 export function ManagedContent() {
     return <>
         <Dialogs />
         <Menus />
+        <Toasts />
     </>;
 }

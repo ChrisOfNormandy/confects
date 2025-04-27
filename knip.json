@@ -5,7 +5,6 @@
         "lib/containers.ts",
         "lib/decorations.ts",
         "lib/dialogs.ts",
-        "lib/editors.ts",
         "lib/helpers.ts",
         "lib/inputs.ts",
         "lib/managed.ts",
