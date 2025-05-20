@@ -3,7 +3,7 @@ import { getClassName, uniqueId } from 'lib/helpers';
 import { getTooltipProps, TooltipProps } from 'lib/decorations/tooltip/tooltip-handlers';
 import { HTML_ButtonProps } from 'lib/types';
 import { Ref, useRef } from 'react';
-import { themes, ThemeProps } from '@chrisofnormandy/confetti/themes';
+import { themes, ThemeProps } from '@syren-dev-tech/confetti/themes';
 import { Tooltip } from 'lib/decorations';
 
 export type ButtonProps = {

@@ -1,3 +1,4 @@
+import { v4 } from 'uuid';
 import { mouseEvent } from './events';
 
 export const USE_HOVER_STYLING = 'hvr';
@@ -8,10 +9,14 @@ export function getClassName(...classes: (string | undefined | boolean)[]) {
 }
 
 export function makeDraggable(id: string) {
-    const origin = { x: 0,
-y: 0 };
-    const target = { x: 0,
-y: 0 };
+    const origin = {
+        x: 0,
+        y: 0
+    };
+    const target = {
+        x: 0,
+        y: 0
+    };
 
     const onMouseMove = (e: MouseEvent) => {
         e.preventDefault();
@@ -47,12 +52,19 @@ y: 0 };
     return { onMouseDown };
 }
 
-let _uniqueId = 0;
+let uniqueIdC = 0;
 export function uniqueId(prefix?: string) {
-    _uniqueId++;
+    uniqueIdC++;
 
     if (prefix)
-        return prefix + _uniqueId;
+        return prefix + uniqueIdC;
 
-    return _uniqueId.toString();
+    return uniqueIdC.toString();
+}
+
+export function uniqueKey(prefix?: string) {
+    if (prefix)
+        return prefix + v4();
+
+    return v4();
 }

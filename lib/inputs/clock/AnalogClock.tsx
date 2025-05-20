@@ -5,6 +5,9 @@ import { useEffect, useState } from 'react';
 const MAX_HOUR = 23;
 const MAX_MINUTE = 59;
 const MAX_SECOND = 59;
+const HOUR_DEG = 30;
+const HOUR_MIN_DEG = 0.5;
+const MIN_SEC_DEG = 6;
 
 export interface AnalogClockProps {
     name: string
@@ -61,7 +64,7 @@ export function AnalogClock(
                 className='hand hour'
                 style={
                     {
-                        transform: `rotate(${hour * 30 + minute * 0.5}deg)`
+                        transform: `rotate(${hour * HOUR_DEG + minute * HOUR_MIN_DEG}deg)`
                     }
                 }
             />
@@ -70,7 +73,7 @@ export function AnalogClock(
                 className='hand minute'
                 style={
                     {
-                        transform: `rotate(${minute * 6}deg)`
+                        transform: `rotate(${minute * MIN_SEC_DEG}deg)`
                     }
                 }
             />
@@ -79,7 +82,7 @@ export function AnalogClock(
                 className='hand second'
                 style={
                     {
-                        transform: `rotate(${second * 6}deg)`
+                        transform: `rotate(${second * MIN_SEC_DEG}deg)`
                     }
                 }
             />

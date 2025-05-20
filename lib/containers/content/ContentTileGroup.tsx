@@ -8,12 +8,14 @@ export type ContentTileGroupProps = HTML_DivProps & {
     perRow?: number
 };
 
+const DEFAULT_TILES_PER_ROW = 3;
+
 export function ContentTileGroup(
     {
         className,
         children,
         tiles,
-        perRow = 3,
+        perRow = DEFAULT_TILES_PER_ROW,
         ...props
     }: ContentTileGroupProps
 ) {

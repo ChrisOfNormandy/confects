@@ -4,7 +4,7 @@ import { Button, Glyph } from '@buttons';
 import { Select, SelectOption } from '@selectors';
 import { useEffect, useState } from 'react';
 import { getClassName } from '#helpers';
-import { themes } from '@chrisofnormandy/confetti/themes';
+import { themes } from '@syren-dev-tech/confetti/themes';
 
 const MONTHS = [
     'January',
@@ -24,27 +24,47 @@ const MONTHS = [
 const OLD_YEARS = 100;
 const NEW_YEARS = 100;
 const CURRENT_YEAR = new Date().getFullYear();
-const DAYS_IN_MONTH = [
-    31, // January
-    28, // February
-    31, // March
-    30, // April
-    31, // May
-    30, // June
-    31, // July
-    31, // August
-    30, // September
-    31, // October
-    30, // November
-    31  // December
+const DAYS_JANUARY = 31;
+const DAYS_FEBRUARY = 28;
+const DAYS_MARCH = 31;
+const DAYS_APRIL = 30;
+const DAYS_MAY = 31;
+const DAYS_JUNE = 30;
+const DAYS_JULY = 31;
+const DAYS_AUGUST = 31;
+const DAYS_SEPTEMBER = 30;
+const DAYS_OCTOBER = 31;
+const DAYS_NOVEMBER = 30;
+const DAYS_DECEMBER = 31;
+
+export const DAYS_IN_MONTH = [
+    DAYS_JANUARY,
+    DAYS_FEBRUARY,
+    DAYS_MARCH,
+    DAYS_APRIL,
+    DAYS_MAY,
+    DAYS_JUNE,
+    DAYS_JULY,
+    DAYS_AUGUST,
+    DAYS_SEPTEMBER,
+    DAYS_OCTOBER,
+    DAYS_NOVEMBER,
+    DAYS_DECEMBER
 ];
 
+const LEAP_YEARS = 4;
+const LEAP_YEARS_100 = 100;
+const LEAP_YEARS_400 = 400;
+
 function isLeapYear(year: number) {
-    return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+    return year % LEAP_YEARS === 0 && (year % LEAP_YEARS_100 !== 0 || year % LEAP_YEARS_400 === 0);
 }
 
+const IS_FEB = 2;
+const IS_FEB_LEAP = 29;
+
 function getDaysInMonth(year: number, month: number) {
-    return month === 2 && isLeapYear(year) ? 29 : DAYS_IN_MONTH[month - 1];
+    return month === IS_FEB && isLeapYear(year) ? IS_FEB_LEAP : DAYS_IN_MONTH[month - 1];
 }
 
 function getYears(oldYears: number, newYears: number) {
@@ -53,18 +73,20 @@ function getYears(oldYears: number, newYears: number) {
 }
 
 const DEFAULT_YEARS = getYears(OLD_YEARS, NEW_YEARS);
+const CALENDAR_ROWS = 6;
+const DAYS_IN_WEEK = 7;
 
 function getDateRows(year: number, month: number) {
-    const dateRows = new Array(6).fill([]) as number[][];
+    const dateRows = new Array(CALENDAR_ROWS).fill([]) as number[][];
     const firstDayOfMonth = new Date(year, month - 1, 1).getDay();
 
     const daysInMonth = getDaysInMonth(year, month);
 
     for (let i = 0; i < dateRows.length; i++) {
-        dateRows[i] = new Array(7).fill(0);
+        dateRows[i] = new Array(DAYS_IN_WEEK).fill(0);
 
         for (let j = 0; j < dateRows[i].length; j++) {
-            const date = i * 7 + j - firstDayOfMonth + 1;
+            const date = i * DAYS_IN_WEEK + j - firstDayOfMonth + 1;
 
             if (date > 0 && date <= daysInMonth)
                 dateRows[i][j] = date;
@@ -79,6 +101,8 @@ export interface CalendarProps {
     onChange?: (date: Date) => void
     defaultValue?: Date
 }
+
+const LAST_MONTH = 12;
 
 export function Calendar(
     {
@@ -95,10 +119,10 @@ export function Calendar(
 
     useEffect(() => {
         if (month < 1) {
-            setMonth(12);
+            setMonth(LAST_MONTH);
             setYear(year - 1);
         }
-        else if (month > 12) {
+        else if (month > LAST_MONTH) {
             setMonth(1);
             setYear(year + 1);
         }
@@ -142,7 +166,12 @@ export function Calendar(
             />
 
             <div
-                className={getClassName('calendar-month', themes.getStyles({ background: { style: 'primary', mono: -2 } }))}
+                className={getClassName('calendar-month', themes.getStyles({
+                    background: {
+                        mono: -2,
+                        style: 'primary'
+                    }
+                }))}
             >
                 {MONTHS[month - 1]}
             </div>
@@ -171,8 +200,8 @@ export function Calendar(
             className={getClassName('calendar-body',
                 themes.getStyles({
                     background: {
-                        style: 'content',
-                        mono: -1
+                        mono: -1,
+                        style: 'content'
                     }
                 }))
             }

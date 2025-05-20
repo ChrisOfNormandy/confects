@@ -1,4 +1,4 @@
-import { getClassName } from 'lib/helpers';
+import { getClassName, uniqueKey } from 'lib/helpers';
 import { HTML_SelectProps } from 'lib/types';
 import { OptionType, SelectOption } from '../select-option';
 
@@ -20,6 +20,7 @@ export function RawSelect<T extends OptionType>(
         {
             options.map((option) => {
                 return <option
+                    key={uniqueKey()}
                     value={option.value}
                 >
                     {option.label}

@@ -1,4 +1,4 @@
-import { themes } from '@chrisofnormandy/confetti/themes';
+import { themes } from '@syren-dev-tech/confetti/themes';
 import { getClassName } from 'lib/helpers';
 import { useEffect, useState } from 'react';
 import { ITooltip, Tooltip } from 'react-tooltip';

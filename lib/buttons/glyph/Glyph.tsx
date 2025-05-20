@@ -4,7 +4,7 @@ import { getClassName, USE_DISABLED_STYLING, USE_HOVER_STYLING } from 'lib/helpe
 import { Icon, IconProps } from 'lib/decorations';
 
 export type GlyphProps = {
-    size?: 1 | 2 | 3 | 4 | 5
+    size?: '1' | '2' | '3' | '4' | '5'
 } & ButtonProps
     & IconProps;
 
@@ -12,7 +12,7 @@ export function Glyph(
     {
         className,
         icon,
-        size = 3,
+        size = '3',
         ...props
     }: GlyphProps
 ) {

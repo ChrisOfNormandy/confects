@@ -1,7 +1,7 @@
-import { getClassName } from 'lib/helpers';
+import { getClassName, uniqueKey } from 'lib/helpers';
 import { HTML_SelectProps } from 'lib/types';
 import { OptionType, SelectOption } from '../select-option';
-import { ThemeProps, themes } from '@chrisofnormandy/confetti/themes';
+import { ThemeProps, themes } from '@syren-dev-tech/confetti/themes';
 
 export type SelectProps<T extends OptionType> = {
     options: SelectOption<T>[]
@@ -23,6 +23,7 @@ export function Select<T extends OptionType>(
         {
             options.map((option) => {
                 return <option
+                    key={uniqueKey()}
                     value={option.value}
                 >
                     {option.label}

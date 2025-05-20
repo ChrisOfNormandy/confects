@@ -1,5 +1,5 @@
 import { ITooltip, PlacesType, PositionStrategy, VariantType, WrapperType } from 'react-tooltip';
-import { capitalize } from '@chrisofnormandy/concauses/strings';
+import { capitalize } from '@syren-dev-tech/concauses/strings';
 
 export type TooltipType = string | string[];
 type ITooltipWrapper = {

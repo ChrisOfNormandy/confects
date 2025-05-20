@@ -1,4 +1,4 @@
-import { ThemeProps, themes } from '@chrisofnormandy/confetti/themes';
+import { ThemeProps, themes } from '@syren-dev-tech/confetti/themes';
 import './styles/input.scss';
 import { getClassName } from 'lib/helpers';
 import { HTML_InputProps } from 'lib/types';
