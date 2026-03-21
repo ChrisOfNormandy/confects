@@ -1,8 +1,8 @@
 @use '~styling' as styling;
-@use '../../button/styles/button' as *;
+@use '../../button/styles/button.mixin' as btn;
 
 .glyph {
-    @include btn;
+    @include btn.btn;
     @include styling.circular;
 
     &.icon-only {

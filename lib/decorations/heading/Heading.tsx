@@ -1,13 +1,17 @@
 import { getClassName } from '#helpers';
 import { HTML_HeadingProps } from '#types';
+import React from 'react';
 
 export type HeadingProps = {
     level?: number
 } & HTML_HeadingProps;
 
+const MIN_HEADING_LEVEL = 1;
+const MAX_HEADING_LEVEL = 6;
+
 export function Heading(
     {
-        level,
+        level = MIN_HEADING_LEVEL,
         children,
         className,
         ...props
@@ -16,12 +20,14 @@ export function Heading(
     if (!children)
         return null;
 
-    switch (level) {
-        case 6: return <h6 className={getClassName('heading', className)} {...props}>{children}</h6>;
-        case 5: return <h5 className={getClassName('heading', className)} {...props}>{children}</h5>;
-        case 4: return <h4 className={getClassName('heading', className)} {...props}>{children}</h4>;
-        case 3: return <h3 className={getClassName('heading', className)} {...props}>{children}</h3>;
-        case 2: return <h2 className={getClassName('heading', className)} {...props}>{children}</h2>;
-        default: return <h1 className={getClassName('heading', className)} {...props}>{children}</h1>;
-    }
+    const boundedLevel = Math.min(Math.max(level, MIN_HEADING_LEVEL), MAX_HEADING_LEVEL);
+    const Tag = `h${boundedLevel}`;
+    return React.createElement(
+        Tag,
+        {
+            className: getClassName('heading', className),
+            ...props
+        },
+        children
+    );
 }

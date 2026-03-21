@@ -1,9 +1,17 @@
-import { HTML_DivProps } from '#types';
+import { getClassName } from '#helpers';
+import { Input, InputProps } from '@inputs';
 
-export type TimeInputProps = HTML_DivProps;
+export type TimeInputProps = InputProps;
 
-export function TimeInput() {
-    return <div>
-        TIME INPUT
-    </div>;
+export function TimeInput(
+    {
+        className,
+        ...props
+    }: TimeInputProps
+) {
+    return <Input
+        className={getClassName('time', className)}
+        {...props}
+        type='time'
+    />;
 }

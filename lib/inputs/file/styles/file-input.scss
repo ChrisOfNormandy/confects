@@ -1,0 +1,5 @@
+@use '../../../buttons/button/styles/button.mixin' as btn;
+
+input[type=file]::file-selector-button {
+    @include btn.btn;
+}

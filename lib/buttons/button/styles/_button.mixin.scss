@@ -1,0 +1,11 @@
+@use '~styling' as styling;
+@use '~layout' as layout;
+@use '~interactive' as interactive;
+
+@mixin btn {
+    @include layout.flex-center(1);
+    @include styling.rounded;
+    @include interactive.clickable;
+
+    padding: 3px 6px;
+}

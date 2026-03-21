@@ -1,0 +1,51 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "@buttons": [
+                "lib/buttons"
+            ],
+            "@containers": [
+                "lib/containers"
+            ],
+            "@decorations": [
+                "lib/decorations"
+            ],
+            "@dialogs": [
+                "lib/dialogs"
+            ],
+            "#helpers": [
+                "lib/helpers"
+            ],
+            "@inputs": [
+                "lib/inputs"
+            ],
+            "@managed": [
+                "lib/managed"
+            ],
+            "@markdown": [
+                "lib/markdown"
+            ],
+            "@menus": [
+                "lib/menus"
+            ],
+            "@overlays": [
+                "lib/overlays"
+            ],
+            "@router": [
+                "lib/router"
+            ],
+            "@selectors": [
+                "lib/selectors"
+            ],
+            "@tables": [
+                "lib/tables"
+            ],
+            "@toasts": [
+                "lib/toasts"
+            ],
+            "#types": [
+                "lib/types"
+            ]
+        }
+    }
+}

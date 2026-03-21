@@ -1,8 +1,5 @@
 import './styles/toggle.scss';
-import { Button } from 'lib/buttons';
-import { getClassName } from 'lib/helpers';
-import { HTML_DivProps } from 'lib/types';
-import { Icon } from 'lib/decorations';
+import { Glyph, GlyphProps } from 'lib/buttons';
 import { useState } from 'react';
 
 export type ToggleIconType =
@@ -27,7 +24,7 @@ const mapping = new Map<ToggleIconType, [string, string]>(
         ['check-dot', ['circle', 'check-circle']],
         ['check-square', ['square', 'check-square']],
         ['check-x', ['x', 'check']],
-        ['check', ['', 'check']],
+        ['check', ['dot', 'check']],
         ['dot', ['circle', 'circle-fill']],
         ['eye', ['eye-slash', 'eye']],
         ['power', ['power', 'power']],
@@ -38,24 +35,21 @@ const mapping = new Map<ToggleIconType, [string, string]>(
         ['toggle', ['toggle-off', 'toggle-on']],
         ['x-dot', ['circle', 'x-circle']],
         ['x-square', ['square', 'x-square']],
-        ['x', ['', 'x']]
+        ['x', ['dot', 'x']]
     ]
 );
 
-interface extToggleProps {
+export type ToggleProps = {
     name?: string
     readOnly?: boolean
-    iconType?: ToggleIconType
-}
-
-export type ToggleProps = HTML_DivProps & extToggleProps;
+    icon: ToggleIconType
+} & GlyphProps;
 
 export function Toggle(
     {
-        className,
         defaultChecked,
+        icon = 'check',
         name,
-        iconType = 'check',
         readOnly,
         ...props
     }: ToggleProps
@@ -63,14 +57,13 @@ export function Toggle(
 
     const [value, setValue] = useState(defaultChecked);
 
-    const iconSet = mapping.get(iconType);
+    const iconSet = mapping.get(icon);
     if (!iconSet)
-        throw new Error(`Unsupported icon type: ${iconType}`);
+        throw new Error(`Unsupported icon type: ${icon}`);
 
-    return <div
-        className={getClassName('input toggle', className)}
-        {...props}
-    >
+    const useIcon = value && iconSet[1] || iconSet[0];
+
+    return <>
         <input
             name={name}
             value={Number(value) || 0}
@@ -78,13 +71,12 @@ export function Toggle(
             hidden
         />
 
-        <Button
-            onClick={() => setValue(!value)}
+        <Glyph
             disabled={readOnly}
-        >
-            <Icon
-                icon={value && iconSet[1] || iconSet[0]}
-            />
-        </Button>
-    </div>;
+            {...props}
+            icon={useIcon}
+            onClick={() => setValue(!value)}
+            tooltip={value ? 'Enabled' : 'Disabled'}
+        />
+    </>;
 }

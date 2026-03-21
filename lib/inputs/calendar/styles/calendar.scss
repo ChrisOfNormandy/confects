@@ -1,0 +1,36 @@
+@use '~layout' as layout;
+@use '~styling' as styling;
+
+.calendar {
+    @include layout.flex(false, true);
+    @include styling.rounded;
+
+    user-select: none;
+    overflow: hidden;
+
+    .calendar-header {
+        @include layout.flex-between(true);
+
+        padding: 3px 5px;
+
+        .calendar-month {
+            @include styling.rounded;
+
+            padding: 3px 6px;
+            margin: 0 5px;
+        }
+
+        .input.select {
+            margin-left: 10px;
+        }
+    }
+
+    .calendar-body {
+        .btn {
+            @include layout.fullsize;
+            @include styling.rounded(0);
+
+            border: none;
+        }
+    }
+}

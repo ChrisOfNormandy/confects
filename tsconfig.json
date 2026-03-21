@@ -1,4 +1,5 @@
 {
+    "extends": "./tsconfig.paths.json",
     "compilerOptions": {
         "baseUrl": "./",
         "esModuleInterop": false,
@@ -13,53 +14,6 @@
             "DOM.Iterable",
             "ESNext"
         ],
-        "paths": {
-            "@buttons": [
-                "lib/buttons"
-            ],
-            "@containers": [
-                "lib/containers"
-            ],
-            "@decorations": [
-                "lib/decorations"
-            ],
-            "@dialogs": [
-                "lib/dialogs"
-            ],
-            "@editors": [
-                "lib/editors"
-            ],
-            "#helpers": [
-                "lib/helpers"
-            ],
-            "@inputs": [
-                "lib/inputs"
-            ],
-            "@managed": [
-                "lib/managed"
-            ],
-            "@markdown": [
-                "lib/markdown"
-            ],
-            "@menu": [
-                "lib/menu"
-            ],
-            "@overlay": [
-                "lib/overlay"
-            ],
-            "@router": [
-                "lib/router"
-            ],
-            "@selectors": [
-                "lib/selectors"
-            ],
-            "@table": [
-                "lib/table"
-            ],
-            "#types": [
-                "lib/types"
-            ]
-        },
         // Bundler stuff
         "allowJs": true,
         "checkJs": true,
