@@ -6,7 +6,7 @@
     "name": "@syren-dev-tech/confects",
     "packageManager": "yarn@4.13.0",
     "type": "module",
-    "version": "0.2.0",
+    "version": "0.2.0-0",
     "files": [
         "dist"
     ],
