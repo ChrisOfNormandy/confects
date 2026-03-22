@@ -1,18 +1,20 @@
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
 import './styles/page-header.scss';
-import { getClassName } from 'lib/helpers';
-import { HTML_DivProps } from 'lib/types';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { HTML_DivProps } from '>types/html';
 
-export type PageHeaderProps = HTML_DivProps;
+export interface PageHeaderProps extends HTML_DivProps, ThemeProps { }
 
 export function PageHeader(
     {
         className,
         children,
+        theme,
         ...props
-    }: PageHeaderProps
+    }: Readonly<PageHeaderProps>
 ) {
     return <div
-        className={getClassName('page-header', className)}
+        className={getClassName('page-header', theme?.toClassName(), className)}
         {...props}
     >
         {children}

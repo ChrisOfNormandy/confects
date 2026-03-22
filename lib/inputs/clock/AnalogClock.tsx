@@ -1,5 +1,5 @@
-import { HTML_InputProps } from '#types';
-import { Glyph } from '@buttons';
+import { HTML_InputProps } from '>types/html';
+import { Glyph } from '>buttons/glyph/Glyph';
 import { useEffect, useState } from 'react';
 
 const MAX_HOUR = 23;
@@ -23,7 +23,7 @@ export function AnalogClock(
         input,
         defaultValue,
         ...props
-    }: AnalogClockProps
+    }: Readonly<AnalogClockProps>
 ) {
 
     const [hour, setHour] = useState<number>(defaultValue?.getHours() || 0);

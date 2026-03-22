@@ -1,40 +1,27 @@
-import { themes } from '@syren-dev-tech/confetti/themes';
-import { getClassName } from 'lib/helpers';
-import { useEffect, useState } from 'react';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { useThemes } from '>providers/themes/ThemeProvider';
 import { ITooltip, Tooltip } from 'react-tooltip';
 
-type CustomTooltipProps = {
-    id: string
-} & ITooltip
+interface TooltipProps extends ITooltip { }
 
 function CustomTooltip(
     {
-        id,
         className,
         classNameArrow,
         ...props
-    }: CustomTooltipProps
+    }: Readonly<TooltipProps>
 ) {
-    const [colorScheme, setColorScheme] = useState(themes.getColorScheme());
+    const { scheme } = useThemes();
 
-    useEffect(() => {
-        themes.addListener(id, (_, cs) => {
-            setColorScheme(cs);
-        });
-
-        return () => {
-            themes.removeListener(id);
-        };
-    }, []);
+    if (!props.id)
+        return null;
 
     return <Tooltip
         className={getClassName('tooltip', className)}
         classNameArrow={getClassName('tooltip-arrow', classNameArrow)}
         delayHide={100}
-        delayShow={500}
-        variant={colorScheme}
+        variant={scheme ?? undefined}
         {...props}
-        id={id}
     />;
 }
 

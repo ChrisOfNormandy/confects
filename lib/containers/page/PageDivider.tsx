@@ -1,16 +1,18 @@
-import { getClassName } from 'lib/helpers';
-import { HTML_DivProps } from 'lib/types';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { HTML_DivProps } from '>types/html';
 
-export type PageDividerProps = HTML_DivProps;
+export interface PageDividerProps extends HTML_DivProps, ThemeProps { }
 
 export function PageDivider(
     {
         className,
+        theme,
         ...props
-    }: PageDividerProps
+    }: Readonly<PageDividerProps>
 ) {
     return <div
-        className={getClassName('page-divider', className)}
+        className={getClassName('page-divider', theme?.toClassName(), className)}
         {...props}
     />;
 }

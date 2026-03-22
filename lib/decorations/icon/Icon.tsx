@@ -1,25 +1,27 @@
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
 import './styles/icon.scss';
-import { getClassName } from 'lib/helpers';
-import { HTMLElementProps } from 'lib/types';
+import { HTMLElementProps } from '>types/html';
+import { getClassName } from '@syren-dev-tech/concauses/props';
 
-interface extIconProps {
+export interface WithIcon {
     icon: string
 }
 
-export type IconProps = HTMLElementProps & extIconProps;
+export interface IconProps extends HTMLElementProps, ThemeProps, WithIcon { }
 
 export function Icon(
     {
         icon,
         className,
+        theme,
         ...props
-    }: IconProps
+    }: Readonly<IconProps>
 ) {
     if (!icon)
         return null;
 
     return <i
         {...props}
-        className={getClassName('icon bi', `bi-${icon}`, className)}
+        className={getClassName('icon bi', `bi-${icon}`, theme?.toClassName(), className)}
     />;
 }

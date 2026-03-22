@@ -1,17 +1,19 @@
-import { getClassName } from 'lib/helpers';
-import { HTML_DivProps } from 'lib/types';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { HTML_DivProps } from '>types/html';
 
-export type RibbonProps = HTML_DivProps;
+export interface RibbonProps extends HTML_DivProps, ThemeProps { }
 
 export function Ribbon(
     {
         className,
         children,
+        theme,
         ...props
-    }: RibbonProps
+    }: Readonly<RibbonProps>
 ) {
     return <div
-        className={getClassName('ribbon', className)}
+        className={getClassName('ribbon', theme?.toClassName(), className)}
         {...props}
     >
         {children}

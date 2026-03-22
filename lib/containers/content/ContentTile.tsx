@@ -1,35 +1,38 @@
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
 import './styles/content-tile.scss';
-import { getClassName } from 'lib/helpers';
-import { HTML_DivProps, HTML_ImageProps } from 'lib/types';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { HTML_DivProps, HTML_ImageProps } from '>types/html';
 import { ReactNode } from 'react';
 
 export interface FigureOptions {
-    image: string
-    imageOptions?: HTML_ImageProps
     caption?: ReactNode
     href?: string
+    image: string
+    imageOptions?: HTML_ImageProps
 }
 
-export type ContentTileProps = HTML_DivProps & {
+export interface ContentTileProps extends HTML_DivProps, ThemeProps {
     figure?: FigureOptions
-};
+}
 
 export function ContentTile(
     {
         className,
         children,
         figure,
+        theme,
         ...props
-    }: ContentTileProps
+    }: Readonly<ContentTileProps>
 ) {
     return <div
-        className={getClassName('content-tile', className)}
+        className={getClassName('content-tile', theme?.toClassName(), className)}
         {...props}
     >
         {
             figure &&
             <figure>
                 <img
+                    alt='content-tile'
                     {...figure.imageOptions}
                     src={figure.image}
                 />

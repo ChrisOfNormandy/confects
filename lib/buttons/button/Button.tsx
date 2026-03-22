@@ -1,19 +1,18 @@
 import './styles/button.scss';
-import { getClassName, uniqueId } from 'lib/helpers';
-import { getTooltipProps, TooltipProps } from 'lib/decorations/tooltip/tooltip-handlers';
-import { HTML_ButtonProps } from 'lib/types';
-import { Ref, useRef } from 'react';
-import { themes, ThemeProps } from '@syren-dev-tech/confetti/themes';
-import { Tooltip } from 'lib/decorations';
+import { getClassName, getId } from '@syren-dev-tech/concauses/props';
+import { getTooltipProps } from '>decorations/tooltip/tooltip';
+import { HTML_ButtonProps } from '>types/html';
+import { Ref } from 'react';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { Tooltip } from '>decorations/tooltip/Tooltip';
+import { TooltipProps } from '>decorations/tooltip/types';
 
-export type ButtonProps = {
+export interface ButtonProps extends HTML_ButtonProps, ThemeProps, TooltipProps {
+    innerRef?: Ref<HTMLButtonElement>
+    noDefaultClassName?: boolean
     reset?: string | boolean
     submit?: string | boolean
-    noDefaultClassName?: boolean
-    innerRef?: Ref<HTMLButtonElement>
-} & HTML_ButtonProps &
-    ThemeProps &
-    TooltipProps;
+}
 
 function getFormProps(submit: boolean | string, reset: boolean | string) {
     const extraProps: HTML_ButtonProps = {};
@@ -34,26 +33,6 @@ function getFormProps(submit: boolean | string, reset: boolean | string) {
     return extraProps;
 }
 
-function getMouseEventHandlers(props: HTML_ButtonProps): HTML_ButtonProps {
-    return {
-        onAuxClick: (e) => {
-            e.stopPropagation();
-            if (props.onAuxClick)
-                props.onAuxClick(e);
-        },
-        onClick: (e) => {
-            e.stopPropagation();
-            if (props.onClick)
-                props.onClick(e);
-        },
-        onContextMenu: (e) => {
-            e.stopPropagation();
-            if (props.onContextMenu)
-                props.onContextMenu(e);
-        }
-    };
-}
-
 export function Button(
     {
         children,
@@ -68,36 +47,58 @@ export function Button(
         theme,
         tooltip,
         ...props
-    }: ButtonProps
+    }: Readonly<ButtonProps>
 ) {
-    const id = useRef<string>(props.id || uniqueId('btn_'));
+    const id = getId('btn:', props.id);
 
-    const { tooltipId, tooltipDataProps, tooltipProps } = getTooltipProps(id.current, tooltip);
+    const { tooltipDataProps, tooltipProps } = getTooltipProps(id, tooltip);
+
+    const extraProps: HTML_ButtonProps = {};
+
+    if (submit) {
+        extraProps.type = 'submit';
+
+        if (typeof submit === 'string')
+            extraProps.form = submit;
+    }
+    else if (reset) {
+        extraProps.type = 'reset';
+
+        if (typeof reset === 'string')
+            extraProps.form = reset;
+    }
 
     return <>
         <button
-            className={getClassName(!noDefaultClassName && 'btn', themes.getStyles(theme), className)}
+            className={getClassName(!noDefaultClassName && 'btn', theme?.toClassName(), className)}
             type='button'
             {...props}
             {...getFormProps(submit, reset)}
             {...tooltipDataProps}
-            id={id.current}
+            id={id}
             ref={innerRef}
-            {...getMouseEventHandlers({
-                onAuxClick,
-                onClick,
-                onContextMenu
-            })}
+            onClick={
+                (e) => {
+                    e.stopPropagation();
+                    onClick?.(e);
+                }
+            }
+            onAuxClick={
+                (e) => {
+                    e.stopPropagation();
+                    onAuxClick?.(e);
+                }
+            }
+            onContextMenu={
+                (e) => {
+                    e.stopPropagation();
+                    onContextMenu?.(e);
+                }
+            }
         >
             {children}
         </button>
 
-        {
-            tooltipId &&
-            <Tooltip
-                {...tooltipProps}
-                id={tooltipId}
-            />
-        }
+        <Tooltip {...tooltipProps} />
     </>;
 }

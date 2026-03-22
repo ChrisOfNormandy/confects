@@ -1,50 +1,29 @@
 {
     "compilerOptions": {
         "paths": {
-            "@buttons": [
-                "lib/buttons"
+            ">buttons/*": [
+                "lib/buttons/*"
             ],
-            "@containers": [
-                "lib/containers"
+            ">containers/*": [
+                "lib/containers/*"
             ],
-            "@decorations": [
-                "lib/decorations"
+            ">decorations/*": [
+                "lib/decorations/*"
             ],
-            "@dialogs": [
-                "lib/dialogs"
+            ">helpers/*": [
+                "lib/helpers/*"
             ],
-            "#helpers": [
-                "lib/helpers"
+            ">inputs/*": [
+                "lib/inputs/*"
             ],
-            "@inputs": [
-                "lib/inputs"
+            ">providers/*": [
+                "lib/providers/*"
             ],
-            "@managed": [
-                "lib/managed"
+            ">selectors/*": [
+                "lib/selectors/*"
             ],
-            "@markdown": [
-                "lib/markdown"
-            ],
-            "@menus": [
-                "lib/menus"
-            ],
-            "@overlays": [
-                "lib/overlays"
-            ],
-            "@router": [
-                "lib/router"
-            ],
-            "@selectors": [
-                "lib/selectors"
-            ],
-            "@tables": [
-                "lib/tables"
-            ],
-            "@toasts": [
-                "lib/toasts"
-            ],
-            "#types": [
-                "lib/types"
+            ">types/*": [
+                "lib/types/*"
             ]
         }
     }

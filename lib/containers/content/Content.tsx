@@ -1,18 +1,20 @@
 import './styles/content.scss';
-import { getClassName } from 'lib/helpers';
-import { HTML_DivProps } from 'lib/types';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { HTML_DivProps } from '>types/html';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
 
-export type ContentProps = HTML_DivProps;
+export interface ContentProps extends HTML_DivProps, ThemeProps { }
 
 export function Content(
     {
         children,
         className,
+        theme,
         ...props
-    }: ContentProps
+    }: Readonly<ContentProps>
 ) {
     return <div
-        className={getClassName('content', className)}
+        className={getClassName('content', theme?.toClassName(), className)}
         {...props}
     >
         {children}

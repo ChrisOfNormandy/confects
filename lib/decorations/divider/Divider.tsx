@@ -1,22 +1,24 @@
 import './styles/divider.scss';
-import { getClassName } from '#helpers';
-import { HTML_DivProps } from '#types';
+import { HTML_DivProps } from '>types/html';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { getClassName } from '@syren-dev-tech/concauses/props';
 
 export type DividerType = 'horizontal' | 'vertical' | 'whitespace';
 
-export type DividerProps = {
+export interface DividerProps extends HTML_DivProps, ThemeProps {
     type?: DividerType
-} & HTML_DivProps;
+}
 
 export function Divider(
     {
         className,
         type = 'horizontal',
+        theme,
         ...props
-    }: DividerProps
+    }: Readonly<DividerProps>
 ) {
     return <div
-        className={getClassName('divider', type, className)}
+        className={getClassName('divider', type, theme?.toClassName(), className)}
         {...props}
     />;
 }

@@ -1,18 +1,20 @@
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
 import './styles/page-body.scss';
-import { getClassName } from 'lib/helpers';
-import { HTML_DivProps } from 'lib/types';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { HTML_DivProps } from '>types/html';
 
-export type PageBodyProps = HTML_DivProps;
+export interface PageBodyProps extends HTML_DivProps, ThemeProps { }
 
 export function PageBody(
     {
         className,
         children,
+        theme,
         ...props
-    }: PageBodyProps
+    }: Readonly<PageBodyProps>
 ) {
     return <div
-        className={getClassName('page-body', className)}
+        className={getClassName('page-body', theme?.toClassName(), className)}
         {...props}
     >
         {children}

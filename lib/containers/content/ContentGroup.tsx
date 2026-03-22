@@ -1,18 +1,20 @@
 import './styles/content-group.scss';
-import { getClassName } from 'lib/helpers';
-import { HTML_DivProps } from 'lib/types';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { HTML_DivProps } from '>types/html';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
 
-export type ContentGroupProps = HTML_DivProps;
+export interface ContentGroupProps extends HTML_DivProps, ThemeProps { }
 
 export function ContentGroup(
     {
         className,
         children,
+        theme,
         ...props
-    }: ContentGroupProps
+    }: Readonly<ContentGroupProps>
 ) {
     return <div
-        className={getClassName('content-group', className)}
+        className={getClassName('content-group', theme?.toClassName(), className)}
         {...props}
     >
         {children}

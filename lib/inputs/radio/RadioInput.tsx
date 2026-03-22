@@ -1,22 +1,24 @@
-import { getClassName } from '#helpers';
-import { Glyph } from '@buttons';
-import { InputProps } from '@inputs';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { Glyph } from '>buttons/glyph/Glyph';
+import { InputProps } from '>inputs/input/Input';
 import { useEffect, useRef, useState } from 'react';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
 
-export type RadioInputProps = {
+export interface RadioInputProps extends InputProps, ThemeProps {
     onChecked?: (checked: boolean, target: HTMLInputElement) => void
-} & InputProps
+}
 
 export default function RadioInput(
     {
+        checked,
         className,
         defaultChecked,
         defaultValue,
-        checked,
-        value,
         onChecked,
+        theme,
+        value,
         ...props
-    }: RadioInputProps
+    }: Readonly<RadioInputProps>
 ) {
 
     const [isChecked, setIsChecked] = useState<boolean>(defaultChecked || checked || !!defaultValue || !!value || false);
@@ -25,7 +27,7 @@ export default function RadioInput(
 
     useEffect(() => {
         if (onChecked && ref.current)
-            onChecked(isChecked, ref.current as HTMLInputElement);
+            onChecked(isChecked, ref.current);
     }, [isChecked]);
 
     return <>
@@ -36,10 +38,11 @@ export default function RadioInput(
             checked={isChecked}
             ref={ref}
         />
+
         <Glyph
             icon={isChecked && 'circle-fill' || 'circle'}
             onClick={() => setIsChecked(!isChecked)}
-            className={getClassName('input radio', className)}
+            className={getClassName('input radio', theme?.toClassName(), className)}
         />
     </>;
 }

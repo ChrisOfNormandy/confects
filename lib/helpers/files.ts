@@ -1,5 +1,5 @@
 export function downloadFile(file: File) {
-    const url = window.URL.createObjectURL(file);
+    const url = globalThis.URL.createObjectURL(file);
     const a = document.createElement('a');
 
     a.href = url;
@@ -16,7 +16,7 @@ export function downloadContent(content: string, fileName?: string, options?: Fi
 }
 
 export function openFileInTab(file: File) {
-    const url = window.URL.createObjectURL(file);
+    const url = globalThis.URL.createObjectURL(file);
     const a = document.createElement('a');
 
     a.href = url;

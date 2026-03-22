@@ -1,20 +1,23 @@
-import { getClassName, uniqueKey } from 'lib/helpers';
-import { HTML_SelectProps } from 'lib/types';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { HTML_SelectProps } from '>types/html';
 import { OptionType, SelectOption } from '../select-option';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { uniqueKey } from '@syren-dev-tech/concauses/strings';
 
-export type RawSelectProps<T extends OptionType> = {
+export interface RawSelectProps<T extends OptionType> extends HTML_SelectProps, ThemeProps {
     options: SelectOption<T>[]
-} & HTML_SelectProps;
+}
 
 export function RawSelect<T extends OptionType>(
     {
         options,
         className,
+        theme,
         ...props
-    }: RawSelectProps<T>
+    }: Readonly<RawSelectProps<T>>
 ) {
     return <select
-        className={getClassName('input select', className)}
+        className={getClassName('input select', theme?.toClassName(), className)}
         {...props}
     >
         {

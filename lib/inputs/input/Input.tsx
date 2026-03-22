@@ -1,24 +1,42 @@
-import { ThemeProps, themes } from '@syren-dev-tech/confetti/themes';
 import './styles/input.scss';
-import { getClassName } from 'lib/helpers';
+import { getId, getClassName } from '@syren-dev-tech/concauses/props';
+import { getTooltipProps } from '>decorations/tooltip/tooltip';
 import { HTML_InputProps } from 'lib/types';
+import { RefObject } from 'react';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { Tooltip } from '>decorations/tooltip/Tooltip';
+import { TooltipProps } from 'lib/decorations/tooltip/types';
 
-export type InputProps = {
-    name: string
-} & ThemeProps
-    & HTML_InputProps;
+export interface IInputProps extends HTML_InputProps, ThemeProps, TooltipProps {
+    inputRef?: RefObject<HTMLInputElement | null>
+}
+export interface InputProps extends IInputProps {
+    name: string // Require name prop for form handling
+}
 
 export function Input(
     {
         className,
-        name,
+        inputRef,
         theme,
+        tooltip,
         ...props
-    }: InputProps
+    }: Readonly<InputProps>
 ) {
-    return <input
-        {...props}
-        name={name}
-        className={getClassName('input', themes.getStyles(theme), className)}
-    />;
+
+    const id = getId('input:', props.id);
+
+    const { tooltipDataProps, tooltipProps } = getTooltipProps(id, tooltip);
+
+    return <>
+        <input
+            className={getClassName('input', theme?.toClassName(), className)}
+            {...tooltipDataProps}
+            {...props}
+            ref={inputRef}
+            id={id}
+        />
+
+        <Tooltip {...tooltipProps} />
+    </>;
 }

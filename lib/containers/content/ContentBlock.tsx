@@ -1,18 +1,20 @@
 import './styles/content-block.scss';
-import { getClassName } from 'lib/helpers';
-import { HTML_DivProps } from 'lib/types';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { HTML_DivProps } from '>types/html';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
 
-export type ContentBlockProps = HTML_DivProps;
+export interface ContentBlockProps extends HTML_DivProps, ThemeProps { }
 
 export function ContentBlock(
     {
         children,
         className,
+        theme,
         ...props
-    }: ContentBlockProps
+    }: Readonly<ContentBlockProps>
 ) {
     return <div
-        className={getClassName('content-block', className)}
+        className={getClassName('content-block', theme?.toClassName(), className)}
         {...props}
     >
         {children}

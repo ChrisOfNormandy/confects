@@ -6,8 +6,8 @@
         "lib/decorations.ts",
         "lib/helpers.ts",
         "lib/inputs.ts",
+        "lib/providers.ts",
         "lib/selectors.ts",
-        "lib/tables.ts",
         "lib/types.ts"
     ],
     "ignore": [

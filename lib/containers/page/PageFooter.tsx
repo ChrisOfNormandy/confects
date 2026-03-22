@@ -1,18 +1,20 @@
 import './styles/page-footer.scss';
-import { getClassName } from 'lib/helpers';
-import { HTML_DivProps } from 'lib/types';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { HTML_DivProps } from '>types/html';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
 
-export type PageFooterProps = HTML_DivProps;
+export interface PageFooterProps extends HTML_DivProps, ThemeProps { }
 
 export function PageFooter(
     {
         className,
         children,
+        theme,
         ...props
-    }: PageFooterProps
+    }: Readonly<PageFooterProps>
 ) {
     return <div
-        className={getClassName('page-footer', className)}
+        className={getClassName('page-footer', theme?.toClassName(), className)}
         {...props}
     >
         {children}

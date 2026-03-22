@@ -1,19 +1,19 @@
-import { getClassName } from 'lib/helpers';
-import { HTML_DivProps } from 'lib/types';
+import { Button, ButtonProps } from '>buttons/button/Button';
+import { getClassName } from '@syren-dev-tech/concauses/props';
 
-export type NavButtonProps = HTML_DivProps;
+export interface NavButtonProps extends ButtonProps { }
 
 export function NavButton(
     {
         className,
         children,
         ...props
-    }: NavButtonProps
+    }: Readonly<NavButtonProps>
 ) {
-    return <div
+    return <Button
         className={getClassName('nav-btn', className)}
         {...props}
     >
         {children}
-    </div>;
+    </Button>;
 }

@@ -1,18 +1,20 @@
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
 import './styles/content-list.scss';
-import { getClassName } from 'lib/helpers';
-import { HTML_DivProps } from 'lib/types';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { HTML_DivProps } from '>types/html';
 
-export type ContentListProps = HTML_DivProps;
+export interface ContentListProps extends HTML_DivProps, ThemeProps { }
 
 export function ContentList(
     {
         className,
         children,
+        theme,
         ...props
-    }: ContentListProps
+    }: Readonly<ContentListProps>
 ) {
     return <div
-        className={getClassName('content-list', className)}
+        className={getClassName('content-list', theme?.toClassName(), className)}
         {...props}
     >
         {children}

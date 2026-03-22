@@ -1,14 +1,14 @@
 import './styles/brand-button.scss';
-import { BrandName, brands } from '#types';
-import { Button, ButtonProps } from '@buttons';
-import { getClassName } from '#helpers';
-import { Icon } from '@decorations';
+import { BrandName, brands } from '>types/brands';
+import { Button, ButtonProps } from '>buttons/button/Button';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { Icon } from '>decorations/icon/Icon';
 
-export type BrandButtonProps = {
+export interface BrandButtonProps extends ButtonProps {
     brand: BrandName
     fill?: boolean
     withLabel?: boolean
-} & ButtonProps;
+}
 
 export function BrandButton(
     {
@@ -18,7 +18,7 @@ export function BrandButton(
         fill,
         withLabel = false,
         ...props
-    }: BrandButtonProps
+    }: Readonly<BrandButtonProps>
 ) {
     return <Button
         noDefaultClassName

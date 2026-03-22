@@ -1,11 +1,11 @@
 import './styles/badge.scss';
-import { Button, ButtonProps } from 'lib/buttons';
-import { getClassName } from 'lib/helpers';
+import { Button, ButtonProps } from '>buttons/button/Button';
+import { getClassName } from '@syren-dev-tech/concauses/props';
 import { ReactNode } from 'react';
 
-export type BadgeProps = {
+export interface BadgeProps extends ButtonProps {
     group?: ReactNode
-} & ButtonProps;
+}
 
 export function Badge(
     {
@@ -13,7 +13,7 @@ export function Badge(
         className,
         group,
         ...props
-    }: BadgeProps
+    }: Readonly<BadgeProps>
 ) {
     return <Button
         className={getClassName('badge', className)}

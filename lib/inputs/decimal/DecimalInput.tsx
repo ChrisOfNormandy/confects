@@ -1,13 +1,13 @@
-import { getClassName } from '#helpers';
-import { Input, InputProps } from '@inputs';
+import { Input, InputProps } from '>inputs/input/Input';
+import { getClassName } from '@syren-dev-tech/concauses/props';
 
-export type DecimalInputProps = InputProps;
+export interface DecimalInputProps extends InputProps { }
 
 export function DecimalInput(
     {
         className,
         ...props
-    }: DecimalInputProps) {
+    }: Readonly<DecimalInputProps>) {
     return <Input
         className={getClassName('number decimal', className)}
         step={0.01}

@@ -1,16 +1,18 @@
-import { getClassName } from '#helpers';
-import { Input, InputProps } from '@inputs';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { Input, InputProps } from '>inputs/input/Input';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
 
-export type TimeInputProps = InputProps;
+export interface TimeInputProps extends InputProps, ThemeProps { }
 
 export function TimeInput(
     {
         className,
+        theme,
         ...props
-    }: TimeInputProps
+    }: Readonly<TimeInputProps>
 ) {
     return <Input
-        className={getClassName('time', className)}
+        className={getClassName('time', theme?.toClassName(), className)}
         {...props}
         type='time'
     />;

@@ -1,17 +1,19 @@
-import { getClassName } from 'lib/helpers';
-import { HTML_DivProps } from 'lib/types';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { HTML_DivProps } from '>types/html';
 
-export type PageMainProps = HTML_DivProps;
+export interface PageMainProps extends HTML_DivProps, ThemeProps { }
 
 export function PageMain(
     {
         className,
         children,
+        theme,
         ...props
-    }: PageMainProps
+    }: Readonly<PageMainProps>
 ) {
     return <div
-        className={getClassName('page-main', className)}
+        className={getClassName('page-main', theme?.toClassName(), className)}
         {...props}
     >
         {children}

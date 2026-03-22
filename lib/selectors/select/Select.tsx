@@ -1,12 +1,12 @@
-import { getClassName, uniqueKey } from 'lib/helpers';
-import { HTML_SelectProps } from 'lib/types';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { HTML_SelectProps } from '>types/html';
 import { OptionType, SelectOption } from '../select-option';
-import { ThemeProps, themes } from '@syren-dev-tech/confetti/themes';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { uniqueKey } from '@syren-dev-tech/concauses/strings';
 
-export type SelectProps<T extends OptionType> = {
+export interface SelectProps<T extends OptionType> extends HTML_SelectProps, ThemeProps {
     options: SelectOption<T>[]
-} & ThemeProps
-    & HTML_SelectProps;
+}
 
 export function Select<T extends OptionType>(
     {
@@ -14,10 +14,10 @@ export function Select<T extends OptionType>(
         className,
         theme,
         ...props
-    }: SelectProps<T>
+    }: Readonly<SelectProps<T>>
 ) {
     return <select
-        className={getClassName('input select', themes.getStyles(theme), className)}
+        className={getClassName('input select', theme?.toClassName(), className)}
         {...props}
     >
         {

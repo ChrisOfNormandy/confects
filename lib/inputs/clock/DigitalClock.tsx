@@ -1,6 +1,7 @@
-import { HTML_InputProps } from '#types';
-import { Input } from '@inputs';
-import { Select, SelectOption } from '@selectors';
+import { HTML_InputProps } from '>types/html';
+import { Input } from '>inputs/input/Input';
+import { Select } from '>selectors/select/Select';
+import { SelectOption } from '>selectors/select-option';
 import { useEffect, useState } from 'react';
 
 const MAX_HOUR_12 = 12;
@@ -21,7 +22,7 @@ export default function DigitalClock(
         use24hr = false,
         defaultValue,
         ...props
-    }: DigitalClockProps
+    }: Readonly<DigitalClockProps>
 ) {
 
     const [hour, setHour] = useState<number>(defaultValue?.getHours() || 0);

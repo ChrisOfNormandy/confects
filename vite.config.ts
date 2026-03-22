@@ -1,16 +1,16 @@
 import { defineConfig, loadEnv, UserConfig } from 'vite';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import { viteConfigAliases } from '@syren-dev-tech/confetti/config';
 import react from '@vitejs/plugin-react';
-import tsconfigPaths from 'vite-tsconfig-paths';
 
-export default ({ mode }: UserConfig) => {
+const config = ({ mode }: UserConfig) => {
     process.env = mode && {
         ...process.env,
         ...loadEnv(mode, process.cwd())
     } || process.env;
 
     const { DEV } = process.env;
+    const USE_DEV = !!DEV;
 
     return defineConfig({
         build: {
@@ -23,34 +23,46 @@ export default ({ mode }: UserConfig) => {
                     'decorations',
                     'helpers',
                     'inputs',
+                    'providers',
                     'selectors',
-                    'tables',
                     'types'
                 ].map((exp) => resolve(`./lib/${exp}.ts`)),
                 formats: ['es'],
                 name: 'confects'
             },
-            rollupOptions: {
-                external: ['react', 'react-dom'],
+            minify: !USE_DEV,
+            rolldownOptions: {
+                external: [
+'react',
+'react/jsx-runtime',
+'react-dom'
+],
                 output: {
                     globals: {
                         react: 'React'
+                    },
+                    minify: {
+                        compress: {
+                            dropConsole: USE_DEV,
+                            dropDebugger: USE_DEV
+                        }
                     }
                 }
             }
         },
-        esbuild: {
-            drop: !DEV && ['console', 'debugger'] || undefined,
-            legalComments: 'none'
+        css: {
+            lightningcss: {
+                errorRecovery: true
+            }
         },
-        plugins: [react(), tsconfigPaths()],
+        plugins: [react()],
         resolve: {
             alias: {
                 ...viteConfigAliases()
-            }
-        },
-        server: {
-            port: 3000
+            },
+            tsconfigPaths: true
         }
     });
 };
+
+export default config;

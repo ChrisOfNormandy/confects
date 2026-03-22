@@ -1,18 +1,20 @@
 import './styles/content-divider.scss';
-import { getClassName } from 'lib/helpers';
-import { HTML_DivProps } from 'lib/types';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { HTML_DivProps } from '>types/html';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
 
-export type ContentDividerProps = HTML_DivProps;
+export interface ContentDividerProps extends HTML_DivProps, ThemeProps { }
 
 export function ContentDivider(
     {
         children,
         className,
+        theme,
         ...props
-    }: ContentDividerProps
+    }: Readonly<ContentDividerProps>
 ) {
     return <div
-        className={getClassName('content-divider', className, 'sp f-divider')}
+        className={getClassName('content-divider', theme?.toClassName(), className)}
         {...props}
     >
         {children}

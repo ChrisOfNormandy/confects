@@ -1,17 +1,19 @@
-import { HTML_DivProps } from 'lib/types';
-import { getClassName } from 'lib/helpers';
+import { HTML_DivProps } from '>types/html';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
 
-export type NavProps = HTML_DivProps;
+export interface NavProps extends HTML_DivProps, ThemeProps { }
 
 export function Nav(
     {
         className,
         children,
+        theme,
         ...props
-    }: NavProps
+    }: Readonly<NavProps>
 ) {
     return <div
-        className={getClassName('nav', className)}
+        className={getClassName('nav', theme?.toClassName(), className)}
         {...props}
     >
         {children}

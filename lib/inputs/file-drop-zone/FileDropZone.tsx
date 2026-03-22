@@ -1,47 +1,41 @@
 import './styles/file-input.scss';
-import { dragEvent, getClassName } from 'lib/helpers';
+import { dragEvent } from '>helpers/events';
+import { ReactNode, useRef, useState } from 'react';
+import { getClassName } from '@syren-dev-tech/concauses/props';
 import { fileSizeDisplay } from './helpers/file-size-display';
-import { Input, InputProps } from 'lib/inputs';
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { Input, type InputProps } from '>inputs/input/Input';
 
-export type FileDropZoneProps = {
+export interface FileDropZoneProps extends InputProps {
     dropZoneText?: ReactNode
-    multiple?: boolean | number
-    multipleMin?: number
+    multiselect?: {
+        limit?: number
+        min?: number
+    }
     onFileChange?: (files: File[]) => void
-} & InputProps;
+}
 
 export function FileDropZone(
     {
         className,
         dropZoneText = 'Drop Files Here',
-        multiple,
-        multipleMin,
+        multiselect,
         required,
         onFileChange,
         ...props
-    }: FileDropZoneProps
+    }: Readonly<FileDropZoneProps>
 ) {
 
-    const fileLimit = typeof multiple === 'number'
-        ? multiple
-        : 1;
-    const fileLimitMin = multipleMin || required && 1 || 0;
+    const fileLimit = multiselect?.limit ?? 1;
+    const fileLimitMin = multiselect?.min ?? 1;
 
     const [files, setFiles] = useState(new Map<string, File>());
-    const [ready, isReady] = useState(true);
 
     const dropZoneRef = useRef(null as null | HTMLDivElement);
-
-    useEffect(() => {
-        if (!ready)
-            isReady(true);
-    }, [ready]);
 
     const onDrop = dragEvent<HTMLDivElement>((e) => {
         e.preventDefault();
 
-        const cache = files;
+        const cache = new Map(files);
         let didUpdate = false;
 
         if (e.dataTransfer.items) {
@@ -66,7 +60,6 @@ export function FileDropZone(
 
         if (didUpdate) {
             setFiles(cache);
-            isReady(false);
 
             if (onFileChange)
                 onFileChange(Array.from(cache.values()));
@@ -94,7 +87,7 @@ export function FileDropZone(
         <div
             className='file-drop-zone-wrapper f-body'
         >
-            <div
+            <div // NOSONAR - Allow interactive props on non-interactive element for drag and drop functionality
                 className='file-drop-zone f-main'
                 onDragEnter={onDragEnter}
                 onDragLeave={onDragLeave}
@@ -111,7 +104,7 @@ export function FileDropZone(
                 <span
                     className='label allow-multiple-files'
                 >
-                    {fileLimit > 1 && `Limit: ${multiple}`}
+                    {fileLimit > 1 && `Limit: ${fileLimit}`}
                 </span>
 
                 <span
@@ -131,7 +124,7 @@ export function FileDropZone(
         />
 
         {
-            ready && files.size > 0 &&
+            files.size > 0 &&
             <div
                 className='dropped-files'
             >

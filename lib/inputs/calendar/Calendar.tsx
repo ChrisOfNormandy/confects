@@ -1,10 +1,13 @@
 import './styles/calendar.scss';
-import { HTML_InputProps } from '#types';
-import { Button, Glyph } from '@buttons';
-import { Select, SelectOption } from '@selectors';
+import { HTML_InputProps } from '>types/html';
+import { Button } from '>buttons/button/Button';
+import { Select } from '>selectors/select/Select';
 import { useEffect, useState } from 'react';
-import { getClassName } from '#helpers';
-import { themes } from '@syren-dev-tech/confetti/themes';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { uniqueKey } from '@syren-dev-tech/concauses/strings';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { SelectOption } from '>selectors/select-option';
+import { Glyph } from '>buttons/glyph/Glyph';
 
 const MONTHS = [
     'January',
@@ -96,7 +99,7 @@ function getDateRows(year: number, month: number) {
     return dateRows;
 }
 
-export interface CalendarProps {
+export interface CalendarProps extends ThemeProps {
     input?: HTML_InputProps
     onChange?: (date: Date) => void
     defaultValue?: Date
@@ -108,8 +111,9 @@ export function Calendar(
     {
         input,
         onChange,
+        theme,
         defaultValue
-    }: CalendarProps
+    }: Readonly<CalendarProps>
 ) {
 
     const [day, setDay] = useState<number>(defaultValue?.getDate() || 1);
@@ -154,24 +158,16 @@ export function Calendar(
         <input {...input} hidden type='date' />
 
         <div
-            className={getClassName('calendar-header', themes.getStyles({ background: { style: 'primary' } }))}
+            className={getClassName('calendar-header', theme?.toClassName())}
         >
             <Glyph
                 icon='chevron-left'
                 onClick={() => setMonth(month - 1)}
-                theme={{
-                    background: { style: 'trinary' },
-                    border: { style: 'trinary' }
-                }}
+                theme={theme}
             />
 
             <div
-                className={getClassName('calendar-month', themes.getStyles({
-                    background: {
-                        mono: -2,
-                        style: 'primary'
-                    }
-                }))}
+                className={getClassName('calendar-month', theme?.toClassName())}
             >
                 {MONTHS[month - 1]}
             </div>
@@ -179,32 +175,19 @@ export function Calendar(
             <Glyph
                 icon='chevron-right'
                 onClick={() => setMonth(month + 1)}
-                theme={{
-                    background: { style: 'trinary' },
-                    border: { style: 'trinary' }
-                }}
+                theme={theme}
             />
 
             <Select
                 options={DEFAULT_YEARS.map((y) => new SelectOption(y.toString(), y))}
                 value={year}
                 onChange={(e) => setYear(Number(e.target.value))}
-                theme={{
-                    background: { style: 'body' },
-                    border: { style: 'content' }
-                }}
+                theme={theme}
             />
         </div>
 
         <table
-            className={getClassName('calendar-body',
-                themes.getStyles({
-                    background: {
-                        mono: -1,
-                        style: 'content'
-                    }
-                }))
-            }
+            className={getClassName('calendar-body', theme?.toClassName())}
         >
             <thead>
                 <tr>
@@ -219,9 +202,7 @@ export function Calendar(
                             'Sa'
                         ].map((d) => (
                             <th key={d}
-                                className={getClassName('calendar-day',
-                                    themes.getStyles({ background: { style: 'secondary' } }))
-                                }
+                                className={getClassName('calendar-day', theme?.toClassName())}
                             >
                                 {d}
                             </th>
@@ -232,12 +213,12 @@ export function Calendar(
 
             <tbody>
                 {
-                    dateRows.map((row, i) => (
-                        <tr key={i}>
+                    dateRows.map((row) => (
+                        <tr key={uniqueKey()}>
                             {
-                                row.map((date, j) => {
+                                row.map((date) => {
                                     if (date === 0) {
-                                        return <td key={j}>
+                                        return <td key={uniqueKey()}>
                                             <Button
                                                 disabled
                                             >
@@ -247,20 +228,11 @@ export function Calendar(
                                     }
 
                                     return <td
-                                        key={j}
+                                        key={uniqueKey()}
                                     >
                                         <Button
                                             onClick={() => setDay(date)}
-                                            theme={
-                                                {
-                                                    background: {
-                                                        style: date === day && 'primary' || 'content'
-                                                    },
-                                                    border: {
-                                                        style: date === day && 'primary' || 'content'
-                                                    }
-                                                }
-                                            }
+                                            theme={theme}
                                         >
                                             {date}
                                         </Button>

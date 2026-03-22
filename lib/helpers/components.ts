@@ -1,12 +1,7 @@
-import { v4 } from 'uuid';
-import { mouseEvent } from './events';
+import { mouseEvent } from '>helpers/events';
 
 export const USE_HOVER_STYLING = 'hvr';
 export const USE_DISABLED_STYLING = 'dis';
-
-export function getClassName(...classes: (string | undefined | boolean)[]) {
-    return classes.filter(Boolean).join(' ');
-}
 
 export function makeDraggable(id: string) {
     const origin = {
@@ -50,21 +45,4 @@ export function makeDraggable(id: string) {
     });
 
     return { onMouseDown };
-}
-
-let uniqueIdC = 0;
-export function uniqueId(prefix?: string) {
-    uniqueIdC++;
-
-    if (prefix)
-        return prefix + uniqueIdC;
-
-    return uniqueIdC.toString();
-}
-
-export function uniqueKey(prefix?: string) {
-    if (prefix)
-        return prefix + v4();
-
-    return v4();
 }

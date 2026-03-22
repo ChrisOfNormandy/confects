@@ -1,14 +1,18 @@
-import { getClassName } from '#helpers';
-import { HTML_DivProps } from '#types';
+import { HTML_DivProps } from '>types/html';
+import { getClassName } from '@syren-dev-tech/concauses/props';
+import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+
+export interface LoadingProps extends HTML_DivProps, ThemeProps { }
 
 export function Loading(
     {
         children,
         className,
+        theme,
         ...props
-    }: HTML_DivProps) {
+    }: Readonly<LoadingProps>) {
     return <div
-        className={getClassName('loading', className)}
+        className={getClassName('loading', theme?.toClassName(), className)}
         {...props}
     >
         {children || 'Loading...'}

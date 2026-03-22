@@ -1,49 +1,13 @@
 import './styles/toggle.scss';
-import { Glyph, GlyphProps } from 'lib/buttons';
+import { Glyph, GlyphProps } from '>buttons/glyph/Glyph';
 import { useState } from 'react';
+import { type ToggleIconType, mapping } from './toggle';
 
-export type ToggleIconType =
-    'check-dot' |
-    'check-square' |
-    'check-x' |
-    'check' |
-    'dot' |
-    'eye' |
-    'power' |
-    'square' |
-    'sun-moon' |
-    'thumb-down' |
-    'thumb-up' |
-    'toggle' |
-    'x-dot' |
-    'x-square' |
-    'x';
-
-const mapping = new Map<ToggleIconType, [string, string]>(
-    [
-        ['check-dot', ['circle', 'check-circle']],
-        ['check-square', ['square', 'check-square']],
-        ['check-x', ['x', 'check']],
-        ['check', ['dot', 'check']],
-        ['dot', ['circle', 'circle-fill']],
-        ['eye', ['eye-slash', 'eye']],
-        ['power', ['power', 'power']],
-        ['square', ['square', 'square-fill']],
-        ['sun-moon', ['moon', 'sun']],
-        ['thumb-down', ['hand-thumbs-down', 'hand-thumbs-down-fill']],
-        ['thumb-up', ['hand-thumbs-up', 'hand-thumbs-up-fill']],
-        ['toggle', ['toggle-off', 'toggle-on']],
-        ['x-dot', ['circle', 'x-circle']],
-        ['x-square', ['square', 'x-square']],
-        ['x', ['dot', 'x']]
-    ]
-);
-
-export type ToggleProps = {
+export interface ToggleProps extends GlyphProps {
     name?: string
     readOnly?: boolean
     icon: ToggleIconType
-} & GlyphProps;
+}
 
 export function Toggle(
     {
@@ -52,7 +16,7 @@ export function Toggle(
         name,
         readOnly,
         ...props
-    }: ToggleProps
+    }: Readonly<ToggleProps>
 ) {
 
     const [value, setValue] = useState(defaultChecked);
