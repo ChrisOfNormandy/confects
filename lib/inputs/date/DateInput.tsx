@@ -1,7 +1,7 @@
 import { Input, InputProps } from '>inputs/input/Input';
 import { getClassName } from '@syren-dev-tech/concauses/props';
 
-export interface DateInputProps extends InputProps { }
+export type DateInputProps = InputProps;
 
 function formatDateForInput(value?: string | number | readonly string[] | undefined) {
     if (!value) return undefined;

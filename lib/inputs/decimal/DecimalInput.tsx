@@ -1,7 +1,7 @@
 import { Input, InputProps } from '>inputs/input/Input';
 import { getClassName } from '@syren-dev-tech/concauses/props';
 
-export interface DecimalInputProps extends InputProps { }
+export type DecimalInputProps = InputProps;
 
 export function DecimalInput(
     {

@@ -1,11 +1,11 @@
 import './styles/input.scss';
 import { getId, getClassName } from '@syren-dev-tech/concauses/props';
 import { getTooltipProps } from '>decorations/tooltip/tooltip';
-import { HTML_InputProps } from 'lib/types';
 import { RefObject } from 'react';
 import { ThemeProps } from '@syren-dev-tech/confetti/themes';
 import { Tooltip } from '>decorations/tooltip/Tooltip';
-import { TooltipProps } from 'lib/decorations/tooltip/types';
+import { TooltipProps } from '>decorations/tooltip/types';
+import type { HTML_InputProps } from '>types/html';
 
 export interface IInputProps extends HTML_InputProps, ThemeProps, TooltipProps {
     inputRef?: RefObject<HTMLInputElement | null>

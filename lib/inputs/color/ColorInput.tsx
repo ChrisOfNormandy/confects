@@ -1,7 +1,7 @@
 import { Input, InputProps } from '>inputs/input/Input';
 import { getClassName } from '@syren-dev-tech/concauses/props';
 
-export interface ColorInputProps extends InputProps { }
+export type ColorInputProps = InputProps;
 
 export function ColorInput(
     {

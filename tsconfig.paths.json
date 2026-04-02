@@ -2,28 +2,28 @@
     "compilerOptions": {
         "paths": {
             ">buttons/*": [
-                "lib/buttons/*"
+                "./lib/buttons/*"
             ],
             ">containers/*": [
-                "lib/containers/*"
+                "./lib/containers/*"
             ],
             ">decorations/*": [
-                "lib/decorations/*"
+                "./lib/decorations/*"
             ],
             ">helpers/*": [
-                "lib/helpers/*"
+                "./lib/helpers/*"
             ],
             ">inputs/*": [
-                "lib/inputs/*"
+                "./lib/inputs/*"
             ],
             ">providers/*": [
-                "lib/providers/*"
+                "./lib/providers/*"
             ],
             ">selectors/*": [
-                "lib/selectors/*"
+                "./lib/selectors/*"
             ],
             ">types/*": [
-                "lib/types/*"
+                "./lib/types/*"
             ]
         }
     }

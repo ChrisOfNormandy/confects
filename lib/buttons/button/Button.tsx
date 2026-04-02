@@ -53,21 +53,6 @@ export function Button(
 
     const { tooltipDataProps, tooltipProps } = getTooltipProps(id, tooltip);
 
-    const extraProps: HTML_ButtonProps = {};
-
-    if (submit) {
-        extraProps.type = 'submit';
-
-        if (typeof submit === 'string')
-            extraProps.form = submit;
-    }
-    else if (reset) {
-        extraProps.type = 'reset';
-
-        if (typeof reset === 'string')
-            extraProps.form = reset;
-    }
-
     return <>
         <button
             className={getClassName(!noDefaultClassName && 'btn', theme?.toClassName(), className)}

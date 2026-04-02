@@ -15,7 +15,7 @@ export interface DigitalClockProps {
     defaultValue?: Date
 }
 
-export default function DigitalClock(
+export function DigitalClock(
     {
         name,
         input,

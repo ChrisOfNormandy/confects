@@ -1,9 +1,9 @@
 import './styles/file-input.scss';
-import { dragEvent } from 'lib/helpers';
-import { fileSizeDisplay } from '../file-drop-zone/helpers/file-size-display';
-import { Input, InputProps } from 'lib/inputs';
-import { ReactNode, useRef, useState } from 'react';
+import { dragEvent } from '>helpers/events';
 import { getClassName } from '@syren-dev-tech/concauses/props';
+import { ReactNode, useRef, useState } from 'react';
+import { Input, type InputProps } from '>inputs/input/Input';
+import { fileSizeDisplay } from '>inputs/file-drop-zone/helpers/file-size-display';
 
 export interface FileInputProps extends InputProps {
     dropZoneText?: ReactNode

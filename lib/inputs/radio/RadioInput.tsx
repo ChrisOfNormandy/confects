@@ -8,7 +8,7 @@ export interface RadioInputProps extends InputProps, ThemeProps {
     onChecked?: (checked: boolean, target: HTMLInputElement) => void
 }
 
-export default function RadioInput(
+export function RadioInput(
     {
         checked,
         className,
