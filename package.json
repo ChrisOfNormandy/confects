@@ -6,7 +6,7 @@
     "name": "@syren-dev-tech/confects",
     "packageManager": "yarn@4.13.0",
     "type": "module",
-    "version": "0.2.1-1",
+    "version": "0.2.1-2",
     "files": [
         "dist"
     ],
@@ -72,6 +72,7 @@
         "react": "^19.2.4",
         "react-dom": "^19.2.4",
         "stylelint": "^17.6.0",
+        "tsc-alias": "^1.8.16",
         "typescript": "^6.0.2",
         "vite": "^8.0.3"
     },
@@ -82,7 +83,8 @@
         "react-dom": ">=19"
     },
     "scripts": {
-        "build": "yarn clean; tsc -p tsconfig.build.json && vite build",
+        "build:types": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+        "build": "yarn clean; yarn build:types && vite build",
         "bump:pre": "npm version --commit-hooks false --git-tag-version false prerelease",
         "bump": "npm version --commit-hooks false --git-tag-version false patch",
         "clean": "rm -r ./dist",
