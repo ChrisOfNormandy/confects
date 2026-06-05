@@ -1,5 +1,5 @@
-import { getClassName } from '@syren-dev-tech/concauses/props';
-import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { getClassName } from '@dead-harbour/shipshape/props';
+import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
 import { HTML_DivProps } from '>types/html';
 
 export interface PageMainProps extends HTML_DivProps, ThemeProps { }

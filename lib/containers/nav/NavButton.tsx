@@ -1,7 +1,7 @@
 import { Button, ButtonProps } from '>buttons/button/Button';
-import { getClassName } from '@syren-dev-tech/concauses/props';
+import { getClassName } from '@dead-harbour/shipshape/props';
 
-export interface NavButtonProps extends ButtonProps { }
+export type NavButtonProps = ButtonProps
 
 export function NavButton(
     {

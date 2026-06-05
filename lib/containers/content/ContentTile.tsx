@@ -1,6 +1,6 @@
-import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
 import './styles/content-tile.scss';
-import { getClassName } from '@syren-dev-tech/concauses/props';
+import { getClassName } from '@dead-harbour/shipshape/props';
 import { HTML_DivProps, HTML_ImageProps } from '>types/html';
 import { ReactNode } from 'react';
 

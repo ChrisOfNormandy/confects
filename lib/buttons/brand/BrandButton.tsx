@@ -1,7 +1,7 @@
 import './styles/brand-button.scss';
 import { BrandName, brands } from '>types/brands';
 import { Button, ButtonProps } from '>buttons/button/Button';
-import { getClassName } from '@syren-dev-tech/concauses/props';
+import { getClassName } from '@dead-harbour/shipshape/props';
 import { Icon } from '>decorations/icon/Icon';
 
 export interface BrandButtonProps extends ButtonProps {

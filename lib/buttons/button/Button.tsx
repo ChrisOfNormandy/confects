@@ -1,9 +1,9 @@
 import './styles/button.scss';
-import { getClassName, getId } from '@syren-dev-tech/concauses/props';
+import { getClassName, getId } from '@dead-harbour/shipshape/props';
 import { getTooltipProps } from '>decorations/tooltip/tooltip';
 import { HTML_ButtonProps } from '>types/html';
 import { Ref } from 'react';
-import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
 import { Tooltip } from '>decorations/tooltip/Tooltip';
 import { TooltipProps } from '>decorations/tooltip/types';
 

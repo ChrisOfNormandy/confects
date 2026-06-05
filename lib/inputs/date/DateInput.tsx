@@ -1,5 +1,5 @@
 import { Input, InputProps } from '>inputs/input/Input';
-import { getClassName } from '@syren-dev-tech/concauses/props';
+import { getClassName } from '@dead-harbour/shipshape/props';
 
 export type DateInputProps = InputProps;
 

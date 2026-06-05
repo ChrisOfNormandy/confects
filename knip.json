@@ -1,20 +1,6 @@
 {
     "$schema": "https://unpkg.com/knip@5/schema.json",
-    "entry": [
-        "lib/buttons.ts",
-        "lib/containers.ts",
-        "lib/decorations.ts",
-        "lib/helpers.ts",
-        "lib/inputs.ts",
-        "lib/providers.ts",
-        "lib/selectors.ts",
-        "lib/types.ts"
-    ],
-    "ignore": [
-        "dist/**/*"
-    ],
     "ignoreDependencies": [
-        "bootstrap-icons",
-        "tsconfig-paths"
+        "bootstrap-icons"
     ]
 }

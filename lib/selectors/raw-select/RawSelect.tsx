@@ -1,8 +1,8 @@
-import { getClassName } from '@syren-dev-tech/concauses/props';
+import { getClassName } from '@dead-harbour/shipshape/props';
 import { HTML_SelectProps } from '>types/html';
 import { OptionType, SelectOption } from '../select-option';
-import { ThemeProps } from '@syren-dev-tech/confetti/themes';
-import { uniqueKey } from '@syren-dev-tech/concauses/strings';
+import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
+import { uniqueKey } from '@dead-harbour/shipshape/strings';
 
 export interface RawSelectProps<T extends OptionType> extends HTML_SelectProps, ThemeProps {
     options: SelectOption<T>[]

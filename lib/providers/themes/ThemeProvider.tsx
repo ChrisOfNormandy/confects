@@ -1,6 +1,6 @@
 import { HTMLElementProps } from '>types/html';
-import { ColorScheme, ThemeManager } from '@syren-dev-tech/confetti/themes';
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { ColorScheme, ThemeManager } from '@dead-harbour/scss-rigging/themes';
+import { createContext, use, useEffect, useMemo, useState } from 'react';
 
 interface IThemeContext {
     theme: string
@@ -18,7 +18,7 @@ export function ThemeProvider({ children }: Readonly<HTMLElementProps>) {
     const [theme, setTheme] = useState(DEFAULT_THEME);
     const [scheme, setScheme] = useState(DEFAULT_SCHEME);
 
-    const manager = useMemo(() => new ThemeManager(() => theme, setTheme, () => scheme, setScheme), []);
+    const manager = useMemo(() => new ThemeManager(() => theme, setTheme, () => scheme, setScheme), [theme, scheme]);
 
     useEffect(() => {
         if (theme)
@@ -26,7 +26,7 @@ export function ThemeProvider({ children }: Readonly<HTMLElementProps>) {
         else {
             const defaultTheme = manager.getDefaultTheme()?.name;
             if (defaultTheme)
-                setTheme(defaultTheme);
+                manager.setTheme(manager.getThemeList().find((t) => t.name === defaultTheme));
         }
     }, [theme, manager]);
 
@@ -43,15 +43,19 @@ export function ThemeProvider({ children }: Readonly<HTMLElementProps>) {
         manager: manager.update(() => theme, () => scheme),
         scheme,
         theme
-    }), [theme, scheme]);
+    }), [
+        manager,
+        scheme,
+        theme
+    ]);
 
-    return <ThemeContext.Provider value={context}>
+    return <ThemeContext value={context}>
         {children}
-    </ThemeContext.Provider>;
+    </ThemeContext>;
 }
 
 export function useThemes() {
-    const themes = useContext(ThemeContext);
+    const themes = use(ThemeContext);
 
     if (!themes)
         throw new Error('useThemes must be used within a ThemeProvider');

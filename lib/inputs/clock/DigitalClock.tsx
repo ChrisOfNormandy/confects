@@ -30,14 +30,16 @@ export function DigitalClock(
     const [second, setSecond] = useState<number>(defaultValue?.getSeconds() || 0);
     const [period, setPeriod] = useState<'AM' | 'PM'>('AM');
 
+    const { onTimeChange } = props;
+
     useEffect(() => {
-        if (props.onTimeChange)
-            props.onTimeChange(new Date(0, 0, 0, hour, minute, second, 0));
+        onTimeChange?.(new Date(0, 0, 0, hour, minute, second, 0));
     }, [
         hour,
         minute,
         second,
-        period
+        period,
+        onTimeChange
     ]);
 
     let minHour = 1;

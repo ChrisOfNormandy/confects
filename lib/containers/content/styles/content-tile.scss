@@ -1,5 +1,5 @@
 @use '~layout' as layout;
 
 .content-tile {
-    @include layout.flex;
+  @include layout.flex;
 }

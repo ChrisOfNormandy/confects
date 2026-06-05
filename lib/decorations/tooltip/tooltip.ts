@@ -1,5 +1,4 @@
-import type { ITooltip } from 'react-tooltip';
-import { capitalize } from '@syren-dev-tech/concauses/strings';
+import { capitalize } from '@dead-harbour/shipshape/strings';
 import type { ITooltipWrapper, TooltipContent, TooltipDataProps, TooltipOption } from '>decorations/tooltip/types';
 
 function getProps(tooltipId: string, prop: ITooltipWrapper): TooltipContent {
@@ -10,14 +9,14 @@ function getProps(tooltipId: string, prop: ITooltipWrapper): TooltipContent {
 
     if (Array.isArray(tooltip)) {
         if (tooltip.length === 0)
-            return {} as TooltipContent;
+            return {};
 
         tooltipDataProps['data-tooltip-html'] = tooltip.join('<br>');
     }
     else if (typeof tooltip === 'string') {
         const tooltipStr = tooltip.trim();
         if (!tooltipStr)
-            return {} as TooltipContent;
+            return {};
 
         tooltipDataProps['data-tooltip-content'] = capitalize(tooltipStr);
     }
@@ -28,7 +27,7 @@ function getProps(tooltipId: string, prop: ITooltipWrapper): TooltipContent {
         tooltipProps: {
             id: tooltipId,
             ...props
-        } as ITooltip
+        }
     };
 }
 

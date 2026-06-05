@@ -1,13 +1,13 @@
 import './styles/calendar.scss';
-import { HTML_InputProps } from '>types/html';
 import { Button } from '>buttons/button/Button';
-import { Select } from '>selectors/select/Select';
-import { useEffect, useState } from 'react';
-import { ThemeProps } from '@syren-dev-tech/confetti/themes';
-import { uniqueKey } from '@syren-dev-tech/concauses/strings';
-import { getClassName } from '@syren-dev-tech/concauses/props';
-import { SelectOption } from '>selectors/select-option';
+import { getClassName } from '@dead-harbour/shipshape/props';
 import { Glyph } from '>buttons/glyph/Glyph';
+import { HTML_InputProps } from '>types/html';
+import { Select } from '>selectors/select/Select';
+import { SelectOption } from '>selectors/select-option';
+import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
+import { uniqueKey } from '@dead-harbour/shipshape/strings';
+import { useMemo, useState } from 'react';
 
 const MONTHS = [
     'January',
@@ -119,38 +119,34 @@ export function Calendar(
     const [day, setDay] = useState<number>(defaultValue?.getDate() || 1);
     const [month, setMonth] = useState<number>(defaultValue?.getMonth() || 1);
     const [year, setYear] = useState<number>(defaultValue?.getFullYear() || CURRENT_YEAR);
-    const [dateRows, setDateRows] = useState<number[][]>(getDateRows(year, month));
 
-    useEffect(() => {
-        if (month < 1) {
-            setMonth(LAST_MONTH);
-            setYear(year - 1);
-        }
-        else if (month > LAST_MONTH) {
-            setMonth(1);
-            setYear(year + 1);
-        }
-    }, [month]);
+    const dateRows = useMemo(() => getDateRows(year, month), [year, month]);
 
-    useEffect(() => {
-        const daysInMonth = getDaysInMonth(year, month);
+    const updateDate = (d: number, m: number, y: number) => {
+        const daysInMonth = getDaysInMonth(y, m);
 
-        if (day < 1)
+        if (d < 1)
             setDay(1);
-        else if (day > daysInMonth)
+        else if (d > daysInMonth)
             setDay(daysInMonth);
-    });
+        else
+            setDay(d);
 
-    useEffect(() => {
-        if (onChange)
-            onChange(new Date(year, month - 1, day));
+        if (m < 1) {
+            setMonth(LAST_MONTH);
+            setYear(y - 1);
+        }
+        else if (m > LAST_MONTH) {
+            setMonth(1);
+            setYear(y + 1);
+        }
+        else
+            setMonth(m);
 
-        setDateRows(getDateRows(year, month));
-    }, [
-        day,
-        month,
-        year
-    ]);
+        setYear(y);
+
+        onChange?.(new Date(y, m - 1, d));
+    };
 
     return <div
         className='calendar'
@@ -162,7 +158,7 @@ export function Calendar(
         >
             <Glyph
                 icon='chevron-left'
-                onClick={() => setMonth(month - 1)}
+                onClick={() => updateDate(day, month - 1, year)}
                 theme={theme}
             />
 
@@ -174,14 +170,14 @@ export function Calendar(
 
             <Glyph
                 icon='chevron-right'
-                onClick={() => setMonth(month + 1)}
+                onClick={() => updateDate(day, month + 1, year)}
                 theme={theme}
             />
 
             <Select
                 options={DEFAULT_YEARS.map((y) => new SelectOption(y.toString(), y))}
                 value={year}
-                onChange={(e) => setYear(Number(e.target.value))}
+                onChange={(e) => updateDate(day, month, Number(e.target.value))}
                 theme={theme}
             />
         </div>

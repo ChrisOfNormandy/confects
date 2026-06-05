@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv, UserConfig } from 'vite';
 import { resolve } from 'node:path';
-import { viteConfigAliases } from '@syren-dev-tech/confetti/config';
+import { viteConfigAliases } from '@dead-harbour/scss-rigging/config';
 import react from '@vitejs/plugin-react';
 
 const config = ({ mode }: UserConfig) => {
@@ -28,15 +28,15 @@ const config = ({ mode }: UserConfig) => {
                     'types'
                 ].map((exp) => resolve(`./lib/${exp}.ts`)),
                 formats: ['es'],
-                name: 'confects'
+                name: 'react-elements'
             },
             minify: !USE_DEV,
             rolldownOptions: {
                 external: [
-'react',
-'react/jsx-runtime',
-'react-dom'
-],
+                    'react',
+                    'react/jsx-runtime',
+                    'react-dom'
+                ],
                 output: {
                     globals: {
                         react: 'React'

@@ -2,36 +2,36 @@
 @use '../../button/styles/button.mixin' as btn;
 
 .glyph {
-    @include btn.btn;
-    @include styling.circular;
+  @include btn.btn;
+  @include styling.circular;
 
-    &.icon-only {
-        background: none;
-        border: none;
-    }
+  &.icon-only {
+    background: none;
+    border: none;
+  }
 
-    &.size-1 {
-        font-size: 16px;
-        padding: 2px;
-    }
+  &.size-1 {
+    font-size: 16px;
+    padding: 2px;
+  }
 
-    &.size-2 {
-        font-size: 18px;
-        padding: 3px;
-    }
+  &.size-2 {
+    font-size: 18px;
+    padding: 3px;
+  }
 
-    &.size-3 {
-        font-size: 20px;
-        padding: 4px;
-    }
+  &.size-3 {
+    font-size: 20px;
+    padding: 4px;
+  }
 
-    &.size-4 {
-        font-size: 22px;
-        padding: 5px;
-    }
+  &.size-4 {
+    font-size: 22px;
+    padding: 5px;
+  }
 
-    &.size-5 {
-        font-size: 24px;
-        padding: 6px;
-    }
+  &.size-5 {
+    font-size: 24px;
+    padding: 6px;
+  }
 }

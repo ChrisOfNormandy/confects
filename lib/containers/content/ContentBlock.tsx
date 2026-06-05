@@ -1,7 +1,7 @@
 import './styles/content-block.scss';
-import { getClassName } from '@syren-dev-tech/concauses/props';
+import { getClassName } from '@dead-harbour/shipshape/props';
 import { HTML_DivProps } from '>types/html';
-import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
 
 export interface ContentBlockProps extends HTML_DivProps, ThemeProps { }
 

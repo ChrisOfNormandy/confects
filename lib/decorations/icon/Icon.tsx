@@ -1,7 +1,7 @@
-import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
 import './styles/icon.scss';
 import { HTMLElementProps } from '>types/html';
-import { getClassName } from '@syren-dev-tech/concauses/props';
+import { getClassName } from '@dead-harbour/shipshape/props';
 
 export interface WithIcon {
     icon: string

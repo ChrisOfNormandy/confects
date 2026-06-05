@@ -1,9 +1,9 @@
 import './styles/content-tile-group.scss';
 import { ContentTile, ContentTileProps } from '>containers/content/ContentTile';
-import { getClassName } from '@syren-dev-tech/concauses/props';
+import { getClassName } from '@dead-harbour/shipshape/props';
 import { HTML_DivProps } from '>types/html';
-import { ThemeProps } from '@syren-dev-tech/confetti/themes';
-import { uniqueKey } from '@syren-dev-tech/concauses/strings';
+import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
+import { uniqueKey } from '@dead-harbour/shipshape/strings';
 
 export interface ContentTileGroupProps extends HTML_DivProps, ThemeProps {
     tiles?: ContentTileProps[]

@@ -1,8 +1,8 @@
-import { getClassName } from '@syren-dev-tech/concauses/props';
+import { getClassName } from '@dead-harbour/shipshape/props';
 import { useThemes } from '>providers/themes/ThemeProvider';
 import { ITooltip, Tooltip } from 'react-tooltip';
 
-interface TooltipProps extends ITooltip { }
+type TooltipProps = ITooltip
 
 function CustomTooltip(
     {

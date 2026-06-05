@@ -1,18 +1,22 @@
 @use '~layout' as layout;
 
 .divider {
-    &.horizontal {
-        @include layout.wide;
-        height: 3px;
-    }
 
-    &.vertical {
-        @include layout.tall;
-        width: 3px;
-    }
+  &.horizontal {
+    @include layout.wide;
 
-    &.whitespace {
-        @include layout.wide;
-        height: 16px;
-    }
+    height: 3px;
+  }
+
+  &.vertical {
+    @include layout.tall;
+
+    width: 3px;
+  }
+
+  &.whitespace {
+    @include layout.wide;
+
+    height: 16px;
+  }
 }

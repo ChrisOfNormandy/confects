@@ -1,7 +1,7 @@
 import './styles/file-input.scss';
 import { dragEvent } from '>helpers/events';
 import { ReactNode, useRef, useState } from 'react';
-import { getClassName } from '@syren-dev-tech/concauses/props';
+import { getClassName } from '@dead-harbour/shipshape/props';
 import { fileSizeDisplay } from './helpers/file-size-display';
 import { Input, type InputProps } from '>inputs/input/Input';
 
@@ -28,7 +28,7 @@ export function FileDropZone(
     const fileLimit = multiselect?.limit ?? 1;
     const fileLimitMin = multiselect?.min ?? 1;
 
-    const [files, setFiles] = useState(new Map<string, File>());
+    const [files, setFiles] = useState(() => new Map<string, File>());
 
     const dropZoneRef = useRef(null as null | HTMLDivElement);
 

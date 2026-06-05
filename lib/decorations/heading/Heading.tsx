@@ -1,7 +1,7 @@
 /* eslint-disable no-magic-numbers */
 import { HTML_HeadingProps } from '>types/html';
-import { getClassName } from '@syren-dev-tech/concauses/props';
-import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { getClassName } from '@dead-harbour/shipshape/props';
+import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
 
 type HeadingTag = `h${1 | 2 | 3 | 4 | 5 | 6}`;
 

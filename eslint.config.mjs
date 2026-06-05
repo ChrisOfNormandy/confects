@@ -1,3 +1,3 @@
-import { reactViteConfig, typescriptConfig } from '@syren-dev-tech/concauses/eslint';
+import { reactViteConfig, typescriptConfig } from '@dead-harbour/shipshape/eslint';
 
 export default [...typescriptConfig(), ...reactViteConfig()];

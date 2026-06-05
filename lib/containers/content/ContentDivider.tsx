@@ -1,7 +1,7 @@
 import './styles/content-divider.scss';
-import { getClassName } from '@syren-dev-tech/concauses/props';
+import { getClassName } from '@dead-harbour/shipshape/props';
 import { HTML_DivProps } from '>types/html';
-import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
 
 export interface ContentDividerProps extends HTML_DivProps, ThemeProps { }
 

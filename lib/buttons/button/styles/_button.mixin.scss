@@ -3,9 +3,9 @@
 @use '~interactive' as interactive;
 
 @mixin btn {
-    @include layout.flex-center(1);
-    @include styling.rounded;
-    @include interactive.clickable;
+  @include layout.flex-center(1);
+  @include styling.rounded;
+  @include interactive.clickable;
 
-    padding: 3px 6px;
+  padding: 3px 6px;
 }

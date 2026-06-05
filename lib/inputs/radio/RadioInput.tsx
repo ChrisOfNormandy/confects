@@ -1,8 +1,8 @@
-import { getClassName } from '@syren-dev-tech/concauses/props';
+import { getClassName } from '@dead-harbour/shipshape/props';
 import { Glyph } from '>buttons/glyph/Glyph';
 import { InputProps } from '>inputs/input/Input';
 import { useEffect, useRef, useState } from 'react';
-import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
 
 export interface RadioInputProps extends InputProps, ThemeProps {
     onChecked?: (checked: boolean, target: HTMLInputElement) => void
@@ -28,7 +28,7 @@ export function RadioInput(
     useEffect(() => {
         if (onChecked && ref.current)
             onChecked(isChecked, ref.current);
-    }, [isChecked]);
+    }, [isChecked, onChecked]);
 
     return <>
         <input

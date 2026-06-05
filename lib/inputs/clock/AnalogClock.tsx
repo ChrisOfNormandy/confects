@@ -30,27 +30,37 @@ export function AnalogClock(
     const [minute, setMinute] = useState<number>(defaultValue?.getMinutes() || 0);
     const [second, setSecond] = useState<number>(defaultValue?.getSeconds() || 0);
 
-    useEffect(() => {
-        if (hour < 0)
+    const updateTime = (h: number, m: number, s: number) => {
+        if (h < 0)
             setHour(MAX_HOUR);
-        else if (hour > MAX_HOUR)
+        else if (h > MAX_HOUR)
             setHour(0);
+        else
+            setHour(h);
 
-        if (minute < 0)
+        if (m < 0)
             setMinute(MAX_MINUTE);
-        else if (minute > MAX_MINUTE)
+        else if (m > MAX_MINUTE)
             setMinute(0);
+        else
+            setMinute(m);
 
-        if (second < 0)
+        if (s < 0)
             setSecond(MAX_SECOND);
-        else if (second > MAX_SECOND)
+        else if (s > MAX_SECOND)
             setSecond(0);
+        else
+            setSecond(s);
+    };
 
-        if (props.onTimeChange)
-            props.onTimeChange(new Date(0, 0, 0, hour, minute, second, 0));
+    const { onTimeChange } = props;
+
+    useEffect(() => {
+        onTimeChange?.(new Date(0, 0, 0, hour, minute, second, 0));
     }, [
         hour,
         minute,
+        onTimeChange,
         second
     ]);
 
@@ -92,36 +102,36 @@ export function AnalogClock(
             <div>
                 <Glyph
                     icon='dash-lg'
-                    onClick={() => setHour(hour - 1)}
+                    onClick={() => updateTime(hour - 1, minute, second)}
                 />
 
                 <Glyph
                     icon='plus-lg'
-                    onClick={() => setHour(hour + 1)}
+                    onClick={() => updateTime(hour + 1, minute, second)}
                 />
             </div>
 
             <div>
                 <Glyph
                     icon='dash-lg'
-                    onClick={() => setMinute(hour - 1)}
+                    onClick={() => updateTime(hour, minute - 1, second)}
                 />
 
                 <Glyph
                     icon='plus-lg'
-                    onClick={() => setMinute(hour + 1)}
+                    onClick={() => updateTime(hour, minute + 1, second)}
                 />
             </div>
 
             <div>
                 <Glyph
                     icon='dash-lg'
-                    onClick={() => setSecond(hour - 1)}
+                    onClick={() => updateTime(hour, minute, second - 1)}
                 />
 
                 <Glyph
                     icon='plus-lg'
-                    onClick={() => setSecond(hour + 1)}
+                    onClick={() => updateTime(hour, minute, second + 1)}
                 />
             </div>
         </div>

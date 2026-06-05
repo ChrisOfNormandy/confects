@@ -1,6 +1,6 @@
-import { ThemeProps } from '@syren-dev-tech/confetti/themes';
+import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
 import './styles/page.scss';
-import { getClassName } from '@syren-dev-tech/concauses/props';
+import { getClassName } from '@dead-harbour/shipshape/props';
 import { HTML_DivProps } from '>types/html';
 
 export interface PageProps extends HTML_DivProps, ThemeProps { }
