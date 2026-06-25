@@ -32,11 +32,11 @@ const config = ({ mode }: UserConfig) => {
             },
             minify: !USE_DEV,
             rolldownOptions: {
-                external: [
+                external: (id) => id.startsWith('@dead-harbour/') || [
                     'react',
                     'react/jsx-runtime',
                     'react-dom'
-                ],
+                ].includes(id),
                 output: {
                     globals: {
                         react: 'React'
