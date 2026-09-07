@@ -1,101 +1,82 @@
-import { HTML_InputProps } from '>types/html';
 import { Input } from '>inputs/input/Input';
-import { Select } from '>selectors/select/Select';
-import { SelectOption } from '>selectors/select-option';
-import { useEffect, useState } from 'react';
-
-const MAX_HOUR_12 = 12;
-const MAX_HOUR_24 = 23;
+import type { HtmlElementProps } from '>types/html';
+import { useState } from 'react';
 
 export interface DigitalClockProps {
-    name: string
-    input?: HTML_InputProps
-    use24hr?: boolean
-    onTimeChange?: (time: Date) => void
-    defaultValue?: Date
+    defaultValue?: Date;
+    input?: HtmlElementProps<'input'>;
+    name: string;
+    onChange?: (time: Date) => void;
+    use24hr?: boolean;
 }
 
-export function DigitalClock(
-    {
-        name,
-        input,
-        use24hr = false,
-        defaultValue,
-        ...props
-    }: Readonly<DigitalClockProps>
-) {
+const MAX_HR_12 = 12;
 
-    const [hour, setHour] = useState<number>(defaultValue?.getHours() || 0);
-    const [minute, setMinute] = useState<number>(defaultValue?.getMinutes() || 0);
-    const [second, setSecond] = useState<number>(defaultValue?.getSeconds() || 0);
-    const [period, setPeriod] = useState<'AM' | 'PM'>('AM');
+function get12h(h: number) {
+    if (h === 0 || h === MAX_HR_12) return MAX_HR_12;
 
-    const { onTimeChange } = props;
+    if (h < MAX_HR_12) return h + 1;
 
-    useEffect(() => {
-        onTimeChange?.(new Date(0, 0, 0, hour, minute, second, 0));
-    }, [
-        hour,
-        minute,
-        second,
-        period,
-        onTimeChange
-    ]);
+    return h - MAX_HR_12;
+}
 
-    let minHour = 1;
-    let maxHour = MAX_HOUR_12;
+export function DigitalClock({ name, input, use24hr = false, defaultValue, onChange }: Readonly<DigitalClockProps>) {
+    const [date, setDate] = useState(() => defaultValue ?? new Date());
 
-    if (use24hr) {
-        minHour = 0;
-        maxHour = MAX_HOUR_24;
-    }
+    return (
+        <>
+            <input {...input} hidden name={name} type='time' />
 
-    return <>
-        <input {...input} hidden name={name} type='time' />
-
-        <div
-            className='digital-clock'
-        >
-            <Input
-                name={name + ':hour'}
-                type='number'
-                min={minHour}
-                max={maxHour}
-                onChange={(e) => {
-                    const h = Number(e.target.value);
-                    if (use24hr)
-                        setHour(h);
-                    else if (period === 'AM')
-                        setHour(h - 1);
-                    else
-                        setHour(h + MAX_HOUR_12);
-                }}
-            />
-            {':'}
-            <Input
-                name={name + ':minute'}
-                type='number'
-                min={0}
-                max={59}
-                onChange={(e) => setMinute(Number(e.target.value))}
-            />
-            {':'}
-            <Input
-                name={name + ':second'}
-                type='number'
-                min={0}
-                max={59}
-                onChange={(e) => setSecond(Number(e.target.value))}
-            />
-
-            {
-                !use24hr &&
-                <Select
-                    name={name + ':period'}
-                    options={['AM', 'PM'].map((v) => new SelectOption(v, v))}
-                    onChange={(e) => setPeriod(e.target.value as 'AM' | 'PM')}
+            <div className='digital-clock'>
+                <Input
+                    name={`${name}:hour`}
+                    type='number'
+                    min={0}
+                    max={23}
+                    value={use24hr ? get12h(date.getHours()) : date.getHours()}
+                    onChange={(e) =>
+                        setDate((d) => {
+                            const copy = new Date(d);
+                            copy.setHours(Number.parseInt(e.currentTarget.value));
+                            onChange?.(copy);
+                            return copy;
+                        })
+                    }
                 />
-            }
-        </div>
-    </>;
+                :
+                <Input
+                    name={`${name}:minute`}
+                    type='number'
+                    min={0}
+                    max={59}
+                    value={date.getMinutes()}
+                    onChange={(e) =>
+                        setDate((d) => {
+                            const copy = new Date(d);
+                            copy.setMinutes(Number.parseInt(e.currentTarget.value));
+                            onChange?.(copy);
+                            return copy;
+                        })
+                    }
+                />
+                :
+                <Input
+                    name={`${name}:hour`}
+                    type='number'
+                    min={0}
+                    max={59}
+                    value={date.getSeconds()}
+                    onChange={(e) =>
+                        setDate((d) => {
+                            const copy = new Date(d);
+                            copy.setSeconds(Number.parseInt(e.currentTarget.value));
+                            onChange?.(copy);
+                            return copy;
+                        })
+                    }
+                />
+                {!use24hr && <div>{date.getHours() < MAX_HR_12 ? 'AM' : 'PM'}</div>}
+            </div>
+        </>
+    );
 }

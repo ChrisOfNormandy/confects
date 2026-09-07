@@ -7,14 +7,8 @@
         "skipLibCheck": true,
         "target": "ESNext",
         "useDefineForClassFields": true,
-        "lib": [
-            "DOM",
-            "DOM.Iterable",
-            "ESNext"
-        ],
-        "types": [
-            "node"
-        ],
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "types": ["node"],
         // Bundler stuff
         "allowJs": true,
         "checkJs": true,
@@ -33,13 +27,8 @@
         "noImplicitReturns": true,
         "noImplicitThis": true,
         "noImplicitOverride": true,
-        "strict": true,
+        "strict": true
     },
-    "include": [
-        "lib"
-    ],
-    "exclude": [
-        "./**/*.mjs",
-        "./dist/**/*"
-    ]
+    "include": ["lib"],
+    "exclude": ["./**/*.mjs", "./dist/**/*"]
 }

@@ -1,28 +1,18 @@
-import { HTML_AnchorProps } from '>types/html';
-import { BrandButton, BrandButtonProps } from '>buttons/brand/BrandButton';
+import { BrandButton, type BrandButtonProps } from '>buttons/brand/BrandButton';
+import type { HtmlElementProps } from '>types/html';
 
 export interface SocialLinkProps extends BrandButtonProps {
-    anchor?: HTML_AnchorProps
+    anchor?: HtmlElementProps<'a'>;
 }
 
-export function SocialLink(
-    {
-        anchor,
-        ...props
-    }: Readonly<SocialLinkProps>
-) {
+export function SocialLink({ anchor, ...props }: Readonly<SocialLinkProps>) {
     if (anchor) {
-        return <a
-            className='social-link-anchor'
-            {...anchor}
-        >
-            <BrandButton
-                {...props}
-            />
-        </a>;
+        return (
+            <a className='social-link-anchor' {...anchor}>
+                <BrandButton {...props} />
+            </a>
+        );
     }
 
-    return <BrandButton
-        {...props}
-    />;
+    return <BrandButton {...props} />;
 }

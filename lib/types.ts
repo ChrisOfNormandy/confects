@@ -1,3 +1,3 @@
 export * from '>types/brands';
-export * from '>types/html';
-export * from '>types/props';
+export type * from '>types/html';
+export type * from '>types/props';

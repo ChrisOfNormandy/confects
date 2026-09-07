@@ -22,8 +22,7 @@ export function makeDraggable(id: string) {
         origin.y = e.clientY;
 
         const elem = document.getElementById(id);
-        if (!elem)
-            throw new Error('Undefined element');
+        if (!elem) throw new Error('Undefined element');
 
         elem.style.top = `${elem.offsetTop - target.y}px`;
         elem.style.left = `${elem.offsetLeft - target.x}px`;

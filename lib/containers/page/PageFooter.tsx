@@ -1,22 +1,14 @@
 import './styles/page-footer.scss';
+import type { HtmlElementProps } from '>types/html';
+import type { ThemeProps } from '@dead-harbour/scss-rigging/themes';
 import { getClassName } from '@dead-harbour/shipshape/props';
-import { HTML_DivProps } from '>types/html';
-import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
 
-export interface PageFooterProps extends HTML_DivProps, ThemeProps { }
+export interface PageFooterProps extends HtmlElementProps<'div'>, ThemeProps {}
 
-export function PageFooter(
-    {
-        className,
-        children,
-        theme,
-        ...props
-    }: Readonly<PageFooterProps>
-) {
-    return <div
-        className={getClassName('page-footer', theme?.toClassName(), className)}
-        {...props}
-    >
-        {children}
-    </div>;
+export function PageFooter({ className, children, theme, ...props }: Readonly<PageFooterProps>) {
+    return (
+        <div className={getClassName('page-footer', theme?.toClassName(), className)} {...props}>
+            {children}
+        </div>
+    );
 }

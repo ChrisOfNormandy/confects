@@ -1,29 +1,18 @@
 /* eslint-disable no-magic-numbers */
 import './styles/glyph.scss';
-import { Button, ButtonProps } from '>buttons/button/Button';
-import { USE_DISABLED_STYLING, USE_HOVER_STYLING } from '>helpers/components';
+import { Button, type ButtonProps } from '>buttons/button/Button';
 import { Icon, type WithIcon } from '>decorations/icon/Icon';
+import { USE_DISABLED_STYLING, USE_HOVER_STYLING } from '>helpers/components';
 import { getClassName } from '@dead-harbour/shipshape/props';
 
 export interface GlyphProps extends ButtonProps, WithIcon {
-    size?: 1 | 2 | 3 | 4 | 5
+    size?: 1 | 2 | 3 | 4 | 5;
 }
 
-export function Glyph(
-    {
-        className,
-        icon,
-        size = 3,
-        ...props
-    }: Readonly<GlyphProps>
-) {
-    return <Button
-        className={getClassName('glyph', className, `size-${size}`, USE_HOVER_STYLING, USE_DISABLED_STYLING)}
-        noDefaultClassName
-        {...props}
-    >
-        <Icon
-            icon={icon}
-        />
-    </Button>;
+export function Glyph({ className, icon, size = 3, ...props }: Readonly<GlyphProps>) {
+    return (
+        <Button className={getClassName('glyph', className, `size-${size}`, USE_HOVER_STYLING, USE_DISABLED_STYLING)} noDefaultClassName {...props}>
+            <Icon icon={icon} />
+        </Button>
+    );
 }

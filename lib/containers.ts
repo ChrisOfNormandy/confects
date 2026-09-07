@@ -9,8 +9,6 @@ export * from '>containers/content/ContentListItem';
 export * from '>containers/content/ContentTile';
 export * from '>containers/content/ContentTileGroup';
 
-export * from '>containers/interface-wrapper/InterfaceWrapper';
-
 export * from '>containers/nav/Nav';
 export * from '>containers/nav/NavButton';
 export * from '>containers/nav/Ribbon';

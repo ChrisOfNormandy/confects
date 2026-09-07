@@ -1,9 +1,4 @@
-const SIZES = [
-    'b',
-    'kb',
-    'mb',
-    'gb'
-];
+const SIZES = ['b', 'kb', 'mb', 'gb'];
 const KILO = 1024;
 const FS_FIXED = 2;
 

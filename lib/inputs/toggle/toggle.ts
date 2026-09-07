@@ -1,36 +1,64 @@
-export type ToggleIconType =
-    'check-dot' |
-    'check-square' |
-    'check-x' |
-    'check' |
-    'dot' |
-    'eye' |
-    'power' |
-    'square' |
-    'sun-moon' |
-    'thumb-down' |
-    'thumb-up' |
-    'toggle' |
-    'x-dot' |
-    'x-square' |
-    'x';
+export const toggleIcons = {
+    check: {
+        off: 'dot',
+        on: 'check'
+    },
+    'check-dot': {
+        off: 'circle',
+        on: 'check-circle'
+    },
+    'check-square': {
+        off: 'square',
+        on: 'check-square'
+    },
+    'check-x': {
+        off: 'x',
+        on: 'check'
+    },
+    dot: {
+        off: 'circle',
+        on: 'circle-fill'
+    },
+    eye: {
+        off: 'eye-slash',
+        on: 'eye'
+    },
+    power: {
+        off: 'power',
+        on: 'power'
+    },
+    square: {
+        off: 'square',
+        on: 'square-fill'
+    },
+    'sun-moon': {
+        off: 'moon',
+        on: 'sun'
+    },
+    'thumb-down': {
+        off: 'hand-thumbs-down',
+        on: 'hand-thumbs-down-fill'
+    },
+    'thumb-up': {
+        off: 'hand-thumbs-up',
+        on: 'hand-thumbs-up-fill'
+    },
+    toggle: {
+        off: 'toggle-off',
+        on: 'toggle-on'
+    },
+    x: {
+        off: 'dot',
+        on: 'x'
+    },
+    'x-dot': {
+        off: 'circle',
+        on: 'x-circle'
+    },
+    'x-square': {
+        off: 'square',
+        on: 'x-square'
+    }
+};
 
-export const mapping = new Map<ToggleIconType, [string, string]>(
-    [
-        ['check-dot', ['circle', 'check-circle']],
-        ['check-square', ['square', 'check-square']],
-        ['check-x', ['x', 'check']],
-        ['check', ['dot', 'check']],
-        ['dot', ['circle', 'circle-fill']],
-        ['eye', ['eye-slash', 'eye']],
-        ['power', ['power', 'power']],
-        ['square', ['square', 'square-fill']],
-        ['sun-moon', ['moon', 'sun']],
-        ['thumb-down', ['hand-thumbs-down', 'hand-thumbs-down-fill']],
-        ['thumb-up', ['hand-thumbs-up', 'hand-thumbs-up-fill']],
-        ['toggle', ['toggle-off', 'toggle-on']],
-        ['x-dot', ['circle', 'x-circle']],
-        ['x-square', ['square', 'x-square']],
-        ['x', ['dot', 'x']]
-    ]
-);
+export type ToggleIconType = keyof typeof toggleIcons;

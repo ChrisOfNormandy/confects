@@ -1,30 +1,14 @@
 {
     "compilerOptions": {
         "paths": {
-            ">buttons/*": [
-                "./lib/buttons/*"
-            ],
-            ">containers/*": [
-                "./lib/containers/*"
-            ],
-            ">decorations/*": [
-                "./lib/decorations/*"
-            ],
-            ">helpers/*": [
-                "./lib/helpers/*"
-            ],
-            ">inputs/*": [
-                "./lib/inputs/*"
-            ],
-            ">providers/*": [
-                "./lib/providers/*"
-            ],
-            ">selectors/*": [
-                "./lib/selectors/*"
-            ],
-            ">types/*": [
-                "./lib/types/*"
-            ]
+            ">buttons/*": ["./lib/buttons/*"],
+            ">containers/*": ["./lib/containers/*"],
+            ">decorations/*": ["./lib/decorations/*"],
+            ">helpers/*": ["./lib/helpers/*"],
+            ">inputs/*": ["./lib/inputs/*"],
+            ">providers/*": ["./lib/providers/*"],
+            ">selectors/*": ["./lib/selectors/*"],
+            ">types/*": ["./lib/types/*"]
         }
     }
 }

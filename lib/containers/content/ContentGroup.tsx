@@ -1,22 +1,15 @@
+import type { HtmlElementProps } from '>types/html';
+
 import './styles/content-group.scss';
+import type { ThemeProps } from '@dead-harbour/scss-rigging/themes';
 import { getClassName } from '@dead-harbour/shipshape/props';
-import { HTML_DivProps } from '>types/html';
-import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
 
-export interface ContentGroupProps extends HTML_DivProps, ThemeProps { }
+export interface ContentGroupProps extends HtmlElementProps<'div'>, ThemeProps {}
 
-export function ContentGroup(
-    {
-        className,
-        children,
-        theme,
-        ...props
-    }: Readonly<ContentGroupProps>
-) {
-    return <div
-        className={getClassName('content-group', theme?.toClassName(), className)}
-        {...props}
-    >
-        {children}
-    </div>;
+export function ContentGroup({ className, children, theme, ...props }: Readonly<ContentGroupProps>) {
+    return (
+        <div className={getClassName('content-group', theme?.toClassName(), className)} {...props}>
+            {children}
+        </div>
+    );
 }

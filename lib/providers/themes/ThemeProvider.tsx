@@ -1,64 +1,42 @@
-import { HTMLElementProps } from '>types/html';
-import { ColorScheme, ThemeManager } from '@dead-harbour/scss-rigging/themes';
+import type { HtmlElementProps } from '>types/html';
+import type { ColorScheme } from '@dead-harbour/scss-rigging/types';
 import { createContext, use, useEffect, useMemo, useState } from 'react';
 
 interface IThemeContext {
-    theme: string
-    scheme: ColorScheme | null
-    manager: ThemeManager
+    scheme: ColorScheme | null;
 }
-
-const DEFAULT_SCHEME = globalThis.localStorage.getItem('scheme') as ColorScheme | null;
-const DEFAULT_THEME = globalThis.localStorage.getItem('theme') ?? '';
 
 const ThemeContext = createContext<IThemeContext | null>(null);
 
-export function ThemeProvider({ children }: Readonly<HTMLElementProps>) {
+export function ThemeProvider({ children }: Readonly<HtmlElementProps<'div'>>) {
+    const [scheme, setScheme] = useState<ColorScheme | null>(() => {
+        const state = globalThis.localStorage.getItem('scheme');
+        if (state === 'dark' || state === 'light') return state;
 
-    const [theme, setTheme] = useState(DEFAULT_THEME);
-    const [scheme, setScheme] = useState(DEFAULT_SCHEME);
-
-    const manager = useMemo(() => new ThemeManager(() => theme, setTheme, () => scheme, setScheme), [theme, scheme]);
-
-    useEffect(() => {
-        if (theme)
-            globalThis.localStorage.setItem('theme', theme);
-        else {
-            const defaultTheme = manager.getDefaultTheme()?.name;
-            if (defaultTheme)
-                manager.setTheme(manager.getThemeList().find((t) => t.name === defaultTheme));
-        }
-    }, [theme, manager]);
+        return null;
+    });
 
     useEffect(() => {
-        if (scheme !== 'dark' && scheme !== 'light')
-            globalThis.localStorage.removeItem('scheme');
-        else
-            globalThis.localStorage.setItem('scheme', scheme);
+        const mediaQuery = globalThis.matchMedia('(prefers-color-scheme: dark)');
+        const handleChange = (e: MediaQueryListEvent) => {
+            setScheme(e.matches ? 'dark' : 'light');
+        };
+        mediaQuery.addEventListener('change', handleChange);
 
-        manager.updateThemeByScheme();
-    }, [scheme, manager]);
+        return () => {
+            mediaQuery.removeEventListener('change', handleChange);
+        };
+    }, []);
 
-    const context = useMemo(() => ({
-        manager: manager.update(() => theme, () => scheme),
-        scheme,
-        theme
-    }), [
-        manager,
-        scheme,
-        theme
-    ]);
+    const context = useMemo(() => ({ scheme }), [scheme]);
 
-    return <ThemeContext value={context}>
-        {children}
-    </ThemeContext>;
+    return <ThemeContext value={context}>{children}</ThemeContext>;
 }
 
 export function useThemes() {
     const themes = use(ThemeContext);
 
-    if (!themes)
-        throw new Error('useThemes must be used within a ThemeProvider');
+    if (!themes) throw new Error('useThemes must be used within a ThemeProvider');
 
     return themes;
 }

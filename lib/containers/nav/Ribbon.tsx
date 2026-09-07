@@ -1,21 +1,13 @@
-import { ThemeProps } from '@dead-harbour/scss-rigging/themes';
+import type { HtmlElementProps } from '>types/html';
+import type { ThemeProps } from '@dead-harbour/scss-rigging/themes';
 import { getClassName } from '@dead-harbour/shipshape/props';
-import { HTML_DivProps } from '>types/html';
 
-export interface RibbonProps extends HTML_DivProps, ThemeProps { }
+export interface RibbonProps extends HtmlElementProps<'div'>, ThemeProps {}
 
-export function Ribbon(
-    {
-        className,
-        children,
-        theme,
-        ...props
-    }: Readonly<RibbonProps>
-) {
-    return <div
-        className={getClassName('ribbon', theme?.toClassName(), className)}
-        {...props}
-    >
-        {children}
-    </div>;
+export function Ribbon({ className, children, theme, ...props }: Readonly<RibbonProps>) {
+    return (
+        <div className={getClassName('ribbon', theme?.toClassName(), className)} {...props}>
+            {children}
+        </div>
+    );
 }
