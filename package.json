@@ -54,13 +54,13 @@
         }
     },
     "dependencies": {
-        "@dead-harbour/shipshape": "^1.0.4",
+        "@dead-harbour/shipshape": "1.0.7",
         "bootstrap-icons": "^1.13.1",
         "react-tooltip": "^6.0.8",
         "sass": "^1.104.0"
     },
     "devDependencies": {
-        "@dead-harbour/scss-rigging": "^1.0.3",
+        "@dead-harbour/scss-rigging": "1.0.7",
         "@stylistic/stylelint-config": "^5.0.0",
         "@stylistic/stylelint-plugin": "^5.3.0",
         "@types/node": "^26.4.1",
